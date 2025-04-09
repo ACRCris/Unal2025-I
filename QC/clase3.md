@@ -1,0 +1,1 @@
+# Demostracion de que cualquier funcion booleana se puede construir con funciones de la compuertas basicas and, or y not.
