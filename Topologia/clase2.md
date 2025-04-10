@@ -189,7 +189,7 @@ entonces $\mathcal B$ es una base para la topologia de $X$.
 **Dem**:
 
 Definimos una familia $\tau$ de subconjuntos de $X$:
-
+4   
 $$\tau_{\mathcal{B}} = \{U\subseteq X: U = \bigcup B'\text{donde $\mathcal B$ es una subfamilia de} \mathcal B\}$$
 
 

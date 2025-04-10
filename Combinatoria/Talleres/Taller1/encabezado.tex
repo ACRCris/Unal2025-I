@@ -1,0 +1,126 @@
+\usepackage{caption}
+\usepackage[spanish]{layout}%Este paquete permite visualizar el formato de la página en español. toca colocar \layot despues de \begin{document}%
+% [pdftex][dvips]
+\usepackage{parskip}
+%\usepackage{color,graphicx} Para poder insertar graficas%
+\usepackage[lmargin=2.4cm,rmargin=1.5cm, top=4.3cm, bottom=2cm]{geometry}
+\usepackage{amsmath}%Insertar ecuaciones y matematicas
+\usepackage{amssymb}%Insertar unos simbolos matematicos especiales%
+\usepackage{comment}%comentarios (RENZO)
+\usepackage{setspace}
+\usepackage{empheq}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{xspace}
+\usepackage{xcolor}
+\usepackage{csquotes}
+\onehalfspacing
+\usepackage[mathscr]{euscript}%Tipo especial de letra%
+\usepackage[utf8]{inputenc}%Para las tildes
+\usepackage[spanish,activeacute]{babel}%Todo en Español
+%\usepackage{multicol}
+\pagestyle{empty}
+%\usepackage{spalign}  %SISTEMAS DE ECUACIONES%
+%\usepackage{array}
+\usepackage{layout}
+\usepackage{picinpar}
+\setlength{\footskip}{1cm}
+\usepackage{color, graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning, automata}
+\usepackage{fancyhdr}
+\usepackage{bm}
+\usepackage{extramarks}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[T1]{fontenc}    
+\usepackage{url}        
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{amsfonts} 
+\newtheorem{lema}{Lema}
+\usepackage{nicefrac}       
+\usepackage{microtype}   
+\usepackage{multicol}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{ragged2e}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\usepackage[mathscr]{euscript}
+\let\euscr\mathscr\let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+%\usepackage{geometry}
+ %\geometry{
+ %a4paper,
+ %total={170mm,257mm},
+ %left=15mm,
+ %top=20mm,
+ %}
+\usepackage{comment}
+\usepackage[makeroom]{cancel}
+
+\usepackage{endnotes}
+\usepackage[hyperfootnotes=false]{hyperref}
+
+\usepackage{tikz}
+
+
+\newcommand {\Z}{\mathbb{Z}}
+\newcommand {\N}{\mathbb{N}}
+\newcommand {\Q}{\mathbb{Q}}
+\newcommand {\C}{\mathbb{C}}
+\newcommand {\R}{\mathbb{R}}
+\newcommand {\F}{\mathcal{F}}
+\newcommand{\solution}{\newline\\ \textbf{R/ }}
+%newcommand{\log}{\mbox{log }}
+
+\newcommand{\proof}{\newline \textbf{D/ }}
+\pagestyle{fancy}
+
+\fancyhead[R]{ \textsc{IAC 2025-I}\\ \small \textit{Parcial final}} 
+\fancyhead[L]{ \hspace{0.2cm} \thepage \vspace{0.1cm}}
+
+\usepackage{tcolorbox}
+\newtcolorbox{solutionbox}{
+    colback=white,
+    colframe=white,
+    width=\linewidth,
+    boxrule=0pt, % Sin borde
+    arc=0pt, % Sin esquinas redondeadas
+}
+
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\usepackage{amssymb,amsthm,amsfonts,amscd,mathrsfs}
+\usepackage{booktabs}
+\usepackage{graphicx} % Required for inserting images
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
