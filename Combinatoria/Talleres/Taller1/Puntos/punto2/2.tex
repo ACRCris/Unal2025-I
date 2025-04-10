@@ -1,0 +1,83 @@
+Sea \(c_n\) el n\'umero de formas de teselar una cinta circular de tama\(\tilde{n}\)o \(1 \times 1\) o \(1 \times 2\). Por ejemplo, a partir de la siguiente figura se puede verificar que \(c_4 = 7\):
+\shorthandoff{>}
+\begin{tikzpicture}[scale=1.2,cap=round,line join=round]
+
+  % A helper macro to draw a "washer" (ring) of 5 arcs at position (#2,#3),
+  % skipping radial boundaries whose angles are listed in #1.
+  % #1 is a comma-separated list of angles, e.g. {72,216} means
+  % "do *not* draw the boundary lines at 72° and 216°".
+  %
+  % For each ring:
+  %   -- Outer radius = 1
+  %   -- Inner radius = 0.7
+  %
+  \newcommand\drawRing[3]{
+    % #1 = set of skip angles, comma-separated
+    % #2,#3 = shift in x,y
+    \begin{scope}[shift={(#2,#3)}]
+      % Draw the outer green ring and inner white circle
+      \draw[thick,fill=green!30] (0,0) circle (1);
+      \draw[thick,fill=white] (0,0) circle (0.7);
+  
+      % For each of the 5 radial lines (0°,72°,144°,216°,288°),
+      % check if it is in the skip list. If not, draw it.
+      \foreach \a in {0,72,144,216,288} {
+        % We'll see if \a matches one of the angles in #1
+        \pgfkeys{/skipfound=false}%
+        \foreach \skipA in #1 {
+          \ifx\skipA\empty
+            % If #1 is empty, do nothing
+          \else
+            \ifnum\skipA=\a
+              \pgfkeys{/skipfound=true}%
+            \fi
+          \fi
+        }
+        % If we never found \a in the skip list, draw the line
+        \pgfkeysifnum{\pgfkeysvalueof{/skipfound}}=0{
+           \draw[thick] (\a:0.7) -- (\a:1);
+        }{}
+      }
+    \end{scope}
+  }
+  
+  % The 11 valid skip patterns for c5:
+  %
+  % Interpreting a 5-bit circular pattern:
+  %  - '1' at position i => skip boundary at angle 72*i.
+  %  - No two '1's are adjacent in a circular sense.
+  % This yields exactly the following 11 sets:
+  %
+  % 1)  00000 -> skip none
+  % 2)  10000 -> skip angle 0
+  % 3)  01000 -> skip angle 72
+  % 4)  00100 -> skip angle 144
+  % 5)  00010 -> skip angle 216
+  % 6)  00001 -> skip angle 288
+  % 7)  10100 -> skip angles 0,144
+  % 8)  01010 -> skip angles 72,216
+  % 9)  00101 -> skip angles 144,288
+  % 10) 10010 -> skip angles 0,216
+  % 11) 01001 -> skip angles 72,288
+  %
+  % We will place them in a 4-column grid:
+  
+  % (Row 0)
+  \drawRing{}             {0}{0}      % no skips
+  \drawRing{{0}}          {3}{0}      % skip 0
+  \drawRing{{72}}         {6}{0}
+  \drawRing{{144}}        {9}{0}
+  % (Row 1)
+  \drawRing{{216}}        {0}{-3}
+  \drawRing{{288}}        {3}{-3}
+  \drawRing{{0,144}}      {6}{-3}
+  \drawRing{{72,216}}     {9}{-3}
+  % (Row 2)
+  \drawRing{{144,288}}    {0}{-6}
+  \drawRing{{0,216}}      {3}{-6}
+  \drawRing{{72,288}}     {6}{-6}
+  \end{tikzpicture}
+  \shorthandon{>}
+
+  % \caption{Las 7 formas distintas de teselar la cinta circular para \(n=4\). 
+  % El \'octavo anillo (abajo a la derecha) est\'a en blanco.}
