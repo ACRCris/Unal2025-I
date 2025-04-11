@@ -19,17 +19,17 @@ En $\mathbb R$ podemos definir las siguientes topologias
 
 dada $id: (\mathbb R_1,\tau_1) \to (\mathbb R_2,\tau_2)$ es continua?
 
-$id(0,1) = (0,1) \notin \tau_t$
+$id^{-1}(0,1) = (0,1) \notin \tau_t$
 
 Luego id no es continua.
 
 obs: Dado un conjunto $X$ y $\tau_1$ y $\tau_2$ topologias en $X$
 
 $$
-id: (X,\tau_1) \to (X,\tau_2) \text{ es continua } \iff \tau_1 \subseteq \tau_2
+id: (X,\tau_1) \to (X,\tau_2) \text{ es continua } \iff \tau_2 \subseteq \tau_1
 $$
 
-Notacion: Si $\tau_1 \subseteq \tau_2$ se duce qye $\tau_1$ es mas fina que $\tau_2$ o tambien que $\tau_2$ es mas gruesa que $\tau_1$.
+Notacion: Si $\tau_2 \subseteq \tau_1$ se dIce qUe $\tau_1$ es mas fina que $\tau_2$ o tambien que $\tau_2$ es mas gruesa que $\tau_1$.
 
 
 definicion: Dao $X$ un epacio topoologico $A\subset X$ se dice cerrado si $X-A$ es abierto.
