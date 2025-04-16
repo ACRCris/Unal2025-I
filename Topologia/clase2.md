@@ -182,7 +182,7 @@ $$
 Si $\mathcal B$(una forma de definir una topologia de X) es una familia de subconjuntos de $X$ que satisface que 
 
 1) $\forall x \in X$ existe $B \in \mathcal B$ tal que $x \in B$ 
-2) $\forall B_1, B_2 \in B, x \in B_1 \cap B_2$ existe $B_3$ tal que $x \in B_3 \subseteq B_1 \cap B_2$
+2) $\forall B_1, B_2 \in \mathcal B, x \in B_1 \cap B_2$ existe $B_3$ tal que $x \in B_3 \subseteq B_1 \cap B_2$
 
 entonces $\mathcal B$ es una base para la topologia de $X$.
 

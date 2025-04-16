@@ -1,0 +1,33 @@
+\begin{solution}
+    Tenemos que la función generatriz está dada por:
+    \begin{equation*}
+        C(z)=\frac{z^2+3z}{1-z-z^2}=-1+\frac{2z+1}{1-z-z^2}
+    \end{equation*}
+    Se utilizarán fracciones parciales para encontrar una expresión cerrada, quedando asi:
+    \begin{equation*}
+        C(z)=-1+\frac{2z+1}{1-z-z^2}=-1+\frac{C}{1-\alpha z}+\frac{D}{1-\beta z},
+    \end{equation*}
+    con $(1-\alpha z)(1-\beta z)=1-z-z^2$ y $C(1-\beta z)+D(1-\alpha z)=2z+1$.\\
+    Por lo visto en clase, es inmediato que $\alpha=\frac{1-\sqrt{5}}{2}$ y $\beta=\frac{1+\sqrt{5}}{2}$. Ahora, para hallar $C$ y $D$ se obtiene el sistema de ecuaciones:
+    \begin{align*}
+        C+D&=1\\
+        \alpha D+\beta C&=-2.
+    \end{align*}
+    De ahí obtenemos que $C=\alpha$ y que $D=\beta$. Con ello llegamos a la siguiente expresión:
+    \begin{equation*}
+        C(z)=-1+\frac{\alpha}{1-\alpha z}+\frac{\beta}{1-\beta z}=-1+\frac{\frac{1-\sqrt{5}}{2}}{1-\frac{1-\sqrt{5}}{2} z}+\frac{\frac{1+\sqrt{5}}{2}}{1-\frac{1+\sqrt{5}}{2} z}
+    \end{equation*}
+    Por la serie geométrica formal, se llega a:
+    \begin{align*}
+        C(z)&=-1+ \alpha\sum_{n\geq0}(\alpha z)^n+\beta\sum_{n\geq0}(\beta z)^n\\
+        &=\sum_{n\geq0}(\alpha^{n+1}+\beta^{n+1})z^n-1
+    \end{align*}
+    Finalmente, llegamos a la expresión de los coeficientes de la función generatriz como
+    \begin{align*}
+        c_n=\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}+\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}
+    \end{align*}
+    para $n\geq 1$ y $c_0=1$. Como $\left|\frac{1-\sqrt{5}}{2}\right|<1$, entonces podemos usar la siguiente expresión asintotica:
+    \begin{equation*}
+        c_n\approx \left(\frac{1+\sqrt{5}}{2}\right)^{n+1}
+    \end{equation*}
+\end{solution}
