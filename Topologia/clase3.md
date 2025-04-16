@@ -54,6 +54,7 @@ $\mathcal B$ es una base para alguna topologia en $\mathbb R^n$. Es esta la topo
 $\tau_u = \tau_{\mathcal{B}}$ 
 
 - $\forall B \in \mathcal B, B \in \tau_u$ (**Ejercicio**)
+  
 ![alt text](image-3.png)
 
 $$
