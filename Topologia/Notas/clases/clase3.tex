@@ -1,0 +1,254 @@
+%--------------------------------------------------
+%  Topología – Clase 3
+%--------------------------------------------------
+\subsection{Bases y topologías generadas}
+
+\paragraph{\textbf{Proposición.}}
+Sea $\mathcal{B}$ una colección de subconjuntos de un conjunto $X$ tal que
+\begin{enumerate}
+  \item para todo $x\in X$ existe $B\in\mathcal{B}$ con $x\in B$;
+  \item para cualesquiera $B_{1},B_{2}\in\mathcal{B}$ y todo $x\in B_{1}\cap B_{2}$
+        existe $B_{3}\in\mathcal{B}$ con $x\in B_{3}\subseteq B_{1}\cap B_{2}$.
+\end{enumerate}
+Entonces $\mathcal{B}$ es una base de una topología en $X$.
+
+\paragraph{\textbf{Ejemplo}}
+En $\mathbb{R}^{n}$ con la topología usual, sea
+\[
+  \mathcal{B}=
+  \Bigl\{
+    \prod_{i=1}^{n}(a_{i},b_{i}) : a_{i},b_{i}\in\mathbb{R},\;i=1,\dots,n
+  \Bigr\}.
+\]
+\begin{enumerate}
+  \item Para $x=(x_{1},\dots,x_{n})$, tomamos
+        \[
+          B=\prod_{i=1}^{n}(x_{i}-1,x_{i}+1)\in\mathcal{B},
+          \quad x\in B.
+        \]
+  \item Sean
+        \[
+          B_{1}=\prod_{i=1}^{n}(a_{i},b_{i}),
+          \quad
+          B_{2}=\prod_{i=1}^{n}(c_{i},d_{i}).
+        \]
+        Si $x\in B_{1}\cap B_{2}$, entonces
+        \[
+          B_{3}=\prod_{i=1}^{n}
+                 \bigl(
+                   \max\{a_{i},c_{i}\},
+                   \min\{b_{i},d_{i}\}
+                 \bigr)
+          \;\in\mathcal{B},
+          \quad x\in B_{3}\subseteq B_{1}\cap B_{2}.
+        \]
+\end{enumerate}
+
+Por lo tanto $\mathcal{B}$ es una base para alguna topología en $\mathbb R^n$. 
+\subsubsection{Relación con la topología usual}
+
+\paragraph{\textbf{$\mathcal T_{\mathcal{B}}\subseteq\mathcal T_{u}$.}}
+
+\textbf{Ejercicio.}
+
+\paragraph{\textbf{$\mathcal T_{u}\subseteq\mathcal T_{\mathcal{B}}$.}}
+Para cada $x\in\mathbb{R}^{n}$ y $\varepsilon>0$ sea
+\[
+  U=\prod_{i=1}^{n}\!\bigl(x_{i}-\tfrac{\varepsilon}{n},\,x_{i}+\tfrac{\varepsilon}{n}\bigr)
+  \;\in\mathcal{B}.
+\]
+Si $y=(y_{1},\dots,y_{n})\in U$ entonces $|x_{i}-y_{i}|<\tfrac{\varepsilon}{n}$
+para todo $i$ y
+\[
+  \|x-y\|_{1}
+  =\sum_{i=1}^{n}|x_{i}-y_{i}|<\varepsilon,
+\]
+luego $U\subset B_{\varepsilon}(x) = \{y\in\mathbb{R}^{n}:\|x-y\|_{1}<\varepsilon\}$.
+
+\paragraph{\textbf{Proposición.}}
+Sea $(X,\mathcal T)$ un espacio topológico y $\mathcal{B}$ una base de $\mathcal T$. Entonces $\mathcal T=\mathcal T_{\mathcal{B}}$ si y solo si:
+
+\begin{itemize}
+  \item $\mathcal T_\mathcal{B} \subseteq \mathcal T$
+  \item $\forall U \in \mathcal T,\forall x \in U, \exists B \in \mathcal B:  x \in B \subseteq U$ 
+\end{itemize}
+
+%--------------------------------------------------
+\subsection{Vecindades y subespacios}
+
+\paragraph{\textbf{Definición (Vecindad).}}
+Sea $x\in X$. Un conjunto $A\subseteq X$ es una \emph{vecindad} de $x$
+si $x\in A$ y existe $U\in\mathcal T$ con $x\in U\subseteq A$. Cuando además
+$A\in\mathcal T$ se la llama \emph{vecindad abierta}.
+
+\paragraph{\textbf{Ejercicio.}}
+Un subconjunto $A\subseteq X$ es abierto \emph{ssi} es vecindad abierta de todos sus puntos.
+
+\subsubsection{Topología de subespacio}
+
+\paragraph{\textbf{Definición.}}
+Para $(X,\mathcal T)$ espacio topológico y $A\subseteq X$, definimos
+\[
+  \mathcal T_{A} = \{\,U\subseteq A: U=A\cap V\text{ con }V\in\mathcal T\}.
+\]
+
+Veamos que $\mathcal T_A$ es una topología:
+
+\begin{enumerate}
+\item $\emptyset \in \mathcal T_A$ pues $\emptyset = A \cap \emptyset$ y $\emptyset \in \mathcal T_A$.
+\item $A \in \mathcal T_A$ pues $A = A \cap X$ y $X \in \mathcal T$.
+\item Sea $\{U_i\}_{i \in I}$ una familia de elementos de $\mathcal T_A$. Entonces
+\[
+U_i = A \cap V_i \quad \text{para cada } i \in I
+\]
+con $V_i \in \mathcal T$. Luego:
+\[
+\bigcup_{i \in I} U_i = \bigcup_{i \in I} (A \cap V_i) = A \cap \left(\bigcup_{i \in I} V_i\right)
+\]
+y como $\bigcup_{i \in I} V_i \in \mathcal T$, entonces $A \cap \left(\bigcup_{i \in I} V_i\right) \in \mathcal T_A$.
+\item (Ejercicio) La intersección finita de elementos de $\mathcal T_A$ pertenece a $\mathcal T_A$.
+\end{enumerate}
+
+\paragraph{\textbf{Ejemplo.}}
+Para $A=\overline{B_{1}}(0)\subset\mathbb{R}^{n}$, el conjunto
+$\overline{B_{1}}(0)$ es abierto en $A$ pero no en $\mathbb{R}^{n}$.
+
+\paragraph{\textbf{Proposición.}}
+Si $A$ es abierto en $X$ y $B$ es abierto en $A$, entonces $B$ es abierto en $X$.
+
+\paragraph{\textbf{Demostración.}}
+Dado que $B \in  \mathcal T_A$ entonces existe $V \in \mathcal T$ tal que $V \overset{ab} \subseteq X$, $B = A \cap V$, y como $A \in \mathcal T$, entonces $B = A \cap V \in \mathcal T$. Es decir existen dos abiertos $A$ y $V$ tales que $B = A \cap V$, y como la intersección de abiertos es abierto, entonces $B$ es abierto en $X$.
+
+\paragraph{\textbf{Proposición.}}
+Sea $(X,d)$ un espacio métrico y $A\subseteq X$. La topología $\mathcal T_{A}$
+coincide con la inducida por la métrica restringida $d|_{A}$.
+
+\paragraph{\textbf{Demostración.}}
+
+\begin{itemize}
+  \item \textbf{¿Por qué $\mathcal T_A \supseteq \mathcal T_{d|A}$?}  
+  Se debe probar que para todo $\epsilon>0$ y para todo $x\in A$:
+  $$
+  B_\epsilon^{d|_A}(x) = \{ y \in A : d(x,y) < \epsilon \} = B_{\epsilon}^d(x) \cap A \in \mathcal T_A
+  $$
+  donde $B_\epsilon^d(x) = \{ y \in X : d(x,y) < \epsilon \}$.
+  
+  Luego, por definición, $B_\epsilon^d(x) \in \mathcal T$ y entonces $B_\epsilon^d(x) \cap A \in \mathcal T_A$.
+
+  \item \textbf{¿Por qué $\mathcal T_{d|A} \supseteq \mathcal T_A$?}  
+  Sea $U \in \mathcal T_A$, es decir, $U = V \cap A$ para algún $V \in \mathcal T$.  
+  Para cada $x \in U$, existe $\epsilon > 0$ tal que:
+  $$
+  B_\epsilon^d(x) \subseteq V
+  $$
+  Luego:
+  $$
+  B_\epsilon^{d|A}(x) = B_\epsilon^d(x) \cap A \subseteq V \cap A = U
+  $$
+  por lo tanto, $U$ es abierto en $\mathcal T_{d|A}$.
+\end{itemize}
+
+De todo lo anterior concluimos que $\mathcal T_A = \mathcal T_{d|_A}$
+
+%--------------------------------------------------
+\subsubsection{Subespacios discretos}
+
+\paragraph{\textbf{Definición.}}
+Un subconjunto $A\subseteq X$ es \emph{discreto} si $\mathcal T_{A}$ es la topología discreta sobre $A$.
+
+\paragraph{\textbf{Ejemplo.}}
+\begin{enumerate}[label=(\alph*)]
+  \item $\mathbb{Z}$,
+  \item $\{y_{n}:n\in\mathbb{Z}^{+}\}$,
+  \item $\{y_{n}:n\in\mathbb{Z}^{+}\}\cup\{0\}$,
+  \item $\mathbb{Q}$.
+\end{enumerate}
+
+$$
+\{n\} = \left(n-1,n+1\right) \cap \mathbb Z
+$$
+ entonces $\{n\} \subseteq^{ab} \mathbb Z$ para todo $n$ tiene la topologia discreta.
+
+
+$$
+\left\{\frac 1{n+1}\right\} = \left(\frac 1{n+2},\frac 1{n+1}\right) \cap A
+$$
+con $n\geq 1$ 
+
+
+$$
+\{
+    1
+\} =  \left(\frac 12,2\right) \cap A$$
+
+
+para todo $(a,b)$ tq $0 \in (a,b)$ existe $n \in \mathbb Z^+$ tq $\frac 1n \in (a,b)$, entonces $\{0\}$ no es abierto en $B$. Entonces $B$ no tienen la topologia discreta,
+
+
+
+%--------------------------------------------------
+\subsection{Clausura en subespacios}
+
+\paragraph{\textbf{Lema.}}
+Sea $Y\subseteq X$ un subespacio y $A\subseteq Y$. Entonces
+\[
+  \overline{A}^{Y} = \overline{A}^{X}\cap Y.
+\]
+
+\paragraph{\textbf{Demostración.}}
+\begin{itemize}
+  \item [$\subseteq$] Sea $x$ un elemento en la clausura de $A$ en $Y$. Sea $U$ una vecindad abierta de $x$ en $Y$:
+
+  \begin{align*}
+  U \cap A \neq \emptyset
+  \end{align*}
+  
+  ademas $U = V \cap Y$, por lo que:
+
+  \begin{align*}
+  U \cap A &= (V \cap Y) \cap A \\
+  &= (V \cap A) \cap Y
+  \end{align*}
+  % <!--- con $V$ vecindad abierta de $x$ en $X$, luego 
+  
+  
+  % 
+  % \begin{align*}
+  % V\cap A 
+  % \end{align*}
+  % > -->
+  
+  Sea $V$ vecindad abierta de $x$ en $X$. Dado que $V\cap A \neq \emptyset$, pues en otro caso:
+  \begin{align*}
+  U \cap A &= (V \cap Y) \cap A \\
+  &= \emptyset \cap A = \emptyset
+  \end{align*}
+
+  Entonces $ x \in \overline{A}^{X}$, y como $x \in Y$, entonces $x \in \overline{A}^{X} \cap Y$.
+
+  \item [$\supseteq$] $x$ un elemento en la clausura de $A$ en $X\cap Y$
+
+  Sea $U$ una vecindad abierta de $x$ en $Y$, queremos mostrar que $U\cap A \neq \emptyset$ 
+
+  $U = V \cap Y$ con $V$ vecindad abierta de $x$ en $X$. Sabemos que:
+  \begin{align*}
+  V \cap A \neq \emptyset
+  \end{align*}
+  entonces
+  \begin{align*}
+  U\cap A = (V\cap Y) \cap A  = V \cap A \neq \emptyset
+  \end{align*}
+  Luego $x$ es un elemento en la clausura de $A$ en $Y$.
+\end{itemize}
+
+
+%--------------------------------------------------
+\subsection{Ejercicios}
+
+(Viro--Ivanov~2008, pág.~17)\,: [3'4], [3'5], 4.A, 4.E, [4'12], [4'16x], [6'3], [6'9], [6'12]--sust.\ 2.Mx--, [2'13x].
+
+%--------------------------------------------------
+\subsection{Homeomorfismos}
+
+\paragraph{\textbf{Definición.}}
+Una función biyectiva $f\colon X\to Y$ entre espacios topológicos es un \emph{homeomorfismo} si $f$ es continua y $f^{-1}$ también lo es.

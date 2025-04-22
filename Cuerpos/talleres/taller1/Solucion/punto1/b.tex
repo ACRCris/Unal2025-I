@@ -1,0 +1,102 @@
+\begin{solution}
+  \section*{Resolvente cúbico de Lagrange para la cuártica deprimida}
+
+  Sea el polinomio
+  \[
+  f(y)=y^{4}+p\,y^{2}+q\,y+r
+        =(y-\alpha_{1})(y-\alpha_{2})(y-\alpha_{3})(y-\alpha_{4}),
+        \qquad \alpha_i\neq\alpha_j .
+  \]
+  
+  Denotemos por $e_1,e_2,e_3,e_4$ los polinomios simétricos elementales:
+  \[
+  e_1=\sum_{i}\alpha_i=0,\qquad
+  e_2=\!\!\sum_{i<j}\!\!\alpha_i\alpha_j=p,\qquad
+  e_3=\!\!\sum_{i<j<k}\!\!\alpha_i\alpha_j\alpha_k=-q,\qquad
+  e_4=\alpha_1\alpha_2\alpha_3\alpha_4=r.
+  \]
+  
+  \subsection*{1.\, Resolventes de Lagrange}
+  
+  \[
+  \boxed{
+  \begin{aligned}
+  R&=(\alpha_{1}+\alpha_{2})(\alpha_{3}+\alpha_{4}),\\
+  S&=(\alpha_{1}+\alpha_{3})(\alpha_{2}+\alpha_{4}),\\
+  T&=(\alpha_{1}+\alpha_{4})(\alpha_{2}+\alpha_{3}).
+  \end{aligned}}
+  \]
+  
+  Cada uno corresponde a una de las tres particiones de 
+  $\{\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}\}$ en dos pares.
+  
+  \subsection*{2.\, Acción de algunas permutaciones de $S_{4}$ sobre $R$}
+  
+  \[
+  \renewcommand{\arraystretch}{1.2}
+  \begin{array}{c|c}
+  \toprule
+  \textbf{Permutación $\pi\in S_4$} & \pi(R) \\
+  \midrule
+  e & R \\
+  (1\,2),\,(3\,4),\,(1\,2)(3\,4) & R \\
+  (1\,3),\,(2\,4),\,(1\,3)(2\,4) & S \\
+  (1\,4),\,(2\,3),\,(1\,4)(2\,3) & T \\
+  \vdots & \vdots \\
+  \bottomrule
+  \end{array}
+  \]
+  
+  (Todas las demás permutaciones envían $R$ a $R$, $S$ o $T$ según
+  el emparejamiento que inducen).
+  
+  \subsection*{3.\, Cálculo ilustrativo}
+  
+  Por ejemplo
+  \[
+  (1\,3)(R)
+    =(\alpha_{3}+\alpha_{2})(\alpha_{1}+\alpha_{4})
+    =(\alpha_{1}+\alpha_{3})(\alpha_{2}+\alpha_{4})=S.
+  \]
+  
+  \subsection*{4.\, Polinomio resolvente cúbico}
+  
+  \[
+  (X-R)(X-S)(X-T)=
+  X^{3}-\bigl(R+S+T\bigr)\,X^{2}
+              +\bigl(RS+RT+ST\bigr)\,X
+              -RST.
+  \]
+  
+  \paragraph{4.1 Suma $R+S+T$}
+  \begin{align*}
+  R+S+T
+    &= (\alpha_{1}+\alpha_{2})(\alpha_{3}+\alpha_{4})
+     +(\alpha_{1}+\alpha_{3})(\alpha_{2}+\alpha_{4})
+     +(\alpha_{1}+\alpha_{4})(\alpha_{2}+\alpha_{3})\\
+    &= 2\!\!\sum_{i<j}\!\!\alpha_i\alpha_j
+     = 2\,e_{2}=2p.
+  \end{align*}
+  
+  \paragraph{4.2 Producto parcial $RS+RT+ST$}
+  \[
+  RS+RT+ST 
+         = e_{2}^{\,2}-4e_{4}=p^{2}-4r.
+  \]
+  
+  \paragraph{4.3 Producto total $RST$}
+  \[
+  RST = e_{3}^{\,2}=q^{2}.
+  \]
+  
+  \subsection*{5.\, Forma final}
+  
+  \[
+  \boxed{\;
+  \Phi(X)=(X-R)(X-S)(X-T)
+         =X^{3}-2p\,X^{2}+(p^{2}-4r)\,X-q^{2}\;}.
+  \]
+  
+  $\Phi(X)$ es el resolvente cúbico de Ferrari--Lagrange para la
+  cuártica deprimida $y^{4}+py^{2}+qy+r$.
+\end{solution}

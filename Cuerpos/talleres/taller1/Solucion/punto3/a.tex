@@ -1,0 +1,41 @@
+\begin{solution}
+    Notemos que siendo $B(x)=\sum_{n\geq 0}b_nx^n$, se tiene entonces que $B'(x)=\sum_{n\geq 0}n\ b_nx^{n-1}=\sum_{n\geq 1}n\ b_nx^{n-1}$, de modo que sobre la relación de recurrencia dada, se tiene que al multiplicar por $x^{n}$ y sumar estos términos sobre los naturales, se tiene que
+    \begin{equation*}
+        \sum_{n\geq 0}(n+1)b_{n+1}x^{n}-\sum_{n\geq 0}(n+2)b_{n}x^{n}=\sum_{n\geq 0}2nx^{n}
+    \end{equation*}
+    Y por lo tanto, como se cumple para el primer término que reindexando se llega a
+    \begin{align*}
+        \sum_{n\geq 0}(n+1)b_{n+1}x^{n}&=\sum_{n\geq 1}nb_{n}x^{n-1}=B'(x)
+    \end{align*}
+    Y también se tiene para el segundo término que
+    \begin{align*}
+        \sum_{n\geq 0}(n+2)b_{n}x^{n}&=\sum_{n\geq 0}nb_{n}x^{n}+2\sum_{n\geq 0}b_{n}x^{n}\\
+        &=x\sum_{n\geq 0}nb_{n}x^{n-1}+2\sum_{n\geq 0}b_{n}x^{n}\\
+        &=xB'(x) + 2B(x)
+    \end{align*}
+    De modo que se llega a la expresión
+    \begin{equation*}
+        B'(x)-(xB'(x) + 2B(x))=\sum_{n\geq 0}2nx^{n}
+    \end{equation*}
+    Para la última serie que se describe, veamos que tomando la serie geométrica
+    \begin{equation*}
+        \sum_{n\geq 0}x^n=\frac{1}{1-x}
+    \end{equation*}
+    Se tiene que al derivar ambos lados de la igualdad se tiene que
+    \begin{equation*}
+        \sum_{n\geq 0}nx^{n-1}=\frac{1}{(1-x)^2}
+    \end{equation*}
+    De manera que, multiplicando $x$ en la ecuación obtenida se tiene que
+    \begin{equation*}
+        \sum_{n\geq 0}nx^{n}=\frac{x}{(1-x)^2}
+    \end{equation*}
+    Y por lo tanto, devolviendonos a la ecuación del problema planteado se tiene que
+    \begin{align*}
+        B'(x)-xB'(x) - 2B(x)&=\frac{2x}{(1-x)^2}\\
+        (1-x)B'(x)&=\frac{2x}{(1-x)^2} + 2B(x)\\
+        B'(x)&=\frac{2x}{(1-x)^3}+\frac{2}{1-x}B(x)
+    \end{align*}
+    Lo que demuestra la expresión a la que se quería llegar. 
+
+    
+\end{solution}
