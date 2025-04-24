@@ -1,0 +1,101 @@
+\begin{solution}
+    Sea la sucesi\'on \(c_n = F_{n+1} + F_{n-1}\), donde \(F_n\) es el \(n\)-\'esimo n\'umero de Fibonacci con \(F_0 = 1\) y \(F_1 = 1\).  
+Buscamos su funci\'on generatriz:
+\[
+C(z) \;=\; \sum_{n=1}^{\infty} c_n \, z^n 
+\;=\; \sum_{n=1}^{\infty} \bigl(F_{n+1} + F_{n-1}\bigr)\,z^n.
+\]
+
+Para ello, partimos de la funci\'on generatriz de Fibonacci:
+\[
+G_F(z) \;=\; \sum_{n=0}^{\infty} F_n \, z^n 
+\;=\; \frac{1}{1 - z - z^2}.
+\]
+Analizamos por separado los t\'erminos \(\sum_{n=1}^{\infty} F_{n+1} z^n\) y \(\sum_{n=1}^{\infty} F_{n-1} z^n\).
+
+\subsubsection*{1. T\'ermino \(\displaystyle \sum_{n=1}^{\infty} F_{n+1}\, z^n\)}
+Hacemos el cambio de \'indice \(m = n + 1\). Entonces \(n = m - 1\), por lo que
+\[
+\sum_{n=1}^{\infty} F_{n+1} \,z^n
+\;=\;
+\sum_{m=2}^{\infty} F_m \, z^{m-1}
+\;=\;
+\frac{1}{z} \sum_{m=2}^{\infty} F_m \, z^m.
+\]
+Dado que
+\[
+\sum_{m=0}^{\infty} F_m \, z^m = \sum_{m=2}^{\infty} F_m  \, z^m +1 +z  =  G_F(z),
+\]
+pues \(F_0 = 1\), entonces
+\[
+\sum_{m=2}^{\infty} F_m \, z^m = G_F(z) - 1-z
+\]
+Por lo tanto,
+\[
+\sum_{n=1}^{\infty} F_{n+1} \,z^n 
+= \frac{1}{z}\,G_F(z)- \frac1z - 1
+\]
+
+\subsubsection*{2. T\'ermino \(\displaystyle \sum_{n=1}^{\infty} F_{n-1}\, z^n\)}
+Hacemos el cambio de \'indice \(m = n - 1\). Entonces \(n = m + 1\), por lo que
+\[
+\sum_{n=1}^{\infty} F_{n-1} \, z^n
+\;=\;
+\sum_{m=0}^{\infty} F_{m} \, z^{m+1}
+\;=\;
+z \sum_{m=0}^{\infty} F_m \, z^m.
+\]
+
+Como:
+\[
+ \sum_{m=0}^{\infty} F_m \, z^m
+=  G_F(z).
+\]
+Entonces,
+\[
+\sum_{n=1}^{\infty} F_{n-1}\, z^n
+= z G_F(z)
+= z\, G_F(z).
+\]
+
+\subsection*{3. Suma de ambos t\'erminos}
+Reuniendo los dos resultados anteriores:
+
+\[
+C(z)
+= \sum_{n=1}^{\infty} \bigl(F_{n+1} + F_{n-1}\bigr)\, z^n
+= \underbrace{\frac{1}{z}\, G_F(z)-\frac1 z -1}_{\text{(i)}}
+\;+\;
+\underbrace{\bigl(z\, G_F(z)\bigr)}_{\text{(ii)}}.
+\]
+Sabemos que \(G_F(z) = \dfrac{1}{1 - z - z^2}\). Sustituyendo en (i):
+
+\begin{align*}
+ \frac{1}{z} \,G_F(z) \;&=\; \frac{1}{z} \cdot \frac{1}{1 - z - z^2}- \frac 1z  -1\\
+\;&=\;
+-\frac{z (z+2)}{z^2+z-1}   
+\end{align*}
+
+Sustituyendo en (2):
+
+\begin{align*}
+ z \,G_F(z) \;&=\;    \frac{z}{1 - z - z^2}\\
+&=\frac{1}{z(1-z-z^2)}
+\end{align*}
+
+
+Por lo tanto,
+\[
+C(z)
+= -\frac{z (z+2)}{z^2+z-1}  + \frac{1}{z(1-z-z^2)} 
+= -\frac{z (z+3)}{z^2+z-1}
+\]
+La funci\'on generatriz de la sucesi\'on \(c_n = F_{n+1} + F_{n-1}\) es:
+\[
+\boxed{
+C(z) \;=\; \sum_{n=0}^{\infty} c_n \, z^n
+\;=\;
+ \frac{z (z+3)}{1-z-z^2}
+}
+\]
+\end{solution}

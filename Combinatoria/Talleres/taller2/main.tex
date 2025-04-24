@@ -1,0 +1,52 @@
+\documentclass[12pt, letter]{article}
+\usepackage{tikz}
+\pgfkeys{/skipfound/.initial=0}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{xstring} % en el preámbulo
+
+
+\input{encabezado}
+
+
+\begin{document}
+
+\input{portada}
+\thispagestyle{fancy}
+\begin{enumerate}
+\item 
+\input{Puntos/punto2/problema2.tex}
+\begin{enumerate}
+  \item \input{Puntos/punto2/a.tex}
+  \input{Solucion/punto2/a.tex}
+  
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+  \item \input{Puntos/punto2/b.tex}
+  \input{Solucion/punto2/b.tex}
+  
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+  \item \input{Puntos/punto2/c.tex}
+  \input{Solucion/punto2/c.tex}
+
+
+
+\end{enumerate}
+
+% \item\input{Puntos/punto3/3}
+
+% \begin{enumerate}
+%     \item\input{Puntos/punto3/a}
+%     \input{Solucion/punto3/a}
+
+%     {\rule{\paperwidth}{0.4pt}}
+
+%       \item \input{Puntos/punto3/b}
+%       \input{Solucion/punto3/b}
+      
+%     \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+% \end{enumerate}
+
+\end{enumerate}
+\end{document}
