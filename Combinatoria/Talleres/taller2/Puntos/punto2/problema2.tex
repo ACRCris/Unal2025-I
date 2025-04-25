@@ -1,2 +1,24 @@
 \subsection*{Problema 2}
-Considere un tablero de ajedrez triangular de \(n\) columnas (la columna \(i\) tiene \(i\) casillas), como se muestra en la figura. Definimos \(T(n,k)\) como el número de formas de colocar \(n-k\) torres en un tablero de \(n-1\) columnas de modo que no se ataquen entre sí.
+Considere un tablero de ajedrez triangular de \(n\) columnas (la columna \(i\) tiene \(i\) casillas), como se muestra en la figura.
+\begin{center}
+    \begin{tikzpicture}[scale=0.6, every node/.style={font=\small}]
+        \def\n{8}%  <-- número de columnas (ajusta a gusto)
+      
+        %–– Dibujar los cuadros (columna i tiene i casillas) ––
+        \foreach \i in {1,...,\n}{
+          \foreach \j in {1,...,\i}{
+            \draw (\i-1,\j-1) rectangle (\i,\j);
+          }
+        }
+      
+        %–– Etiquetas 1, 2, 3, … , n ––
+        \foreach \i in {1,2,3}{
+          \node[below] at (\i-0.5,0) {\i};
+        }
+        \node[below] at (4.5,0) {$\cdots$};
+        \node[below] at (\n-0.5,0) {$n$};
+      \end{tikzpicture}
+\end{center}
+
+
+Definimos \(T(n,k)\) como el número de formas de colocar \(n-k\) torres en un tablero de \(n-1\) columnas de modo que no se ataquen entre sí.
