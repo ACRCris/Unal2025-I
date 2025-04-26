@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{braket}
+
+\begin{document}
+
+\section*{Dos $n$‑qubits en estados base $\ket{x}, \ket{y}$}
+
+Dos $n$‑qubits en estados base $\ket{x}, \ket{y}$ son ortogonales \emph{sii} $x \neq y$. Esto utilizando producto tensorial:
+\[
+\braket{x}{y}
+= \braket{x_1}{y_1}\,\otimes\,\braket{x_2}{y_2}\,\otimes\cdots\otimes\braket{x_n}{y_n}.
+\]
+Tener en cuenta $\braket{x_k}{y_k} = \delta_{x_k y_k}$. Se tiene que los estados $\ket{x}$ y $\ket{y}$ son ortogonales si existe una posición $k$, en la cual los bits de $x$ y $y$ difieren.
+
+\medskip
+\textbf{Nota:}
+\begin{gather*}
+\ket{a}\otimes\ket{b} = \ket{ab},
+\quad
+\ket{c}\otimes\ket{d} = \ket{cd},\\
+\braket{ab}{cd} = \braket{a}{c}\,\braket{b}{d}.
+\end{gather*}
+
+\section*{Ejemplo: Medición de un qubit}
+
+Las mediciones sobre el primer qubit consistirán en realizar una medición proyectiva:
+\[
+P_j \;=\;\ket{j}\bra{j}\;\otimes\;I_{2^n}
+\quad
+\underbrace{\text{``Proyectores sobre el estado $j$''}}_{\text{}}.
+\]
+Para
+\[
+\ket{\psi}
+= \sqrt{\tfrac{1}{3}}\,\ket{0}\ket{\phi}
+\;+\;
+\sqrt{\tfrac{2}{3}}\,\ket{1}\ket{\xi}.
+\]
+Si el resultado de la medición es $0$, el estado colapsa a $\ket{0}\ket{\phi}$ con una probabilidad de $\tfrac{1}{3}$. (Análogo si el resultado es $1$.)
+
+\section*{Ejemplo: Ortogonalidad y registro cuántico}
+
+\[
+\braket{10}{11}
+= \braket{1}{1}\,\braket{0}{1}
+= 0.
+\]
+
+Un registro cuántico consistiría de un conjunto de $n$‑qubits, que, de estar en cualquier superposición,
+\[
+\alpha_0\ket{0} + \alpha_1\ket{1} + \dots + \alpha_N\ket{N},
+\]
+sujeto a la normalización
+\[
+\sum_{j=0}^{2^n-1} \lvert \alpha_j\rvert^2 = 1,
+\qquad
+N = 2^n - 1.
+\]
+Medir esto en la base computacional resultaría en un estado de $n$‑bits $\ket{j}$ con probabilidad $\lvert\alpha_j\rvert^2$.
+
+\end{document}

@@ -1,36 +1,75 @@
 \begin{solution}
-    \begin{align*}
-        \textbf{Datos:}\quad 
-            &g(t):=t^{6}-1, 
-              &f(t):=t^{4}-1
-              &&\bigl(g,f\in K[t],\;K\text{ cuerpo cualquiera}\bigr)
-        \end{align*}
+    \begin{equation*}
+    \begin{aligned}
+        \textbf{Dados:}\quad 
+            g(t):=t^{6}-1, \qquad
+            f(t):=t^{4}-1, \qquad
+            \bigl(g,f\in K[t]\bigr)
+    \end{aligned}
+    \end{equation*}
         
-        \medskip
-        \noindent\textbf{Algoritmo de Euclides (divisiones sucesivas).}
-        
+        Como el grado de $g(t)$ es mayor que el de $f(t)$, entonces por el algoritmo de Euclides sabemos que el máximo común divisor entre estos dos polinomios satisface $d(t)= \gcd(g(t),f(t)) = \gcd(f(t),r(t))$, donde $r(t)$ es el resto de la división de $g(t)$ entre $f(t)$. Por lo que realizando la division de polinomios:
+      \[
+      \begin{tikzpicture}[baseline={(current bounding box.north)}]
+        \node at (0,0.3) {$t^6$};
+        \node at (0,-0.3) {$-t^6$};
+        \node at (0,-.8) {$\underline{\hspace{1.5cm}}$};
+        \node at (.6,-.3) {$+$};
+        \node at (.9,-.3) {$\phantom{-}t^2$};
+
+        \node at (.5,0.3) {$-$};
+        \node at (1,0.3) {$1$};
+        \draw (1.4,0.6) -- (3,0.6);
+        \draw (1.4,0.6) -- (1.4,-1.3);
+        \node at (2,1.0) {$t^4 - 1$};
+        \node at (1.8,0.3) {$t^2$};
+        \node at (0,-1.2) {$t^2$};
+        \node at (0.5,-1.2) {$-$};
+        \node at (1,-1.2) {$1$};
+      \end{tikzpicture}
+      \]
+        Es decir que:
+
         \[
         \begin{aligned}
-        \boxed{1}\;&
-        g(t)=t^{2}\,f(t)+\underbrace{\bigl(t^{2}-1\bigr)}_{=:r_{1}(t)}
-              &&\deg r_{1}<\deg f
-              \\[4pt]
-        \boxed{2}\;&
-        f(t)=\bigl(t^{2}+1\bigr)\,r_{1}(t)+\underbrace{0}_{r_{2}(t)}
+        g(t)&= t^2 (t^4-1) + (t^2-1)\\
+            &= t^{2}\,f(t)+\underbrace{\bigl(t^{2}-1\bigr)}_{=:r_{1}(t)} \qquad \deg r_{1}<\deg f\\
         \end{aligned}
         \]
-        
-        \noindent
-        La \textit{última} resta no nula es $r_{1}(t)=t^{2}-1$, por lo que
-        
+
+        Luego $\gcd(g(t),f(t))=\gcd(f(t),r_{1}(t))$ y continuamos con la división de $f(t)$ entre $r_{1}(t)$:
+
         \[
-        \gcd\!\bigl(g(t),f(t)\bigr)=t^{2}-1.
-        \]
+          \begin{tikzpicture}[baseline={(current bounding box.north)}]
+            \node at (0,0.3) {$t^4$};
+            \node at (0,-0.3) {$-t^4$};
+            \node at (0,-.8) {$\underline{\hspace{2.4cm}}$};
+            \node at (.6,-.3) {$+$};
+            \node at (.9,-.3) {$\phantom{-}t^2$};
+    
+            \node at (.5,0.3) {$-$};
+            \node at (1,0.3) {$1$};
+            \draw (1.4,0.6) -- (3,0.6);
+            \draw (1.4,0.6) -- (1.4,-2.6);
+            \node at (2,1.0) {$t^2- 1$};
+            \node at (2.1,0.3) {$t^2+1$};
+            \node at (0,-1.2) {$t^2$};
+            \node at (0.5,-1.2) {$-$};
+            \node at (1,-1.2) {$1$};
+            \node at (0,-2.2) {$\underline{\hspace{2.4cm}}$};
+            \node at (0,-1.8) {$-t^2$};
+            \node at (0.6,-1.8) {$+$};
+            \node at (1,-1.8) {$1$};
+            \node at (1,-2.6) {$0$};
+
+          \end{tikzpicture}
+          \]
+        Es decir:
+        \begin{align*}
+          f(t)&=\bigl(t^{2}+1\bigr)\,r_{1}(t)+\underbrace{0}_{r_{2}(t)}
+        \end{align*}
         
-        \bigskip
-        \noindent\textbf{Retro–sustitución (identidad de Bézout).}
-        
-        De la primera división:
+        Por lo tanto $\gcd(g(t),f(t))=\gcd(r_{1}(t),0)=\gcd(r_{1}(t))=r_{1}(t)$. Y dado que de la primera división:
         \[
         r_{1}(t)=t^{2}-1=g(t)-t^{2}\,f(t).
         \]
@@ -47,24 +86,4 @@
             =\bigl(-t^{2}\bigr)\,f(t)+1\cdot g(t)
         \;} .
         \]
-        
-        \bigskip
-        \noindent\textbf{Cadena de igualdades compacta.}
-        \[
-        \bigl(g(t),f(t)\bigr)
-          =\bigl(f(t),g(t)-t^{2}f(t)\bigr)
-          =\bigl(f(t),t^{2}-1\bigr)
-          =\bigl(t^{2}-1,0\bigr)
-          =t^{2}-1.
-        \]
-        
-        \medskip\hrule\medskip
-        
-        \emph{Observación.}  
-        En general, para cualquier par de enteros positivos $m,n$ y cualquier
-        cuerpo $K$ se verifica  
-        \(
-        \gcd\!\bigl(t^{m}-1,\;t^{n}-1\bigr)=t^{\gcd(m,n)}-1,
-        \)
-        y el algoritmo precedente muestra el caso particular $m=6,\;n=4$.
 \end{solution}

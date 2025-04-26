@@ -1,5 +1,4 @@
 \begin{solution}
-  \section*{Resolvente cúbico de Lagrange para la cuártica deprimida}
 
   Sea el polinomio
   \[
@@ -201,4 +200,37 @@
   
   % $\Phi(X)$ es el resolvente cúbico de Ferrari--Lagrange para la
   % cuártica deprimida $y^{4}+py^{2}+qy+r$.
-\end{solution}
+
+  \textbf{Repetición de raíces}
+  Cuando existe repetición de raíces, la expresiones para los resolventes se simplifica y por lo tanto la expresión del cúbico resolvente también se simplifica. Para un polinomio de grado 4, la multiplicidad de las raíces puede ser de 4, 3, 2 o 1. De modo que sin perdida de generalidad podemos considerar los siguientes casos:
+  \begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{@{} p{3.2cm} | p{3.1cm} | p{3cm} | p{4.2cm} @{}}
+    \toprule
+    \textbf{Multiplicidad en $f(y)$} 
+    & \textbf{Consecuencia inmediata} 
+    & \textbf{Valores de $R,S,T$} 
+    & \textbf{Forma del resolvente cúbico $\Phi(X)$} \\ \midrule\midrule
+    \(\alpha_{1}=\alpha_{2}\neq\alpha_{3}\neq\alpha_{4}\) 
+    & $\alpha_{1}$ es raíz de $f$ y de $f'$. 
+    & $S=T$ (sólo 2 valores distintos). 
+    & $(X-R)^{2}(X-S)$ \\ \midrule
+    \(\alpha_{1}=\alpha_{2},\; \alpha_{3}=\alpha_{4}\) 
+    & $f(y)=(y-\alpha_{1})^{2}(y-\alpha_{3})^{2}$. 
+    & $R=S=T=(\alpha_{1}+\alpha_{3})^{2}$. 
+    & $(X-R)^{3}$ \\ \midrule
+    \(\alpha_{1}=\alpha_{2}=\alpha_{3}\neq\alpha_{4}\) 
+    & raíz triple de $f$ y $f'$. 
+    & $T=S=R=2(\alpha_{1}+\alpha_{4})\alpha_{1}$. 
+    & $X^{2}(X-T)$ \\ \midrule
+    \(\alpha_{1}=\alpha_{2}=\alpha_{3}=\alpha_{4}\) 
+    & $f(y)=(y-\alpha)^{4}$. 
+    & $R=S=T=4\alpha^{2}$.
+    & $(X-4\alpha^2)^3$
+    \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Efecto de raíces repetidas en los resolventes $R,S,T$ y en el cúbico resolvente $\Phi(X)$.}
+    \end{table}
+  \end{solution}

@@ -1,0 +1,31 @@
+\subsection*{Problema 1 (a)}
+\emph{Solución.}
+Consideremos la cinta en forma de L de grosor 2, con parámetros \(n,m\). Sea
+\begin{itemize}
+\item Región \(A\): rectángulo de tamaño \(2\times(n+1)\).
+\item Región \(B\): rectángulo de tamaño \((m+1)\times2\).
+\item Región solapada \(X\): cuadrado \(2\times2\) en la esquina.
+\end{itemize}
+La cantidad de teselaciones de un rectángulo \(2\times k\) con fichas \(1\times2\) y \(2\times1\) es
+\[
+R_k = F_{k+1},
+\]
+donde \(F_k\) es el \(k\)-ésimo número de Fibonacci. Ahora, en la zona \(X\) hay exactamente dos formas de colocar los dominós:
+\begin{enumerate}
+\item Dos dominós horizontales.
+\item Dos dominós verticales.
+\end{enumerate}
+\begin{itemize}
+\item Si en \(X\) usamos dos dominós horizontales, entonces las regiones complementarias en \(A\) y \(B\) quedan de tamaños \(2\times n\) y \(2\times m\), con
+\[
+\#\text{complementos}_1 = R_n\cdot R_m = F_{n+1}\,F_{m+1}.
+\]
+\item Si en \(X\) usamos dos dominós verticales, las regiones complementarias miden \(2\times(n-1)\) y \(2\times(m-1)\), con
+\[
+\#\text{complementos}_2 = R_{n-1}\cdot R_{m-1} = F_{n}\,F_{m}.
+\]
+\end{itemize}
+Por lo tanto,
+\[
+t(n,m) = F_{n+1}F_{m+1} + F_n F_m.
+\]

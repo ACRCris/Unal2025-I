@@ -1,0 +1,13 @@
+\subsection*{Problema 3 (ejercicio 3) (a)}
+\emph{Solución.}
+Sea \(t_n\) el número de teselaciones de una cinta \(1\times n\) con cuadrados y dóminos. Se cumple
+\[
+t_n = t_{n-1}+t_{n-2},\quad t_0=t_1=1,
+\]
+de modo que \(t_n=F_{n+1}\). Entonces:
+\[
+\sum_{i=0}^n t_i
+= \sum_{j=1}^{n+1}F_j
+= F_{n+3}-1
+= t_{n+2}-1.
+\]

@@ -1,3 +1,19 @@
 \begin{solution}
-
+    \begin{enumerate}
+        \item Primero veamos que el numero de formas $T(n,k)$ satisface las condiciones inicial de los numero de Stirling de segunda especie.
+        \begin{enumerate}
+            \item Definimos que $T(0,0)=1$
+            \item Veamos que $T(n,0)=0$ para $n>0$, puesto que se tendrían que colocar $n-k=n$ torres en $n-1$ columnas, por el principio de palomar habría una columna con al menos dos torres, lo que genera un cruce.
+            \item Y también $T(n,k) =0$ para $k>n$, puesto el numero de torres $n-k<0$ lo cual no es posible.
+            \end{enumerate}
+    \end{enumerate}
+    \item  Ahora veamos que $T(n,k)$ satisface la relación de recurrencia de los números de Stirling de segunda especie. Para esto consideremos dos casos disyuntos que claramente cubren todos los casos posibles:
+    \begin{enumerate}
+        \item Hay una torre en la ultima columna:
+        
+        Esto es equivalente a tener $n-k-1$ torres en $n-2$ columnas, lo que implica que hay $T(n-1,k)$ formas de colocar las torres restantes, ya que al examinar lo que sucede con el resto del tablero, se tienen $n-2-(n-k-1)=k-1$ filas vacías, que corresponde a la misma cantidad de filas vacías al tener el tablero original de $n-1$ columnas y $n-k$ torres. Por lo tanto, el número de formas de colocar las torres es $T(n-1,k)$, sin considerar en que fila está la torre de la última columna. Como se tiene una torre en la última columna, se puede colocar en cualquiera de las $-1$ filas vacías del nuevo tablero, junto con el caso en el que la torre se encuentre en la fila superior, por lo que el número total de formas es $k \cdot T(n-1,k)$.
+        \item No hay una torre en la ultima columna:
+        
+        En este caso, el tablero restante tiene $n-2$ columnas y $n-k$ torres, lo que implica que hay $n-2-(n-k)=k-2$ filas vacías, que corresponde a tener una fila vacía menos que en el caso original, por lo tanto, existen $T(n-1,k-1)$ formas de colocar las torres restantes.
+    \end{enumerate}
 \end{solution}
