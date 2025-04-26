@@ -1,0 +1,15 @@
+\subsection*{Problema 2 (b)}
+\emph{Solución.}
+Al añadir la columna \(n\):
+\begin{itemize}
+\item Si no hay torre en la columna \(n\), corresponde a \(T(n-1,k-1)\) formas.
+\item Si hay torre en la columna \(n\), hay \(k\) filas disponibles y \(T(n-1,k)\) formas previas, luego \(k\,T(n-1,k)\).
+\end{itemize}
+Así,
+\[
+T(n,k) = T(n-1,k-1) + k\,T(n-1,k),
+\]
+con \(T(0,0)=1\) y \(T(n,k)=0\) si \(k>n\) o \(k<0\). Es la recurrencia de los números de Stirling:
+\[
+T(n,k)=\left\{n\atop k\right\}.
+\]
