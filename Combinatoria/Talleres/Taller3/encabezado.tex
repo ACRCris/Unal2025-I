@@ -1,17 +1,16 @@
 \usepackage{caption}
-% \usepackage[spanish]{layout}%Este paquete permite visualizar el formato de la página en español. toca colocar \layot despues de \begin{document}%
+\usepackage[spanish]{layout}%Este paquete permite visualizar el formato de la página en español. toca colocar \layot despues de \begin{document}%
 % [pdftex][dvips]
-
 \usepackage{parskip}
 %\usepackage{color,graphicx} Para poder insertar graficas%
 \usepackage[lmargin=2.4cm,rmargin=1.5cm, top=4.3cm, bottom=2cm]{geometry}
+\usepackage{amsmath}%Insertar ecuaciones y matematicas
 \usepackage{amssymb}%Insertar unos simbolos matematicos especiales%
 \usepackage{comment}%comentarios (RENZO)
 \usepackage{setspace}
 \usepackage{empheq}
 \usepackage{multicol}
 \usepackage{lipsum}
-\usepackage{enumitem}% http://ctan.org/pkg/enumitem
 \usepackage{xspace}
 \usepackage{xcolor}
 \usepackage{csquotes}
@@ -27,6 +26,8 @@
 \usepackage{picinpar}
 \setlength{\footskip}{1cm}
 \usepackage{color, graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning, automata}
 \usepackage{fancyhdr}
 \usepackage{bm}
 \usepackage{extramarks}
@@ -41,8 +42,11 @@
 \usepackage{nicefrac}       
 \usepackage{microtype}   
 \usepackage{multicol}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{caption}
 \usepackage{ragged2e}
 \usepackage{wrapfig}
 \usepackage{mathtools}
@@ -60,24 +64,10 @@
 \usepackage{comment}
 \usepackage[makeroom]{cancel}
 
-
 \usepackage{endnotes}
 \usepackage[hyperfootnotes=false]{hyperref}
+
 \usepackage{tikz}
-\usepackage{animate}    % <<-- añade esto justo después de tikz
-\usepackage[dvipsnames]{xcolor}
-\usepackage{tikz-3dplot}      % xproyección 3D sencilla
-\usetikzlibrary{patterns}
-\usetikzlibrary{arrows.meta}
-\usetikzlibrary{shapes.geometric}
-\usetikzlibrary{decorations.pathreplacing,patterns,calc,3d,math}
-\usetikzlibrary{math} 
-% (opcional)  \usetikzlibrary{decorations.markings}
-\usetikzlibrary{calc,angles,quotes}            % para cálculos, medición de ángulos y etiquetado
-\usepackage{pgfkeys}
-\usepackage{pgfplots}
-\usepgfplotslibrary{external}
-\pgfplotsset{compat=1.18}
 
 
 \newcommand {\Z}{\mathbb{Z}}
@@ -86,17 +76,17 @@
 \newcommand {\C}{\mathbb{C}}
 \newcommand {\R}{\mathbb{R}}
 \newcommand {\F}{\mathcal{F}}
-\newcommand{\solution}{\newline\\ \textbf{R/ }}
+\newcommand{\solucion}{\newline\\ \textbf{R/ }}
 %newcommand{\log}{\mbox{log }}
 
 \newcommand{\demostracion}{\newline \textbf{D/ }}
 \pagestyle{fancy}
-\setlength{\headheight}{26pt} % ← esto corrige el error
-\fancyhead[R]{ \textsc{}\\ \small \textit{}} 
+
+\fancyhead[R]{ \textsc{IAC 2025-I}\\ \small \textit{Taller 1}} 
 \fancyhead[L]{ \hspace{0.2cm} \thepage \vspace{0.1cm}}
 
 \usepackage{tcolorbox}
-\newtcolorbox{solutionbox}{
+\newtcolorbox{solucionbox}{
     colback=white,
     colframe=white,
     width=\linewidth,
@@ -106,6 +96,7 @@
 
 \usepackage{amsmath}
 \usepackage{listings}
+\usepackage{xcolor}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}

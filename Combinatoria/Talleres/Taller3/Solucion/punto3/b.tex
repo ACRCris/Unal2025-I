@@ -1,0 +1,49 @@
+\begin{solucion}
+    Tenemos la siguiente recurrencia:
+    \begin{equation*}
+        (n+1)b_{n+1}-(n+2)b_{n}=2n.
+    \end{equation*}
+    Se analizará el caso homogéneo
+    \begin{equation*}
+        (n+1)a_{n+1}-(n+2)a_{n}=0.
+    \end{equation*}
+    Despejando, llegamos a:
+    \begin{equation*}
+        a_{n+1}=\frac{n+2}{n+1}a_n=a_0\prod_{k=0}^{n-1}\frac{k+2}{k+1}=a_0\frac{(n+1)!}{n!}=a_0(n+1).
+    \end{equation*}
+    Entonces, para la expresión original, buscaremos una solución de la forma $b_n=(n+1)c_n$, con $c_n$ alguna sucesión; esto reduce el problema a hallar $c_n$. Reemplazando en la ecuación original,
+    \begin{equation*}
+        (n+1)(n+2)c_{n+1}-(n+1)(n+2)c_{n}=2n\rightarrow c_{n+1}-c_n=\frac{2n}{(n+1)(n+2)}
+    \end{equation*}
+    Para expresar $c_n$ en términos de algún $c_0$ tomaremos la sumatoria
+    \begin{equation*}
+        \sum_{i=0}^{n-1}(c_{i+1}-c_i)=\sum_{i=0}^{n-1}\frac{2i}{(i+1)(i+2)}.
+    \end{equation*}
+    Como el lado izquierdo es una suma telescópica, obtenemos
+    \begin{equation*}
+        c_{n}-c_0=2\sum_{i=0}^{n-1}\frac{i}{(i+1)(i+2)}.
+    \end{equation*}
+    Usando fracciones parciales, sabemos que
+    \begin{equation*}
+        \frac{i}{(i+1)(i+2)}=\frac{2}{2+i}-\frac{1}{1+i}.
+    \end{equation*}
+    Además, como $b_0=0$, entonces $c_0=0$. De modo que
+    \begin{align*}
+        c_n&=2\sum_{i=0}^{n-1}\left(\frac{2}{2+i}-\frac{1}{1+i}\right)=2\sum_{i=0}^{n-1}\left(\left(\frac{1}{2+i}\right)+\left(\frac{1}{2+i}-\frac{1}{1+i}\right)\right)\\
+        &=\sum_{i=0}^{n-1}\left(\frac{2}{2+i}\right)+2\sum_{i=0}^{n-1}\left(\frac{1}{2+i}-\frac{1}{1+i}\right)
+    \end{align*}
+    A la primera suma le aplicaremos un cambio de índice, mientras que la segunda es una suma telescópica. Esto resulta en que
+    \begin{equation*}
+        c_n=2\sum_{i=2}^{n+1}\frac{1}{k}+2\left(\frac{1}{n+1}-1\right).
+    \end{equation*}
+    Incluyendo el primer término de la suma de los recíprocos de los enteros y eliminando el último término de la suma para que coincida con el $n$-ésimo número armónico $H_n$, sigue que
+    \begin{align*}
+        c_n&=2\left(\sum_{i=1}^{n}\frac{1}{k}\right)-2+\frac{2}{n+1}+2\left(\frac{1}{n+1}-1\right)\\
+        &=2H_n+4\left(\frac{1}{n+1}-1\right)\\
+        &=2H_n-\frac{4n}{n+1}.
+    \end{align*}
+    Como $b_n=(n+1)c_n$, se tiene la expresión final que se buscaba
+    \begin{equation*}
+        b_n=2(n+1)H_n-4n.
+    \end{equation*}
+\end{solucion}

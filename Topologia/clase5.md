@@ -14,7 +14,7 @@ $$
 \{
  \pi_1^{-1}(U) : U  \subseteq^{ab} X \} \cup \{
     \pi_2^{-1}(V) : V  \subseteq^{ab} Y \}
- \}
+$$
 
 
 Esto tambien es equivalente a decir que esla topologia generada pro la base:

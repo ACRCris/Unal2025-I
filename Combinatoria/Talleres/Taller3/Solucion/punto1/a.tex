@@ -1,0 +1,49 @@
+\begin{solucion}
+  Sea $\mathcal T_n =\{
+    (\alpha_1,\alpha_2,\ldots,\alpha_k): \alpha_1+\alpha_2+\cdots+\alpha_k=n, \alpha_i\in\{1,2,3\}, k\in \mathbb N\}$ la lista de todas las composiciones de \(n\) cuyos sumandos son \(1\), \(2\) y \(3\). Consideramos la siguiente partición del conjuntó \(\mathcal T_n\) en subconjuntos disjuntos:
+    \begin{itemize}
+        \item \(\mathcal T_n^{(1)} = \{(\alpha_1,\alpha_2,\ldots,\alpha_k)\in \mathcal T_n: \alpha_1=1\}\)
+        \item \(\mathcal T_n^{(2)} = \{(\alpha_1,\alpha_2,\ldots,\alpha_k)\in \mathcal T_n: \alpha_1=2\}\)
+        \item \(\mathcal T_n^{(3)} = \{(\alpha_1,\alpha_2,\ldots,\alpha_k)\in \mathcal T_n: \alpha_1=3\}\)
+    \end{itemize}
+    Notemos que:
+    \begin{align*}
+        \mathcal T_n = \mathcal T_n^{(1)} \sqcup \mathcal T_n^{(2)} \sqcup \mathcal T_n^{(3)} \\
+    \end{align*}
+    Puesto que por definición de $\mathcal T_n^{(1)}$, $\mathcal T_n^{(2)}$ y $\mathcal T_n^{(3)}$ son subconjuntos de \(\mathcal T_n\). Si $(\alpha_1,\alpha_2,\ldots,\alpha_k)\in \mathcal T_n$, entonces:
+    \begin{itemize}
+        \item Si \(\alpha_1=1\), entonces \((\alpha_2,\ldots,\alpha_k)\in \mathcal T_{n-1}\)
+        \item Si \(\alpha_1=2\), entonces \((\alpha_2,\ldots,\alpha_k)\in \mathcal T_{n-2}\)
+        \item Si \(\alpha_1=3\), entonces \((\alpha_2,\ldots,\alpha_k)\in \mathcal T_{n-3}\)
+    \end{itemize}
+    Por lo tanto, tenemos que:
+    \begin{align*}
+        |\mathcal T_n| &= |\mathcal T_n^{(1)}| + |\mathcal T_n^{(2)}| + |\mathcal T_n^{(3)}| \\
+    \end{align*}
+    Veamos que:
+    \begin{itemize}
+        \item $|\mathcal T_n^{(1)}| = |\mathcal T_{n-1}|$ existe una función entre \(\mathcal T_n^{(1)}\) y \(\mathcal T_{n-1}\) que consiste:
+        \begin{align*}
+            f: \mathcal T_n^{(1)} &\to \mathcal T_{n-1} \\
+            (\alpha_1,\alpha_2,\ldots,\alpha_k) &\mapsto (\alpha_2,\ldots,\alpha_k)
+        \end{align*}
+        la cual es inyectiva pues si \(f(\alpha_1,\alpha_2,\ldots,\alpha_k)=f(\beta_1,\beta_2,\ldots,\beta_k)\) entonces \((\alpha_2,\ldots,\alpha_k)=(\beta_2,\ldots,\beta_k)\), luego \(\alpha_i =\beta_i\) para \(i=2,\ldots,k\) y \(\alpha_1=\beta_1=1\). Por lo tanto, \((\alpha_1,\alpha_2,\ldots,\alpha_k)=(\beta_1,\beta_2,\ldots,\beta_k)\), y es sobreyectiva pues para cualquier \((\alpha_2,\ldots,\alpha_k)\in \mathcal T_{n-1}\) existe $(\alpha_1,\alpha_2,\ldots,\alpha_k)\in \mathcal T_n^{(1)}$ tal que \(f(\alpha_1,\alpha_2,\ldots,\alpha_k)=(\alpha_2,\ldots,\alpha_k)\).
+        \item $|\mathcal T_n^{(2)}| = |\mathcal T_{n-2}|$ existe una función entre \(\mathcal T_n^{(2)}\) y \(\mathcal T_{n-2}\) que consiste:
+        \begin{align*}
+            f: \mathcal T_n^{(2)} &\to \mathcal T_{n-2} \\
+            (\alpha_1,\alpha_2,\ldots,\alpha_k) &\mapsto (\alpha_2,\ldots,\alpha_k)
+        \end{align*}
+        la cual es biyectiva por un razonamiento similar al anterior.
+        \item $|\mathcal T_n^{(3)}| = |\mathcal T_{n-3}|$ existe una función entre \(\mathcal T_n^{(3)}\) y \(\mathcal T_{n-3}\) que consiste:
+        \item \begin{align*}
+            f: \mathcal T_n^{(3)} &\to \mathcal T_{n-3} \\
+            (\alpha_1,\alpha_2,\ldots,\alpha_k) &\mapsto (\alpha_2,\ldots,\alpha_k)
+        \end{align*}
+        la cual es biyectiva por un razonamiento similar al anterior.
+    \end{itemize}
+    Por lo tanto, tenemos que:
+    \begin{align*}
+        |\mathcal T_n| &= |\mathcal T_{n-1}| + |\mathcal T_{n-2}| + |\mathcal T_{n-3}| \\
+        &= T_{n-1} + T_{n-2} + T_{n-3}
+    \end{align*}
+\end{solucion}

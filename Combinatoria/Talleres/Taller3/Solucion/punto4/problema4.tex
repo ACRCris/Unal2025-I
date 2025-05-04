@@ -1,0 +1,63 @@
+\begin{solucion}
+    \begin{itemize}
+        \item $\left\{n \atop 2\right\} = 2^{n-1} - 1$.
+        Consideremos los siguientes casos
+        \begin{itemize}
+            \item $(n = 1)$ Cuando $n=1 <2$ entonces $\left\{1 \atop 2\right\} = 0 = 1-1 = 2^{1-1} -1$
+            \item $(n>1)$  Primero notemos que el lado derecho me cuenta las particiones de un conjunto de $n$ elementos en dos subconjuntos no vacíos. Por ejemplo, si n = 3, los subconjuntos son $\{1\}, \{2,3\}$ y $\{2\}, \{1,3\}$ y $\{3\}, \{1,2\}$, es decir, $2^{3-1} - 1 = 2^2 - 1 = 3$. 
+
+            Por otro lado para un conjunto de n elementos, podemos tomar dos subconjuntos $A,B \neq \emptyset$, pues $n>1$ tales que:
+    
+            \begin{align*}
+                \overbrace{\{\dots\}}^{A} \;\sqcup\; \overbrace{\{\dots\}}^{B} &= \{1,2,\dots,n\} \\
+            \end{align*}
+    
+            Veamos que cuando se seleccionan los elementos de $A$, los elementos de $B$ quedan determinados. Por ejemplo en el caso de $n=3$, si $A = \{1\}$, entonces $B = \{2,3\}$. De este modo haciendo uso del principio de la suma, contamos:
+    
+            \begin{align*}
+                \binom{n}{1} + \binom{n}{2} + \cdots + \binom{n}{n-1} &= \sum_{k=1}^{n-1} \binom{n}{k}\\
+                &= 2- \sum_{0}^{n} \binom{n}{k} 1^k 1^{n-k} \\
+                &= (1+1)^n - 2 = 2^n - 2
+            \end{align*}
+        \end{itemize}
+      
+
+        pues la forma de obtener los subconjuntos de $A$ de $k$ es excluyente con la forma de obtener los subconjuntos de $A$ de $k+1$, $k = 1,2,\dots,n-1$. Pero como el orden de $A$ y $B$ no importa, entonces tenemos que dividir entre 2 que es numero de formas de permutar $A$ y $B$. Por lo tanto, el número de particiones de un conjunto de $n$ elementos en dos subconjuntos no vacíos es:
+
+        \begin{align*}
+            \frac{1}{2} \left(2^n - 2\right) &= 2^{n-1} - 1 = \left\{n \atop 2\right\}
+        \end{align*}
+
+        \item $\left\{n \atop n-1\right\} = \frac{n(n-1)}{2}$
+        Podemos considerar los siguientes casos:
+        \begin{itemize}
+            \item $(n=1)$ Cuando $n=1$ entonces $n-1=0$ y $\left\{1 \atop 0\right\} = 0 = \frac{1(1-1)}{2}$
+            \item $(n>1)$ Tenemos que contar la forma de particionar un conjunto de $n$ elementos en $n-1$ subconjuntos no vacíos $A_i$ disyuntos tales que:
+
+            \begin{align*}
+                \overbrace{\{\dots\}}^{A_1} \;\sqcup\; \overbrace{\{\dots\}}^{A_2} \;\sqcup\; \cdots \;\sqcup\; \overbrace{\{\dots\}}        ^{A_{n-1}} &= \{1,2,\dots,n\} \\
+            \end{align*}
+            Dado que todos los conjuntos son no vacíos, entonces cada $A_i$ tiene al menos un elemento. Por lo tanto, por el principio del palomar, debe existir un $A_i$ que tiene al menos 2 elementos y en este caso tendrá exactamente dos elementos, pues en caso contrario, el número de subconjuntos no vacíos sería menor que $n-1$. Por lo que para todos los $j\neq i$, $|A_j| = 1$. De este modo primero contamos la combinaciones de $n$ elementos en $n-1$ subconjuntos los cual nos da $\binom{n}{n-1} = \binom{n}{1}$, esto nos deja un elemento libre que se puede colocar en cualquiera de los $n-1$ subconjuntos, por lo que por el principio de la multiplicación obtenemos $\binom{n}{1} \cdot (n-1) = n(n-1)$. Pero como el orden de los subconjuntos no importa, entonces tenemos que dividir entre 2 que es numero de formas de permutar los elementos en el subconjunto, resultando en:
+            \begin{align*}
+                \frac{1}{2} n(n-1) &= \frac{n(n-1)}{2} = \left\{n \atop n-1\right\}
+            \end{align*}
+        \end{itemize}
+
+        \item $\left\{n \atop n-2\right\} = \binom{n}{3} + 3\binom{n}{4}$
+        Consideremos nuevamente los siguientes casos:
+        \begin{itemize}
+            \item $(n=2)$ Cuando $n=2$ entonces $n-2=0$ y $\left\{2 \atop 0\right\} = 0 = \binom{2}{3} + 3\binom{2}{4}$, pues por definición $\binom{2}{3} = 0$ y $\binom{2}{4} = 0$.    
+            \item $(n>2)$ Contamos el numero de formas de particionar un conjunto de $n$ elementos en $n-2$ subconjuntos no vacíos $A_i$, pues $n>2$ tales que:
+            \begin{align*}
+                \overbrace{\{\dots\}}^{A_1} \;\sqcup\; \overbrace{\{\dots\}}^{A_2} 
+                \;\sqcup\; \cdots \;\sqcup\; \overbrace{\{\dots\}}^{A_{n-2}} &= \{1,2,\dots,n\} \\
+            \end{align*}
+            Nuevamente por el principio del palomar tenemos al menos un $A_i$ que tiene mas de un elemento. Pero todos tiene al menos un elemento, por lo que primero contamos las forma de combinar los $n$ elementos en $n-2$ subconjuntos no vacíos, lo cual nos da $\binom{n}{n-2} = \binom{n}{2}$. Estos nos deja $2$ elementos libres que se pueden colocar en cualquiera de los $n-2$, lo cual nos da lugar a los siguientes casos mutuamente excluyentes:
+            \begin{itemize}
+                \item Un conjunto de tres elementos y el resto unitarios. 
+                Para este caso podemos colocar los dos elementos restantes en cualquiera de los $n-2$ subconjuntos, lo cual nos $n-2$ formas de hacerlo, pero el orden en el subconjuntos no importa, por lo que tenemos que dividir entre 
+            \end{itemize}
+        \end{itemize}
+       
+    \end{itemize}
+\end{solucion}
