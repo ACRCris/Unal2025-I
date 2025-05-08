@@ -14,21 +14,10 @@ Un \emph{espacio topológico} es un par $(X,\tau)$ donde $X$ es un conjunto y $\
 
 Sea $f\colon(X,\mathcal T_1)\to(Y,\mathcal T_2)$. Se dice que $f$ es \emph{continua} si $f^{-1}(V)$ es abierto en $X$ siempre que $V$ es abierto en $Y$.
 
-
-\textbf{Ejemplo de función NO continua}
-Sea
-$\operatorname{id}\colon(\mathbb{R}_1,\mathcal T_1)\to(\mathbb{R}_2,\mathcal T_2)$. Observamos que
-\[
-  \operatorname{id}^{-1}\bigl((0,1)\bigr)=(0,1)\notin\mathcal T_{t},
-\]
-Por lo que la función identidad $\operatorname{id}$ \emph{no} es continua.
-
-\textbf{Observación:} En general, si $\mathcal T_1$ y $\mathcal T_2$ son topologías sobre un mismo
-conjunto~$X$,
-\[
-  \operatorname{id}\colon(X,\mathcal T_1)\to(X,\mathcal T_2)\text{ es continua}
-  \;\Longleftrightarrow\; \mathcal T_2\subseteq\mathcal T_1.
-\]
+Comenzamos con la siguiente inquietud: \textbf{Es la funcion identidad} \( id: (\mathbb{R}, \mathscr{T}_t) \to (\mathbb{R}, \mathscr{T}_u)  \) \textbf{continua?} \\ \\
+La respuesta es \textbf{no}. Consideremos \( (0,1) \in (\mathbb{R}, \mathscr{T}_u \), abierto en el conjunto de llegada. Observe que \( id^{-1}((0,1))=(0,1) \notin \mathscr{T}_t \). \\ \\
+\textbf{\underline{Observacion}:} Dado un conjunto \(X\) y \( \mathscr{T}_1, \mathscr{T}_2 \) topologias en \(X\). \( id: (X, \mathscr{T}_1) \to (X, \mathscr{T}_2) \) es \textbf{continua} si y solo si \( \mathscr{T}_2 \subseteq \mathscr{T}_1 \). \\ \\
+\textbf{\underline{Notacion}:} Si \( \mathscr{T}_2 \subseteq \mathscr{T}_1 \)($\mathscr{T}_1 \subseteq \mathscr{T}_2$), se dice que \( \mathscr{T}_1 \) es \textbf{mas fina} (\textbf{mas gruesa}) que \( \mathscr{T}_2 \). \\ \\
 
 \textbf{Topologías usuales en $\mathbb{R}$}
 

@@ -1,0 +1,35 @@
+\begin{solucion}
+    Por simple inspección, proponemos la siguiente posibles raíces $r=\pm 1$ y $r=\pm 3$. Y evaluando cada una de estas en polinomio obtenemos:
+    \begin{align*}
+    f(1) &= 1^3 - 7(1)^2 + 3(1) + 3 = 1 - 7 + 3 + 3 = 0 \\
+    f(-1) &= (-1)^3 - 7(-1)^2 + 3(-1) + 3 = -1 - 7 - 3 + 3 = -8 \\
+    f(3) &= 3^3 - 7(3)^2 + 3(3) + 3 = 27 - 63 + 9 + 3 = -24 \\
+    f(-3) &= (-3)^3 - 7(-3)^2 + 3(-3) + 3 = -27 - 63 - 9 + 3 = -96 \\
+    \end{align*}
+    Asi por el teorema de factorización única tenemos que:
+
+    \begin{align*}
+        t^3 - 7t^2 + 3t + 3 &= (t-1)f(t) \\
+    \end{align*}
+
+    Donde $f(t)$ es un polinomio de grado 2. Para encontrarlo, realizamos la división sintética:
+
+    \begin{align*}
+        \begin{array}{r|rrrr}
+            1 & 1 & -7 & 3 & 3 \\
+              &   & 1 & -6 & -3 \\
+            \hline
+              & 1 & -6 & -3 & 0 \\
+        \end{array}
+    \end{align*}
+    Por lo tanto, el polinomio $f(t)$ es:
+    \begin{align*}
+        f(t) &= t^2 - 6t - 3
+    \end{align*}
+    Luego el polinomio por la definición de irreducibilidad el polinomio $t^3 - 7t^2 + 3t + 3$ es irreducible, puesto que:
+    \begin{align*}
+        t^3 - 7t^2 + 3t + 3 &= (t-1)(t^2 - 6t - 3) \\
+        &= (t-1)(t^2 - 6t - 3) \\
+    \end{align*}
+    Es decir, el polinomio $t^3 - 7t^2 + 3t + 3$ es producto de dos polinomios de grado menor. Lo cual es valido pues $\mathbb Q$ es un cuerpo.
+\end{solucion}

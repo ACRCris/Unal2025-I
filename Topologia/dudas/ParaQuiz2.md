@@ -1,0 +1,2 @@
+- Seccion 3.1 de las notas como es que $\mathcal T_B \subseteq \mathcal T$? cual es la topologia usual de $\mathbb R^n$?
+- Preguntar ejercicio 12 capitulo 1
