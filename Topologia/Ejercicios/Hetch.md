@@ -21,3 +21,24 @@ $$
 $$
 
 De esto modo $y_1 + y_2 - \epsilon < z_1 + z_2 < y_1 + y_2 + \epsilon$ para todo los $y
+
+![alt text](image-2.png)
+
+Sea $\{C_i\}_{i=1}^n$ una familia finita de componentes conexas de $X$. Dado $C_i$ is closed para todo $i = 1,2,\dots,n$ y dado que:
+
+$$
+\begin{align*}
+X = \bigcup_{i=1}^n C_i
+\end{align*}
+$$
+
+y como ademas la union finita de cerrados es cerrado, Como ademas
+
+$$
+\begin{align*}
+X/C_j = \bigcup_{i=1, i\neq j}^n C_i
+\end{align*}
+$$
+
+
+Cuya union es cerrada, por lo tanto $C_j$ es abierto.

@@ -1,33 +1,57 @@
 \begin{solucion}
-    
-  \item Para las raíces $\alpha^2,\beta^2,\gamma^2$, sea
-  \[
-  Q(y)=y^3 + A\,y^2 + B\,y + C.
-  \]
-  Usamos que
-  \[
-  \alpha^2+\beta^2+\gamma^2
-  = (\alpha+\beta+\gamma)^2 - 2(\alpha\beta+\alpha\gamma+\beta\gamma)
-  = (-2)^2 - 2(-3) = 10,
-  \]
-  \[
-  \alpha^2\beta^2 + \alpha^2\gamma^2 + \beta^2\gamma^2
-  = (\alpha\beta+\alpha\gamma+\beta\gamma)^2 - 2\,\alpha\beta\gamma\,(\alpha+\beta+\gamma)
-  = (-3)^2 - 2(-5)(-2) = -11,
-  \]
-  \[
-  \alpha^2\beta^2\gamma^2 = (\alpha\beta\gamma)^2 = (-5)^2 = 25.
-  \]
-  Luego,
-  \[
-  \begin{cases}
-  \alpha^2 + \beta^2 + \gamma^2 = -A \;\Longrightarrow\;A=-10,\\
-  \alpha^2\beta^2 + \alpha^2\gamma^2 + \beta^2\gamma^2 = B \;\Longrightarrow\;B=-11,\\
-  \alpha^2\beta^2\gamma^2 = -C \;\Longrightarrow\;C=-25.
-  \end{cases}
-  \]
-  Por lo tanto,
-  \[
-  Q(y)=y^3 - 10y^2 - 11y - 25.
-  \]
+  \item Para este caso relizaremos la siguiente sustitución:
+  \begin{align*}
+    \alpha &\to \alpha^2\\
+    \beta &\to \beta^2\\
+    \gamma &\to \gamma^2\\
+  \end{align*}
+  Por lo tanto, el polinomio $P(y)$ se transforma en un polinomio $Q(y)$ que satisface:
+  \begin{align*}
+    e_1(\alpha^2, \beta^2, \gamma^2) &= \alpha^2 + \beta^2 + \gamma^2 = p\\
+    e_2(\alpha^2, \beta^2, \gamma^2) &= \alpha^2\beta^2 + \alpha^2\gamma^2 + \beta^2\gamma^2 = q\\
+    e_3(\alpha^2, \beta^2, \gamma^2) &= \alpha^2\beta^2\gamma^2 = r\\
+  \end{align*}
+  Estos polinomios son simetricos, por lo que podemos expresarlo en términos de los polinomios simétricos elementales,
+  Por lo que expresando $\alpha^2, \beta^2, \gamma^2$ en términos de los polinomios simétricos elementales:
+  \begin{align*}
+    e_1(\alpha,\beta,\gamma), e_2(\alpha,\beta\gamma),e_3(\alpha,\beta,\gamma)
+  \end{align*}
+  Dado que $\mdeg(\alpha^2 + \beta^2 + \gamma^2) = (2,0,0)$. Por lo que tomamos:
+
+  \begin{align*}
+    g_0 &= e_1(\alpha,\beta,\gamma)^2\\
+    &= (\alpha + \beta + \gamma)^2\\
+    &= (\alpha + \beta)^2 + 2(\alpha + \beta)\gamma + \gamma^2\\
+    &= \alpha^2 + \beta^2 + 2\alpha\beta + 2\gamma\alpha + 2\gamma\beta + \gamma^2\\
+    &= \alpha^2 + \beta^2 + \gamma^2 + 2(\alpha\beta + \alpha\gamma + \beta\gamma)\\
+  \end{align*}
+  Por lo que:
+  \begin{align*}
+    \alpha^2 + \beta^2 + \gamma^2 &= (\alpha + \beta + \gamma)^2 - 2(\alpha\beta + \alpha\gamma + \beta\gamma)\\
+    &= e_1^2 - 2e_2\\
+    &= (-2)^2 - 2(-3)\\
+    &= 4 + 6\\
+    &= 10 =p
+  \end{align*}
+  Ahora para $(\alpha^2\beta^2 + \alpha^2\gamma^2 + \beta^2\gamma^2)$,podemos descomponerlo en polinomios simétricos 
+  elementales 
+  \begin{align*}
+    e_1(\alpha\beta, \alpha\gamma,\beta\gamma), e_2(\alpha\beta, \alpha\gamma,\beta\gamma),e_3(\alpha\beta, \alpha\gamma,\beta\gamma)
+  \end{align*}
+  Asi:
+  \begin{align*}
+    \alpha^2\beta^2 + \alpha^2\gamma^2 + \beta^2\gamma^2 &= (\alpha\beta + \alpha\gamma + \beta\gamma)^2 - 2(\alpha^2\beta\gamma + \alpha\beta^2\gamma + \alpha\beta\gamma^2)\\
+    &= e_2(\alpha,\beta,\gamma)^2 - 2(\alpha\beta\gamma)(\alpha + \beta + \gamma)\\
+    &= e_2(\alpha,\beta,\gamma)^2  - 2e_3(\alpha,\beta,\gamma)e_1(\alpha,\beta,\gamma)\\
+    &= (-3)^2 - 2(-2)(-5)\\
+    &= 9 -20\\
+    &= -11=q
+  \end{align*}
+  y por último:
+  \begin{align*}
+    \alpha^2\beta^2\gamma^2 &= (\alpha\beta\gamma)^2\\
+    &= (-5)^2\\
+    &= 25 = r
+  \end{align*}
+
 \end{solucion}
