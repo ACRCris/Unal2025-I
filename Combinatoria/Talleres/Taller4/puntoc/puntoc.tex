@@ -1,0 +1,356 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=3cm}
+
+\begin{document}
+
+\begin{center}
+  \Large\bfseries Demostración combinatoria del Teorema de Lucas
+\end{center}
+
+\bigskip
+
+\noindent
+\textbf{Enunciado.} Sea $p$ un número primo y sean $a,b\in\mathbb N$ con
+\[
+  a = a_0 + a_1p + a_2p^2 + \dots + a_kp^k,
+  \qquad
+  b = b_0 + b_1p + b_2p^2 + \dots + b_kp^k,
+\]
+donde cada dígito $a_i,b_i$ pertenece a $\{0,1,\dots,p-1\}$.  
+El \emph{Teorema de Lucas} afirma
+\[
+  \binom{a}{b}
+  \equiv
+  \binom{a_0}{b_0}\binom{a_1}{b_1}\binom{a_2}{b_2}\cdots\binom{a_k}{b_k}
+  \pmod{p}.
+\]
+
+A continuación se presenta una demostración puramente combinatoria,
+sin recurrir a acciones de grupo ni a simetrías cíclicas, basada sólo en
+el principio de adición, el principio de multiplicación y particiones
+del conjunto que se está contando.
+
+\section*{Interpretación combinatoria de {$\binom{a}{b}$}{(a b)}}
+
+El coeficiente binomial $\binom{a}{b}$ cuenta los subconjuntos de tamaño
+$b$ de un conjunto de $a$ elementos, que denotaremos
+$S=\{1,2,\dots,a\}$.
+
+\section*{2.\;Partición de {$S$}{S} en bloques según potencias de
+{$p$}{p}}
+
+Del desarrollo en base $p$ de $a$ se deduce la siguiente partición:
+
+\begin{itemize}
+  \item $a_1$ \emph{bloques completos} de tamaño $p$;
+  \item un \emph{bloque incompleto} de tamaño $a_0$ (si $a_0=0$
+        no existe este último bloque).
+\end{itemize}
+
+En símbolos:
+\[
+  a = a_1p + a_0, \qquad 0\le a_0 < p .
+\]
+
+\section*{3.\;Distribución de la elección de $b$ elementos}
+
+Escribamos igualmente
+$b = b_0 + b_1p$ con $0\le b_0<p$.
+Sea
+\[
+  (x_1,x_2,\dots,x_{a_1},x_{\text{last}})
+\quad
+\bigl(0\le x_i\le p,\;0\le x_{\text{last}}\le a_0\bigr)
+\]
+una $($y sólo una$)$ forma de repartir los $b$ elementos entre los
+bloques, sujeta a
+\[
+  x_1+\dots +x_{a_1}+x_{\text{last}} = b .
+\]
+
+\paragraph{Principio de multiplicación.}
+Para una tupla fija se tiene
+\[
+  N(x_1,\dots,x_{a_1},x_{\text{last}})
+  = \binom{p}{x_1}\binom{p}{x_2}\cdots\binom{p}{x_{a_1}}
+    \binom{a_0}{x_{\text{last}}}.
+\]
+
+\paragraph{Principio de adición.}
+Sumando sobre todas las tuplas viables,
+\[
+  \binom{a}{b}
+  =\!\!\!
+    \sum_{\substack{x_1+\dots+x_{a_1}+x_{\text{last}}=b\\
+                    0\le x_i\le p,\,0\le x_{\text{last}}\le a_0}}
+      \binom{p}{x_1}\binom{p}{x_2}\cdots\binom{p}{x_{a_1}}
+      \binom{a_0}{x_{\text{last}}}.
+\]
+
+\section*{4.\;Cálculo módulo {$p$}{p}}
+
+Para $1\le x\le p-1$ se cumple
+$\displaystyle\binom{p}{x}\equiv 0\pmod{p}$,
+mientras que
+$\binom{p}{0}=\binom{p}{p}=1$.
+
+Por tanto, \emph{sólo} aportan al valor de la suma módulo $p$
+aquellas tuplas en las que cada $x_i$ vale $0$ o $p$.
+Sea $t$ el número de índices con $x_i=p$; entonces
+\[
+  tp + x_{\text{last}} = b \quad\Longrightarrow\quad
+  x_{\text{last}} = b-tp.
+\]
+
+La desigualdad $0\le x_{\text{last}}\le a_0$
+junto con $0\le b_0 <p$ fuerza necesariamente
+$t=b_1$ y $x_{\text{last}}=b_0$.
+Además $b_0\le a_0$ es condición necesaria y suficiente
+para que existan selecciones (si falla, ambos lados de la congruencia
+son $0$ y Lucas se verifica trivialmente).
+
+\medskip
+\noindent
+\textbf{Cuenta de las configuraciones supervivientes.}
+\begin{itemize}
+  \item Elegir los $b_1$ bloques completos que se toman enteros:
+        $\binom{a_1}{b_1}$ maneras.
+  \item En cada bloque seleccionado la elección es única
+        (se toman sus $p$ elementos).
+  \item En el bloque incompleto se eligen $b_0$ de sus $a_0$ elementos:
+        $\binom{a_0}{b_0}$ maneras.
+\end{itemize}
+De donde
+\[
+  \binom{a}{b}\equiv \binom{a_1}{b_1}\binom{a_0}{b_0}\pmod{p}.
+\]
+
+\section*{5.\;Iteración sobre los dígitos superiores}
+
+El argumento se aplica recursivamente al binomio
+$\binom{a_1}{b_1}$: se agrupan ahora los $a_1$ bloques completos
+en super‑bloques de tamaño $p^2$, regidos por los dígitos $a_2,b_2$,
+y se repite el razonamiento.
+Encadenando todos los pasos (hasta alcanzar $a_k,b_k$) se obtiene
+\[
+  \boxed{\;
+    \displaystyle
+    \binom{a}{b}
+    \equiv
+    \prod_{i=0}^k \binom{a_i}{b_i}
+    \pmod{p}}\;,
+\]
+que es exactamente el Teorema de Lucas.
+
+\section*{6.\;Ejemplo ilustrativo}
+
+Para $p=5$, $a=12$, $b=7$ (en base $5$, $a=(2\,2)_5$, $b=(1\,2)_5$)
+Lucas predice
+\[
+  \binom{12}{7}\equiv
+  \binom{a_0}{b_0}\binom{a_1}{b_1}
+  =\binom{2}{2}\binom{2}{1}=2\pmod{5}.
+\]
+Un desglose de las particiones de
+$\{1,\dots,12\}$
+en dos bloques completos de $5$ y uno incompleto de $2$
+muestra que sólo dos subconjuntos
+(\,$\{1,\dots,5,11,12\}$ y $\{6,\dots,10,11,12\}$\,)
+producen contribución no nula módulo $5$, confirmando
+el resultado $\binom{12}{7}\equiv 2\pmod5$.
+
+\bigskip
+\hrule
+\bigskip
+
+\noindent
+\textbf{Conclusión.}  
+La clave fue aislar, mediante particiones
+controladas por las potencias de $p$, las únicas selecciones
+que sobreviven módulo $p$:
+aquellas donde cada bloque completo se toma entero o se deja intacto.
+Eso traduce la elección global en elecciones dígito a dígito, dando lugar
+al producto $\prod_i \binom{a_i}{b_i}$ que establece el teorema.
+
+% --- Fragmento a insertar tras la última subsección ---
+\subsection*{Conteo de elecciones distribuidas en bloques (Principio de adición y multiplicación)}
+
+Consideremos cuántas maneras hay de elegir un subconjunto de $b$ elementos de $S$ \emph{distribuyendo} esos $b$ elementos entre los bloques definidos.  
+Escribamos $b$ en base $p$ como $b = b_1 p + b_0$ con $0 \le b_0 < p$.  
+Al seleccionar $b$ elementos de $S$, fijemos que elegimos
+
+\begin{itemize}
+  \item $x_i$ elementos del bloque $i$ (para cada bloque completo $i = 1,2,\dots,a_1$), donde cada bloque completo tiene $p$ elementos y, por tanto, $0 \le x_i \le p$;
+  \item $x_{\text{last}}$ elementos del bloque incompleto, con $0 \le x_{\text{last}} \le a_0$.
+\end{itemize}
+
+Estas cantidades deben satisfacer la restricción
+\[
+  x_1 + x_2 + \cdots + x_{a_1} + x_{\text{last}} \;=\; b,
+\]
+pues en total se eligen $b$ objetos.
+
+\paragraph{Principio de adición (partición de casos).}
+Cada elección de $b$ elementos se clasifica según la tupla
+$(x_1,\dots,x_{a_1},x_{\text{last}})$ que produce.  
+Diferentes tuplas definen subconjuntos disjuntos de selecciones
+y la unión de todas ellas cubre la totalidad de los $b$‑subconjuntos.
+Así, por el principio de adición, el número total de formas (esto es, $\binom{a}{b}$) es la \emph{suma} de las cantidades correspondientes a cada tupla válida.
+
+\paragraph{Principio de multiplicación (conteo dentro de cada categoría).}
+Fijemos ahora una tupla válida $(x_1,\dots,x_{a_1},x_{\text{last}})$.
+Las elecciones en bloques distintos son independientes, de modo que:
+
+\begin{itemize}
+  \item del bloque $1$ podemos elegir $x_1$ elementos de $\binom{p}{x_1}$ formas;
+  \item del bloque $2$, $\binom{p}{x_2}$ formas, y así sucesivamente;
+  \item del bloque $a_1$, $\binom{p}{x_{a_1}}$ formas;
+  \item del bloque incompleto, $\binom{a_0}{x_{\text{last}}}$ formas.
+\end{itemize}
+
+Por el principio de multiplicación, el número total de subconjuntos
+asociados a esa tupla es
+\[
+  \binom{p}{x_1}\,\binom{p}{x_2}\,\cdots\,
+  \binom{p}{x_{a_1}}\,
+  \binom{a_0}{x_{\text{last}}}.
+\]
+
+\noindent Sumando sobre \emph{todas} las tuplas que satisfacen la restricción, obtenemos
+\[
+  \binom{a}{b}
+  \;=\;
+  \sum_{\substack{
+      x_1+\dots+x_{a_1}+x_{\text{last}}\,=\,b\\
+      0 \le x_i \le p,\;
+      0 \le x_{\text{last}} \le a_0
+  }}
+  \binom{p}{x_1}\,
+  \binom{p}{x_2}\,\cdots\,
+  \binom{p}{x_{a_1}}\,
+  \binom{a_0}{x_{\text{last}}}.
+\]
+
+Esta identidad cuenta exhaustivamente todas las maneras de distribuir
+$b$ elementos entre los bloques, \emph{clasificándolas} por cuántos
+se toman de cada bloque y \emph{multiplicando} las elecciones
+independientes dentro de cada bloque.
+
+
+% --- Fragmento a insertar tras la sección anterior ---
+\subsection*{Análisis módulo $p$: identificando contribuciones no nulas}
+
+Examinemos ahora la expresión obtenida \emph{módulo $p$}, aprovechando que $p$ es primo.  
+El hecho clave es:
+
+\begin{quote}
+Para un bloque completo de $p$ elementos se verifica
+\[
+  \binom{p}{x}\equiv 0 \pmod{p}
+  \quad\text{si}\quad 1\le x\le p-1,
+  \qquad
+  \binom{p}{0}=\binom{p}{p}=1.
+\]
+\end{quote}
+
+El motivo es combinatorio: cualquier subconjunto no trivial de un conjunto de
+$p$ elementos se puede rotar cíclicamente $p$ veces, y las $p$ rotaciones son
+distintas cuando $p$ es primo; así, el total de tales subconjuntos es múltiplo
+de $p$.
+
+Considérese un término de la suma
+\[
+  T_{(x_1,\dots,x_{a_1},x_{\text{last}})}
+  \;=\;
+  \binom{p}{x_1}\cdots\binom{p}{x_{a_1}}\,
+  \binom{a_0}{x_{\text{last}}}.
+\]
+El producto $T_{(\cdot)}$ \emph{no} será divisible por $p$ únicamente cuando
+cada factor $\binom{p}{x_i}$ carezca de $p$ como divisor, es decir,
+\[
+  x_i\in\{0,p\}\quad\text{para todo bloque completo }i.
+\]
+El factor $\binom{a_0}{x_{\text{last}}}$ nunca introduce un divisor $p$
+porque $a_0<p$.
+
+\medskip
+\noindent
+Sean, entonces, $x_i\in\{0,p\}$ y escribamos
+\[
+  t=\#\bigl\{\,i\;|\;x_i=p\bigr\},
+  \qquad
+  x_{\text{last}}=b-tp.
+\]
+La ecuación de conteo total
+\[
+  x_1+\dots+x_{a_1}+x_{\text{last}}=b
+\]
+se transforma en
+\[
+  t\,p + x_{\text{last}} = b,
+  \qquad
+  0\le x_{\text{last}}\le a_0.
+\]
+
+\paragraph{Determinación de $t$.}
+Escribiendo $b=b_1p+b_0$ con $0\le b_0<p$:
+
+\begin{itemize}
+  \item Si $t<b_1$ entonces
+        $x_{\text{last}} = b - tp > b - b_1p = b_0$,
+        excediendo el límite permitido $a_0\ge b_0$.
+  \item Si $t>b_1$ entonces $tp\ge(b_1+1)p>b$, imposible.
+\end{itemize}
+
+\noindent
+La única posibilidad es
+\[
+  t=b_1,\qquad x_{\text{last}}=b_0.
+\]
+Es decir, \emph{exactamente} $b_1$ bloques completos se toman
+\emph{enteros} y del bloque incompleto se eligen $b_0$ elementos.
+La condición $b_0\le a_0$ (y, más generalmente, $b_i\le a_i$ para
+todos los dígitos) garantiza la existencia de la selección.
+
+Los términos sobrevivientes módulo $p$ corresponden, pues, a elegir un
+subconjunto que:
+\begin{enumerate}
+  \item incluye \textbf{todos} los elementos de exactamente $b_1$ bloques
+        completos,
+  \item excluye los elementos de los $a_1-b_1$ bloques completos restantes,
+  \item contiene $b_0$ elementos del bloque incompleto.
+\end{enumerate}
+
+\medskip
+\noindent
+El número de tales selecciones es
+\[
+  \binom{a_1}{b_1}\,\binom{a_0}{b_0}
+  \;\equiv\;
+  \binom{a_1}{b_1}\,\binom{a_0}{b_0}
+  \pmod{p},
+\]
+donde $\binom{a_1}{b_1}$ cuenta la elección de los $b_1$ bloques completos
+que se toman enteros.  
+Puesto que $a_1$ y $b_1$ son, respectivamente, los dígitos de $a$ y $b$
+en la posición $p^1$, obtenemos precisamente el factor
+$\binom{a_1}{b_1}\binom{a_0}{b_0}$ previsto por el enunciado de Lucas.
+
+Repitiendo el mismo argumento en los niveles $p^2,p^3,\dots,p^k$ se
+obtiene inductivamente
+\[
+  \binom{a}{b}
+  \;\equiv\;
+  \prod_{i=0}^{k}
+  \binom{a_i}{b_i}
+  \pmod{p},
+\]
+completando la demostración.
+
+
+\end{document}
