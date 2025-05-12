@@ -98,7 +98,7 @@ $$
 \end{align*}
 $$
 
-Sea $\epsilon > 0$, veamos que $(x-\epsilon, x+\epsilon) \cap \mathcal C \neq \{x\}$.  Sea $nT tal que \frac{1}{3^n} < \epsilon,luego $I_n \subseteq (x-\epsilon, x+\epsilon)$. Por que los limites de $I_n$ estana una distancia a los mas $\frac{1}{3^n}$ de $x$, luego 
+Sea $\epsilon > 0$, veamos que $(x-\epsilon, x+\epsilon) \cap \mathcal C \neq \{x\}$.  Sea $I_n$ tal que $\frac{1}{3^n} < \epsilon$, luego $I_n \subseteq (x-\epsilon, x+\epsilon)$. Por que los limites de $I_n$ estana una distancia a los mas $\frac{1}{3^n}$ de $x$, luego 
 
 $$
 \begin{align*}
