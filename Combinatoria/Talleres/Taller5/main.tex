@@ -1,0 +1,64 @@
+\documentclass[12pt, letter]{article}
+\usepackage{tikz}
+\pgfkeys{/skipfound/.initial=0}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{xstring} % en el preámbulo
+
+
+\input{encabezado}
+
+
+\begin{document}
+
+\input{portada}
+\thispagestyle{fancy}
+\begin{enumerate}
+  \item \input{Puntos/punto1/problema1.tex}
+  \begin{enumerate}
+    \item \input{Puntos/punto1/problema1a.tex}
+    % \input{Solucion/punto2/a.tex}
+    
+  \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+  
+    \item \input{Puntos/punto1/problema1b.tex}
+    % \input{Solucion/punto2/b.tex}
+  \end{enumerate}
+  
+  \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+  
+  \item \input{Puntos/punto2/problema2.tex}
+  
+  \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+  
+  \item \input{Puntos/punto3/problema3.tex}
+  \begin{enumerate}
+    \item \input{Puntos/punto3/problema3a.tex}
+    % \input{Solucion/punto2/a.tex}
+    
+  \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+  
+    \item \input{Puntos/punto3/problema3b.tex}
+    % \input{Solucion/punto2/b.tex}
+
+      \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+    \item \input{Puntos/punto3/problema3c.tex}
+  \end{enumerate}
+
+  \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+  \item \input{Puntos/punto4/problema4.tex}
+  
+ \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+  \item \input{Puntos/punto5/problema5.tex}
+  
+  \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+  \item \input{Puntos/punto6/problema6.tex}
+  
+  
+  \end{enumerate}
+
+\end{document}
