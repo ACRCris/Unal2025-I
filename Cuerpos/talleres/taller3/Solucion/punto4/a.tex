@@ -1,0 +1,49 @@
+\begin{solucion}
+    Consideremos primero las extensiones simples por separado, haciendo uso del siguiente lema visto en clase:
+
+\begin{lema}
+    Sea $K(\alpha)$ una extensión simple algebraica, y sea $m(t)$ el polinomio mínimal de $\alpha$ sobre $K$, $\partial(m) =n$. Entonces $\{1,\alpha,\ldots,\alpha^{n-1}\}$ es una base de $K(\alpha)$ sobre $K$.
+\end{lema}
+
+\begin{itemize}
+    \item \textbf{Polinomio mínimo de $i$}: Es $m_i(x) = x^2 + 1$. Este polinomio es irreducible sobre $\mathbb{Q}$, ya que no tiene raíces racionales (de hecho, $x^2+1=0$ no tiene solución en $\mathbb{Q}$). Por lo tanto por el \textbf{Lema 1}, $[\mathbb{Q}(i) : \mathbb{Q}] = 2$.
+    
+    \item \textbf{Polinomio mínimo de $\sqrt[4]{2}$}: Sea $\beta = \sqrt[4]{2}$. El polinomio $m_\beta(x) = x^4 - 2$ es el polinomio mínimo de $\beta$ sobre $\mathbb{Q}$. Es irreducible en $\mathbb{Q}[x]$ por el criterio de Eisenstein con $p=2$: todos los coeficientes (excepto el líder $1$) son divisibles por $2$ (el polinomio es $x^4 + 0x^3 + 0x^2 + 0x - 2$) y $2^2=4$ no divide al término independiente $-2$. Así, $m_\beta(x)$ es irreducible y por el \textbf{lema 1} $[\mathbb{Q}(\beta) : \mathbb{Q}] = 4$.
+\end{itemize}
+
+Para el grado de la extensión $\mathbb{Q}(i, \sqrt[4]{2})$. Observemos que $\mathbb{Q}(\sqrt[4]{2})$ es un cuerpo contenido en $\mathbb{R}$, pues $\sqrt[4]{2}$ es real, mientras que $\mathbb{Q}(i)$ es un campo que esta contenido en los complejos. En particular, $i \notin \mathbb{Q}(\sqrt[4]{2})$ (ningún número de $\mathbb{Q}(\sqrt[4]{2})$ al cuadrado puede dar $-1$). 
+
+Pues si suponemos que existieran $a,b,c,d\in \mathbb{Q}$ tales que:
+\[
+i = a + b\sqrt[4]{2} + c(\sqrt[4]{2})^2 + d(\sqrt[4]{2})^3,
+\]
+Es decir $i$ se puede expresar como una combinación lineal de la base $\{1,\sqrt[4]{2},(\sqrt[4]{2})^2,(\sqrt[4]{2})^3\}$ de $\mathbb{Q}(\sqrt[4]{2})$ sobre $\mathbb{Q}$. Al tomar partes reales e imaginarias llegaríamos a una contradicción, pues el lado izquierdo es puramente imaginario mientras que el derecho es real. Por tanto, $i$ no pertenece al campo $\mathbb{Q}(\sqrt[4]{2})$. Esto implica que el polinomio $x^2+1$ no tiene raíces en $\mathbb{Q}(\sqrt[4]{2})$ y permanece irreducible sobre este campo.
+
+Usando el \textbf{Teorema de la Torre}, sobre la extensión $\mathbb{Q}(\sqrt[4]{2})$ y $\mathbb{Q}(i)$, que satisfacen la relación:
+\[
+\mathbb{Q} \;\subset\; \mathbb{Q}(\sqrt[4]{2}) \;\subset\; \mathbb{Q}(\sqrt[4]{2},\, i).
+\]
+entonces:
+\[
+[\mathbb{Q}(i, \sqrt[4]{2}) : \mathbb{Q}] = [\mathbb{Q}(i, \sqrt[4]{2}) : \mathbb{Q}(\sqrt[4]{2})] \cdot [\mathbb{Q}(\sqrt[4]{2}) : \mathbb{Q}].
+\]
+Dado que sabemos que $[\mathbb{Q}(\sqrt[4]{2}) : \mathbb{Q}] = 4$. Y ademas,
+\[
+[\mathbb{Q}(i, \sqrt[4]{2}) : \mathbb{Q}(\sqrt[4]{2})] = 2,
+\]
+puesto que $x^2 + 1$ sigue siendo irreducible sobre $\mathbb{Q}(\sqrt[4]{2})$. Por tanto,
+
+
+\begin{respuesta}
+\[
+[\mathbb{Q}(i, \sqrt[4]{2}) : \mathbb{Q}] = 2 \cdot 4 = 8.
+\]
+\end{respuesta}
+
+
+% Una base de esta extensión (como espacio vectorial sobre $\mathbb{Q}$) está dada por los $8$ elementos:
+% \[
+% \left\{\,1,\; \sqrt[4]{2},\; (\sqrt[4]{2})^2,\; (\sqrt[4]{2})^3,\; i,\; i\sqrt[4]{2},\; i(\sqrt[4]{2})^2,\; i(\sqrt[4]{2})^3 \,\right\}.
+% \]
+% Estos elementos son linealmente independientes sobre $\mathbb{Q}$; en particular, cualquier combinación lineal igualada a cero se separa en parte real (combinación de $1,\sqrt[4]{2},(\sqrt[4]{2})^2,(\sqrt[4]{2})^3$) y parte imaginaria (con factor común $i$), forzando que todos los coeficientes sean cero, dado que los elementos reales ya eran linealmente independientes. Esto confirma que el grado es $8$.
+\end{solucion}

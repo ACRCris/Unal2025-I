@@ -1,0 +1,130 @@
+\documentclass[12pt, letter]{article}
+\usepackage{tikz}
+\pgfkeys{/skipfound/.initial=0}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{xstring} % en el preámbulo
+\usepackage{polynom}
+
+
+\input{encabezado}
+
+
+\begin{document}
+
+
+
+
+\section*{Criterios de irreducibilidad de polinomios en $\mathbb{Q}[x]$}
+
+A continuación se resumen los principales métodos y criterios mencionados en las clases 1–13 y en el libro \emph{Galois Theory} de Ian Stewart para justificar que un polinomio con coeficientes en $\mathbb{Q}$ (o, en general, en un cuerpo $K$) es irreducible.  
+Se cubre tanto el caso general como el caso especial de polinomios cúbicos (grado 3).  
+Para cada criterio se indica dónde aparece (archivo PDF y página) y se describe brevemente su enunciado o uso, incluyendo ejemplos cuando corresponda.
+
+\subsection*{Criterio de la raíz racional (factor racional)}
+
+\textbf{Referencia:} Clase 3, pág.\,5.
+
+\textbf{Enunciado:}  
+Si $f(x)=a_n x^{n}+\cdots+a_0\in\mathbb{Z}[x]$ tiene una raíz racional $\dfrac{p}{q}$ (en forma irreducible), entonces $p\mid a_0$ y $q\mid a_n$.  
+En otras palabras, cualquier raíz racional de un polinomio con coeficientes enteros debe ser un divisor del término independiente entre divisor del coeficiente líder.  
+Esto reduce a una lista finita las posibles raíces racionales.  
+Este resultado se conoce como \emph{teorema del factor racional}.
+
+\textbf{Uso en el contexto:}  
+Para demostrar irreducibilidad se aplica el contrarrecíproco: si ninguna de las posibles raíces racionales candidatas (según el criterio) es raíz de $f$, entonces $f(x)$ no tiene raíces racionales.  
+En particular, si $f$ es de grado 1, 2 o 3, la ausencia de raíces racionales implica que $f$ no puede factorizar linealmente, lo cual (en grado 2 o 3) fuerza a $f$ a ser irreducible (ver apartado siguiente).  
+Por ejemplo, el polinomio $f(x)=2x^{3}+3x+1$ tiene posibles raíces racionales $\{\pm1,\pm\frac12\}$; al comprobar que ninguna es raíz, se concluye que $f$ es irreducible en $\mathbb{Q}[x]$.  
+Stewart aplica implícitamente este criterio en varios ejemplos de su libro – por ejemplo, declara irreducibles a $t^{3}+3t+1$ y $t^{3}-3t-1$ comprobando que no tienen ceros racionales.
+
+\subsection*{Polinomios de grado 2 y 3 (ausencia de raíces racionales)}
+
+\textbf{Referencia:} Clase 3, págs.\,5–6.
+
+\textbf{Enunciado:}  
+Un polinomio cuadrático o cúbico con coeficientes en $K$ es irreducible sobre $K$ si y sólo si no tiene ninguna raíz en $K$.  
+En el caso $K=\mathbb{Q}$, esto equivale a que no tenga raíces racionales (aplicable tras el criterio anterior).  
+En la clase 3 se enfatiza que, aunque la ausencia de raíces racionales no garantiza irreducibilidad en grados mayores, para grado 2 o 3 sí es condición suficiente.  
+Esto se debe a que cualquier factorización no trivial de un polinomio de grado 2 o 3 produciría al menos un factor lineal, implicando la existencia de una raíz en el cuerpo base.
+
+\textbf{Uso en el contexto:}  
+Este criterio suele aplicarse inmediatamente después del test de la raíz racional.  
+Por ejemplo, en Clase 3 se menciona que “los polinomios de grado 2 y 3 son irreducibles si y sólo si no tienen raíces en $K$”.  
+Así, tras verificar que un cúbico $f(x)$ no posee raíces racionales (mediante la lista de divisores posibles), se concluye que $f$ es irreducible en $\mathbb{Q}[x]$.  
+Stewart también utiliza este hecho en ejemplos: en la Proposición 22.4 de su libro, al analizar un cúbico general $t^{3}-s_{1}t^{2}+s_{2}t-s_{3}$, señala que la existencia de raíces racionales dependería del discriminante, y en ejemplos concretos como $t^{3}+3t+1$ comprueba que no hay raíces racionales para concluir que es irreducible.
+
+\subsection*{Lema de Gauss (Criterio de Gauss)}
+
+\textbf{Referencias:} Clase 4, págs.\,1–2; Stewart, cap.\,3 §3.3, pág.\,54.
+
+\textbf{Enunciado:}  
+El lema de Gauss afirma que si $f(x)\in\mathbb{Z}[x]$ es un polinomio \emph{primitivo} (es decir, con coeficientes enteros cuyo máximo común divisor es 1), entonces $f(x)$ es irreducible en $\mathbb{Q}[x]$ si y sólo si es irreducible en $\mathbb{Z}[x]$.  
+Equivalentemente, un polinomio con coeficientes enteros (y contenido 1) que pueda factorizarse no trivialmente en $\mathbb{Q}[x]$ también puede factorizarse en $\mathbb{Z}[x]$ (tras eliminar factores racionales comunes).  
+Gauss demostró que los factores irreducibles sobre $\mathbb{Q}$ pueden escogerse con coeficientes enteros (hasta constantes unitarias), garantizando la unicidad de factorización en $\mathbb{Q}[x]$ igual que en $\mathbb{Z}[x]$.
+
+\textbf{Uso en el contexto:}  
+Este resultado teórico permite trasladar el problema de irreducibilidad en $\mathbb{Q}[x]$ al entorno de coeficientes enteros, donde se pueden aplicar criterios aritméticos.  
+En la clase 4 se introdujo el lema de Gauss antes de presentar otros criterios, pues es la base para justificar que ciertos tests (como Eisenstein o la reducción módulo $p$) garanticen irreducibilidad en $\mathbb{Q}[x]$.  
+Stewart también lo emplea: por ejemplo, al demostrar el criterio de Eisenstein señala que “por el lema de Gauss basta con probar que $f$ es irreducible en $\mathbb{Z}[x]$”, reduciendo el problema al dominio entero.  
+En suma, Gauss asegura que los factores con coeficientes racionales no aportan nada esencialmente nuevo respecto a factores con coeficientes enteros, siempre que el polinomio sea primitivo.
+
+\subsection*{Reducción módulo $p$ (método de reducción)}
+
+\textbf{Referencias:} Clase 4, págs.\,2–3 (ejemplos); Stewart, cap.\,3 §3.3 (ejemplo en pág.\,56).
+
+\textbf{Enunciado:}  
+Reducir un polinomio módulo un primo $p$ consiste en considerar sus coeficientes en el cuerpo finito $\mathbb{F}_p$.  
+Este método es útil porque, si al reducir $f(x)$ módulo $p$ obtenemos un polinomio $\bar{f}(x)$ irreducible en $\mathbb{F}_p[x]$, entonces el polinomio original $f(x)$ es irreducible en $\mathbb{Q}[x]$.  
+Esto se cumple siempre que $p$ no divida al coeficiente líder (para que $\deg\bar f=\deg f$) y que $f$ sea primitivo (condición asegurada por Gauss).  
+En la práctica, buscar un primo “bueno” es clave: uno intenta encontrar $p$ tal que $\bar f(x)$ no factorice en $\mathbb{F}_p$.  
+Si lo logra, queda probado que $f$ era irreducible sobre $\mathbb{Q}$.
+
+\textbf{Uso en el contexto:}  
+En la clase 4 se muestran ejemplos ilustrativos.  
+Por un lado, se advierte que la reducción módulo $p$ es un criterio suficiente pero no necesario: puede ocurrir que un polinomio reducible en $\mathbb{Q}[x]$ aparezca irreducible módulo cierto $p$, o viceversa.  
+Por ejemplo, en clase se dio un polinomio que es reducible en $\mathbb{Q}[x]$ pero cuya imagen mod $p$ resulta irreducible, así como un polinomio irreducible en $\mathbb{Q}$ cuya reducción mod algún $p$ factoriza.  
+Estas situaciones no contradicen el criterio —solo indican que una elección inapropiada de $p$ no arroja información concluyente.  
+Sin embargo, cuando sí se halla un $p$ adecuado, la reducción modular es poderosa.  
+Por ejemplo, supongamos $f(x)=x^{4}+3x+1\in\mathbb{Q}[x]$; si al reducir mod $p=2$ obtenemos $\bar f(x)=x^{4}+x+1$ y verificamos que $\bar f(x)$ no tiene raíces en $\mathbb{F}_2$ ni factor cuadrático (es irreducible en $\mathbb{F}_2[x]$), entonces podemos concluir que $f(x)$ es irreducible sobre $\mathbb{Q}$.  
+Stewart aplica esta idea en ejercicios y ejemplos; por ejemplo, sugiere para $t^{4}+t^{3}+t^{2}+t+1$ hacer la sustitución $t=u+1$ y luego reducir mod $p$ para aplicar Eisenstein – un enfoque que combina reducción modular con criterio de Eisenstein.  
+En resumen, encontrar un primo que simplifique la factorización de $f(x)$ (o la imposibilite) es un método práctico de irreducibilidad, garantizado teóricamente por el lema de Gauss.
+
+\subsection*{Criterio de Eisenstein}
+
+\textbf{Referencias:} Clase 4, pág.\,4; Stewart, cap.\,3 §3.4, págs.\,55–56.
+
+\textbf{Enunciado:}  
+El criterio de Eisenstein proporciona una condición aritmética suficiente para la irreducibilidad.  
+Dice que, si existe un primo $q$ tal que
+\begin{enumerate}
+  \item $q$ divide a todos los coeficientes $a_0,\dots,a_{n-1}$ (los no líderes) de $f(x)=a_nx^{n}+\cdots+a_0$,
+  \item $q$ no divide al coeficiente líder $a_n$, y
+  \item $q^{2}$ no divide al término independiente $a_0$,
+\end{enumerate}
+entonces $f(x)$ es irreducible sobre $\mathbb{Q}$.  
+En símbolos, una condición típica es:
+\[
+  a_n \not\equiv 0 \pmod{q}, \qquad
+  a_i \equiv 0 \pmod{q}\ \text{para}\ 0\le i<n, \qquad
+  a_0 \not\equiv 0 \pmod{q^{2}}.
+\]
+\paragraph*{Uso en el contexto:}
+La clase 4 presentó este criterio después del lema de Gauss, destacando su utilidad para detectar irreducibilidad de muchos polinomios donde otros tests no son obvios. En particular, se dieron ejemplos clásicos: por Eisenstein con $q=2$ se concluye que polinomios como $x^5 - 2$, $x^{10}-2$ o en general $x^n - 2$ son irreducibles en $\mathbb{Q}[x]$ (ya que $2$ divide a todos los coeficientes excepto el líder, y $2^2=4$ no divide al término $-2$). Stewart enuncia formalmente el criterio (Teorema 3.19) y lo prueba usando el lema de Gauss  . Por ejemplo, Stewart aplica Eisenstein en $q=3$ al polinomio $f(t)=\tfrac{1}{2}t^5+\tfrac{1}{2}t^4+t^3+\tfrac{1}{2}$ llevado a enteros (multiplicando por 2) , concluyendo que es irreducible. Este criterio aparece también en la resolución de polinomios ciclotómicos: para mostrar que $\Phi_{17}(x)=x^{16}+x^{15}+\cdots+x+1$ es irreducible, se considera $x= y+1$ y se reduce módulo 17, quedando en una forma a la que se aplica Eisenstein  . En resumen, el criterio de Eisenstein es una herramienta muy potente para casos donde un solo primo controla la divisibilidad de los coeficientes del polinomio.
+
+\subsection*{Polinomios binomiales $x^p - a$ (criterio especial)}
+
+\textbf{Referencias:} Clase 8 (extensiones radicales); Stewart, cap.\,5 (Natural Irrationalities), págs.\,122–123.
+
+\textbf{Enunciado:}  
+Un caso importante en teoría de cuerpos es el polinomio $x^p - a \in \mathbb{Q}[x]$, con $p$ primo. Existe un resultado clave que asegura: si $a$ no es la $p$-ésima potencia de ningún número racional, entonces $x^p - a$ es irreducible en $\mathbb{Q}[x]$. Equivalentemente, si $a$ es “nuevo” como $p$-ésima raíz (no pertenece ya a $\mathbb{Q}$), su polinomio minimal tiene grado $p$. Este hecho se puede demostrar de varias formas; una elegante es considerar una raíz $,\alpha=\sqrt[p]{a}$ y utilizar la teoría de Galois (introduciendo raíces $p$-ésimas de la unidad) para llegar a una contradicción si $x^p-a$ fuera reducible . En su libro, Stewart presenta una prueba detallada por contradicción: asume que $x^p - a$ factoriza, toma $P(t)$ un factor irreducible de menor grado, y emplea las $p$-ésimas raíces de la unidad para generar varios factores $P_j(t)$ —llegando a que necesariamente $x^p - a$ tendría una raíz racional $b$ con $b^p=a$, contraviniendo la hipótesis de que $a$ no es una potencia $p$-ésima racional . Por lo tanto, $x^p - a$ debe ser irreducible.
+
+\textbf{Uso en el contexto:}  
+Este criterio se menciona típicamente al construir extensiones radicales. En la Clase 8 (Teoría de Galois), al introducir extensiones del tipo $\mathbb{Q}(\sqrt[p]{a})$, se señala que el polinomio $x^p - a$ (cuando $a$ no es un $p$-ésimo poder en $\mathbb{Q}$) es precisamente el polinomio mínimo de $\sqrt[p]{a}$ sobre $\mathbb{Q}$, y de grado $p$. Esto justifica que $[\mathbb{Q}(\sqrt[p]{a}):\mathbb{Q}] = p$. Stewart discute este resultado en el contexto de “irracionalidades naturales” , ya que es fundamental para entender extensiones como $\mathbb{Q}(\sqrt[3]{2})$ (donde $x^3-2$ es irreducible, consistente con Eisenstein) o en general $\mathbb{Q}(\sqrt[p]{a})$. En resumen, este método/caso especial establece un criterio sencillo: si $a$ no tiene una $p$-ésima raíz en $\mathbb{Q}$, entonces $x^p - a$ es irreducible . (Por contraste, si $a = b^p$ sí es un $p$-ésimo poder trivial en $\mathbb{Q}$, entonces $x^p - a = x^p - b^p$ factoriza como $(x-b)^p$ en polinomios lineales.) Este criterio especial es consistente con Eisenstein (por ejemplo $x^5-2$ cumple Eisenstein con $q=2$) pero abarca también casos que pueden no ser evidentes de inmediato por Eisenstein directo.
+
+\paragraph*{Ejemplo:}
+$x^7 - 3$ es irreducible en $\mathbb{Q}[x]$ porque $3$ no es la séptima potencia de un racional. En cambio, $x^4 - 16$ no cumple el criterio (16 es $2^4$, una 4ª potencia racional) y de hecho $x^4-16$ es reducible: $x^4-16=(x^2-4)(x^2+4)$. Estos ejemplos corroboran la condición y su necesidad. En suma, este método proporciona un test rápido para polinomios binomiales de exponente primo, alineado con los criterios anteriores (y suele generalizarse a $x^n - a$ considerando todos los divisores propios de $n$).
+
+\medskip
+\noindent
+\textit{Fuentes:} Los criterios anteriores están expuestos y ejemplificados en los materiales de la asignatura (Clases 1–13) y en \emph{Galois Theory} de Ian Stewart. Se han citado las fuentes correspondientes en cada caso para consulta detallada. Cada criterio aporta una herramienta distinta para abordar la irreducibilidad, y en conjunto permiten analizar una amplia gama de polinomios de forma eficaz.
+\end{document}

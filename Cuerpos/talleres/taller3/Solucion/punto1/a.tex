@@ -1,0 +1,71 @@
+\begin{solucion}
+ Sea $\alpha\in\mathbb{C}$ una raíz de $f(x)=x^{3}-3x+1$ entonces:
+ \begin{align*}
+    f(\alpha)&=\alpha^{3}-3\alpha+1=0 \quad \Rightarrow \quad \alpha^{3}=3\alpha-1 \qquad \text{(1.1)}\\
+ \end{align*}
+Queremos ver que $\beta=\alpha^{2}-2$ es raíz de $f$. Por lo que Sustituyendo en $f(x=\beta)$: 
+\[
+f(\beta)\;=\;(\alpha^{2}-2)^{3}-3(\alpha^{2}-2)+1.
+\]
+Expandiendo el término cúbico:
+\[
+(\alpha^{2}-2)^{3}\;=\;\alpha^{6}-6\alpha^{4}+12\alpha^{2}-8.
+\]
+Notemos que:
+\begin{align*}
+    \alpha^{4}&=\alpha\cdot\alpha^{3}\\
+    &=\alpha(3\alpha-1) \qquad \text{usando (1.1)}\\
+    &=3\alpha^{2}-\alpha,
+\end{align*}
+Por lo tanto:
+\begin{align*}
+    \alpha^{6}&=(\alpha^{3})^{2}\\
+    &=(3\alpha-1)^{2}\\
+    &=9\alpha^{2}-6\alpha+1\\
+\end{align*}
+
+Sustituyendo en la expresión de $f(\beta)$,
+\begin{align*}
+f(\beta)
+  &=\bigl(\alpha^{6}-6\alpha^{4}+12\alpha^{2}-8\bigr)-3(\alpha^{2}-2)+1\\
+  &=\bigl(9\alpha^{2}-6\alpha+1\bigr)-6(3\alpha^{2}-\alpha)
+     +12\alpha^{2}-8-3\alpha^{2}+6+1\\
+  &=9\alpha^{2}-6\alpha+1-18\alpha^{2}+6\alpha
+     +12\alpha^{2}-8-3\alpha^{2}+7\\
+  &=(9-18+12-3)\alpha^{2}+(-6\alpha+6\alpha)+(1-8+7)\\
+  &=0+0+0 \;=\;0.
+\end{align*}
+De este modo, $f(\beta)=0$. Asi hemos demostrado que si $\alpha$ es raíz de $f(x)$, entonces
+$\beta=\alpha^{2}-2$ también lo es. Por ultimo como $\beta$ es raíz entonces usando la misma relación concluimos que:
+\[
+\gamma=(\alpha^{2}-2)^{2}-2=(\beta)^{2}-2.
+\]
+también es raíz de $f(x)$.
+
+
+Este resultado implica que las raíces de $f$ están relacionadas: a partir de una raíz $\alpha$,  
+otra raíz se obtiene mediante la transformación $\alpha \mapsto \alpha^{2}-2$.  
+Si denotamos $\gamma=\beta^{2}-2=(\alpha^{2}-2)^{2}-2$, esta sería la tercera raíz del polinomio.  
+De hecho, aplicando una vez más la transformación, $\gamma^{2}-2$ vuelve a darnos $\alpha$,  
+cerrando un \textbf{ciclo de longitud 3} entre las raíces.  
+Esto concuerda con el hecho de que las tres raíces de $f(x)$ son \textbf{raíces conjugadas} entre sí,  
+es decir, todas satisfacen el mismo polinomio mínimo irreducible sobre $\mathbb{Q}$  
+[Clase 13, pág.\ 2].  
+En otras palabras, $\alpha$, $\beta$ y $\gamma$ son conjugadas algebraicas.  
+Concluimos que $\beta$ es raíz de $f$ siempre que $\alpha$ lo sea, como se quería demostrar.
+
+
+% Este resultado implica que las raíces de $f$ están relacionadas:  
+% a partir de una raíz $\alpha$, otra raíz se obtiene mediante la transformación
+% $\alpha\mapsto\alpha^{2}-2$.  
+% Si denotamos
+% \[
+% \gamma=\beta^{2}-2=(\alpha^{2}-2)^{2}-2,
+% \]
+% se obtiene la tercera raíz del polinomio.  
+% Al aplicar de nuevo la transformación, $\gamma^{2}-2=\alpha$, cerrándose un ciclo de longitud
+% $3$.  Esto concuerda con que las tres raíces de $f(x)$ son conjugadas entre sí, es decir,
+% satisfacen el mismo polinomio mínimo irreducible sobre $\mathbb{Q}$ [Clase 13, pág.~2].  
+% Concluimos que $\beta$ es raíz de $f$ siempre que $\alpha$ lo sea.
+
+\end{solucion}

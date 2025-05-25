@@ -1,0 +1,22 @@
+\begin{solucion}
+Note que si $\alpha$ es raíz de $f(x)$ de multiplicidad $m \ge 1$, entonces:
+$$f(x) = (x-\alpha)^m \, g(x)$$ 
+con $g(x) \in K[x]$ y $g(\alpha) \neq 0$. Al derivar formalmente, se obtiene 
+$$f'(x) = m\,(x-\alpha)^{\,m-1}g(x) + (x-\alpha)^m g'(x).$$ 
+De este modo $f'(\alpha) = 0$. si $m \ge 2$. Por lo que $\alpha$ es una raiz múltiple de $f$ (multiplicidad $\ge 2$) si y solo si $f(\alpha) = 0$ y $f'(\alpha) = 0$. Por lo que:
+\begin{itemize}
+    \item ($\Rightarrow$) Supongamos que $f(x)$ no tiene raíces múltiples. Queremos ver que $\gcd(f,\,f') = 1$. Asi por \textbf{contradicción} supongamos que $\gcd(f,\,f') = d(x)$ con $\partial(d) \ge 1$. Dado que $d(x)$ es un divisor común no constante, podemos tomar $d(x)$ irreducible, pues si no, podemos factorizar $d(x)$ en factores irreducibles y tomar el máximo de ellos. Entonces $d(x)$ divide a $f(x)$ y también divide a $f'(x)$.
+Al ser $d(x)$ irreducible de grado $\ge 1$, por lo que $\alpha$ es raíz de $f$ y también de $f'$ debido a que $d(x)$ divide a ambos polinomios, es decir $f(\alpha)=0$ y $f'(\alpha)=0$. Por lo dicho anteriormente, $\alpha$ es una raíz múltiple de $f$. Esto contradice la hipótesis de que $f$ no tiene raíces múltiples. Por lo tanto, no puede existir tal $d(x)$ no constante. Asi, $\gcd(f,\,f')=1$.
+
+    \item ($\Leftarrow$) Ahora supongamos $\gcd(f,\,f') = 1$ y demostremos que $f(x)$ no tiene raíces múltiples. Dados $f(x),f'(x) \in K[x]$ existen polinomios $A(x), B(x) \in K[x]$ tales que 
+    \[A(x)\,f(x) + B(x)\,f'(x) = 1 \quad \text{la \textit{identidad de Bézout}}
+    \]
+    Por lo que $1$ está en el ideal generado por $f$ y $f'$, lo cual equivale a que $f$ y $f'$ son coprimos esto es $\gcd(f,f')=1$.
+    
+    Sea ahora $\alpha$ una raíz cualquiera de $f(x)$ donde consideramos un cuerpo  donde $f$ se factorice completamente. Entonces $f(\alpha)=0$. Sustituyendo $x=\alpha$ en la lo anterior, obtenemos:
+    \[A(\alpha)\,f(\alpha) + B(\alpha)\,f'(\alpha) = 1.\] 
+Dado que $f(\alpha)=0$, entonces $B(\alpha)\,f'(\alpha) = 1$. Por lo que $B(\alpha)\,f'(\alpha) \neq 0$, lo que implica \mbox{$f'(\alpha) \neq 0$}, $K$ ya que estamos en un cuerpo, $B(\alpha)f'(\alpha)=1$ asi se cumple que $f'(\alpha) \neq 0$. Por lo tanto, $\alpha$ no es una raíz múltiple de $f$. Por lo que $f$ no tiene raíces múltiples.
+    
+\end{itemize}
+ \qed
+\end{solucion}

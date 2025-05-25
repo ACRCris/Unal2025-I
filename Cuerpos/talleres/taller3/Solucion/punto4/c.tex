@@ -1,0 +1,91 @@
+\begin{solucion}
+
+Sea $\alpha = \sqrt{2 + \sqrt{2}}$. Para determinar el grado de la extensión $\mathbb{Q}(\alpha)$, buscaremos su un subcuerpo intermedio que nos permita aplicar el Teorema de la Torre.
+Observemos que $\mathbb{Q}(\alpha)$ contiene a $\sqrt{2}$, ya que:
+\[
+\alpha^2 = 2 + \sqrt{2} \quad \Rightarrow \quad \sqrt{2} = \alpha^2 - 2 \in \mathbb{Q}(\alpha).
+\]
+Por lo tanto, $\mathbb{Q}(\sqrt{2})$ es un subcampo de $\mathbb{Q}(\alpha)$. El polinomio mínimo de $\sqrt{2}$ sobre $\mathbb{Q}$ es $x^2 - 2$, que es irreducible (ya que $2$ no es un cuadrado racional), así que:
+\[
+[\mathbb{Q}(\sqrt{2}) : \mathbb{Q}] = 2.
+\]
+Por lo que si consideramos ahora la extensión $\mathbb{Q}(\sqrt{2}, \alpha)$. Dentro de $\mathbb{Q}(\sqrt{2})$, el elemento $\alpha$ satisface:
+\[
+\alpha^2 = 2 + \sqrt{2},
+\]
+es decir, $\alpha$ es raíz del polinomio:
+\[
+f(x) = x^2 - (2 + \sqrt{2}) \in \mathbb{Q}(\sqrt{2})[x].
+\]
+Supongamos que $\alpha \in \mathbb{Q}(\sqrt{2})$, es decir, que existen $a, b \in \mathbb{Q}$ tales que $\alpha = a + b\sqrt{2}$. Elevando al cuadrado:
+\[
+\alpha^2 = a^2 + 2ab\sqrt{2} + 2b^2.
+\]
+Igualamos con $2 + \sqrt{2}$ y separamos en partes racionales e irracionales:
+\[
+\begin{cases}
+a^2 + 2b^2 = 2,\\
+2ab = 1.
+\end{cases}
+\]
+De la segunda ecuación, $a = \frac{1}{2b}$ (con $b \ne 0$). Sustituyendo en la primera:
+\[
+\left(\frac{1}{2b}\right)^2 + 2b^2 = 2 \quad \Rightarrow \quad \frac{1}{4b^2} + 2b^2 = 2.
+\]
+Multiplicamos por $4b^2$:
+\[
+1 + 8b^4 = 8b^2 \quad \Rightarrow \quad 8b^4 - 8b^2 + 1 = 0.
+\]
+Esta es una ecuación cuadrática en $u = b^2$:
+\[
+8u^2 - 8u + 1 = 0,
+\]
+con soluciones:
+\[
+u = \frac{8 \pm \sqrt{64 - 32}}{16} = \frac{8 \pm \sqrt{32}}{16} = \frac{4 \pm 2\sqrt{2}}{8}.
+\]
+Este valor no es racional, por lo tanto $b^2 \notin \mathbb{Q}$ y hemos llegado a una contradicción. Así, $\alpha \notin \mathbb{Q}(\sqrt{2})$.
+
+Entonces $f(x)$ es irreducible en $\mathbb{Q}(\sqrt{2})[x]$, y el grado de la extensión es:
+\[
+[\mathbb{Q}(\sqrt{2}, \alpha) : \mathbb{Q}(\sqrt{2})] = 2.
+\]
+La cadena de cuerpos es:
+\[
+\mathbb{Q} \subset \mathbb{Q}(\sqrt{2}) \subset \mathbb{Q}(\alpha).
+\]
+Por la multiplicación de grados:
+\[
+[\mathbb{Q}(\alpha) : \mathbb{Q}] = [\mathbb{Q}(\alpha) : \mathbb{Q}(\sqrt{2})] \cdot [\mathbb{Q}(\sqrt{2}) : \mathbb{Q}] = 2 \cdot 2 = 4.
+\]
+
+
+% Partiendo de $\alpha = \sqrt{2 + \sqrt{2}}$:
+
+% \[
+% \begin{aligned}
+% \alpha^2 &= 2 + \sqrt{2}, \\
+% \alpha^2 - 2 &= \sqrt{2}, \\
+% (\alpha^2 - 2)^2 &= 2, \\
+% \alpha^4 - 4\alpha^2 + 4 &= 2, \\
+% \alpha^4 - 4\alpha^2 + 2 &= 0.
+% \end{aligned}
+% \]
+
+% Entonces $\alpha$ es raíz del polinomio $x^4 - 4x^2 + 2$. Este polinomio es irreducible en $\mathbb{Q}[x]$ (no tiene raíces racionales y pasa el criterio de Eisenstein con $p = 2$ sobre el cambio $x \mapsto x^2$), confirmando que:
+% \[
+% [\mathbb{Q}(\alpha) : \mathbb{Q}] = 4.
+% \]
+
+% \subsection*{Base de la extensión}
+
+% Una base válida para $\mathbb{Q}(\alpha)$ sobre $\mathbb{Q}$ es:
+% \[
+% \{\,1,\ \sqrt{2},\ \alpha,\ \alpha\sqrt{2}\,\},
+% \]
+% producto de las bases de $\mathbb{Q}(\sqrt{2})$ sobre $\mathbb{Q}$ y de $\mathbb{Q}(\alpha)$ sobre $\mathbb{Q}(\sqrt{2})$. Alternativamente, se puede usar la base:
+% \[
+% \{\,1,\ \alpha,\ \alpha^2,\ \alpha^3\,\},
+% \]
+% derivada del polinomio mínimo de grado $4$.
+\end{solucion}
