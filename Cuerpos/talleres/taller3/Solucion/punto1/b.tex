@@ -6,41 +6,43 @@
         f(1) &= 1^3 - 3\cdot1 + 1 = -1 \\
         f(-1) &= (-1)^3 - 3\cdot(-1) + 1 = 3~.
     \end{align*}
+    Por lo tanto, $f(x)$ no tiene raíces racionales, por lo tanto $f$ es irreducible en $\mathbb{Q}[x]$ 
     % (por ejemplo, $f(0)=1$, $f(1)=-1$, $f(-1)=3$
     % [Clase 3, pág. 5], por lo tanto $f(x)$ es irreducible en $\mathbb{Q}[x]$. Dado que $f$ es de grado 3, la única forma en que podría factorizarse sobre $\mathbb{Q}$ sería como el producto de un polinomio lineal y uno cuadrático. La ausencia de raíces racionales descarta la existencia de factores lineales en $\mathbb{Q}[x]$, luego $f$ no es reducible en $\mathbb{Q}$ [Clase 4, pág. 2]. Concluimos que $f(x)$ es un polinomio irreducible sobre $\mathbb{Q}$.
+	\item \textbf{f(x) es minimal de $\alpha$ sobre $\mathbb Q$}:  Dado que $f$ es irreducible y $\alpha$ es una de sus raíces, $f(x)$ coincide con el polinomio mínimo de $\alpha$ sobre $\mathbb{Q}$, pues en otro caso si $m(x)$ fuera el minimal de $\alpha$ con $\partial(m)\leq\partial(f)$ entonces $m|f$ no cual contradice que $f$ es irreducible, asi $f$ y $m$ pueden diferir por una constante, pero como $f$ es monico entonces $f=m$. 
     
+    \item \textbf{El grado de la extension $[\mathbb Q(\alpha):\mathbb Q]$ es 3} Dado que $f(x)$ es un polinomio minimal de $\alpha$ sobre $\mathbb{Q}$ de grado $3$, y como el grado de una extensión simple generada por un elemento algebraico es igual al grado del polinomio mínimo de dicho elemento entonces se tiene que $[\mathbb{Q}(\alpha):\mathbb{Q}] = \deg(f) = 3$.
 
-	\item \textbf{Polinomio mínimo y grado de la extensión}:  Dado que $f$ es irreducible y $\alpha$ es una de sus raíces, $f(x)$ coincide con el polinomio mínimo de $\alpha$ sobre $\mathbb{Q}$ [Clase 5, pág. 3]. Por lo tanto, la extensión $\mathbb{Q}(\alpha)$ tiene grado $3$ sobre $\mathbb{Q}$, es decir $[\mathbb{Q}(\alpha):\mathbb{Q}] = 3$ [Clase 6, pág. 2]. Este resultado se basa en el teorema que establece que el grado de una extensión simple generada por un elemento algebraico es igual al grado del polinomio mínimo de dicho elemento [Clase 6, pág. 2].
-
-	\item \textbf{Campo que contiene a todas las raíces}:  Gracias al inciso (a), sabemos que si $\alpha$ es una raíz de $f$, entonces $\beta = \alpha^2 - 2$ y $\gamma = (\alpha^2-2)^2 - 2$ son las otras dos raíces del polinomio (todas distintas entre sí). Observemos que tanto $\beta$ como $\gamma$ pertenecen a $\mathbb{Q}(\alpha)$, ya que
+	\item \textbf{Campo que contiene a todas las raíces}:  Por el literal (a), sabemos que si $\alpha$ es una raíz de $f$, entonces $\beta = \alpha^2 - 2$ y $\gamma = (\alpha^2-2)^2 - 2$ son las otras dos raíces del polinomio (todas distintas entre sí). Observemos que tanto $\beta$ como $\gamma$ pertenecen a $\mathbb{Q}(\alpha)$, ya que
+	\begin{align*}
+        \beta = \alpha^2 - 2 \in \mathbb{Q}(\alpha), \qquad \gamma = (\alpha^2 - 2)^2 - 2 \in \mathbb{Q}(\alpha),
+    \end{align*}
+    Es decir que $\beta$ y $\gamma$ son expresiones racionales de $\alpha$ y por lo tanto pertenecen a $\mathbb{Q}(\alpha)$.
 \end{enumerate}
 
-\begin{align*}
-\beta = \alpha^2 - 2 \in \mathbb{Q}(\alpha), \qquad \gamma = (\alpha^2 - 2)^2 - 2 \in \mathbb{Q}(\alpha),
-\end{align*}
+De $4$ se concluye que el cuerpo de descomposición $L$ de $f(x)$ es $\mathbb{Q}(\alpha)$, pues en este el polinomio $f(x)$ se descompone totalmente. Y de $3$ se concluye que el grado de la extensión de descomposición de $f(x)$ sobre $\mathbb{Q}$ es $3$. Por lo tanto, el grado del cuerpo de descomposición $[L:\mathbb{Q}] = [\mathbb{Q}(\alpha):\mathbb{Q}] = 3$.
 
-por ser combinaciones polinómicas de $\alpha$ con coeficientes en $\mathbb{Q}$. En consecuencia, todas las raíces ${\alpha,\beta,\gamma}$ están contenidas en el campo $\mathbb{Q}(\alpha)$. Esto demuestra que $\mathbb{Q}(\alpha)$ ya es un campo que contiene a todas las raíces de $f(x)$, y por la minimalidad del cuerpo de descomposición se sigue que
-\begin{align*}
-    L = \mathbb{Q}(\alpha)~.
-\end{align*}
+% por ser combinaciones polinómicas de $\alpha$ con coeficientes en $\mathbb{Q}$. En consecuencia, todas las raíces ${\alpha,\beta,\gamma}$ están contenidas en el campo $\mathbb{Q}(\alpha)$. Esto demuestra que $\mathbb{Q}(\alpha)$ ya es un campo que contiene a todas las raíces de $f(x)$, y por la minimalidad del cuerpo de descomposición se sigue que
+% \begin{align*}
+%     L = \mathbb{Q}(\alpha)~.
+% \end{align*}
 
-Finalmente, puesto que $L = \mathbb{Q}(\alpha)$, se tiene inmediatamente que
-\begin{align*}
-    [L : \mathbb{Q}] \;=\; [\mathbb{Q}(\alpha) : \mathbb{Q}] \;=\; 3~,
-\end{align*}
-como determinamos en el paso 2. Por lo tanto, el grado de la extensión de descomposición de $f(x)$ sobre $\mathbb{Q}$ es $\mathbf{3}$.
+% Finalmente, puesto que $L = \mathbb{Q}(\alpha)$, se tiene inmediatamente que
+% \begin{align*}
+%     [L : \mathbb{Q}] \;=\; [\mathbb{Q}(\alpha) : \mathbb{Q}] \;=\; 3~,
+% \end{align*}
+% como determinamos en el paso 2. Por lo tanto, el grado de la extensión de descomposición de $f(x)$ sobre $\mathbb{Q}$ es $\mathbf{3}$.
 
-\vspace{1em}
 
-Conceptos y resultados utilizados:
+% Conceptos y resultados utilizados:
 
-\begin{tabular}{ll}
-• Polinomio irreducible: & Definición de polinomio irreducible en $\mathbb{Q}[x]$ (Clase 3, pág. 5).\\
-• Criterio de la raíz racional: & Un polinomio con coeficientes enteros sin raíz racional de la forma $\frac{p}{q}$ 
-es irreducible en $\mathbb{Q}[x]$ si $\deg=3$ (Clase 4, pág. 2).\\
-• Polinomio mínimo: & Existencia/definición del polinomio mínimo de un elemento algebraico (Clase 5, pág. 3).\\
-• Grado de extensión: & $[\mathbb{Q}(\alpha):\mathbb{Q}] = \deg(\text{polinomio mínimo de }\alpha)$ (Clase 6, pág. 2).\\
-• Raíces conjugadas: & Raíces algebraicas que comparten el mismo polinomio mínimo irreducible (Clase 13, pág. 2).\\
-• Cuerpo de descomposición: & Campo más pequeño que contiene todas las raíces de $f(x)$ (Clase 12, pág. 4).\\
-\end{tabular}
+% \begin{tabular}{ll}
+% • Polinomio irreducible: & Definición de polinomio irreducible en $\mathbb{Q}[x]$ (Clase 3, pág. 5).\\
+% • Criterio de la raíz racional: & Un polinomio con coeficientes enteros sin raíz racional de la forma $\frac{p}{q}$ 
+% es irreducible en $\mathbb{Q}[x]$ si $\deg=3$ (Clase 4, pág. 2).\\
+% • Polinomio mínimo: & Existencia/definición del polinomio mínimo de un elemento algebraico (Clase 5, pág. 3).\\
+% • Grado de extensión: & $[\mathbb{Q}(\alpha):\mathbb{Q}] = \deg(\text{polinomio mínimo de }\alpha)$ (Clase 6, pág. 2).\\
+% • Raíces conjugadas: & Raíces algebraicas que comparten el mismo polinomio mínimo irreducible (Clase 13, pág. 2).\\
+% • Cuerpo de descomposición: & Campo más pequeño que contiene todas las raíces de $f(x)$ (Clase 12, pág. 4).\\
+% \end{tabular}
 \end{solucion}
