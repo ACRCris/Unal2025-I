@@ -1,0 +1,29 @@
+\begin{solucion}
+    Si particionamos el multiconjunto:
+    \begin{align*}
+        \{1\cdot\infty,2\cdot,\ldots,n\cdot,(n+1)\cdot\infty,\ldots\infty,(n+m)\cdot \infty\}
+    \end{align*}
+    en dos subconjuntos:
+    \begin{align*}
+        A=\{1\cdot\infty,2\cdot,\ldots,n\cdot \infty\} \quad \text{y} \quad B=\{(n+1)\cdot\infty,\ldots\cdot\infty,(n+m)\cdot \infty\}
+    \end{align*}
+    y como para todo $k = 0,1,\ldots,r$, tenemos que $r=k+(r-k)$, entonces para $k \in \{0,1,\ldots,r\}$ calculamos la combinaciones:
+    \begin{align*}
+       \left| \left(\binom{n+1}{k}\right) \right| &= \left| \{\{k_1 \cdot 1, k_2 \cdot 2, \ldots, k_n \cdot n\}: \sum_{i=1}^n k_i=k\} \right| \\
+       &= \left(\binom{n+1}{k}\right)
+    \end{align*}
+    Asi para el otro subconjunto podemos seleccionar de forma independiente $r-k$ elementos de $B$:
+    \begin{align*}
+        \left| \left(\binom{m}{r-k}\right) \right| &= \left| \{\{k'_1 \cdot (n+1), k'_2 \cdot (n+2), \ldots, k'_m \cdot (n+m)\}: \sum_{i=1}^m k_i'=r-k\} \right| \\
+        &= \left(\binom{m}{r-k}\right)
+    \end{align*}
+    Por lo tanto, el número total de combinaciones para $r(k)$ es:
+    \begin{align*}
+       &\left(\binom{n+1}{k}\right) \cdot \left(\binom{m}{r-k}\right) = \\
+       &\left| \{\{k_1 \cdot 1, \ldots, k_n \cdot n, k'_1 \cdot (n+1), \ldots, k'_m \cdot (n+m)\}: \sum_{i=1}^n k_i + \sum_{i=1}^m k'_i = r\} \right| \\
+    \end{align*}
+    Por lo que sumando para $k=0$ hasta $k=m$, pues estos forma casos disjuntos, tenemos:
+    \begin{align*}
+        \sum_{k=0}^m\left(\binom{n+1}{k}\right) \cdot \left(\binom{m}{r-k}\right) &= \left(\binom{n+m}{r}\right) \\
+    \end{align*}
+\end{solucion}

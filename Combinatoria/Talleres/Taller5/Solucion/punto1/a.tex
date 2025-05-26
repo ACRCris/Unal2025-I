@@ -1,0 +1,135 @@
+\begin{solucion}
+    \textbf{Demostración 1.}
+
+    Definamos $\left(\binom{[n]}{k}\right)$, como el conjunto de todos los posibles k-combinaciones del multiconjunto:
+    \begin{align*}
+        \{
+            1\cdot\infty, 2\cdot\infty, \ldots, n\cdot\infty
+        \}
+    \end{align*}
+    Es decir:
+    \begin{align*}
+        \left(\binom{[n]}{k}\right) = \left\{
+            \{k_1\cdot 1, k_2\cdot 2, \ldots, k_n\cdot n\}:k_i \in \mathbb N \text{ para todo $i$ } \text{ y } \sum_{i=1}^n k_i = k
+        \right\}
+    \end{align*}
+    Note que $k_i$ puede ser cero para algunos $i = 1, \ldots, n$. De esta forma:
+    \begin{align*}
+        \left|\left(\binom{[n+2]}{m}\right)\right|= \left|
+            \{
+                \{k_1\cdot 1, k_2\cdot 2, \ldots, k_{n+2}\cdot (n+2)\}:k_i \in \mathbb N \text{ para todo $i$ } \text{ y } \sum_{i=1}^{n+2} k_i = m
+            \}
+        \right|
+    \end{align*}
+    \begin{align*}
+        \left|
+           \bigcup_{k=0}^m \left(\binom{[n+1]}{k}\right)
+        \right| = \sum_{k=0}^m \left|\left(\binom{[n+1]}{k}\right)\right|
+    \end{align*}
+    Lo cual es posible pues para $i\neq j$, $\left(\binom{[n+1]}{i}\right)\cap\left(\binom{[n+1]}{j}\right)=\emptyset$, pues $\left(\binom{[n+1]}{i}\right)$ contiene multiconjuntos de tamaño $i$ y $\left(\binom{[n+1]}{j}\right)$ contiene multiconjuntos de tamaño $j$.
+
+Asi definimos la función $f$ como:
+\begin{align*}
+    f:\left(\binom{[n+2]}{m}\right) &\to \bigcup_{k=0}^m \left(\binom{[n+1]}{k}\right)\\
+    \{k_i\cdot i\}_{i=1}^{n+2} &\mapsto \{k_i\cdot i\}_{i=1}^{n+1} 
+\end{align*}
+
+Note que si $k_i = 0$ entonces $i \notin \left(\binom{[n+1]}{k}\right)$. De este modo si $k_i = 0$ para todo $i \leq n+1$ entonces $k= k_1+k_2+\ldots+k_{n+1} = 0$ y por tanto:
+\begin{align*}
+    \{0\cdot 1, 0\cdot 2, \ldots, 0\cdot n+1\} = \emptyset
+\end{align*}
+Por lo que:
+\begin{align*}
+    \left(\binom{[n+1]}{0}\right) = \left\{
+        \{0\cdot 1, 0\cdot 2, \ldots, 0\cdot n+1\}
+    \right\}=\left\{
+        \emptyset
+    \right\}
+\end{align*}        
+$f$ es también definida, por lo que veamos que $f$ es inyectiva:
+\begin{align*}
+    f(\{k_i\cdot i\}_{i=1}^{n+2}) = f(\{k'_i\cdot i\}_{i=1}^{n+2})\quad \implies \quad  \{k_i\cdot i\}_{i=1}^{n+1} = \{k'_i\cdot i\}_{i=1}^{n+1}
+\end{align*}
+Luego $k_i = k'_i$ para todo $i=1,\ldots,n+1$. Por lo que:
+\begin{align*}
+    \{k_i\cdot i\}_{i=1}^{n+2} = \{k'_i\cdot i\}_{i=1}^{n+2}
+\end{align*}
+Por lo que $f$ es inyectiva.
+
+Ahora veamos que $f$ es sobreyectiva. Sea 
+\begin{align*}
+    \{k_i\cdot i\}_{i=1}^{n+1} \in \bigcup_{k=0}^m \left(\binom{[n+1]}{k}\right)
+\end{align*}
+Entonces existe un $k$ tal que:
+\begin{align*}
+    \{k_i\cdot i\}_{i=1}^{n+1} \in \left(\binom{[n+1]}{k}\right)
+\end{align*}
+con $k_1 + k_2 + \ldots + k_{n+1} = k$. Definamos $k_{n+2} = m - k$ entonces:
+\begin{align*}
+    \sum_{i=1}^{n+2} k_i = k_1 + k_2 + \ldots + k_{n+1} + k_{n+2} = k + (m - k) = m
+\end{align*}
+por lo que:
+\begin{align*}
+    \{k_i\cdot i\}_{i=1}^{n+2} = \{k_1\cdot 1, k_2\cdot 2, \ldots, k_{n+1}\cdot (n+1), k_{n+2}\cdot (n+2)\} \in \left(\binom{[n+2]}{m}\right)
+\end{align*}
+De este modo para $\{k_i\cdot i\}_{i=1}^{n+1} \in \bigcup_{k=0}^m \left(\binom{[n+1]}{k}\right)$ existe $\{
+k_i\cdot i\}_{i=1}^{n+2} \in \left(\binom{[n+2]}{m}\right)$, con $k_{n+2} = m - k$, tal que:
+\begin{align*}
+    f(\{k_i\cdot i\}_{i=1}^{n+2}) = \{k_i\cdot i\}_{i=1}^{n+1}
+\end{align*}
+Por lo que $f$ es sobreyectiva.
+
+Finalmente, como $f$ es inyectiva y sobreyectiva, entonces $f$ es biyectiva. Por lo que:
+\begin{align*}
+    \left|\left(\binom{[n+2]}{m}\right)\right| &= 
+    \left(
+        \binom{n+2}{m}
+    \right)\\
+    &= \left|
+        \bigcup_{k=0}^m \left(\binom{[n+1]}{k}\right)
+    \right|\\
+    &= \sum_{k=0}^m \left|\left(\binom{[n+1]}{k}\right)\right|\\
+    &= \sum_{k=0}^m \left(\binom{n+1}{k}\right)\\
+\end{align*}
+Concluyendo que:
+\begin{align*}
+    \sum_{k=0}^m\left(\binom{n+1}{k}\right)=\left(\binom{n+2}{m}\right)
+\end{align*}
+\textbf{Demostración 2.}
+
+Una forma mas sencilla de demostrar la identidad es usando la regla de la adición, por medio de considerar la siguiente partición de las $k$-combinaciones del multiconjunto:
+\begin{align*}
+\left(\binom{n+2}{m}\right) = \{k_1\cdot 1, k_2\cdot 2, \ldots, k_{n+2}\cdot (n+2):k_i \in \mathbb N \text{ para todo $i$ } \text{ y } \sum_{i=1}^{n+2} k_i = m\}
+\end{align*}
+como $\{U_i\}_{k=1}^{m}$ con:
+\begin{align*}
+    U_k = \{\{k\cdot 1, k_2\cdot 2, \ldots, k_{n+2}\cdot (n+2)\}:k_i \in \mathbb N \text{ para todo $i$ } \text{ y } \sum_{i=2}^{n+2} k_i = m - k\}
+\end{align*}
+la cual cumple que:
+\begin{itemize}
+    \item 
+    \begin{align*}
+    \left|U_k\right| = \left(\binom{n+1}{k}\right) \quad k = 1, \ldots, n+2
+\end{align*}
+puesto que si fijamos el numero de $1$'s como $k$ entonces el cardinal de $U_k$ corresponderá a elegir $m-k$ combinaciones de los $n+1$ elementos restantes.
+    \item $U_k \cap U_j = \emptyset$ para $k \neq j$. Dado que si asumimos sin perdida de generalidad $k>j$ entonces toda combinación de $U_k$ tiene al menos un $1$ mas que toda combinación de $U_j$.
+    \item 
+    \begin{align*}
+        \bigcup_{k=0}^m U_k &= \left(\binom{[n+2]}{m}\right) \\
+    \end{align*}
+    Pues:
+    \begin{itemize}
+        \item [$\subseteq$] Si $X \in \bigcup_{k=0}^m U_k$ entonces $X \in U_k$ para algún $k$ y por lo tanto $X = \{k \cdot 1, k_2\cdot 2, \ldots, k_{n+2}\cdot (n+2)\}$ con $k+ \sum_{i=2}^{n+2} k_i = m$ y por lo tanto $X \in \left(\binom{[n+2]}{m}\right)$.
+        \item [$\supseteq$] Si $X \in \left(\binom{[n+2]}{m}\right)$ entonces $X = \{k_1\cdot 1, k_2\cdot 2, \ldots, k_{n+2}\cdot (n+2)\}$ con $\sum_{i=2}^{n+2}  = m - k_1$ y por lo tanto $X \in U_{k_1}$ con $k_1\leq m$. Y por lo tanto $X \in \bigcup_{k=0}^m U_k$.
+    \end{itemize}
+\end{itemize} 
+
+Asi por el principio de la adición:
+\begin{align*}
+     \left|\left(\binom{n+2}{m}\right) \right| &=
+    \left|\left(\binom{[n+2]}{m}\right) \right|\\&= \left|\bigcup_{k=0}^m U_k\right|\\
+    &= \sum_{k=0}^m \left|U_k\right|\\
+    &= \sum_{k=0}^m \left(\binom{n+1}{k}\right)
+\end{align*}
+
+\end{solucion}
