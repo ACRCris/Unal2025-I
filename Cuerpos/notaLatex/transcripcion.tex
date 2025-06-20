@@ -1,0 +1,2336 @@
+\documentclass[landscape,a4paper]{article}
+\usepackage[margin=1cm]{geometry}
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\begin{document}
+\begin{multicols}{4}
+\subsubsection*{Clase 3: Polinomios y Divisibilidad}
+% Página 1, Columna 1
+\noindent Sea $K$ un cuerpo, entonces $K[t]$ es un dominio de factorización única. $(K = \mathbb{Q}, \mathbb{R}, \mathbb{C}, \mathbb{F}_p)$.\\
+Ojo pues es necesario que $K$ sea cuerpo. (¿$\mathbb{Z}[t]$?) (p.~1, col.~1)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white,title=Definición: Divisibilidad]
+Sean $f,g \in K[t]$, decimos que $f$ divide a $g$ si existe $h \in K[t]$ tal que
+\begin{align*}
+g = f\,h,
+\end{align*}
+esto se notará $f \mid g$. \textit{(Relativo a $K$)}
+\end{tcolorbox}
+\noindent Ejemplo: ¿$(t - 1)\mid (t^3 - 1)$? Sí, pues
+\begin{align*}
+t^3 - 1 &= (t - 1)(t^2 + t + 1).
+\end{align*}
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white,title=Definición: Máximo Común Divisor]
+Sea $d \in K[t]$ un máximo común divisor de $f,g \in K[t]$ si:
+\begin{itemize}
+  \item $d \mid f$ y $d \mid g$.
+  \item Si $e \mid f$ y $e \mid g$, entonces $e \mid d$.
+\end{itemize}
+\end{tcolorbox}
+\noindent Esta definición está relacionada con la \textit{Definición de Divisibilidad} (p.~1, col.~1).
+\noindent $d$ es único salvo unidades (ej. $\mathbb{Z}[t]^\times = \{\pm1\}$).\\
+$\mathbb{Q}[t]^\times = \mathbb{Q}^\times = \mathbb{Q}\setminus\{0\}$.
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Teorema: Identidad de Bézout (p.~1, col.~1)}]
+Sean $f(t),\,g(t)\in K[t]$ no nulos, y sea $d(t)$ un máximo común divisor de $f(t)$ y $g(t)$. Entonces existen $a(t),\,b(t)\in K[t]$ tales que
+\begin{align*}
+  d(t) \;=\; a(t)\,f(t) \;+\; b(t)\,g(t).
+\end{align*}
+\end{tcolorbox}
+\vfill\null
+\columnbreak
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title=Teorema: Algoritmo de Euclides]
+Dados dos polinomios, no ambos nulos, $f(t),g(t)\in K[t]$ existe un máximo común divisor.
+\begin{align*}
+  &\deg f \ge \deg g \\
+  &f(t) = q_{1}(t)g(t) + r_{1}(t), \quad \partial r_{1} < \partial g \\
+  &g(t) = q_{2}(t)r_{1}(t) + r_{2}(t), \quad \partial r_{2} < \partial r_{1} \\
+  &r_{1}(t) = q_{3}(t)r_{2}(t) + r_{3}(t), \quad \partial r_{3} < \partial r_{2} \\
+  &\ \ \vdots \nonumber \\
+  &r_{i}(t) = q_{i+2}(t)r_{i+1}(t) + r_{i+2}(t), \quad \\ &\partial r_{i+2} < \partial r_{i+1} \\
+  &\ \ \vdots \nonumber \\
+  &r_{s-2}(t) = q_{s}(t)r_{s-1}(t) + \overline{r_{s}(t)}, \quad \\ &\partial r_{s} < \partial r_{s-1} \\
+  &r_{s-1}(t) = q_{s+1}(t)r_{s}(t) + 0
+\end{align*}
+En este caso un máximo común divisor es $r_{s}(t)$.
+\end{tcolorbox}
+(p.~1, col.~2)
+\noindent Idea: $\bigl(f(x),\,g(x)\bigr) \;=\;\bigl(f(x),\,f(x)-g(x)\bigr)$
+% Página 1, Columna 2 (vacía)
+\noindent \textbf{Ejemplo:} Calcular $\gcd\bigl(t^4-1,\;t^2+t\bigr)$ (p.~1, col.~2).\\
+Descomponemos:
+\begin{align*}
+  t^4-1 &= (t^2-1)(t^2+1) \\ &= (t-1)(t+1)(t^2+1), \\
+  t^2+t &= t\,(t+1).
+\end{align*}
+Por tanto, un máximo común divisor es $t+1$. A continuación, aplicación del algoritmo de Euclides:
+\begin{align*}
+  t^4 - 1 &= (t^2+t)\,(t^2 - t + 1) + (-t - 1), \\
+  t^2 + t &= (-t - 1)\,(-t) + 0.
+\end{align*}
+Luego 
+\begin{align*}
+  -t - 1 \;=\; 1\cdot (t^4 - 1) \;-\; (t^2 + t)\,(t^2 + t).
+\end{align*}
+(p.~1, col.~2)
+\columnbreak
+% Página 2, Columna 1 (Imagen: Clase 3_page_5)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white,title={Definición: Irreducibilidad (p.~2, col.~1)}]
+zUn polinomio $f \in K[t]$, no constante, es reducible (sobre $K$) si es producto de dos polinomios de K[t] de grado menor. En caso contrario diremos que el polinomio es irreducible.
+\end{tcolorbox}
+\noindent \textbf{Observación:} $K$ cuerpo.\\
+$\bigl(x^2+1\bigr)^2 = (x^2+1)(x^2+1)$, por lo que aun sin raíz en $\mathbb{R}$, $(x^2+1)^2$ es reducible en $\mathbb{R}[x]$.\\
+\vspace{0.5em}
+\noindent \textbf{Caso $K=\mathbb{Z}$:} Reducible significa que $f(x)$ es producto de dos elementos que no son unidades.\\
+\noindent \emph{Ejemplo:} $2x+4$ es irreducible en $\mathbb{Q}[x]$, pero en $\mathbb{Z}[x]$ 
+\begin{align*}
+2x + 4 \;=\; 2\, (x+2), 
+\end{align*}
+y $2$, $(x+2)$ no son unidades en $\mathbb{Z}[x]$, así que es reducible. (p.~2, col.~1)
+% Página 2, Columna 2 (Imagen: Clase 3_page_5 continúa)
+\noindent ¿Si un polinomio sobre $K$ es reducible, entonces tiene una raíz en $K$? ($K=\mathbb{R}$).\\
+\noindent \textbf{Respuesta:} No. Por ejemplo, 
+\begin{align*}
+\bigl(x^2+1\bigr)^2 = (x^2+1)(x^2+1)
+\end{align*}
+no tiene raíz real, pero es reducible en $\mathbb{R}[x]$. (p.~2, col.~2)
+% Página 2, Columna 3 (Imagen: Clase 3_page_6)
+
+\noindent \textbf{Proposición:} Si $1 < \deg f \le 3$ y $K$ es un cuerpo, entonces 
+\begin{align*}
+f \text{ es reducible sobre }K \;\Longleftrightarrow\; \\f \text{ tiene una raíz en }K.
+\end{align*}
+\begin{proof}
+($\Rightarrow$) Si $f$ es reducible, entonces necesariamente tiene un factor de grado $1$: 
+\begin{align*}
+g(t) = a t + c, 
+\quad
+f(t) = q(t)\,\bigl(a t + c\bigr).
+\end{align*}
+Como $K$ es un cuerpo, existe raíz $\alpha = -\frac{c}{a} \in K$, es decir $g(\alpha)=0$.\\
+$\Longleftarrow$ Sea $\alpha$ raíz de $f(t)$, entonces $(t - \alpha)\mid f(t)$, y por división 
+\begin{align*}
+f(t) = q(t)\,(t - \alpha),
+\end{align*}
+con $\deg(q)<\deg(f)$. Por tanto $f$ es reducible. (p.~2, col.~3)
+\end{proof}
+% Página 2, Columna 4 (Imagen: Clase 3_page_6 continúa y Clase 3_page_7)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title=Lema: {Primos Relativos (p.~2, col.~4)}]
+Sean $f,g,h \in K[x]$. Si $f$ es irreducible y $f \mid gh$, entonces $f \mid g$ o $f \mid h$. 
+\end{tcolorbox}
+\noindent \textbf{Demostración:} (Esbozo usando lógica proposicional)\\
+Sea $p$: “$f \mid gh$”, $q$: “$f \mid g$”, $r$: “$f \mid h$”. La implicación 
+\begin{align*}
+(p \rightarrow (q \lor r)) \;\Longleftrightarrow\; ((p \land \neg q) \rightarrow r).
+\end{align*}
+Si $f$ es irreducible y $f \nmid g$, entonces $\gcd(f,g)=1$ (salvo unidades), es decir, $f$ y $g$ son primos relativos. Como $f$ divide al producto $g\,h$, debe dividir a $h$. Por tanto $f \mid h$. (p.~2, col.~4)\\
+\vspace{0.5em}
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title=Teorema: {Factorización única (p.~2, col.~4)}]
+Todo polinomio en $K[t]$ es producto de irreducibles, además la descomposición es única salvo por el orden de los factores.
+\end{tcolorbox}
+\noindent \emph{Demostración de unicidad (esbozo):} Supongamos 
+\begin{align*}
+q_1(t)^{\alpha_1} \cdots q_r(t)^{\alpha_r} 
+\;=\; 
+p_1(t)^{\beta_1} \cdots p_\ell(t)^{\beta_\ell}.
+\end{align*}
+Por irredicibilidad y primos relativos, se concluye que $r=\ell$, $q_i = p_i$ y $\alpha_i = \beta_i$ para todo $i$. (p.~2, col.~4)
+% Página 3, Columna 1 (Imagen: Clase 3_page_8)
+
+\noindent \textbf{Observación}: Sobre $\mathbb{R}$ los irreducibles son de grado 1 o de grado 2 sin raíces en $\mathbb{R}$.\\
+\begin{align*}
+  x^4 + 1 \;&=\; (x^4 + 2x^2 + 1) - 2x^2 \;\\ &=\; (x^2 + 1)^2 - 2x^2 \\
+\;&=\; \bigl(x^2 - \sqrt{2}\,x + 1\bigr)\,\bigl(x^2 + \sqrt{2}\,x + 1\bigr).
+\end{align*}
+\end{multicols}
+\begin{multicols}{4}
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Teorema: Lema de Gauss (p.~3, col.~1)}]
+Sea $f \in \mathbb{Z}[t]$ irreducible sobre $\mathbb{Z}$, entonces $f$ es también irreducible como elemento de $\mathbb{Q}[t]$.
+\end{tcolorbox}
+\noindent \textbf{Contenido de un polinomio sobre $\mathbb{Z}$:}\\
+Sea 
+\begin{align*}
+f(x) = a_n x^n + \cdots + a_1 x + a_0, \quad a_i \in \mathbb{Z}.
+\end{align*}
+Definimos
+\begin{align*}
+  \mathop{\mathrm{cont}}(f) = \gcd(a_n,\,\ldots,\,a_0).
+\end{align*}
+Por ejemplo, 
+\begin{align*}
+    p(x) = 6x^2 + 9x + 3, \quad \mathop{\mathrm{cont}}(p) = 3; \\
+  \qquad 
+  q(x) = 7x^2 - 3, \quad \mathop{\mathrm{cont}}(q) = 1.
+\end{align*}
+Un \emph{polinomio primitivo} es aquel con $\mathop{\mathrm{cont}}(f) = 1$.\\
+\noindent \textbf{Lema de Gauss sobre contenido:}
+\begin{align*}
+  \mathop{\mathrm{cont}}(f \cdot g) \;=\; \mathop{\mathrm{cont}}(f)\,\mathop{\mathrm{cont}}(g).
+\end{align*}
+\noindent Voy a mostrar que el producto de dos polinomios primitivos es primitivo. 
+% Página 3, Columna 2 (Imagen: Clase 3_page_9)
+\noindent \textbf{Prueba:} Si $f$ y $g$ son primitivos, entonces $f \cdot g$ es primitivo.\\
+Procedemos por contradicción: supongamos que $f \cdot g$ no es primitivo. Escribamos
+\begin{align*}
+    f(x) = a_n x^n + \cdots + a_1 x + a_0, \\
+  \qquad
+  g(x) = b_m x^m + \cdots + b_1 x + b_0,
+\end{align*}
+
+ambos con coeficientes en $\mathbb{Z}$ y $\mathop{\mathrm{cont}}(f) = \mathop{\mathrm{cont}}(g) = 1$. Entonces
+\begin{align*}
+  (f \cdot g)(x) = C_{n+m} x^{n+m} + \cdots + C_1 x + C_0,
+\end{align*}
+donde 
+\begin{align*}
+  C_k \;=\; \sum_{i+j = k} a_i\,b_j.
+\end{align*}
+Como $\mathop{\mathrm{cont}}(f \cdot g) \neq 1$, existe un primo $p$ tal que 
+\begin{align*}
+  p \mid C_k \quad \text{para todo }k.
+\end{align*}
+Entonces, como $\mathop{\mathrm{cont}}(f) = 1$, existe un índice 
+\begin{align*}
+  t = \min\{\,i \mid p \nmid a_i \,\}.
+\end{align*}
+De igual forma, como $\mathop{\mathrm{cont}}(g) = 1$, existe 
+\begin{align*}
+  s = \min\{\,j \mid p \nmid b_j \,\}.
+\end{align*}
+Considérese el coeficiente $C_{t+s}$. En su sumatoria:
+\begin{align*}
+  C_{t+s} = a_0 b_{t+s} \;+\; \cdots +\; a_t b_s \;+\; \cdots + a_{t+s} b_0,
+\end{align*}
+todos los términos son divisibles por $p$ salvo $a_t b_s$, pues por la elección de $t$ y $s$ se tiene $p \nmid a_t$ y $p \nmid b_s$. De este modo $p \nmid a_t b_s$, contradicción. Por tanto $f \cdot g$ debe ser primitivo. (p.~3, col.~2)
+% Página 3, Columna 3 (Imagen: Clase 3_page_10)
+\noindent \textbf{Continuación de la prueba del Lema de Gauss:}\\
+Sea $f(t) \in \mathbb{Z}[t]$ irreducible sobre $\mathbb{Z}$ y supongamos, por contradicción, que $f(t)$ es reducible sobre $\mathbb{Q}$. Entonces
+\begin{align*}
+    f(t) \;=\; r(t)\;s(t), 
+  \qquad
+  r(t),\,s(t) \in \mathbb{Q}[t], 
+  \quad\\
+  0 < \deg r,\,\deg s < \deg f.
+\end{align*}
+Multipliquemos por denominador común. Existen enteros $c,a,d,b$ tales que 
+\begin{align*}
+  r(t) = \frac{c}{a}\,r_*(t),
+  \qquad
+  s(t) = \frac{d}{b}\,s_*(t),
+\end{align*}
+con $r_*(t),\,s_*(t) \in \mathbb{Z}[t]$ primitivos. Por tanto 
+\begin{align*}
+  a\,b\,f(t) \;=\; c\,d\;r_*(t)\,s_*(t).
+\end{align*}
+Como $r_*$ y $s_*$ son primitivos, su producto es primitivo (por el paso anterior). Además $a\,b$ y $c\,d$ solo difieren por un factor entero, luego 
+\begin{align*}
+  r_*(t)\,s_*(t) 
+  = (\pm 1)\,f(t),
+\end{align*}
+de modo que $f(t)$ se factoriza en $\mathbb{Z}[t]$, contradicción con la irreducibilidad en $\mathbb{Z}$. De esta forma $f(t)$ es irreducible en $\mathbb{Q}[t]$. (p.~3, col.~3)
+% Página 4, Columna 1 (Imagen: Clase 4_page_1)
+\subsubsection*{Clase 4:Algunos criterios de irreducibilidad}
+\noindent Para polinomios $f(t) \in \mathbb{Z}[t]$.\\
+\noindent \textbf{Reducción módulo $p$.}\\
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Teorema: Reducción módulo $p$ (p.~4, col.~1)}]
+Sea $f(t)\in\mathbb{Z}[t]$ y sea $p$ un número primo. Si $\overline{f}(t)$ (la reducción de $f$  (mód $p$)) tiene el mismo grado que $f(t)$ y es irreducible, entonces $f(t)$ es irreducible sobre $\mathbb{Z}[t]$.
+\end{tcolorbox}
+\noindent \emph{Ejemplo:} ¿Es $3t^3 + 5t + 3 \in \mathbb{Z}[t]$ irreducible?\\
+Definimos el morfismo
+\begin{align*}
+\psi: \mathbb{Z}[t] \;&\longrightarrow\; \mathbb{Z}/p\mathbb{Z}[t], \\
+\quad 
+a_n t^n + \cdots + a_0 \;&\longmapsto\; \overline{a}_n t^n + \cdots + \overline{a}_0,
+\end{align*}
+con $\psi(f+g)=\psi(f)+\psi(g)$ y $\psi(fg)=\psi(f)\,\psi(g)$.\\
+Reduciendo $3t^3 + 5t + 3$ módulo $2$, obtenemos
+\begin{align*}
+\psi\bigl(3t^3 + 5t + 3\bigr) 
+= t^3 + t + 1 \in (\mathbb{Z}/2\mathbb{Z})[t].
+\end{align*}
+\noindent Así, si queremos probar que $3t^3+5t+3$ es irreducible sobre $\mathbb{Z}$, es suficiente mostrar que 
+\begin{align*}
+t^3 + t + 1 
+\end{align*}
+es irreducible sobre $\mathbb{Z}/2\mathbb{Z}$ (pues $\mathbb{Z}/2\mathbb{Z}$ es cuerpo y $\deg=3$).\\
+Evaluamos en $\mathbb{F}_2 = \{0,1\}$:
+\begin{align*}
+\begin{array}{c|cc}
+t   & 0 & 1 \\ \hline
+t^3+t+1 & 1 & 1
+\end{array}
+\end{align*}
+No tiene raíces, por tanto $t^3+t+1$ es irreducible en $\mathbb{F}_2$. (p.~4, col.~3)
+\columnbreak
+\noindent \textbf{También son irreducibles sobre $\mathbb{Z}$:}
+\begin{align*}
+5t^3 + 2t^2 + 7t + 3, 
+\qquad
+11t^3 + 4t^2 + 5t + 7.
+\end{align*}
+(p.~4, col.~4)
+
+\noindent \textbf{Demostración: (Por Contradicción)}.\\
+Sea $f(t)\in\mathbb{Z}[t]$. Supongamos que $f(t)$ es reducible sobre $\mathbb{Z}$. Existe $p$ primo tal que su reducción $\overline{f}(t)\in\mathbb{Z}/p\mathbb{Z}[t]$ es irreducible y $\partial f = \partial \overline{f}$. Supongamos 
+\begin{align*}
+f(t) = g(t)\,h(t), 
+\quad 
+\partial g < \partial f, 
+\quad
+\partial h < \partial f.
+\end{align*}
+Entonces 
+\begin{align*}
+\overline{f}(t) = \overline{g}(t)\,\overline{h}(t).
+\end{align*}
+Si $\partial\overline{g} < \partial g$, entonces $\partial \overline{f} < \partial f$ (contradicción pues $\partial \overline{f} = \partial f$).  
+Si $\partial\overline{g} = \partial g$, entonces $\partial \overline{f} = \partial f$ y nuevamente $\overline{f}$ es reducible, contradicción.  
+Por tanto $f(t)$ es irreducible. (p.~5, col.~1)
+
+\noindent \paragraph{Ejemplo:} 
+\begin{align*}
+6t^2 + 5t + 1 \;=\; (2t+1)(3t+1) 
+\end{align*}
+es reducible pues su imagen en  $\mathbb{F}_3 \text{ es }2t+1,\text{ irreducible.}$
+(Ojo: el grado cambió). (p.~5, col.~2)
+
+\noindent \paragraph{Ejemplo:} Un polinomio en $\mathbb{Z}[t]$ irreducible por su imagen es \emph{reducible} $\forall\,p$ primo.\\
+Sea 
+\begin{align*}
+f = x^4 - 10x^2 + 1. 
+\end{align*}
+Se observa que 
+\begin{align*}
+x^4 - 10x^2 + 1 &= (x^2 - 1)^2 - 2(2x)^2 \\
+&= (x^2 + 1)^2 - 3(2x)^2 \\
+&= (x^2 - 5)^2 - 6\cdot 2^2.\\
+\end{align*}
+Para todo $p$ primo, su reducción $\overline{f}$ es reducible. (p.~5, col.~3)
+\end{multicols}
+\begin{multicols}{4}
+  \noindent \textbf{Ley de reciprocidad cuadrática}\\
+\begin{align*}
+x^2 \equiv a \pmod{p}.
+\end{align*}
+\begin{itemize}
+  \item Si $p$ es \emph{fijo} (trivial). Por ejemplo, $p=5$:
+  \begin{align*}
+  \begin{array}{c|ccccc}
+    x & 0 & 1 & 2 & 3 & 4 \\ \hline
+    x^2 & 0 & 1 & 4 & 4 & 1
+  \end{array}
+  \end{align*}
+  Existe solución si $a = 1,4$ ($a\neq 0$).
+  \item Si $a$ es \emph{fijo} (difícil). Hay que probar para todos los primos $p$:
+  \begin{align*}
+  x^2 \equiv 2 \pmod{p} 
+  \quad\text{tiene solución o no.}
+  \end{align*}
+\end{itemize}
+(p.~5, col.~4)
+% Página 6, Columna 1 (Imagen: Clase 4_page_6)
+\noindent \textbf{Símbolo de Legendre}.\\
+\begin{align*}
+\left(\frac{a}{p}\right) &= 
+  \begin{cases}
+     1 \quad \text{ si } x^2 \equiv a \pmod{p}\\ \text{ tiene solución}\\
+    -1 \quad \text{ si } x^2 \equiv a \pmod{p}\\ \text{ no tiene solución}.
+  \end{cases}
+\end{align*}
+\noindent Ejemplos:
+\begin{align*}
+  \left(\frac{3}{5}\right) &= -1,\\
+  \left(\frac{4}{5}\right) &=  1.
+\end{align*}
+\noindent Propiedad multiplicativa:
+\begin{align*}
+  \left(\frac{ab}{p}\right) &= \left(\frac{a}{p}\right)\left(\frac{b}{p}\right), \\
+  \left(\frac{6}{p}\right)  &= \left(\frac{3}{p}\right)\left(\frac{2}{p}\right).
+\end{align*}
+% Página 6, Columna 2 (Imagen: Clase 4_page_7)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,
+                  coltitle=white,title={Teorema:Criterio de Eisenstein (p.~6, col.~2)}]
+Sea $f(t) = a_n t^n + \dots + a_0 \in \mathbb{Z}[t]$
+y exista un primo $p$ tal que
+\begin{align*}
+  &p \nmid a_n, \quad\\
+  &p \mid a_i \;(i=0,\dots,n-1), \\
+  &p^2 \nmid a_0.
+\end{align*}
+Entonces $f(t)$ es irreducible sobre $\mathbb{Q}[t]$.
+\end{tcolorbox}
+\noindent Ejemplos:
+\begin{align*}
+  &x^3 - 2 \text{ es irreducible sobre }\mathbb{Z}[x] (p=2),\\
+  &x^n + p\,x + p\text{ con } p \text{ primo, } n>1 \\ &\text{ es irreducible}\\
+  &x^n - p \text{ es irreducible pues } \sqrt[n]{p} \notin \mathbb{Q}.
+\end{align*}
+
+% Página 6, Columna 3 (Imagen: Clase 4_page_8)
+\noindent \textbf{Prueba (Eisenstein):} por contradicción.\\
+Sea
+\begin{align*}
+  f(t) &= a_n t^n + \dots + a_1 t + a_0
+\end{align*}
+y el primo $p$ cumpla las hipótesis del criterio.  
+Supongamos que $f(t)$ es reducible sobre $\mathbb{Z}[t]$ mientras su reducción módulo $p$ es
+\begin{align*}
+  \overline{f}(t) &= \overline{a}_n t^n.
+\end{align*}
+Entonces
+\begin{align*}
+  f(t) &= g(t)\,h(t),\qquad
+  \overline{f}(t)=\overline{g}(t)\,\overline{h}(t).
+\end{align*}
+De la factorización se obtiene
+\begin{align*}
+  \overline{a}_n t^n &= b_s t^s \, c_\ell t^\ell,
+\end{align*}
+con $p\mid b_0$, $p\mid c_0$, lo que implicaría $p^2 \mid a_0c_0$, contradicción. \qed
+% Página 6, Columna 4 (Imagen: Clase 4_page_9)
+
+\noindent \textbf{Ejemplo:} $f(x)=x^4+1$ es irreducible.\\
+Idea: componer con funciones lineales no altera la (ir)reducibilidad.  
+Sea $x = t+1$,
+\begin{align*}
+  F(t) &= f(t+1) = (t+1)^4 + 1 \\
+       &= t^4 + 4t^3 + 6t^2 + 4t + 2.
+\end{align*}
+Aplicando Eisenstein con $p=2$ se concluye que $(t+1)^4+1$ es irreducible, luego $x^4+1$ también lo es. (p.~6, col.~4)
+% Página 7, Columna 1 (Imagen: Clase 4_page_10)
+\noindent Sea $p$ primo; el polinomio ciclotómico
+\begin{align*}
+  \Phi_p(x) &= x^{p-1}+x^{p-2}+\dots + x + 1
+\end{align*}
+es irreducible.\\[0.3em]
+Ejemplos:
+\begin{align*}
+  \Phi_5(x) &= x^4 + x^3 + x^2 + x + 1,\\
+  \Phi_7(x) &= x^6 + x^5 + x^4 + x^3 + x^2 + x + 1.
+\end{align*}
+Sustitución útil: $x = t+1$.
+% Página 8, Columna 1 (Clase 5_page_1)
+\subsubsection*{Clase 5}
+\noindent \textbf{Afirmación:} Sea $p$ primo, entonces el polinomio ciclotómico
+\begin{align*}
+  \Phi_p(x)=x^{p-1}+x^{p-2}+\dots +x+1
+\end{align*}
+es irreducible sobre $\mathbb{Q}[x]$.  
+Tomemos el cambio lineal $x=t+1$ y defínase
+\begin{align*}
+  F(t)=\Phi_p(t+1)=\frac{(t+1)^p-1}{t}.
+\end{align*}
+
+% Página 8, Columna 2 (Clase 5_page_1 continúa)
+Desarrollando el binomio:
+\begin{align*}
+  F(t)&=\frac{t^p+\binom{p}{1}t^{p-1}+\dots+\binom{p}{p-1}t+1-1}{t} \\
+      &=t^{p-1}+ \binom{p}{1}t^{p-2}+\dots+\binom{p}{p-1}.
+\end{align*}
+Por el criterio de Eisenstein con el mismo primo $p$ bastará probar
+\begin{align*}
+  p\mid \binom{p}{k}\quad \text{para }1\le k\le p-1.
+\end{align*}
+
+% Página 8, Columna 3 (Clase 5_page_2)
+\noindent \textbf{Prueba de que $p\mid\binom{p}{k}$ para $1\le k\le p-1$.}\\
+Observemos que
+\begin{align*}
+  \binom{p}{k}=\frac{p!}{k!\,(p-k)!}\in\mathbb{Z}.
+\end{align*}
+Si $p$ es primo, entonces $(p,k!)=(p,(p-k)!)=1$, de modo que
+\begin{align*}
+  p!\;=\;\binom{p}{k}\,k!\,(p-k)!,
+\end{align*}
+y como $p\mid p!$ necesariamente $p\mid\binom{p}{k}$. \qed
+
+% Página 8, Columna 4 (cierre de la prueba)
+Como el criterio de Eisenstein se cumple para $F(t)$ con el primo $p$, se deduce que $F(t)$ es irreducible; por el cambio lineal inverso también lo es $\Phi_p(x)$.  \hfill$\square$
+
+% Página 9, Columna 1 (Clase 5_page_3)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,
+                  coltitle=white,title={Teorema Fundamental del Álgebra}]
+Sea $f(t)\in\mathbb{C}[t]$ no constante, entonces existe \begin{align*} \alpha\in\mathbb{C} \end{align*} tal que \begin{align*} f(\alpha)=0. \end{align*}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,
+                  coltitle=white,title={Definición: Multiplicidad}]
+Sea $f(t)\in K[t]$ con $K=\mathbb{Q},\mathbb{R},\mathbb{C},\mathbb{F}_p$.  
+\begin{itemize}
+  \item $\alpha\in K$ es \emph{raíz simple} si $(t-\alpha)\mid f(t)$ y $(t-\alpha)^2\nmid f(t).$
+  \item $\alpha$ es raíz de multiplicidad $m$ si $(t-\alpha)^m\mid f(t)$ y $(t-\alpha)^{m+1}\nmid f(t).$
+\end{itemize}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,
+                  coltitle=white,title={Teorema}]
+El número de raíces (con multiplicidades) de un polinomio sobre un subcuerpo de $\mathbb{C}$ es menor o igual a su grado.
+\end{tcolorbox}
+% Página 9, Columna 2 (Clase 5_page_4)
+\noindent \textbf{Ejercicio tipo V/F (resuelto).}
+  \begin{itemize}
+    \item (a) Every polynomial of degree $n$ has $n$ distinct zeros. (F)
+    \item (b) Every polynomial of degree $n$ has at most $n$ distinct zeros. (V)
+    \item (c) Every polynomial of degree $n$ has at least $n$ distinct zeros. (F)
+    \item (d) If $f,g$ are non-zero polynomials and $f$ divides $g$, then $\deg f < \deg g$. (F)
+    \item (e) If $f,g$ are non-zero polynomials and $f$ divides $g$, then $\deg f \le \deg g$. (V)
+    \item (f) Every polynomial of degree $1$ is irreducible. (V)
+    \item (g) Every irreducible polynomial has prime degree. (F)
+    \item (h) If a polynomial $f$ has integer coefficients and is irreducible over $\mathbb{Z}$, then it is irreducible over $\mathbb{Q}$. (V)
+    \item (i) If a polynomial $f$ has integer coefficients and is irreducible over $\mathbb{Z}$, then it is irreducible over $\mathbb{R}$. (V)
+    \item (j) If a polynomial $f$ has integer coefficients and is irreducible over $\mathbb{R}$, then it is irreducible over $\mathbb{Z}$. (F – Contraej.: $4t+2 = 2(2t+1)$ es reducible en $\mathbb{Z}[t]$.)
+  \end{itemize}
+
+\begin{align*}
+\text{(a) } &\text{F},\quad \text{(b) } \text{V},\quad \text{(c) } \text{F},\\
+\text{(d) } &\text{F},\quad \text{(e) } \text{V},\quad \text{(f) } \text{V},\\
+\text{(g) } &\text{F},\quad \text{(h) } \text{V},\quad \text{(i) } \text{V},\\
+\text{(j) } &\text{Contraej.: } 4t+2=2(2t+1)\text{reducible}\mathbb{Z}[t].
+\end{align*}
+
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,
+                  coltitle=white,title={Teorema (Fundamental de los polinomios simétricos)}]
+Cualquier polinomio simétrico en $x_1,\dots,x_n$ se expresa de modo único como polinomio en $e_1,\dots,e_n$.
+\end{tcolorbox}
+
+% Página 9, Columna 3 (Clase 5_page_5)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,
+                  coltitle=white,title={Definición: Polinomios simétricos elementales}]
+Los polinomios simétricos elementales en $n$ variables son:
+\begin{align*}
+e_1 &= \sum_i x_i,\quad\\
+e_2 &= \sum_{i<j}x_ix_j,\quad\\
+e_3 &= \sum_{i<j<k}x_ix_jx_k,\\
+& \vdots\\
+e_n&= x_1x_2\cdots x_n.
+\end{align*}
+\end{tcolorbox}
+
+% Página 9, Columna 4 (Clase 5_page_6)
+\noindent \textbf{Orden lexicográfico en $\mathbb{N}^n$ y multigrado.}\\
+Ejemplo de comparación:
+\begin{align*}
+(1,0,3)<(1,1,5)<(1,2,3)<(2,0,0).
+\end{align*}
+Para un monomio $x_1^{i_1}\cdots x_n^{i_n}$ definimos
+\begin{align*}
+  \operatorname{m\partial}(x_1^{i_1}\dots x_n^{i_n})=(i_1,\dots,i_n).
+\end{align*}
+Ejemplos:
+\begin{align*}
+\operatorname{m\partial}(5y^3z^2)&=(0,3,2),\\
+\operatorname{m\partial}(3x^2yz)&=(2,1,1).
+\end{align*}
+El multigrado de un polinomio $f$ es
+\begin{align*}
+  \operatorname{m\partial}(f)=\max\{\operatorname{m\partial}(\text{monomios de }f)\}.
+\end{align*}
+Para
+\begin{align*}
+f(x,y,z)=5y^3z^2+7xy^3z+8x^2+3x^2yz
+\end{align*}
+se obtiene
+\begin{align*}
+  \operatorname{m\partial}(f)=(2,1,1).
+\end{align*}
+% Página 10, Columna 1 (Clase 5_page_7)
+\noindent \textbf{Ejemplos y propiedades del orden lexicográfico y multigrado.}
+\begin{itemize}
+  \item Es un “orden total” en $\mathbb{R}[x_1,\dots,x_n]$.
+  \item Comparación: \begin{align*} x^2y z \quad\textit{vs}\quad 3x^2y z. \end{align*}
+  \item \begin{align*} \operatorname{m\partial}(f\cdot g)=\operatorname{m\partial}(f)+\operatorname{m\partial}(g). \end{align*}
+  \item Toda cadena finita tiene mínimo.
+\end{itemize}
+
+\noindent Sea $f(x_1,\dots,x_n)$ \emph{simétrico} y
+\begin{align*}
+  \operatorname{m\partial}(f)=(i_1,i_2,\dots,i_n)\Longrightarrow i_1\ge i_2\ge\dots\ge i_n.
+\end{align*}
+Simétrico significa
+\begin{align*}
+  \forall\sigma\in S_n,\, f(x_1,\dots,x_n)=f(x_{\sigma(1)},\dots,x_{\sigma(n)}).
+\end{align*}
+Ejemplo:
+\begin{align*}
+  f(x,y)=(x-y)^2 = x^2-2xy+y^2,\\
+  \{(2,0),(1,1),(0,2)\}, \quad \operatorname{m\partial}(f)=(2,0).
+\end{align*}
+\paragraph{Demostración} (por contradicción): si existe $k$ tal que $i_k<i_{k+1}$ entonces $\operatorname{m\partial}(f)$ no tendría el máximo ordenado esperado. (p.~10, col.~1)
+
+% Página 10, Columna 2 (Clase 5_page_8)
+\noindent Considere la permutación que intercambia $x_k$ y $x_{k+1}$. Se obtienen los monomios
+\begin{align*}
+  x_1^{i_1}\dots x_k^{i_k} x_{k+1}^{i_{k+1}}\dots x_n^{i_n}, \\
+  x_1^{i_1}\dots x_k^{i_{k+1}} x_{k+1}^{i_k}\dots x_n^{i_n}.
+\end{align*}
+Bajo el orden lexicográfico
+\begin{align*}
+  (i_1,\dots,i_k,i_{k+1},\dots,i_n)
+  <\\
+  (i_1,\dots,i_{k+1},i_k,\dots,i_n),
+\end{align*}
+lo que contradice la suposición de que el multigrado máximo fuese el primero. (p.~10, col.~2)
+
+% Página 10, Columna 3 (Clase 5_page_9)
+\noindent \textbf{Aplicación del T.F. de polinomios simétricos (Gauss).}\\
+Sea $f(x_1,\dots,x_n)$ simétrico con
+\begin{align*}
+  \operatorname{m\partial}(f)=(i_1,i_2,\dots,i_n).
+\end{align*}
+Definamos
+\begin{align*}
+  g = e_1^{\,i_1-i_2}\,e_2^{\,i_2-i_3}\cdots e_n^{\,i_n},
+\end{align*}
+donde $e_j$ son los polinomios simétricos elementales. Entonces
+\begin{align*}
+  \operatorname{m\partial}(g)=\operatorname{m\partial}(f).
+\end{align*}
+Observemos:
+\begin{align*}
+  \operatorname{m\partial}(e_1)&=(1,0,\dots,0),\\
+  \operatorname{m\partial}(e_2)&=(1,1,0,\dots,0),\\
+  \vdots\qquad\ & \\
+  \operatorname{m\partial}(e_n)&=(1,1,\dots,1).
+\end{align*}
+En consecuencia
+\begin{align*}
+  \operatorname{m\partial}\!\bigl(e_1^{\,i_1-i_2}\bigr)&=(i_1-i_2,0,\dots,0),\\
+  \operatorname{m\partial}\!\bigl(e_2^{\,i_2-i_3}\bigr)&=(i_2-i_3,i_2-i_3,0,\dots,0),\\
+  &\qquad\vdots\\
+  \operatorname{m\partial}(g)&=(i_1,i_2,\dots,i_n).
+\end{align*}
+Así
+\begin{align*}
+  \operatorname{m\partial}\bigl(f - \lambda\,g\bigr)<\operatorname{m\partial}(f),
+\end{align*}
+para un escalar $\lambda$ adecuado, y por inducción se expande $f$ en los $e_j$. (p.~10, col.~3)
+% Página 10, Columna 4 (Clase 5_page_10)
+
+\noindent \textbf{Ejemplo:} Sea 
+\begin{align*}
+  f = x^4 + y^4,\qquad \operatorname{m\partial}(f)=(4,0).
+\end{align*}
+Tomemos $e_1=x+y$, $e_2=xy$.
+\begin{align*}
+  g = e_1^{\,4} = (x+y)^4.
+\end{align*}
+Entonces
+\begin{align*}
+  f_1 &= f - e_1^{\,4}\\ &= -4x^3y - 6x^2y^2 -4xy^3, \operatorname{m\partial}(f_1)&=(3,1).
+\end{align*}
+Asimismo, 
+\begin{align*}
+  g_1 &= -4e_1^{3-1}e_2^{\,1} = -4(x+y)^2(xy), \\
+  f_2 &= f_1 - g_1 \\
+  &= 2x^2y^2 \operatorname{m\partial}(f_2)&=(2,2).
+\end{align*}
+Tambien
+\begin{align*}
+  g_2 &= 2 e_1^{\,2-2}\,e_2^{\,2}, \quad\\
+\end{align*}
+Así 
+\begin{align*}
+  x^4 + y^4 = e_1^{\,4} - 4e_1^{\,2}e_2^{\,2} + 2e_2^{\,2}.
+\end{align*}
+(p.~10, col.~4)
+\end{multicols}
+  
+\begin{multicols}{4}
+\subsubsection*{Clase 6: Extensiones de Cuerpos}
+% Página 11, Columna 1  (Clase 6_page_1)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,
+                  coltitle=white,title={Definición (Extensión de cuerpos)}]
+Una \emph{extensión de cuerpos} de $K$ es un par $(L,\iota)$ donde
+\begin{align*}
+  \iota : K \longrightarrow L
+\end{align*}
+es un monomorfismo de anillos y $L$ es un cuerpo.  Denotaremos la extensión simplemente por
+\begin{align*}
+  L/K.
+\end{align*}
+\end{tcolorbox}
+\paragraph{Observación:}no exigimos que \(\iota(K)\subseteq L\) sea necesariamente una subextensión separable.\\[0.3em]
+Ejemplos:
+\begin{align*}
+\mathbb{R}/\mathbb{Q},\qquad \iota:\mathbb{Q}\hookrightarrow\mathbb{R},\ x\mapsto x.\\ 
+\mathbb{C}/\mathbb{Q} ,\qquad \iota:\mathbb{Q}\hookrightarrow\mathbb{C},\ x\mapsto x.\\
+\end{align*}
+% Página 11, Columna 2  (Clase 6_page_2)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,
+                  coltitle=white,title={Definición}]
+Sea $L:K$ una extensión y $X\subseteq L$. Definimos
+\begin{align*}
+  K(X)=\bigcap_{\substack{F\;\text{es campo}\\K\subseteq F\subseteq L\\ X\subseteq F}}F,
+\end{align*}
+el \emph{subcuerpo de $L$ generado por $K$ y $X$}.
+\end{tcolorbox}
+\paragraph{Ejemplo:} con $L=\mathbb{C}$, $K=\mathbb{Q}$, $X=\{\,\pm i,\pm\sqrt{5}\,\}$:
+\begin{align*}
+\mathbb{Q}(X)&=\mathbb{Q}(i,\sqrt{5})\;\\&=\;\text{menor subcuerpo de }\mathbb{C} \\ &\text{ que contiene }\mathbb{Q}\text{ e } \{\pm i,\pm\sqrt{5}\}.
+\end{align*}
+
+% Página 11, Columna 3  (Clase 6_page_3)
+Nota: si $r\in L$,
+\begin{align*}
+  K(r)=\left\{\frac{f(r)}{g(r)} \;\middle|\; f,g\in K[x],\ g\neq 0\right\}.
+\end{align*}
+
+Caso $X=\{i+\sqrt{5}\}$:
+\begin{align*}
+\mathbb{Q}(X)=\mathbb{Q}(i+\sqrt{5})\subseteq\mathbb{Q}(i,\sqrt{5}).
+\end{align*}
+De hecho,
+\begin{align*}
+\mathbb{Q}(i+\sqrt{5})&=\left\{\frac{f(i+\sqrt{5})}{g(i+\sqrt{5})}\;\middle|\;f,g\in\mathbb{Q}[x],\,g\neq 0\right\}\\
+                      &=\{\,p+q(i+\sqrt{5})\mid p,q\in\mathbb{Q}\}.
+\end{align*}
+
+% Página 11, Columna 4  (Clase 6_page_4)
+Afirmación:
+\begin{align*}
+  (i+\sqrt{5})^{3}-2(i+\sqrt{5})=12\,i.
+\end{align*}
+Sea \(p(x)=x^{3}+2x\in\mathbb{Q}[x]\).  Entonces
+\begin{align*}
+  p(i+\sqrt{5})&=(i+\sqrt{5})^{3}+2(i+\sqrt{5})\\
+               &=-i-3\sqrt{5}+15i+5\sqrt{5}\\
+               &=14i+2\sqrt{5}.
+\end{align*}
+Por tanto
+\begin{align*}
+ i=\frac{(i+\sqrt{5})^{3}-2(i+\sqrt{5})}{12}\in\mathbb{Q}(i+\sqrt{5}),
+\end{align*}
+y análogamente \(\sqrt{5}\in\mathbb{Q}(i+\sqrt{5})\); en consecuencia
+\begin{align*}
+  \mathbb Q(\{\pm i,\pm\sqrt{5}\})\subseteq\mathbb{Q}(i+\sqrt{5}).
+\end{align*}
+% Página 12, Columna 1  (Clase 6_page_5)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,
+                  coltitle=white,title={Definición}]
+Sean $t_1,\dots,t_n$ indeterminadas. Definimos
+\begin{align*}
+  K(t_1,\dots,t_n)=\left\{\frac{p(t_1,\dots,t_n)}{q(t_1,\dots,t_n)}\;\right.\\
+  \left.\middle|\;p,q\in K[t_1,\dots,t_n]\right\},
+\end{align*}
+el \emph{cuerpo de funciones racionales} en $t_1,\dots,t_n$ sobre $K$.
+\end{tcolorbox}
+
+Si \(r\) es \emph{algebraico} sobre $K$, entonces
+\begin{align*}
+  K(r)\cong K[x]\big/\bigl(p(x)\bigr),
+\end{align*}
+donde \(p\) es el polinomio minimal de \(r\).\\
+Si \(r\) es \emph{trascendente},
+\begin{align*}
+  K(r)\cong K(t),
+\end{align*}
+y
+\begin{align*}
+  K(t)=\left\{\frac{f(t)}{g(t)}\mid f,g\in K[t]\right\}.
+\end{align*}
+
+% Página 12, Columna 2  (Clase 6_page_6)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,
+                  coltitle=white,title={Definición (Elementos algebraicos y trascendentes)}]
+Sea $L:K$ una extensión. Un elemento \(\alpha\in L\) es \emph{algebraico sobre \(K\)} si existe
+\begin{align*}
+  p(t)\in K[t]\setminus\{0\}\quad\text{tal que}\quad p(\alpha)=0.
+\end{align*}
+En caso contrario diremos que \(\alpha\) es \emph{trascendente}.
+\end{tcolorbox}
+Ejemplos:
+\begin{itemize}
+  \item \(\sqrt{5}\) es algebraico sobre \(\mathbb{Q}\) y sobre \(\mathbb{R}\) porque
+        \begin{align*}
+          p(x)=x^{2}-5,\quad p(\sqrt{5})=0.
+        \end{align*}
+  \item \(\pi\) es trascendente sobre \(\mathbb{Q}\) (no cumple ningún polinomio no nulo con coeficientes racionales), pero es algebraico sobre \(\mathbb{R}\) pues
+        \begin{align*}
+          q(x)=x-\pi,\quad q(\pi)=0.
+        \end{align*}
+  \item El número \(e=\displaystyle\sum_{n=0}^{\infty}\frac1{n!}\) es trascendente (conjetura confirmada por Hermite). 
+\end{itemize}
+\subsubsection*{Más ejemplos de números algebraicos y extensiones simples}
+
+% Columna 1 – Conteo de algebraicos y $\sqrt{\pi}$
+\paragraph{Conteo de números algebraicos en $\mathbb{R}$}
+\begin{align*}
+A_j &= \{\alpha\in\overline{\mathbb{Q}}\mid [\mathbb{Q}(\alpha):\mathbb{Q}] = j\},\\
+\bigcup_{j\ge 1} A_j &\text{ es contable.}
+\end{align*}
+
+\paragraph{¿Es $\sqrt{\pi}$ algebraico sobre $\mathbb{Q}$?}
+\begin{align*}
+(\sqrt{\pi})^{2} &= \pi
+\end{align*}
+Si $\sqrt{\pi}$ fuera algebraico $\Rightarrow \pi$ también lo sería, contradiciendo que $\pi$ es trascendente. Por tanto $\sqrt{\pi}$ es trascendente.
+
+\paragraph{¿Es $\pi+e$ algebraico?}
+El problema sigue abierto; se desconoce la naturaleza de $\pi+e$.
+% Columna 2 – $\sqrt{2}+\sqrt{3}$ y cierre algebraico
+\paragraph{Algebraicidad de $\sqrt{2}+\sqrt{3}$}
+\begin{align*}
+d &= \sqrt{2} + \sqrt{3},\\
+d^{2} &= 5 + 2\sqrt{6},\\
+\left(\frac{d^{2}-5}{2}\right)^{2} &= 6,
+\end{align*}
+lo que muestra que $d$ es algebraico sobre $\mathbb{Q}$.
+
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,
+                  coltitle=white,title={Teorema: Cierre bajo suma y producto}]
+Si $\alpha,\beta$ son algebraicos sobre $\mathbb{Q}$, entonces
+\begin{align*}
+\alpha+\beta,\qquad \alpha\beta
+\end{align*}
+también son algebraicos.
+\end{tcolorbox}
+
+% Columna 3 – Extensión simple y ejemplo
+\paragraph{Extensiones simples sobre $\mathbb{Q}$}
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,
+                  coltitle=white,title={Extensión simple}]
+Una extensión $L:\mathbb{Q}$ es simple si existe \begin{align*}\alpha\in L\end{align*} tal que
+\begin{align*}
+L = \mathbb{Q}(\alpha).
+\end{align*}
+\end{tcolorbox}
+
+% Página 14, Columna 3  (Clase 6\_page\_9 y 6\_page\_10)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,
+                  coltitle=white,title={Teorema del elemento primitivo}]
+Sobre $\mathbb{Q}$ (más en general, sobre cuerpos de característica $0$) toda extensión finita algebraica es simple:
+\begin{align*}
+   L = \mathbb{Q}(\alpha_1,\dots,\alpha_r) \quad \\\Longrightarrow \quad
+   \exists\,\alpha\in L : L=\mathbb{Q}(\alpha).
+\end{align*}
+\end{tcolorbox}
+
+\paragraph{Ejemplo ilustrativo}
+\begin{align*}
+   \mathbb{Q}\bigl(\sqrt{2},\root 3 \of 7,\sqrt{3}-2\bigr) 
+    \;=\; \mathbb{Q}(\alpha),
+\end{align*}
+para algún $\alpha$ adecuado (aplicación constructiva del teorema). (p.~14, col.~3)
+
+% Página 14, Columna 4  (Clase 6\_page\_11 y 6\_page\_12)
+\subsubsection*{Ejemplo concreto: $\mathbb{Q}(\sqrt5,\sqrt7)$}
+
+\paragraph{Afirmación}
+\begin{align*}
+   \mathbb{Q}\bigl(\sqrt5,\sqrt7\bigr) 
+     &= \mathbb{Q}\bigl(\sqrt5+\sqrt7\bigr).
+\end{align*}
+
+\paragraph{Justificación}
+Basta probar que $\sqrt5-\sqrt7\in\mathbb{Q}(\sqrt5+\sqrt7)$:
+\begin{align*}
+   &(\sqrt5+\sqrt7)\,(\sqrt5-\sqrt7) = -2,\\
+   &\sqrt5-\sqrt7 = -\frac{2}{\sqrt5+\sqrt7}\in\mathbb{Q}(\sqrt5+\sqrt7).
+\end{align*}
+% Página 11, Columna 1 (Imagen: Clase 6_page_11)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white,title={Definición: Polinomio minimal (p.~11, col.~1)}]
+Sea $L:K$ una extensión y sea $\alpha \in L$ algebraico sobre $K$. El \emph{polinomio minimal} de $\alpha$ sobre $K$ es el \emph{único} polinomio mónico $m(t) \in K[t]$ de menor grado tal que
+\begin{align*}
+m(\alpha) = 0.
+\end{align*}
+\end{tcolorbox}
+
+\noindent \textbf{Proposición:} El polinomio minimal es único.\\
+
+\noindent \textbf{Demostración:} Supongamos que existen dos polinomios mónicos $p(t), \,q(t) \in K[t]$ de grado mínimo tales que 
+\begin{align*}
+p(\alpha) = 0, \quad q(\alpha) = 0.
+\end{align*}
+Considere 
+\begin{align*}
+r(t) = p(t) - q(t).
+\end{align*}
+Entonces 
+\begin{align*}
+r(\alpha) = p(\alpha) - q(\alpha) = 0.
+\end{align*}
+Pero $r(t)$ tiene grado menor que $\deg p = \deg q$, lo que contradice la minimalidad. Así, el polinomio minimal es único. \(p.~11, col.~1\)\\
+
+
+% Página 11, Columna 2 (Imagen: Clase 6_page_12)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Proposición: Irreducibilidad del polinomio minimal (p.~11, col.~2)}]
+Sea $\alpha$ algebraico sobre $K$, y sea $m(t)$ su polinomio minimal, entonces $m(t)$ es irreducible sobre $K$.
+\end{tcolorbox}
+
+\noindent \textbf{Observación:} ¿Qué puede decirse del ideal $\langle m(t) \rangle$ en $K[t]$? Es maximal.\\
+
+\noindent \textbf{Demostración:} Supongamos que
+\begin{align*}
+m(t) = \ell(t)\,s(t)
+\end{align*}
+con $\ell(t)$ y $s(t)$ no unidades en $K[t]$, $\deg \ell < \deg m$ y $\deg s < \deg m$. Como $m(\alpha) = 0$, se tiene
+\begin{align*}
+\ell(\alpha)\,s(\alpha) = 0.
+\end{align*}
+Por lo tanto,
+\begin{align*}
+\ell(\alpha) = 0 \quad \text{o} \quad s(\alpha) = 0,
+\end{align*}
+lo que contradice la minimalidad de $m(t)$ en cuanto a grado. Así, $m(t)$ no puede factorizarse y es irreducible. \(p.~11, col.~2\)\\
+% Página 15, Columna 1 (Clase 7_page_1)
+\subsubsection*{Descripción de algunos cuerpos}
+\textbf{(1)} Definimos
+\begin{align*}
+  \mathbb{Q}(\sqrt{2})\;=\;\Bigl\{\frac{p(\sqrt{2})}{q(\sqrt{2})}\;\Bigm|\;p(x),\,q(x)\in\mathbb{Q}[x]\Bigr\}.
+\end{align*}
+“Dado $q(x)\in\mathbb{Q}[x]$ tal que $q(\sqrt{2})\neq0$ existe $a(x)\in\mathbb{Q}[x]$ con
+\begin{align*}
+  \frac{1}{q(\sqrt{2})}=a(\sqrt{2}).
+\end{align*}
+Si $q(\sqrt{2})\neq0$ entonces $x^{2}-2\nmid q(x)$, pero $x^{2}-2$ es irreducible sobre $\mathbb{Q}$. Así
+\begin{align*}
+  \gcd\bigl(x^{2}-2,\,q(x)\bigr)=1.
+\end{align*}
+Existen $a(x),b(x)\in\mathbb{Q}[x]$ tales que
+\begin{align*}
+  b(x)(x^{2}-2)+a(x)q(x)=1.
+\end{align*}
+Evaluando en $x=\sqrt{2}$ obtenemos
+\begin{align*}
+  a(\sqrt{2})\,q(\sqrt{2})=1,\qquad\frac{1}{q(\sqrt{2})}=a(\sqrt{2}).
+\end{align*}
+Por tanto
+\begin{align*}
+  \frac{p(\sqrt{2})}{q(\sqrt{2})}=p(\sqrt{2})\,a(\sqrt{2})\in\mathbb{Q}[\sqrt{2}].
+\end{align*}
+(p.~15, col.~1)
+% Página 15, Columna 2 (Clase 7_page_2)
+Así
+\begin{align*}
+  \mathbb{Q}(\sqrt{2})=\mathbb{Q}[\sqrt{2}] = \{\,a+b\sqrt{2}\mid a,b\in\mathbb{Q}\,\}.
+\end{align*}
+El conjunto $\{1,\sqrt{2}\}$ es una base de $\mathbb{Q}(\sqrt{2})$ sobre $\mathbb{Q}$.  Por ejemplo
+\begin{align*}
+  2(\sqrt{2})^{4} + (\sqrt{2})^{3} - 3(\sqrt{2})^{2} + 5\sqrt{2}-1
+    &= 2\cdot4 + 2\sqrt{2} - 3\cdot2 + 5\sqrt{2}-1 \\
+    &= 7\sqrt{2}+1.
+\end{align*}
+Si $\alpha$ es algebraico con polinomio minimal $p(x)$ y para $q(x)\in\mathbb{Q}[x]$ escribimos
+\begin{align*}
+  q(x)=\ell(x)p(x)+r(x),\qquad\deg r<\deg p,
+\end{align*}
+entonces $q(\alpha)=r(\alpha)$.  (p.~15, col.~2)
+% Página 15, Columna 3 (Clase 7_page_3)
+\textbf{(2)} Sea $\root 3 \of 2\in\mathbb{R}$.  Definimos
+\begin{align*}
+  \mathbb{Q}(\root 3 \of 2)=\mathbb{Q}[\root 3 \of 2].
+\end{align*}
+Puesto que $x^{3}-2$ es irreducible sobre $\mathbb{Q}$, para $q(\root 3 \of 2)\neq0$ existe $a(x)\in\mathbb{Q}[x]$ con
+\begin{align*}
+  \frac{1}{q(\root 3 \of 2)}=a(\root 3 \of 2),\qquad\frac{p(\root 3 \of 2)}{q(\root 3 \of 2)}=b(\root 3 \of 2).
+\end{align*}
+En consecuencia
+\begin{align*}
+  \mathbb{Q}(\root 3 \of 2)=\bigl\{\,a + b\root 3 \of 2 + c(\root 3 \of 2)^{2}\mid a,b,c\in\mathbb{Q}\,\bigr\},
+\end{align*}
+que es un espacio vectorial de dimensión $3$ sobre $\mathbb{Q}$ con base $\{1,\root 3 \of 2,(\root 3 \of 2)^{2}\}$.  Por ello
+\begin{align*}
+  [\mathbb{Q}(\root 3 \of 2):\mathbb{Q}]=3.
+\end{align*}
+(p.~15, col.~3)
+% Página 15, Columna 4 (Clase 7_page_4)
+Sea $L:K$ una extensión y $r\in L$.  Definimos
+\begin{align*}
+  K(r)=\text{menor cuerpo que contiene a }K\text{ y a }r.
+\end{align*}
+Equivalentemente,
+\begin{align*}
+  K(r)=\Bigl\{\frac{p(r)}{q(r)}\;\Bigm|\;p(x),q(x)\in K[x]\Bigr\}.
+\end{align*}
+Observación:
+\begin{align*}
+  r,\,r^{2},\ldots, r^{m}\in K(r)\quad&\Rightarrow\quad K[r]\subseteq K(r),\\
+  K(r)\text{ es cuerpo }&\Rightarrow K(r)\subseteq\Bigl\{\frac{p(r)}{q(r)}\Bigr\}.
+\end{align*}
+Para dos elementos $\alpha,\beta$ ponemos $K(\alpha,\beta)$.  Ejemplos:
+\begin{align*}
+  \mathbb{Q}(e,\pi)&=\Bigl\{\frac{p(e,\pi)}{q(e,\pi)}\;\Bigm|\;p,q\in\mathbb{Q}[x,y]\Bigr\},\\
+  \mathbb{Q}(2)&=\mathbb{Q}.
+\end{align*}
+(p.~15, col.~4)
+% Página 16, Columna 1 (Clase 7_page_5)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Teorema: Extensiones simples algebraicas (p.~16, col.~1)}]
+Sea $K(\alpha):K$ una extensión simple algebraica y sea $m(t)$ el polinomio minimal de $\alpha$ sobre $K$. Entonces existe un $K$-isomorfismo
+\begin{align*}
+  K(\alpha)\;\cong\;K[t]\big/\bigl(m(t)\bigr).
+\end{align*}
+\end{tcolorbox}
+Para describir este isomorfismo definimos
+\begin{align*}
+  \psi:K[t]\longrightarrow K(\alpha),\qquad k\mapsto k,\;t\mapsto \alpha.
+\end{align*}
+(p.~16, col.~1)
+% Página 16, Columna 2 (Clase 7_page_6)
+Se tiene $\ker(\psi)=\{p(t)\mid p(\alpha)=0\}=\langle m(t)\rangle$.  Luego
+\begin{align*}
+  \Phi:K[t]/\langle m(t)\rangle\longrightarrow\\ \operatorname{Im}(\psi),\qquad f(t)\bmod m(t)\longmapsto f(\alpha),
+\end{align*}
+es un isomorfismo de cuerpos sobre $K$.  Puesto que $\operatorname{Im}(\psi)\subseteq K(\alpha)$, basta ver que $1/p(\alpha)\in\operatorname{Im}(\psi)$ para todo $p(\alpha)\neq0$.  Si $m(t)\nmid p(t)$ entonces $\gcd\bigl(m(t),p(t)\bigr)=1$; por Bézout existen $a(t),b(t)\in K[t]$ con
+\begin{align*}
+  b(t)m(t)+a(t)p(t)=1\;\Longrightarrow\;a(\alpha)p(\alpha)=1,
+\end{align*}
+de donde $1/p(\alpha)=a(\alpha)\in\operatorname{Im}(\psi)$.  Así $\operatorname{Im}(\psi)=K(\alpha)$. (p.~16, col.~2)
+% Página 16, Columna 3 (Clase 7_page_7)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Lema (p.~16, col.~3)}]
+Sea $K(\alpha):K$ una extensión simple algebraica y sea $m(t)$ el polinomio minimal de $\alpha$ con $\deg m=n$. Entonces
+\begin{align*}
+  \{1,\alpha,\alpha^{2},\dots,\alpha^{n-1}\}
+\end{align*}
+es una base de $K(\alpha)$ sobre $K$.
+\end{tcolorbox}
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white,title={Definición: Grado de una extensión (p.~16, col.~3)}]
+El \emph{grado} de la extensión $L:K$, denotado $[L:K]$, es la dimensión de $L$ como espacio vectorial sobre $K$.
+\end{tcolorbox}
+% Página 16, Columna 4 (Clase 7_page_8)
+\begin{tcolorbox}[colback=white,colframe=green!50!black,colbacktitle=green!50!black,coltitle=white,title={Ejemplo (p.~16, col.~4)}]
+Demuestre que si $\alpha$ tiene polinomio minimal $t^{2}-2$ sobre $\mathbb{Q}$ y $\beta$ tiene polinomio minimal $t^{2}-4t+2$ sobre $\mathbb{Q}$, entonces las extensiones $\mathbb{Q}(\alpha):\mathbb{Q}$ y $\mathbb{Q}(\beta):\mathbb{Q}$ son isomorfas.
+\end{tcolorbox}
+Sea $\alpha^{2}=2$.  Proponemos $\Phi:\mathbb{Q}(\alpha)\to\mathbb{Q}(\beta)$ con $\Phi(\alpha)=\beta-2$.  Entonces
+\begin{align*}
+  \Phi(\alpha)^{2}=(\beta-2)^{2}=\beta^{2}-4\beta+4=2.
+\end{align*}
+Se verifica que $\Phi$ es un $\mathbb{Q}$-isomorfismo.  En particular, existen $a,b\in\mathbb{Q}$ tales que
+\begin{align*}
+  &(a+b\sqrt{3})^{2}=2,\quad\\
+  &\text{mostrando la compatibilidad de las extensiones.}
+\end{align*}
+(p.~16, col.~4)
+
+% ---------------------------------------------------------
+% Página 17, Columna 1 (Clase 7_page_9)
+Construya las extensiones $\mathbb{Q}(\alpha):\mathbb{Q}$ donde $\alpha$ tiene el siguiente polinomio minimal sobre $\mathbb{Q}$:
+\begin{align*}
+  \text{(a)}\;&t^{2}-5,\\
+  \text{(b)}\;&t^{4}+t^{3}+t^{2}+t+1,\\
+  \text{(c)}\;&t^{3}+2.
+\end{align*}
+\emph{Parcial Semana 8.} \hfill(p.~17, col.~1)
+
+\subsubsection*{Clase 8: Extensiones de cuerpos y álgebra lineal}
+% Página 18, Columna 1 (Clase 8\_page\_1)
+\begin{tcolorbox}[colback=white,colframe=green!50!black,colbacktitle=green!50!black,coltitle=white,title={Ejemplo (p.~18, col.~1)}]
+Demuestre que si $\alpha$ tiene polinomio minimal $t^{2}-2$ sobre $\mathbb{Q}$ y $\beta$ tiene polinomio minimal $t^{2}-4t+2$ sobre $\mathbb{Q}$, entonces las extensiones $\mathbb{Q}(\alpha):\mathbb{Q}$ y $\mathbb{Q}(\beta):\mathbb{Q}$ son isomorfas.
+\end{tcolorbox}
+
+\begin{align*}
+\text{1$^{\text{er}}$ Parcial } 29\text{ de Mayo. (Jueves)}
+\end{align*}
+\begin{align*}
+\alpha &:\ \text{minimal}/\mathbb{Q} && t^{2}-2,\\
+\beta  &:\ \text{minimal}/\mathbb{Q} && t^{2}-4t+2.
+\end{align*}
+\begin{align*}
+\alpha &= \pm \sqrt{2},\\
+\beta  &= \frac{4\pm\sqrt{16-8}}{2}=2\pm\sqrt{2}.
+\end{align*}
+Tomemos \(\alpha=\sqrt{2}\) y \(\beta = 2+\sqrt{2}\). Entonces
+\begin{align*}
+\mathbb{Q}(\alpha)=\mathbb{Q}(\sqrt{2}),\qquad\\
+\mathbb{Q}(\beta)=\mathbb{Q}(2+\sqrt{2})=\mathbb{Q}(\sqrt{2}).
+\end{align*}
+(p.~18, col.~1)
+% Página 18, Columna 2 (Clase 8\_page\_2)
+\begin{align*}
+\text{Idea: Usar álgebra lineal (Artin)}
+\end{align*}
+Sea $L:K$ una extensión ($K\subseteq L$); de manera natural $L$ posee estructura de espacio vectorial sobre $K$:
+\begin{align*}
+  l_1,l_2\in L &\Longrightarrow l_1+l_2\in L,\\
+  d\in K,\, l\in L &\Longrightarrow d\,l\in L.
+\end{align*}
+\textbf{Axiomas de espacio vectorial:}
+\begin{align*}
+  (d+p)l &= d l + p l,\\
+  d(l+l') &= d l + d l',\\
+  (d p)l &= d( p l ).
+\end{align*}
+(p.~18, col.~2)
+% Página 18, Columna 3 (Clase 8\_page\_3)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Lema (p.~18, col.~3)}]
+Sea $K(\alpha):K$ una extensión simple algebraica y sea $m(t)$ el polinomio minimal de $\alpha$ sobre $K$, $\deg m=n$. Entonces $\{1,\alpha,\alpha^{2},\dots,\alpha^{n-1}\}$ es una base para $K(\alpha)$ sobre $K$.
+\end{tcolorbox}
+\begin{align*}
+&K(\alpha):K\ \text{simple y algebraica.}\\
+&\forall\,\beta\in K(\alpha)\;\exists\,a_0,\dots,a_{n-1}\in K:\ \\
+&\beta = a_0\cdot1+a_1\alpha+\dots+a_{n-1}\alpha^{\,n-1}.
+\end{align*}
+Escribiendo $K(\alpha)=K[\alpha]$ y notando $\deg m=n$, para cualquier $p(t)$ existe $q(t),r(t)$ con $p(t)=q(t)m(t)+r(t)$ y $\deg r<n$. Entonces $p(\alpha)=r(\alpha)$ y los coeficientes de $r$ son los buscados. (p.~18, col.~3)
+% Página 18, Columna 4 (Clase 8\_page\_4)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white,title={Definición: Grado de una extensión (p.~18, col.~4)}]
+El grado de la extensión $L:K$, denotado $[L:K]$, es la dimensión de $L$ como espacio vectorial sobre $K$.
+\end{tcolorbox}
+\textbf{Ej.:} $[\mathbb{Q}(\sqrt{2}):\mathbb{Q}]$. Necesitamos la dimensión de $\mathbb{Q}(\sqrt{2})$ como $\mathbb{Q}$-espacio vectorial.
+\begin{align*}
+\mathbb{Q}(\sqrt{2}) = \mathbb{Q}[\sqrt{2}] = \{a+b\sqrt{2}\mid a,b\in\mathbb{Q}\},\\
+\{1,\sqrt{2}\}\text{ es base}\;\Rightarrow\;[\mathbb{Q}(\sqrt{2}):\mathbb{Q}] = 2.
+\end{align*}
+\textbf{Ej.:} $[\mathbb{Q}(\sqrt[3]{2}):\mathbb{Q}]$.
+\begin{align*}
+\mathbb{Q}(\sqrt[3]{2}) = \{a + b\sqrt[3]{2} + c (\sqrt[3]{2})^{2}\mid a,b,c\in\mathbb{Q}\},\\
+\{1,\sqrt[3]{2},(\sqrt[3]{2})^{2}\}\text{ es base}\;\Rightarrow\;[\mathbb{Q}(\sqrt[3]{2}):\mathbb{Q}] = 3.
+\end{align*}
+(p.~18, col.~4)
+% Página 19, Columna 1 (Clase 8\_page\_5)
+Sea $K:\mathbb{Q}$ una extensión algebraica y finita. (Todos los elementos de $K$ son algebraicos sobre $\mathbb{Q}$.)\\
+Finita $\Leftrightarrow$ $[K:\mathbb{Q}]<\infty$.\\
+\begin{align*}
+K = \mathbb{Q}(d_1,d_2,\dots,d_r) = \mathbb{Q}(\beta)\quad(\text{sobe } \mathbb{Q})
+\end{align*}
+\hfill$\leftarrow$ \textit{Teo. del Elemento Primitivo}. (p.~19, col.~1)
+% Página 19, Columna 2 (Clase 8\_page\_6)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Teorema: Extensiones simples trascendentes (p.~19, col.~2)}]
+Sea $K(\alpha):K$ una extensión simple trascendente. Entonces $K(\alpha):K$ es isomorfa a $K(t):K$ (donde $t$ es una indeterminada).
+\end{tcolorbox}
+\begin{align*}
+K(t)=\left\{\frac{f(t)}{g(t)}\;\middle|\;f(t),g(t)\text{ polinomios}\right\}.
+\end{align*}
+Para demostrar el isomorfismo basta construir un $K$-isomorfismo $\psi:K(t)\to K(\alpha)$ con $\psi(t)=\alpha$.
+\begin{align*}
+\psi:K(t)\longrightarrow K(\alpha),\quad t\mapsto \alpha
+\end{align*}
+% Página 20, Columna 1 (Clase 8\_page\_7)
+\paragraph{¿$\psi$ es $1$–$1$? (p.~20, col.~1)}
+\emph{Por contradicción:} supongamos que no. Existen
+\begin{align*}
+  \frac{p(t)}{q(t)},\ \frac{r(t)}{s(t)} \in K(t)\;\;\text{distintos};
+\end{align*}
+con
+\begin{align*}
+  \frac{p(\alpha)}{q(\alpha)} = \frac{r(\alpha)}{s(\alpha)}.
+\end{align*}
+(Como son distintos, entonces $p(t)s(t) \neq r(t)q(t)$.) Así
+\begin{align*}
+  p(\alpha)s(\alpha) - r(\alpha)q(\alpha) = 0.
+\end{align*}
+Luego $\alpha$ es raíz de un polinomio no nulo; contradicción, pues $\alpha$ es trascendente.\par
+\noindent\rule{\linewidth}{0.3pt}
+\begin{align*}
+  \bigl[\mathbb{Q}(t):\mathbb{Q}\bigr] = \infty \qquad \{1,t,t^{2},\dots\}\text{ son l.i. inf.}
+\end{align*}
+% Página 20, Columna 2 (Clase 8\_page\_8)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Teorema de la Torre (p.~20, col.~2)}]
+Sean $K \subseteq L \subseteq M$ cuerpos. Entonces
+\begin{align*}
+  [M:K] = [M:L]\,[L:K].
+\end{align*}
+\end{tcolorbox}
+\paragraph{Dem. (caso finito).} Sea $n=[M:L]$ y $m=[L:K]$.\par
+
+$n=[M:L]$ significa que existen $x_1,\dots,x_n\in M$ base $L$-lineal de $M$.\\
+$m=[L:K]$ significa que existen $y_1,\dots,y_m\in L$ base $K$-lineal de $L$.\\
+
+¿$\{x_i y_j\}_{1\le i\le n\atop 1\le j\le m}$ es una $K$-base de $M$?
+% Página 20, Columna 3 (Clase 8\_page\_9)
+Sea $\alpha\in M$. Escriba
+\begin{align*}
+  \alpha = \beta_1 x_1 + \dots + \beta_n x_n,\qquad \beta_i\in L.
+\end{align*}
+Cada $\beta_j$ se expresa como
+\begin{align*}
+  \beta_j = a_{j1}y_1 + \dots + a_{jm}y_m, \quad a_{ij}\in K.
+\end{align*}
+Luego
+\begin{align*}
+  \alpha = \sum_{i,j} a_{ij}\,x_i y_j, \quad\text{genera.}
+\end{align*}
+\textbf{$\{x_i y_j\}$ son l.i.:} si
+\begin{align*}
+  0 = \sum_{i,j} a_{ij} x_i y_j,
+\end{align*}
+entonces, agrupando,
+\begin{align*}
+  0 = &(a_{11}y_1+\dots+a_{1m}y_m)x_1 +\\ &\dots + (a_{n1}y_1+\dots+a_{nm}y_m)x_n.
+\end{align*}
+Como $\{x_1,\dots,x_n\}$ son l.i. sobre $L$, cada
+\begin{align*}
+  a_{i1}y_1+\dots+a_{im}y_m = 0,
+\end{align*}
+y $\{y_1,\dots,y_m\}$ l.i. sobre $K$ $\Rightarrow a_{ij}=0$ $\forall i,j$.\\
+Así $[M:K]=nm = [M:L][L:K]$. \hfill$\square$
+
+% Página 20, Columna 4 (Clase 8\_page\_10)
+\paragraph{Ejemplo: Encontrar $[\mathbb{Q}(\sqrt2,\sqrt3):\mathbb{Q}]$ (p.~20, col.~4)}
+\begin{align*}
+  [\mathbb{Q}(\sqrt2,\sqrt3):\mathbb{Q}] = [\mathbb{Q}(\sqrt2,\sqrt3):\mathbb{Q}(\sqrt2)]\\\;\cdot\;[\mathbb{Q}(\sqrt2):\mathbb{Q}].
+\end{align*}
+Sabemos $[\mathbb{Q}(\sqrt2):\mathbb{Q}]=2$ (pol. minimal $x^{2}-2$).
+Para el otro factor:
+\begin{align*}
+  &X^{2}-3 \text{ anula a } \sqrt3 \text{ y tiene coef. en } \mathbb{Q}(\sqrt2),\\\;\Rightarrow 
+  &[\mathbb{Q}(\sqrt2,\sqrt3):\mathbb{Q}(\sqrt2)]\le 2.
+\end{align*}
+Mostremos que no puede ser $1$.
+% Página 21, Columna 1 (Clase 8\_page\_11)
+Supondríamos $\sqrt3\in\mathbb{Q}(\sqrt2)$. Entonces existirían $a,b\in\mathbb{Q}$ con
+\begin{align*}
+  \sqrt3 = a + b\sqrt2.
+\end{align*}
+Elevando al cuadrado:
+\begin{align*}
+  3 &= a^{2} + 2ab\sqrt2 + 2b^{2}.
+\end{align*}
+Separando en $1$ y $\sqrt2$ obtenemos
+\begin{align*}
+  3 &= a^{2} + 2b^{2},\quad 0 = 2ab.
+\end{align*}
+$\bullet$ Si $a=0\Rightarrow 3 = 2b^{2}\ (b\in\mathbb{Q})$ $\Rightarrow 3m^{2}=2n^{2}$ contradictorio por paridad.\\
+$\bullet$ Si $b=0\Rightarrow 3=a^{2}$, imposible en $\mathbb{Q}$.\\
+Así $\sqrt3\notin \mathbb{Q}(\sqrt2)$ y
+\begin{align*}
+  [\mathbb{Q}(\sqrt2,\sqrt3):\mathbb{Q}(\sqrt2)] = 2.
+\end{align*}
+Por la Torre:
+\begin{align*}
+  [\mathbb{Q}(\sqrt2,\sqrt3):\mathbb{Q}] = 4.
+\end{align*}
+(p.~21, col.~1)
+% Página 21, Columna 2 (Clase 8\_page\_12)
+Generalizando,
+\begin{align*}
+  [\mathbb{Q}(\sqrt2,\sqrt3,\sqrt5):\mathbb{Q}] = 8
+\end{align*}
+por sucesivas aplicaciones de la Torre:
+\begin{align*}
+  &[\mathbb{Q}(\sqrt2,\sqrt3,\sqrt5):\mathbb{Q}] = \\ &[\mathbb{Q}(\sqrt2,\sqrt3,\sqrt5):\mathbb{Q}(\sqrt2,\sqrt5)]\\
+  &\;\cdot[\mathbb{Q}(\sqrt2,\sqrt3):\mathbb{Q}(\sqrt2)]\cdot[\mathbb{Q}(\sqrt2):\mathbb{Q}]=8
+\end{align*}
+Cada factor es $2$. (p.~21, col.~2)
+% Página 22, Columna 1 (Clase 9_page_1)
+\subsubsection*{Clase 9}
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Proposición (p.~22, col.~1)}]
+Una extensión $L:K$ es finita si, y sólo si $L = K(\alpha_1,\dots,\alpha_r)$, donde cada $\alpha_i$ es algebraico sobre $K$.
+\end{tcolorbox}
+
+\paragraph{Dem.:} $(\Rightarrow)$ Sea $L:K$ finita, entonces existe una base sobre $K$, $\{d_1,\dots,d_r\}$. Es decir,\\para todo $\beta\in L$ existen $c_1,\dots,c_r\in K$ tales que
+\begin{align*}
+  \beta = c_1 d_1 + \dots + c_r d_r.
+\end{align*}
+¿$L = K(d_1,\dots,d_r)$?\\ Cada $d_i$ es algebraico: los $r+1$ elementos
+\begin{align*}
+ 1,\;d_i,\;d_i^{2},\;\dots,\;d_i^{r}
+\end{align*}
+son l.\,in.\,dep.~sobre $K$; existe $c_0,\dots,c_r$ no todos cero con
+\begin{align*}
+  c_0 + c_1 d_i + \dots + c_r d_i^{r} = 0.
+\end{align*}
+Efectivamente $d_i$ es algebraico y así $L = K(d_1,\dots,d_r)$.\\ (p.~22, col.~1)
+% Página 22, Columna 2 (Clase 9_page_2)
+\begin{align*}
+  K(\alpha) &= K[\alpha],\\
+  K(d_1,\dots,d_r) &= K(d_1)(d_2)\dots(d_r) \\ &= K(d_1)\dots(d_{r-1})[d_r].
+\end{align*}
+Tomando la cadena de extensiones
+\begin{align*}
+  K \subseteq K(d_1) \subseteq K(d_1,d_2) \subseteq \dots \subseteq K(d_1,\dots,d_r),
+\end{align*}
+por el Teorema de la Torre
+\begin{align*}
+  &[K(d_1,\dots,d_r):K] = [K(d_1):K]\\,&[K(d_1,d_2):K(d_1)]\dots\\
+  &\quad\dots [K(d_1,\dots,d_r):K(d_1,\dots,d_{r-1})],
+\end{align*}
+siendo todos los factores finitos, de donde $L$ es finita.\\ (p.~22, col.~2)
+% Página 22, Columna 3 (Clase 9_page_3)
+\subsubsection*{Construcciones con regla y compás}
+Los griegos comprendían los números enteros y racionales, pero se sorprendieron al descubrir que la longitud de la diagonal de un cuadrado de lado $1$, es decir, $\sqrt{2}$, no es un número racional.  Esto los llevó a ampliar su sistema numérico.  Esperaban que los números “construibles” fueran suficientes.
+
+Se define un número real (mejor dicho, una longitud) como \emph{construible} si puede obtenerse mediante intersecciones sucesivas de:
+\begin{itemize}
+  \item líneas rectas trazadas entre dos puntos ya construidos, y
+  \item círculos con centro en un punto construido y radio igual a una longitud construida.
+\end{itemize}
+
+Este concepto llevó a tres preguntas clásicas de la antigüedad que los griegos no pudieron resolver:
+\begin{enumerate}
+  \item ¿Es posible duplicar el cubo?\\[-0.7em]
+  \item ¿Es posible trisecar un ángulo?\\[-0.7em]
+  \item ¿Es posible cuadrar el círculo?
+\end{enumerate}
+Veremos que la respuesta a las tres preguntas es negativa.\\ (p.~22, col.~3)
+% Página 22, Columna 4 (Clase 9_page_4)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Lema (p.~22, col.~4)}]
+\begin{enumerate}
+  \item[(a)] Si $c$ y $d$ son construibles, entonces también lo son $c+d$, $-c$, $cd$ y $\dfrac{c}{d}$ \;(con $d\neq0$).
+  \item[(b)] Si $c>0$ es construible, entonces también lo es $\sqrt{c}$.
+\end{enumerate}
+\end{tcolorbox}
+\paragraph{Dem.:} Sean $c$ y $d$ construibles.  Sobre la recta real construida, el segmento $[0,c]$ se traslada para obtener $c+d$; los triángulos semejantes permiten construir $cd$ y $\dfrac{c}{d}$.  Para $\sqrt{c}$ se erige un semicírculo de diámetro $1+c$ y se construye la perpendicular por el punto medio, obteniéndose $x$ con $x^{2}=c$.  \hfill(p.~22, col.~4)
+% Página 23, Columna 1 (Clase 9_page_5)
+$\frac{d}{c}$: Construya triángulos semejantes con catetos $1$ y $c$,$d$  y $x\;\Rightarrow\; \frac{x}{1}=\frac{d}{c}$.
+
+Si $c$ es construible $\Rightarrow \sqrt{c}$ también lo es mediante el procedimiento anterior (semicírculo).\\ (p.~23, col.~1)
+% Página 23, Columna 2 (Clase 9_page_6 – Teorema)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Teorema (p.~23, col.~2)}]
+\begin{enumerate}
+  \item[(a)] El conjunto de los números construibles es un cuerpo.
+  \item[(b)] Un número $\alpha$ es construible si, y sólo si, está contenido en un subcuerpo de $\mathbb{R}$ de la forma
+  \begin{align*}
+     \mathbb{Q}\bigl[\sqrt{a_1},\dots,\sqrt{a_r}\bigr], \quad a_i\in\mathbb{Q},\;a_i>0.
+  \end{align*}
+\end{enumerate}
+\end{tcolorbox}
+\paragraph{Dem.:} (a) Los ítems del lema anterior muestran que el conjunto es cerrado bajo $+,-,\cdot,\div$
+\par (b) Si $\alpha$ es construible $\Rightarrow$ existe sucesión de adjunciones cuadráticas que lo contienen:
+\begin{align*}
+  \mathbb{Q}\subseteq \mathbb{Q}[\sqrt{a_1}] \subseteq \dots \subseteq \mathbb{Q}[\sqrt{a_1},\dots,\sqrt{a_r}]\ni \alpha.
+\end{align*}
+(p.~23, col.~2)
+% Página 23, Columna 3 (Clase 9_page_6 – Nota)
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white,title={Números Construibles (p.~23, col.~3)}]
+Si $\alpha$ es construible, entonces $\alpha$ es algebraico sobre $\mathbb{Q}$ y el grado $[\mathbb{Q}(\alpha):\mathbb{Q}]$ es una potencia de $2$.
+\end{tcolorbox}
+\begin{align*}
+  \Longrightarrow\;\text{Aplicaciones a problemas clásicos.}
+\end{align*}
+% Página 23, Columna 4 (Clase 9_page_7 – Proposiciones)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Proposición (Duplicar el cubo) (p.~23, col.~4)}]
+Es imposible duplicar un cubo con regla y compás.
+\end{tcolorbox}
+\paragraph{Dem.:} $\root 3 \of 2$ no es construible pues
+\begin{align*}
+  \bigl[\mathbb{Q}(\root 3 \of 2):\mathbb{Q}\bigr] = 3 \neq 2^{n}.
+\end{align*}
+\vspace{0.5em}
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Proposición (Trisección) (p.~23, col.~4)}]
+Existe un ángulo que no puede trisecarse con regla y compás.
+\end{tcolorbox}
+\paragraph{Dem.:} El ángulo $\theta = 60^{\circ}$ no se puede trisecar.  Basta mostrar que $\cos(\theta/3)=\cos(20^{\circ})$ no es construible.
+A partir de la identidad
+\begin{align*}
+  \cos(3x)=4\cos^{3}x-3\cos x,
+\end{align*}
+se obtiene un polinomio minimal de grado $3$ para $\cos(20^{\circ})$.  Como grado $3\neq 2^{n}$, el número no es construible. \hfill$\square$
+
+% --------------------------------------------------------
+
+% Página 24, Columna 1 (Clase 9_page_8)
+\paragraph{Imposibilidad de trisecar $60^{\circ}$ — detalle} (p.~24, col.~1)
+Sea
+\begin{align*}
+  \alpha &= 20^{\circ}, & X &= \cos 20^{\circ}, & \cos 60^{\circ} &= \tfrac12.
+\end{align*}
+Por la identidad $\cos 3x = 4\cos^{3}x - 3\cos x$ se obtiene
+\begin{align*}
+  \tfrac12 = 4X^{3} - 3X \;\Longrightarrow\; 8X^{3} - 6X - 1 = 0.
+\end{align*}
+El polinomio $8x^{3} - 6x - 1$ es irreducible sobre $\mathbb{Q}$ (criterio de raíces racionales); por tanto
+\begin{align*}
+  \bigl[\mathbb{Q}(\cos 20^{\circ}) : \mathbb{Q}\bigr] = 3 \neq 2^{r},
+\end{align*}
+y el ángulo de $20^{\circ}$ no es construible; en consecuencia $60^{\circ}$ no puede trisecarse solamente con regla y compás.
+
+% Página 24, Columna 2 (Clase 9_page_9)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Proposición: Cuadratura del círculo (p.~24, col.~2)}]
+Es imposible cuadrar el círculo mediante construcciones con regla y compás.
+\end{tcolorbox}
+\noindent\textbf{Demostración.} Si pudiera realizarse la cuadratura, entonces el número $\sqrt{\pi}$ sería construible y, por el teorema sobre grados de números construibles,\linebreak
+$[\mathbb{Q}(\sqrt{\pi}):\mathbb{Q}] = 2^{r}$. De aquí se deduce que $\sqrt{\pi}$ —y por tanto $\pi$— sería algebraico, contradiciendo la trascendencia de $\pi$.\hfill$\square$
+
+% Página 24, Columna 3 (Clase 9_page_10)
+\begin{tcolorbox}[colback=white,colframe=red!80!black,colbacktitle=red!80!black,coltitle=white,title={Teorema: Polígonos regulares construibles (p.~24, col.~3)}]
+Los primos $p$ para los cuales el polígono regular de $p$ lados es construible con regla y compás son exactamente los de la forma
+\begin{align*}
+  p = 2^{\,2^{r}} + 1,\quad r \in \mathbb{N}. 
+\end{align*}
+Estos primos se denominan \emph{primos de Fermat}.
+\end{tcolorbox}
+\noindent\textbf{Demostración (bosquejo).} Sea $\lambda = e^{2\pi i/p}$. Entonces $\lambda^{p} = 1$ y
+\begin{align*}
+  X^{p} - 1 = (X-1)\,\underbrace{\bigl(X^{p-1}+X^{p-2}+\dots+1\bigr)}_{\Phi_{p}(X)}.
+\end{align*}
+El factor $\Phi_{p}(X)$ es irreducible y $\deg \Phi_{p}=p-1$, de modo que
+\begin{align*}
+  [\mathbb{Q}(\lambda):\mathbb{Q}] = p-1. \tag*{(†)}
+\end{align*}
+
+% Página 24, Columna 4 (continuación del teorema)
+Notemos
+\begin{align*}
+  \cos\frac{2\pi}{p} = \frac{\lambda + \lambda^{-1}}{2},
+\end{align*}
+por lo que $[\mathbb{Q}(\lambda):\mathbb{Q}(\cos\frac{2\pi}{p})]=2$. Usando (†),
+\begin{align*}
+  \bigl[\mathbb{Q}\bigl(\cos\tfrac{2\pi}{p}\bigr):\mathbb{Q}\bigr] = \frac{p-1}{2}. \qquad(p.~24,\,col.~4)
+\end{align*}
+Para que $\cos\tfrac{2\pi}{p}$ sea construible, este grado debe ser una potencia de $2$; así
+\begin{align*}
+  &\frac{p-1}{2} = 2^{r} \;\Longrightarrow\;  p = 2^{\,2^{r}} + 1.
+\end{align*}
+
+% Página 25, Columna 1 (Clase 9_page_12)
+\paragraph{Conclusión numérica} (p.~25, col.~1)
+Queda entonces
+\begin{align*}
+  &\bigl[\mathbb{Q}\bigl(\cos\tfrac{2\pi}{p}\bigr):\mathbb{Q}\bigr] = \frac{p-1}{2} = 2^{r}\\ &\quad\Longrightarrow\quad p = 2^{\,2^{r}} + 1.
+\end{align*}
+Si $m$ no es potencia de $2$, el número $2^{m}+1$ resulta compuesto (factorización clásica) y el polígono regular correspondiente no es construible.
+
+% Página 25, Columna 2 (Clase 9_page_13)
+Gauss mostró a los $18$ años que
+\begin{align*}
+  &\cos\frac{2\pi}{17} = -\frac{1}{16}+\frac{1}{16}\sqrt{17}+\frac{1}{16}\sqrt{34-2\sqrt{17}}\\
+  &\frac{1}{8}\sqrt{17+3\sqrt{17}-\sqrt{34-2\sqrt{17}}-2\sqrt{34+2\sqrt{17}}},
+\end{align*}
+y, en consecuencia, el heptadecágono regular es construible.
+\subsubsection*{Clase 10: Pentágonos y Polígonos Regulares}
+% Página 1, Columna 1
+\noindent\textbf{Pentágono Regular}\hfill (p.~1, col.~1)\\
+Sea $\omega$ una raíz $5$‑ésima de la unidad distinta de $1$:
+\begin{align*}
+\omega^{5}=1,\qquad \omega\neq 1.
+\end{align*}
+Entonces
+\begin{align*}
+X^{5}-1=(X-1)\,(X^{4}+X^{3}+X^{2}+X+1),
+\end{align*}
+y $\omega$ es raíz de 
+\begin{align*}
+\Phi_{5}(X)=X^{4}+X^{3}+X^{2}+X+1,
+\end{align*}
+que es irreducible sobre $\mathbb{Q}$.  De aquí
+\begin{align*}
+\bigl[\mathbb{Q}(\omega):\mathbb{Q}\bigr]=4.
+\end{align*}
+% Página 1, Columna 2
+Existe una torre de extensiones
+\begin{align*}
+\mathbb{Q}\;\subseteq\; ?\;\subseteq\;\mathbb{Q}(\omega),
+\end{align*}
+cada una de grado~$2$.  En particular los elementos
+\begin{align*}
+\omega,\;\omega^{2},\;\omega^{3},\;\omega^{4}
+\end{align*}
+son las raíces de $\Phi_{5}(X)$.  (p.~1, col.~2)
+% Página 1, Columna 3
+
+\noindent\textbf{Estructura de $(\mathbb{Z}/5\mathbb{Z})^{\times}$}\hfill (p.~1, col.~3)\\
+\begin{align*}
+(\mathbb{Z}/5\mathbb{Z})^{\times}=\{1,2,3,4\}=\langle 2\rangle:
+\\2^{0}=1,\;2^{1}=2,\;2^{2}=4,\;2^{3}=3.
+\end{align*}
+Los subconjuntos
+\begin{align*}
+\{1\}\;\subseteq\;\{1,4\}\;\subseteq\;\{1,2,3,4\}
+\end{align*}
+dan lugar a los \emph{períodos de Gauss}
+\begin{align*}
+\eta_{1}&=\omega+\omega^{4},\\
+\eta_{2}&=\omega^{2}+\omega^{3},
+\end{align*}
+para los que se cumple
+\begin{align*}
+\eta_{1}+\eta_{2}&=-1,\\
+\eta_{1}\eta_{2}&=-1.
+\end{align*}
+Por tanto
+\begin{align*}
+(X-\eta_{1})(X-\eta_{2})=X^{2}+X-1.
+\end{align*}
+% Página 1, Columna 4
+De la identidad
+\begin{align*}
+\omega+\omega^{2}+\omega^{3}+\omega^{4}+1=0
+\end{align*}
+se concluye
+\begin{align*}
+\eta_{1},\eta_{2}= -1\pm\frac{\sqrt{5}}{2}.
+\end{align*}
+Luego
+\begin{align*}
+\mathbb{Q}\subseteq\mathbb{Q}(\sqrt{5})\subseteq\mathbb{Q}(\omega),
+\end{align*}
+con grados $2$ y $2$ respectivamente.  
+Obsérvese que
+\begin{align*}
+\eta_{1}= \omega+\omega^{4}= \omega+\frac{1}{\omega},
+\end{align*}
+así que $\omega$ es raíz de
+\begin{align*}
+X^{2}-\eta_{1}X+1=0.
+\end{align*}
+(p.~1, col.~4)
+
+% Página 2, Columna 1
+\noindent\textbf{Heptadecágono Regular}\hfill (p.~2, col.~1)\\
+Sea $\omega^{17}=1$, $\omega\neq 1$.  Entonces $\omega$ es raíz de
+\begin{align*}
+\Phi_{17}(X)=X^{16}+X^{15}+\dots+X+1,
+\end{align*}
+polinomio irreducible de grado $16$.  De aquí
+\begin{align*}
+\bigl[\mathbb{Q}(\omega):\mathbb{Q}\bigr]=16.
+\end{align*}
+% Página 2, Columna 2
+El grupo
+\begin{align*}
+(\mathbb{Z}/17\mathbb{Z})^{\times}=\{1,2,\dots,16\}=\langle 3\rangle
+\end{align*}
+es cíclico 
+
+Gauss: para todo primo $p$, 
+$(\mathbb{Z}/p\mathbb{Z})^{\times}$ es cíclico
+(p.~2, col.~2)
+% Página 2, Columna 3
+Consideremos las sucesivas cadenas de subgrupos
+\begin{align*}
+&\{1\}\subseteq\{1,16\}\subseteq\{1,4,13,16\}\\\subseteq&\{1,2,4,8,9,13,15,16\}\subseteq(\mathbb{Z}/17\mathbb{Z})^{\times},
+\end{align*}
+que inducen extensiones
+\begin{align*}
+\mathbb{Q}\subseteq\mathbb{Q}(\sqrt{17})\subseteq\mathbb{Q}(\omega).
+\end{align*}
+Definiendo los períodos
+\begin{align*}
+\eta_{1}&=\omega+\omega^{2}+\omega^{4}+\dots+\omega^{16},\\
+\eta_{2}&=\text{(suma de los otros }8\text{ conjugados)},
+\end{align*}
+se verifica
+\begin{align*}
+\eta_{1}+\eta_{2}&=-1,\\
+\eta_{1}\eta_{2}&=-4.
+\end{align*}
+De aquí
+\begin{align*}
+(X-\eta_{1})(X-\eta_{2})=X^{2}+X-4,
+\end{align*}
+cuyas raíces son
+\begin{align*}
+\eta_{1},\eta_{2}= -1\pm\frac{\sqrt{17}}{2}.
+\end{align*}
+(p.~2, col.~3)
+% Página 2, Columna 4
+En general, si $\omega^{p}=1$ con $\omega\neq 1$ y $p$ primo, se tiene la torre
+\begin{align*}
+\mathbb{Q}\subseteq\mathbb{Q}(\sqrt{p})\subseteq\mathbb{Q}(\omega),
+\end{align*}
+donde
+\begin{align*}
+\bigl[\mathbb{Q}(\sqrt{p}):\mathbb{Q}\bigr]=2,
+\quad
+\bigl[\mathbb{Q}(\omega):\mathbb{Q}(\sqrt{p})\bigr]=\frac{p-1}{2}.
+\end{align*}
+(p.~2, col.~4)
+% Página 3, Columna 1
+\begin{tcolorbox}[title={Definición: Cuerpo de descomposición},colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white]
+Sea $f(x)\in K[x]$ de grado $n$. Una extensión $L:K$ es un \emph{cuerpo de descomposición} de $f(x)$ sobre $K$ si:
+\begin{enumerate}\itemsep0pt
+  \item $f(x)=c(x-\alpha_1)\cdots(x-\alpha_n)$ en $L[x]$,
+  \item $L=K(\alpha_1,\dots,\alpha_n)$.
+\end{enumerate}
+\end{tcolorbox}\hfill(p.~3, col.~1)
+
+\noindent\textbf{Ej.:} \;$f(X)=X^{3}-2\in\mathbb{Q}[X]$.\,
+Tomemos $L=\mathbb{Q}\bigl(\root 3 \of 2\bigr)$, \;$\root 3 \of 2\in\mathbb{R}$.\,
+Obsérvese que $X^{3}-2$ es irreducible sobre $\mathbb{Q}$ y
+\begin{align*}
+\bigl[\mathbb{Q}\bigl(\root 3 \of 2\bigr):\mathbb{Q}\bigr]=3.
+\end{align*}
+Además
+\begin{align*}
+&X^{3}-2 = X^{3}-\bigl(\root 3 \of 2\bigr)^{3}\\
+        &=\bigl(X-\root 3 \of 2\bigr)\,\bigl(X^{2}+\root 3 \of 2\,X+\root 3 \of 4\bigr)
+        \\ &\in\mathbb{Q}\bigl(\root 3 \of 2\bigr)[X].
+\end{align*}
+(p.~3, col.~1)
+
+% Página 3, Columna 2
+\noindent\textbf{Raíces del factor cuadrático}\hfill(p.~3, col.~2)\\
+\begin{align*}
+&X^{2}+\root 3 \of 2\,X+\root 3 \of 4 = 0
+\;\Longrightarrow\\\
+X&=\frac{-\root 3 \of 2 \pm
+\sqrt{\root 3 \of 7-\;4\root 3 \of 4}}{2}\\[4pt]
+ &=\frac{-\root 3 \of 2 \pm \root 3 \of 2\,\sqrt{-3}}{2}.
+\end{align*}
+De la torre de extensiones
+\begin{align*}
+\mathbb{Q}\subseteq\mathbb{Q}\bigl(\root 3 \of 2\bigr)\subseteq
+\mathbb{Q}\bigl(\root 3 \of 2,\sqrt{-3}\bigr)
+\end{align*}
+se obtiene
+\begin{align*}
+L&=\mathbb{Q}\bigl(\root 3 \of 2,\sqrt{-3}\bigr)\\
+           &=\mathbb{Q}\bigl(\root 3 \of 2,\omega\bigr),\\
+\omega&=-\frac{1+\sqrt{-3}}{2},\;\\
+\omega^{3}
+&=1,\;\omega\ne1,
+\end{align*}
+y
+\begin{align*}
+[L:\mathbb{Q}]=6.
+\end{align*}
+Luego $L$ es cuerpo de descomposición de $X^{3}-2$. (p.~3, col.~2)
+
+% Página 3, Columna 3
+\noindent\textbf{Raíces de $X^{3}-2$ y $X^{2}-2$}\hfill(p.~3, col.~3)\\[-0.3em]
+\begin{align*}
+X^{3}-2=0 &\quad\leadsto\quad \root 3 \of 2,\;
+           \root 3 \of 2\,\omega,\;
+           \root 3 \of 2\,\omega^{2},\\[2pt]
+X^{2}-2=0 &\quad\leadsto\quad \sqrt{2},\;-\sqrt{2}.
+\end{align*}
+Las flechas indican cómo cada raíz vive en sucesivas extensiones. (p.~3, col.~3)
+
+% Página 3, Columna 4
+Sea $p$ primo y $\omega$ una raíz $(p\!-\!1)$‑ésima de la unidad ($\omega\neq1$). Entonces
+\begin{align*}
+X^{p-1}+X^{p-2}+\dots+X+1
+\end{align*}
+tiene como raíces $\omega,\omega^{2},\dots,\omega^{p-1}$ y
+\begin{align*}
+[\mathbb{Q}(\omega):\mathbb{Q}]=p-1.
+\end{align*}
+(p.~3, col.~4)
+% Página 4, Columna 1
+\noindent\textbf{Ej.: Cuerpo de descomposición de $X^{4}+2X^{2}+2$}\hfill(p.~4, col.~1)\\
+Sea
+\begin{align*}
+L=\mathbb{Q}\bigl(\sqrt{2},\sqrt{-1}\bigr).
+\end{align*}
+\begin{align*}
+X^{4}+2X^{2}+2
+\end{align*}
+se factoriza completamente en $L[X]$ y $[L:\mathbb{Q}]=4\cdot?\,(\text{ver nota}).$
+% Página 4, Columna 2
+\begin{tcolorbox}[title={Una idea fundamental de la teoría de Galois},colback=white,colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white]
+Una de las ideas fundamentales de la teoría de Galois es la siguiente:  
+si se desea investigar si existen relaciones entre las raíces de un polinomio $f(X)\in K[X]$ (en un cuerpo de descomposición) y no es posible calcular explícitamente las raíces, entonces puede utilizarse el método de las extensiones de cuerpos para obtener información sobre posibles relaciones entre las raíces.
+\end{tcolorbox}\hfill(p.~4, col.~2)
+% (Las columnas 3 y 4 de la página 4 quedan libres para futuras imágenes si las hubiera.)
+\subsubsection*{Clase 11: Cuerpos de Descomposición y Relaciones entre Raíces}
+% Página 1, Columna 1
+\noindent\textbf{Ejemplo: Cuerpo de descomposición de $X^{4}+2X^{2}+2$}\hfill(p.~1, col.~1)\\[-0.5em]
+\begin{align*}
+\textstyle f(X)=X^{4}+2X^{2}+2
+\end{align*}
+Se propone el siguiente encadenamiento de extensiones (grados indicados a la izquierda):
+\begin{align*}
+&2\;|\;\mathbb{Q}\bigl(\root 4 \of 2,i\bigr)\\
+&3\;|\;\mathbb{Q}\bigl(\root 4 \of 2\bigr)\\
+&4\;|\;\mathbb{Q}
+\end{align*}
+\noindent\textbf{Ej.:} $X^{4}-2$ — relaciones entre las raíces.\hfill(p.~1, col.~2)
+
+% Página 1, Columna 3
+\noindent\textbf{Polinomios simétricos.}\hfill(p.~1, col.~3)\\
+Sea
+\begin{align*}
+X^{4}-2&=(X-d_{1})(X-d_{2})(X-d_{3})(X-d_{4}),
+\end{align*}
+con
+\begin{align*}
+d_{1}+d_{2}+d_{3}+d_{4}&=0,\\
+d_{1}d_{2}d_{3}d_{4}&=-2.
+\end{align*}
+\textit{¿Existen más relaciones?}
+% Página 1, Columna 4
+\begin{align*}
+X^{4}-2=0 &\Longrightarrow 
+d_{1}= \root 4 \of 2,\;
+d_{2}= -\root 4 \of 2,\\
+&\qquad d_{3}= \root 4 \of 2\,i,\;
+d_{4}= -\root 4 \of 2\,i,\\
+d_{1}&=-d_{2},\quad d_{3}=-d_{4}.
+\end{align*}
+(p.~1, col.~4)
+% Página 2, Columna 1
+\noindent\textbf{Cuerpo de descomposición de $X^{4}-2$}\hfill(p.~2, col.~1)\\[-0.3em]
+\begin{align*}
+\mathbb{Q}\bigl(\root 4 \of 2,i\bigr) 
+&\cong \mathbb{Q}\bigl(\root 4 \of 2\,i,\root 4 \of 2\bigr)
+\end{align*}
+\vspace{-0.2em}
+\begin{align*}
+2\;|\;\mathbb{Q}\bigl(\root 4 \of 2,i\bigr)\\[-0.3em]
+4\;|\;\mathbb{Q}\bigl(\root 4 \of 2\bigr)\\[-0.3em]
+\mathbb{Q}
+\end{align*}
+
+% Página 2, Columna 2
+\begin{tcolorbox}[title={Proposición},colback=white,
+                 colframe=brown!80!black,colbacktitle=brown!80!black,coltitle=white]
+Sea $f(x)\in K[x]$ de grado $n>0$, entonces existe una extensión $L:K$ tal que $f(x)$ se descompone totalmente en $L$.
+\end{tcolorbox}\hfill(p.~2, col.~2)
+
+Construyendo sucesivamente $K(d_1)\bigl(d_2\bigr)\dots(d_n)$ se obtiene el campo
+\begin{align*}
+K(d_{1},d_{2},\dots,d_{n}),
+\end{align*}
+en el que
+\begin{align*}
+f(x)=(x-d_{1})(x-d_{2})\cdots(x-d_{n}).
+\end{align*}
+
+% Página 2, Columna 3
+\noindent\textbf{Dificultades de irreducibilidad en $K(d_1)[X]$}\hfill(p.~2, col.~3)\\
+$K(d_{1})[X]$ es un D.F.U., pero la irreducibilidad puede ser difícil  
+(Ej.: Teoría Algebraica de Números, Criterio de \textit{Eisenstein}).  
+% Página 2, Columna 4
+\begin{tcolorbox}[title={Proposición},colback=white,
+                 colframe=brown!80!black,colbacktitle=brown!80!black,coltitle=white]
+Sea $f(x)\in K[x]$ de grado $n>0$ y sea $L$ un cuerpo de descomposición de $f(x)$ sobre $K$, entonces
+\begin{align*}
+[L:K]\le n!.
+\end{align*}
+\end{tcolorbox}\hfill(p.~2, col.~4)
+
+\noindent\textbf{Ejemplos.}
+\begin{enumerate}\itemsep2pt
+\item[$1)$] $p$ primo,\;
+\begin{align*}
+&X^{p-1}+X^{p-2}+\dots+X+1,\qquad \\
+&\zeta=e^{2\pi i/p},\;\zeta^{p}=1,\;\zeta\neq1.
+\end{align*}
+El cuerpo de descomposición es $\mathbb{Q}(\zeta)$ y
+\begin{align*}
+\bigl[\mathbb{Q}(\zeta):\mathbb{Q}\bigr]=p-1.
+\end{align*}
+\item[$2)$] $X^{5}-777\,X+7$ es irreducible sobre $\mathbb{Q}$.  
+Si $L$ es su cuerpo de descomposición,
+\begin{align*}
+[L:\mathbb{Q}]=5!=120.
+\end{align*}
+\end{enumerate}
+(p.~2, col.~4)
+% Página 3, Columna 1
+\begin{tcolorbox}[title={Proposición: Unicidad del cuerpo de descomposición},colback=white,
+                 colframe=brown!80!black,colbacktitle=brown!80!black,coltitle=white]
+Sean $L_{1}$ y $L_{2}$ cuerpos de descomposición de $f(x)\in K[x]$, entonces existe un isomorfismo 
+\[
+L_{1}\simeq L_{2}
+\]
+que es la identidad en $K$.
+\end{tcolorbox}\hfill(p.~3, col.~1)
+
+\noindent\textbf{Prueba.} Idea: debo ver cómo “subir” isomorfismos.
+\medskip
+\textbf{1$^{\mathrm{er}}$ Paso.} Suponga que $f(x)$ es irreducible. Sean $\alpha$ y $\beta$ dos raíces distintas.  
+Afirmo que existe un único isomorfismo
+\begin{align*}
+\psi:K[\alpha]\longrightarrow K[\beta]
+\end{align*}
+tal que $\psi|_{K}=\operatorname{id}$ y que cumple $\boxed{\psi(\alpha)=\beta}$. (p.~3, col.~1)
+
+% Página 3, Columna 2
+Sabemos que:
+\begin{enumerate}
+\item $\gamma_{\alpha}:K[X]/\bigl(f(X)\bigr)\longrightarrow K[\alpha]$ isomorf.\\
+\item $\gamma_{\beta}:K[X]/\bigl(f(X)\bigr)\longrightarrow K[\beta]$ isomorf.
+\end{enumerate}
+Por tanto 
+\begin{align*}
+\psi = \gamma_{\beta}\circ\gamma_{\alpha}^{-1}.
+\end{align*}
+Es único si existe $\psi|_{K}=\mathrm{id}$ y si $F(\alpha)=\beta$. (p.~3, col.~2)
+
+% Página 3, Columna 3
+Sea 
+\begin{align*}
+\zeta = \alpha^{n}+k_{1}\alpha^{n-1}+\dots+k_{n-1}\in K[\alpha].
+\end{align*}
+Entonces
+\begin{align*}
+\psi(\zeta)&=\psi(\alpha)^{n}+k_{1}\psi(\alpha)^{\,n-1}+\dots+k_{n-1}\\
+           &=\beta^{n}+k_{1}\beta^{\,n-1}+\dots+k_{n-1},\\[4pt]
+f(\zeta)   &=f(\alpha)^{n}+k_{1}f(\alpha)^{\,n-1}+\dots+k_{n-1}\\
+           &=\beta^{n}+k_{1}\beta^{\,n-1}+\dots+k_{n-1}.
+\end{align*}
+\[
+\underline{\psi = f}.
+\]
+(p.~3, col.~3)
+
+% Página 3, Columna 4
+\textbf{2$^{\mathrm{o}}$ Paso.} Sea $f(X)\in K[X]$ irreducible y sea $\alpha$ una raíz de $f$.  
+Considérese el diagrama
+\[
+\begin{array}{ccc}
+K(\alpha) & \xrightarrow{\;\psi\;} & K'(\beta)\\
+\big\downarrow & & \big\downarrow \\
+K & \xrightarrow{\;\sigma\;} & K'
+\end{array}
+\]
+donde $\sigma:K\to K'$ es un isomorfismo,  
+$g = f^{\sigma}$ y $\beta$ es raíz de $g$. (p.~3, col.~4)
+
+% Página 4, Columna 1
+\noindent\textbf{¡Existe!} un isomorfismo
+\begin{align*}
+\gamma:K(\alpha)\longrightarrow K'(\beta)
+\end{align*}
+tal que $\gamma|_{K} = \sigma$ y $\gamma(\alpha)=\beta$.
+\smallskip
+\begin{itemize}
+\item $\sigma$ extiende a un isomorfismo de anillos $K[X]\cong K'[X]$.
+\item Si $f$ es irreducible, entonces $f^{\sigma}\in K'[X]$ también lo es.
+\end{itemize}
+\begin{align*}
+K[\alpha] = K(\alpha) &\;\cong\; K[X]\big/\!\bigl(f(X)\bigr),\\
+K'[\beta] = K'(\beta) &\;\cong\; K'[X]\big/\!\bigl(f^{\sigma}(X)\bigr).
+\end{align*}
+Definimos
+\begin{align*}
+\bigl[q(X)\bigr]_{f}\longmapsto \bigl[q^{\sigma}(X)\bigr]_{f^{\sigma}},
+\end{align*}
+lo cual está bien definido y es isomorfismo. (p.~4, col.~1)
+
+\subsubsection*{Clase 12: Normalidad y Separabilidad}
+
+% -------------------------------------------------
+% Página 1, Columna 1  — Normalidad y Separabilidad
+\noindent\textbf{Normalidad y Separabilidad.}\hfill(p.~1, col.~1)\\[-0.25em]
+\begin{align*}
+\text{Normalidad}\;\uparrow\; &\text{\small Todos los raíces}\\[1pt]
+\text{Separabilidad}\;\uparrow\; &\text{\small no se repiten raíces}
+\end{align*}
+\rule{\linewidth}{0.3pt}
+
+$f(x)\in K[X]$ irreducible.\\
+“entender las relaciones entre las raíces”\\[0.25em]
+\begin{align*}
+X^{2}-2
+\end{align*}
+Sean $\alpha$ y $\beta$ las raíces,\;
+\underline{$\alpha=-\beta$} \emph{(relación)}\\
+\rule{\linewidth}{0.3pt}
+
+$f(x)\in K[X]$ irreducible y $L:K$ su cuerpo de descomposición, entonces
+\begin{align*}
+\Bigl\{\psi:L\to L \;\Bigm|\; \psi\text{ hom.\ de cuerpos},\;
+\psi\!\mid_{K}=\mathrm{id}\Bigr\}
+\end{align*}
+“ve” las relaciones entre las raíces.\\[-0.3em]
+
+% -------------------------------------------------
+% Página 1, Columna 2 — Grupo de Galois
+\noindent$\Longrightarrow$ \textbf{$\operatorname{Gal}(L/K)$ Grupo de Galois} es grupo con la composición.\hfill(p.~1, col.~2)
+
+% -------------------------------------------------
+% Página 1, Columna 3 — Extensiones Normales
+\begin{tcolorbox}[title={Extensiones Normales},colback=white,
+                 colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white]
+\textbf{Definición}\;
+$L:K$ es una extensión normal si todo polinomio irreducible de $K[x]$
+que tiene una raíz en $L$ se descompone totalmente sobre $L$.
+\end{tcolorbox}\hfill(p.~1, col.~3)
+
+Si $f(x)\in K[X]$ irreducible y $\exists\alpha\in L$ con $f(\alpha)=0$, entonces
+\begin{align*}
+f(x)=c(x-\alpha)(x-\beta)\dots(x-\Omega)
+\end{align*}
+es una descomposición total.\\[0.4em]
+\textbf{Ej.:}\;
+$\mathbb{Q}(\root 3 \of 2):\mathbb{Q}$ \emph{no} es una extensión normal.\\
+$X^{3}-2$ es irreducible sobre $\mathbb{Q}$; $\root 3 \of 2\in\mathbb{Q}(\root 3 \of 2)$,\\
+pero $\root 3 \of 2\,\omega\notin\mathbb{Q}(\root 3 \of 2)$ con $\omega^{3}=1$, $\omega\neq1$.
+Además $\mathbb{Q}(\root 3 \of 2)\subseteq\mathbb{R}$.
+% -------------------------------------------------
+% Página 1, Columna 4 — Normal + Finita ⇔ Descomposición
+\noindent\textbf{¿$\mathbb{Q}(\sqrt{2}):\mathbb{Q}$ es normal?} \;Sí, pues es el cuerpo de descomposición de $X^{2}-2$.\hfill(p.~1, col.~4)
+\begin{tcolorbox}[title={Proposición: Normal + finita = descomposición},
+                 colback=white,colframe=brown!80!black,
+                 colbacktitle=brown!80!black,coltitle=white]
+Sea $L:K$ finita. Entonces $L$ es un cuerpo de descomposición de algún $f(x)\in K[X]$
+\emph{si y sólo si} $L:K$ es normal.
+\end{tcolorbox}
+
+Dem.: (véase la prueba en el libro).\\
+\emph{Idea: usar polinomios simétricos.}\\[2pt]
+($\Leftarrow$)\; Suponga $L:K$ normal. Como $L$ es finita,
+\begin{align*}
+L=K(d_{1},\dots,d_{n}),\quad d_{i}\;\text{algebraicos}.
+\end{align*}
+Sea $f_{i}(x)$ el polinomio minimal de $d_{i}/K$.  Definamos
+\begin{align*}
+h(x)=f_{1}(x)\cdots f_{n}(x).
+\end{align*}
+\emph{Afirmo} que $L$ es cuerpo de descomposición de $h(x)$.
+% -------------------------------------------------
+% Página 2, Columna 1 — Prueba (continuación)
+\noindent\textbf{1.}\; $h(x)$ se descompone totalmente en $L$: por normalidad cada $f_{i}(x)$ se descompone y, por tanto, $h(x)$ también.\hfill(p.~2, col.~1)
+
+\noindent\textbf{2.}\; $L=K(\beta_{1},\dots,\beta_{s})$, donde $\beta_{1},\dots,\beta_{s}$ son \emph{todas} las raíces de $h(x)$.\\
+Debemos mostrar
+\begin{align*}
+K(\beta_{1},\dots,\beta_{s})=K(d_{1},\dots,d_{n}).
+\end{align*}
+La inclusión “$\supseteq$” es trivial (cada $d_{i}=\beta_{j}$ para algún $j$).  
+Para “$\subseteq$”, basta notar que $\beta_{i}\in K(d_{1},\dots,d_{n})$ por normalidad.\\[-0.3em]
+
+% -------------------------------------------------
+% Página 2, Columna 2 — Implica Normalidad
+($\Rightarrow$)\; Si $L:K$ es cuerpo de descomposición de $f(x)\in K[X]$, entonces $L:K$ es normal.\hfill(p.~2, col.~2)
+
+Sean $d_{1},\dots,d_{n}$ todas las raíces de $f(x)$ y
+\begin{align*}
+L=K(d_{1},\dots,d_{n}).
+\end{align*}
+Sea $g(x)\in K[X]$ irreducible y suponga que existe $\beta\in L$\, con $g(\beta)=0$.  
+¿Están las \emph{demás} raíces en $L$?
+
+Con $\beta_{1}=\beta\in L$, escriba $\beta_{1}$ como
+\begin{align*}
+\beta_{1}=h(d_{1},\dots,d_{n})
+\end{align*}
+para algún polinomio $h\in K[X_{1},\dots,X_{n}]$.
+
+Sea
+\begin{align*}
+s(x)=\prod_{\sigma\in S_{n}}\!\bigl(X-h(d_{\sigma(1)},dots,d_{\sigma(n)})\bigr),
+\end{align*}
+polinomio simétrico; $s(x)\in K[X]$ y $s(\beta_{1})=0$.\\
+Como $g$ es irreducible y $g(\beta_{1})=0$, se tiene $g(x)\mid s(x)$,  
+pero $s$ se descompone totalmente en $L$, de modo que lo mismo ocurre con $g$.
+% -------------------------------------------------
+% Página 2, Columna 3 — Resumen y Ejemplo
+\noindent\underline{Resumen}:  
+Dados $g(x)\in K[X]$ irreducible y $g(\beta)=0$ con $\beta\in L$,  
+hemos construido $s(x)\in K[X]$ tal que $g(x)\mid s(x)$ y $s(x)$ se descompone totalmente en $L$;  
+por consiguiente $g(x)$ también se descompone totalmente en $L$.\hfill(p.~2, col.~3)
+
+\textbf{Ej.:}\; $\mathbb{Q}(\zeta_{n}):\mathbb{Q}$ es normal,  
+pues es cuerpo de descomposición de $X^{n}-1$ (donde $\zeta_{n}=e^{2\pi i/n}$).
+
+% -------------------------------------------------
+% Página 2, Columna 4 — Extensiones Separables
+\begin{tcolorbox}[title={Extensiones separables},colback=white,
+                 colframe=blue!80!black,colbacktitle=blue!80!black,coltitle=white]
+\textbf{Definición}\; Un polinomio $f(x)\in K[x]$ es \emph{separable} si \emph{todas} sus raíces son diferentes.
+\end{tcolorbox}\hfill(p.~2, col.~4)
+
+\textbf{Ej.:}\; Un polinomio irreducible y \emph{no} separable.\\
+\begin{align*}
+f(x)=X^{p}-\alpha,\quad \alpha\in\mathbb{Z}/p\mathbb{Z},\quad f'(x)=0.
+\end{align*}
+\begin{align*}
+  (X^{p}-\alpha)^{\vphantom{p}}=(X-\alpha)^{p}\;\in\;\mathbb{Z}/p\mathbb{Z}[X].
+\end{align*}
+\medskip
+\textbf{Ej.:}\; Un polinomio irreducible y no separable en $\mathbb{F}_{2}(t)[X]$:\;
+\begin{align*}
+X^{2}-t\in\mathbb{F}_{2}(t)[X],\quad(\mathbb{F}_{2}=\mathbb{Z}/2\mathbb{Z}).
+\end{align*}
+% -------------------------------------------------
+% Página 3, Columna 1 — Separabilidad (continuación)
+\noindent Es irreducible, pues $\sqrt{t}\notin\mathbb{F}_{2}(t)$;\\
+es \emph{no} separable: en $\mathbb{F}_{2}(t)(\sqrt{t})$
+\begin{align*}
+X^{2}-t=(X-\sqrt{t})^{2},
+\end{align*}
+ya que con característica $2$ se cumple $(a-b)^{2}=a^{2}-b^{2}$.\hfill(p.~3, col.~1)
+\subsubsection*{Clase 13: Extensiones separables}
+% Página 1, Columna 1 ----------------------------------------------------
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,
+                  colbacktitle=blue!80!black,coltitle=white,
+                  title=Definición: {Polinomio separable (p.~1, col.~1)}]
+Un polinomio $f(x)\in K[x]$ es \emph{separable} si no tiene raíces múltiples en su cuerpo de descomposición.
+\end{tcolorbox}
+
+\noindent \textbf{Idea:} Para entender las “relaciones’’ entre las raíces de un polinomio $f(x)\in K[x]$ estudiaremos el grupo
+\begin{align}
+\operatorname{Aut}_{K}(L), \tag*{(p.~1, col.~1)}
+\end{align}
+formado por los automorfismos de $L$ (cuerpo de descomposición de $f(x)$) que fijan a $K$ (i.e.\ $\sigma|_{K}=\mathrm{id}$).
+
+Sea $L:K$ una extensión \emph{finita}, \emph{normal} y \emph{separable}. (p.~1, col.~1)
+
+% Página 1, Columna 2 ----------------------------------------------------
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,
+                  colbacktitle=blue!80!black,coltitle=white,
+                  title=Definición: {Elemento y extensión separables (p.~1, col.~2)}]
+Sea $L:K$ una extensión algebraica.
+\begin{enumerate}
+  \item $\alpha\in L$ es \emph{separable} si su polinomio minimal sobre $K$ es separable.
+  \item $L:K$ es \emph{separable} si todo $\alpha\in L$ es separable sobre $K$.
+\end{enumerate}
+\end{tcolorbox}
+% Página 2, Columna 1 ----------------------------------------------------
+\begin{tcolorbox}[colback=white,colframe=red!80!black,
+                  colbacktitle=red!80!black,coltitle=white,
+                  title={Proposición (p.~2, col.~1)}]
+Sea $f(x)\in K[x]$ un polinomio \emph{irreducible} de grado $n$. Entonces $f(x)$ es separable si se cumple alguna de las siguientes condiciones:
+\begin{enumerate}
+  \item $\operatorname{char}(K)=0$;
+  \item $\operatorname{char}(K)=p>0$ y $p\nmid n$.
+\end{enumerate}
+\end{tcolorbox}
+
+\noindent \textbf{Demostración.} Un polinomio $f$ posee raíces múltiples \emph{sí y sólo sí}
+\begin{align}
+\gcd\!\bigl(f(x),f'(x)\bigr)\;\neq\;1. \tag*{(p.~2, col.~1)}
+\end{align}
+Sea $f(x)=a_nx^{n}+\dots+a_0$ y $f'(x)=na_nx^{n-1}+\dots+a_1$.  
+
+Si $\operatorname{char}(K)=0$ entonces $f'\neq 0$ y $\deg f'<\deg f$; como $f$ es irreducible se deduce $\gcd(f,f')=1$.  
+
+Si $\operatorname{char}(K)=p\neq 0$ y $p\nmid n$ ocurre de igual forma. \qed
+% Página 3, Columna 1 ----------------------------------------------------
+\begin{tcolorbox}[colback=white,colframe=red!80!black,
+                  colbacktitle=red!80!black,coltitle=white,
+                  title={Teorema: Elemento primitivo (p.~3, col.~1)}]
+Sea $L = K(\alpha_1,\dots,\alpha_n)$ una extensión \emph{finita} donde cada $\alpha_i$ es separable sobre $K$. Entonces existe $\gamma\in L$, separable sobre $K$, tal que
+\[
+L = K(\gamma).
+\]
+Además $\gamma$ puede escribirse como
+\[
+\gamma = t_1\alpha_1+\dots+t_n\alpha_n,\qquad t_i\in K.
+\]
+\end{tcolorbox}
+
+\noindent \textbf{Demostración (Gauss).}  Por inducción en $n$.  El caso $n=2$ basta.  
+Sea $L=K(\alpha,\beta)$.  Se muestran coeficientes $\lambda\in K$ tales que
+\[
+\gamma=\beta+\lambda\alpha
+\]
+cumple
+\[
+K(\gamma)=K(\alpha,\beta). \tag*{(p.~3, col.~2)}
+\]
+La clave es escoger $\lambda$ de modo que
+\[
+\lambda\neq\frac{\beta_i-\beta_s}{d_t-\alpha_j}
+\]
+para todas las raíces $d_t$ de $f$ (pol.\ minimal de $\alpha$) y $\beta_i$ de $g$ (pol.\ minimal de $\beta$).  
+Entonces $\alpha,\,\beta\in K(\gamma)$ y $\gamma$ es un elemento primitivo. \qed
+% Página 4, Columna 1 ----------------------------------------------------
+\noindent Sea $K\subseteq M\subseteq L$ y $L:K$ normal.  Entonces $L:M$ es normal, pero $M:K$ no necesariamente. (p.~4, col.~1)
+
+\noindent Si $L:K$ es separable y $K\subseteq M\subseteq L$, entonces las extensiones $L:M$ y $M:K$ son separables. (p.~4, col.~2)
+
+\begin{tcolorbox}[colback=white,colframe=red!80!black,
+                  colbacktitle=red!80!black,coltitle=white,
+                  title={Definición: Extensión de Galois (p.~4, col.~3)}]
+Una extensión $L:K$ es \emph{de Galois} si es simultáneamente normal y separable.
+\end{tcolorbox}
+
+\noindent Si $L:K$ es de Galois y $K\subseteq M\subseteq L$, entonces $L:M$ es de Galois, mientras que $M:K$ no lo es en general. (p.~4, col.~3)
+
+% ----------------------------------------------------------------
+% Página 5, Columna 1 --------------------------------------------
+\noindent\textbf{Ejemplo de cadenas de campos} \hfill(p.~5, col.~1)
+
+\begin{align}
+\mathbb{Q}\;\subseteq\;\mathbb{Q}\!\bigl(\sqrt[\,3]{2}\bigr)
+        \;\subseteq\;\mathbb{Q}\!\bigl(\sqrt[\,3]{2},\omega\bigr),
+        \qquad \omega^{3}=1,\;\omega\neq1.
+\tag*{(p.~5, col.~1)}
+\end{align}
+
+\noindent\underline{Observación:}\;
+$\mathbb{Q}(\sqrt[\,3]{2})/\mathbb{Q}$ \emph{no} es normal  
+($X^{3}-2$ sólo entrega una raíz),  
+mientras que $\mathbb{Q}(\sqrt[\,3]{2},\omega)/\mathbb{Q}$ \emph{sí} es normal, pues contiene las tres raíces de $X^{3}-2$.  
+% ----------------------------------------------------------------
+% Página 6, Columna 1 --------------------------------------------
+\begin{tcolorbox}[colback=white,colframe=brown!80!black,
+                  colbacktitle=brown!80!black,coltitle=white,
+                  title={Relaciones entre extensiones (p.~6, col.~1)}]
+Sea $K\subseteq M\subseteq L$.
+\begin{itemize}\itemsep2pt
+  \item[$\star$] Si $L:K$ es \emph{normal} y $\alpha\in L$, entonces\\
+        $f_{\min}(\alpha/K)$ se descompone en $L$, de modo que\\
+        $L:M$ también es normal.\hfill\emph{(pero $M:K$ puede no serlo)}
+  \item[$\star$] Si $L:K$ es \emph{separable}, todo sub‑extensión heredará la separabilidad.
+\end{itemize}
+\end{tcolorbox}
+
+\noindent En el pizarrón aparecía el comentario resaltado  
+\underline{\textbf{\Large NO}} debajo de $M:K$ para enfatizar que la normalidad no se transmite hacia abajo. \hfill(p.~6, col.~1)
+% ----------------------------------------------------------------
+% Página 7, Columna 2 --------------------------------------------
+\begin{tcolorbox}[colback=white,colframe=red!80!black,
+                  colbacktitle=red!80!black,coltitle=white,
+                  title={Proposición (p.~7, col.~2)}]
+Sea $L:K$ \emph{normal} y $K\subseteq M\subseteq L$.  
+Entonces $L:M$ es normal.
+\end{tcolorbox}
+
+\noindent\textbf{Demostración (esbozo).}  
+Para $\alpha\in L$ el polinomio minimal sobre $M$ divide al minimal sobre $K$; como este último se descompone en $L$, también lo hace el primero.
+% ----------------------------------------------------------------
+% Página 7, Columna 3 --------------------------------------------
+\begin{tcolorbox}[colback=white,colframe=red!80!black,
+                  colbacktitle=red!80!black,coltitle=white,
+                  title={Proposición (p.~7, col.~3)}]
+Sea $L:K$ \emph{separable} y $K\subseteq M\subseteq L$.  
+Entonces tanto $L:M$ como $M:K$ son separables.
+\end{tcolorbox}
+
+\noindent\textbf{Idea.}  
+Si $\alpha\in M$ tiene polinomio minimal $g(t)$ sobre $K$, su derivada no se anula porque $\alpha$ ya era separable en $L$.  La separabilidad pasa a $M$ y a $L$.
+
+% ----------------------------------------------------------------
+% Página 7, Columna 4 --------------------------------------------
+\vspace{1em}
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,
+                  colbacktitle=blue!80!black,coltitle=white,
+                  title={Definición: Extensión de Galois (p.~7, col.~4)}]
+Una extensión $L:K$ es \emph{de Galois} si es simultáneamente\\
+\begin{align}
+\text{normal} \quad\text{y}\quad \text{separable}. \tag*{(p.~7, col.~4)}
+\end{align}
+\end{tcolorbox}
+
+\noindent\textbf{Conexión.}\; Para $K\subseteq M\subseteq L$ con $L:K$ de Galois,
+\[
+L:M\ \text{es de Galois}, 
+\qquad
+\boxed{\text{pero }M:K\text{ no necesariamente.}}
+\]
+Esto retoma el subrayado \underline{\textbf{NO}} de la página anterior.
+\subsubsection*{Clase 14: Ejercicios varios}
+
+% ----------------------------------------------------------------
+% Página 1, Columna 1 --------------------------------------------
+\paragraph{5. Relaciones de Newton} Sea 
+\begin{align*}
+  \sigma_k = x_1^{\,k} + \dots + x_n^{\,k}, 
+\qquad\\
+e_1,\dots,e_n \text{ los polinomios simétricos elementales}.
+\end{align*}
+
+Mostrar que
+\begin{align}
+& \sigma_k - \sigma_{k-1}e_1 + \sigma_{k-2}e_2 - \\ &\dots 
+       + (-1)^{k-1}\sigma_1 e_{k-1} + (-1)^{k} e_k \;=\; 0,
+\tag*{(p.~1, col.~1)}
+\end{align}
+donde $e_j = 0$ si $j>n$.  
+
+En particular:
+\begin{align}
+\sigma_2 &= e_1^{\,2} - 2e_2,\\
+\sigma_3 &= e_1^{\,3} - 3e_1e_2 + 3e_3,\\
+\sigma_4 &= e_1^{\,4} - 4e_1^{\,2}e_2 + 4e_1e_3 + 2e_2^{\,2} - 4e_4.
+\end{align}
+Estas identidades aparecen por primera vez en \emph{I.~Newton, Arithmetica Universalis}. (p.~1, col.~1)
+
+
+% ----------------------------------------------------------------
+% Página 1, Columna 2 --------------------------------------------
+\paragraph{7. Polinomio minimal sobre $\mathbb{Q}$}\hfill(p.~1, col.~2)
+
+\begin{enumerate}
+\item[\textbf{(a)}] Sea 
+\[
+\alpha \;=\; \sqrt[5]{3}\;+\;\sqrt{2}.
+\]
+Escriba
+\[
+\alpha = a + b, 
+\qquad 
+a = \sqrt[5]{3},\; b = \sqrt{2},
+\]
+y observe 
+\[
+\alpha \in \mathbb{Q}(a,b) = \mathbb{Q}(a)(b).
+\tag*{(p.~1,\;col.~2)}
+\]
+\begin{align}
+[\mathbb{Q}(b):\mathbb{Q}] &= 2 && (x^{2}-2),\\
+[\mathbb{Q}(a):\mathbb{Q}] &= 5 && (x^{5}-3).
+\end{align}
+Como $2\mid n$ y $5\mid n$ deducimos $n=10$. Por tanto el grado del polinomio minimal de $\alpha$ es $10$.  
+
+Un polinomio que la anula es
+\begin{align}
+X^{10}-10X^{8}+40X^{6}-6X^{5}-80X^{4}-120X^{3}+80X^{2}-120X-23=0.
+\tag*{(p.~1,\;col.~2)}
+\end{align}
+
+\vspace{1em}
+\item[\textbf{(b)}] Sea 
+\[
+\beta \;=\; \sqrt[5]{\,2^{4}\,3^{5}}.
+\]
+Entonces $\beta^{20}=2^{4}\,3^{5}$ y un polinomio anulador es 
+\[
+X^{20} - 2^{4}\,3^{5}.
+\tag*{(p.~1,\;col.~2)}
+\]
+
+\end{enumerate}
+
+% ----------------------------------------------------------------
+% Página 1, Columna 3 --------------------------------------------
+\paragraph{Reducción módulo $5$ para (b)}\hfill(p.~1, col.~3)
+
+\begin{align}
+2^{4} &\equiv 1 \pmod{5}, &
+3^{5} &\equiv 3 \pmod{5} \quad(\text{Fermat}).\\
+\Rightarrow\;&2^{4}\,3^{5}\equiv 3 \pmod{5}.
+\end{align}
+El polinomio reducido es $X^{20}-3$, el cual no posee raíces en $\mathbb{F}_{5}$, luego es irreducible por el criterio de Eisenstein.  
+
+\vspace{1em}
+\paragraph{(c) Polinomio minimal de $\gamma=\sqrt{\,2+3\sqrt{2}\,}$}\hfill(p.~1, col.~3)
+
+Sea $\gamma^2 = 2 + 3\sqrt{2}$, entonces 
+\[
+(\gamma^{2}-2)^{3}=\,2
+\]
+y se deduce
+\begin{align}
+\gamma^{6}-6\gamma^{4}+12\gamma^{2}-10 = 0.
+\end{align}
+El criterio de Eisenstein (primo $p=2$) muestra que el polinomio es irreducible, por lo que es minimal. (p.~1, col.~3)
+
+% ----------------------------------------------------------------
+% Página 1, Columna 4 --------------------------------------------
+\paragraph{4. Irreducibilidad de \(\bigl(x-1\bigr)\bigl(x-2\bigr)\dots\bigl(x-n\bigr)-1\)}\hfill(p.~1, col.~4)
+
+Sea 
+\[
+f(x)=\prod_{i=1}^{n}(x-i) - 1.
+\]
+Note que $f(i)=-1$ para todo $i=1,\dots,n$.  Suponga $f(x)=g(x)\,h(x)$ con $g,h\in\mathbb{Z}[x]$ y $\deg g,\deg h<n$. Entonces
+\[
+g(i)\,h(i)=-1\quad\forall i.
+\]
+Sea \( \ell(x)=g(x)+h(x) \).  Tiene al menos \(n\) raíces, pero \(\deg \ell<n\), luego \(\ell(x)=0\).  Así \(g(x)=-h(x)\) y \(f(x)=-h(x)^{2}\).  
+Sin embargo \(f(2n)>0\), contradicción.  Por tanto $f$ es irreducible. (p.~1, col.~4)
+
+\vspace{1.2em}
+\paragraph{6. Igualdad de cuerpos \(\mathbb{Q}(\alpha,\beta)=\mathbb{Q}(\alpha\beta)\)}\hfill(p.~1, col.~4)
+
+Sea \(\mathbb{Q}(\alpha,\beta)\) y supongamos que existen \(m,n\in\mathbb{N}\) coprimos tal que \(\alpha^{n},\beta^{m}\in\mathbb{Q}\).  Existen \(a,b\in\mathbb{Z}\) con \(an+bm=1\).  
+Basta mostrar que \(\alpha\in\mathbb{Q}(\alpha\beta)\):  
+
+\begin{align}
+\alpha^{n} &= \alpha^{an+bm} = (\alpha^{n})^{a}\,(\alpha^{m})^{b}
+          = (\alpha\beta)^{\,m a}\,\beta^{-bm}.
+\end{align}
+Como \(\alpha^{n}\in\mathbb{Q}\) y los otros factores pertenecen a \(\mathbb{Q}(\alpha\beta)\), se concluye \(\alpha\in \mathbb{Q}(\alpha\beta)\).  (p.~1, col.~4)
+
+\subsubsection*{Clase 14 (continuación)}
+
+% ----------------------------------------------------------------
+% Página 2, Columna 1 --------------------------------------------
+\paragraph{13. Discriminante de un polinomio}\hfill(p.~2, col.~1)
+
+Sea $r_1,\dots,r_n$ las raíces del polinomio
+\begin{align}
+f(x)=x^{n}+a_{n-1}x^{\,n-1}+\dots+a_1x+a_0.
+\end{align}
+Definimos el \emph{discriminante} de $f$ por
+\begin{align}
+\Delta(f)=\prod_{1\le i<j\le n}(r_i-r_j)^{2}. \tag*{(p.~2, col.~1)}
+\end{align}
+
+\begin{enumerate}
+\item[\textbf{1)}] $\Delta(f)$ es \underline{simbólico} y depende sólo de $r_1,\dots,r_n$ de forma \emph{simétrica}.\\[-0.25em]
+
+\item[\textbf{2)}] Para $f(x)=x^{2}+bx+c=(x-r_1)(x-r_2)$ se tiene
+\begin{align}
+\Delta(f)&=(r_1-r_2)^{2} \\[0.3em]
+         &=(r_1+r_2)^{2}-4\,r_1r_2 \\[0.3em]
+         &=b^{2}-4c.
+\end{align}
+
+Si $f(x)=x^{3}+px+q=(x-r_1)(x-r_2)(x-r_3)$,
+\begin{align}
+\Delta(f)&=(r_1-r_2)^{2}(r_1-r_3)^{2}(r_2-r_3)^{2}\\
+         &=-4p^{3}-27q^{2}.
+\end{align}
+\end{enumerate}
+
+% ----------------------------------------------------------------
+% Página 2, Columna 2 --------------------------------------------
+\paragraph{12. Torre de raíces cuadradas (I)}\hfill(p.~2, col.~2)
+
+Sea\-n $p_{1},p_{2},\dots,p_{n}$ primos.  Muestre, usando inducción, que 
+$\sqrt{p_{i+1}}\notin\mathbb{Q}\bigl(\sqrt{p_{1}},\dots,\sqrt{p_{i}}\bigr)$ y concluya 
+\[
+\bigl[\mathbb{Q}(\sqrt{p_{1}},\dots,\sqrt{p_{n}}):\mathbb{Q}\bigr]=2^{n}.
+\]
+
+\noindent\textbf{Idea: inducción y caso $n=2$.}
+
+\begin{align}
+&\sqrt{p}\notin\mathbb{Q}, \qquad [\mathbb{Q}(\sqrt{p}):\mathbb{Q}]=2;\\
+&p,q\text{ primos } \Longrightarrow 
+   [\mathbb{Q}(\sqrt{p},\sqrt{q}):\mathbb{Q}]=4. \tag*{(p.~2, col.~2)}
+\end{align}
+
+\begin{tcolorbox}[colback=white,colframe=blue!80!black,
+                  colbacktitle=blue!80!black,coltitle=white,
+                  title={Afirmación (p.~2, col.~2)}]
+Sea $K$ cuerpo y $a,b\in K$ tales que 
+$\sqrt{a},\sqrt{b},\sqrt{ab}\notin K$.  
+Entonces
+\[
+[K(\sqrt{a},\sqrt{b}):K]=4.
+\]
+\end{tcolorbox}
+
+\noindent Torre de campos
+\[
+K \;\subseteq\; K(\sqrt{a}) \;\subseteq\; K(\sqrt{a},\sqrt{b}),
+\qquad [K(\sqrt{a}):K]=2.
+\]
+
+Para probar $\sqrt{b}\notin K(\sqrt{a})$ supóngase lo contrario.  
+Existen $\lambda,\beta\in K$ con
+\begin{align}
+\sqrt{b} &= \lambda + \beta\sqrt{a}, \quad \beta\neq0.\\
+\Rightarrow\;
+b &= \lambda^{2}+a\beta^{2}+2\lambda\beta\sqrt{a}. \tag*{(p.~2, col.~2)}
+\end{align}
+De la separación en $1$ y $\sqrt{a}$ deducimos $\lambda\beta=0$.
+Si $\lambda=0$ entonces $b=a\beta^{2}$ lo que implica $\beta=\sqrt{\dfrac{b}{a}}\in K$, contradicción.  
+Por lo tanto $\sqrt{b}\notin K(\sqrt{a})$ y $[K(\sqrt{a},\sqrt{b}):K]=4$.
+% ----------------------------------------------------------------
+% Página 2, Columna 3 --------------------------------------------
+\paragraph{12. Torre de raíces cuadradas (II)}\hfill(p.~2, col.~3)
+
+\noindent\textbf{Paso inductivo.}  Suponga conocido que
+\[
+\sqrt{p_{n-1}},\;\sqrt{p_{n}}\notin\mathbb{Q}\bigl(\sqrt{p_{1}},\dots,\sqrt{p_{n-2}}\bigr)
+\]
+y que
+\[
+\bigl[\mathbb{Q}(\sqrt{p_{1}},\dots,\sqrt{p_{n-2}}):\mathbb{Q}\bigr]=2^{\,n-2}.
+\]
+
+Sea $K=\mathbb{Q}(\sqrt{p_{1}},\dots,\sqrt{p_{n-2}})$.
+Aplicando la afirmación anterior con $a=p_{n-1}$, $b=p_{n}$,
+\[
+[K(\sqrt{p_{n-1}},\sqrt{p_{n}}):K]=4.
+\]
+Por el Teorema de la Torre
+\begin{align}
+\bigl[\mathbb{Q}(\sqrt{p_{1}},\dots,\sqrt{p_{n}}):\mathbb{Q}\bigr]
+&=[K(\sqrt{p_{n-1}},\sqrt{p_{n}}):K]\,[K:\mathbb{Q}]\\
+&=4\cdot 2^{\,n-2}=2^{\,n}. \tag*{(p.~2, col.~3)}
+\end{align}
+% ----------------------------------------------------------------
+% Página 2, Columna 4 --------------------------------------------
+\paragraph{12. Caso $n=3$ detallado}\hfill(p.~2, col.~4)
+
+Sean $p,q,r$ primos.  
+\[
+\sqrt{r}\notin\mathbb{Q}(\sqrt{p},\sqrt{q})
+\]
+pues, de lo contrario,
+\[
+\sqrt{r}=\alpha+\beta\sqrt{p}+\gamma\sqrt{q}+\delta\sqrt{pq},
+\qquad \alpha,\beta,\gamma,\delta\in\mathbb{Q}.
+\]
+Al elevar al cuadrado desaparecen los términos subrayados
+\begin{align}
+r = \alpha^{2} + p\beta^{2} + q\gamma^{2} + pq\delta^{2}
+    + 2\bigl(\alpha\beta\sqrt{p}+\alpha\gamma\sqrt{q}+\beta\gamma\sqrt{pq}\bigr),
+\end{align}
+lo que es imposible porque $1,\sqrt{p},\sqrt{q},\sqrt{pq}$ son linealmente independientes sobre $\mathbb{Q}$.  
+Concluimos
+\[
+\bigl[\mathbb{Q}(\sqrt{p},\sqrt{q},\sqrt{r}):\mathbb{Q}\bigr]=8,
+\]
+coincidiendo con la fórmula $2^{3}$. \hfill(p.~2, col.~4)
+
+\end{multicols}
+\end{document}

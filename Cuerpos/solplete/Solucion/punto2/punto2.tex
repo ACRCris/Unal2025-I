@@ -1,0 +1,104 @@
+\begin{solution}
+    La prueba es simétrica; bastará mostrar
+\[
+f(x)\text{ reducible en }F(\beta)[x]
+\;\Longrightarrow\;
+g(x)\text{ reducible en }F(\alpha)[x],
+\]
+pues la implicación opuesta se obtiene intercambiando los papeles
+de $\alpha$ y $\beta$.
+
+\smallskip
+\noindent
+\textbf{1.} \emph{Grados básicos.}
+Por definición de polinomio mínimo,
+\[
+[F(\alpha):F]=m,\qquad [F(\beta):F]=n
+\quad
+\text{(Clase 6.pdf, p.~2).}
+\]
+
+\smallskip
+\noindent
+\textbf{2.} \emph{Supongamos que $f$ se parte en $F(\beta)[x]$.}
+Entonces el polinomio mínimo de $\alpha$ sobre
+$F(\beta)$ tiene grado
+\[
+d:=\deg(m_{\alpha,F(\beta)})<m.
+\]
+Por la misma página citada, esto implica
+\[
+[\,F(\alpha,\beta):F(\beta)\,]=d< m.
+\]
+
+\smallskip
+\noindent
+\textbf{3.} \emph{Aplicamos la ley de la torre} (Clase 6.pdf, p.~2):
+\[
+[\,F(\alpha,\beta):F\,]
+\;=\;
+[\,F(\alpha,\beta):F(\beta)\,]
+\,[\,F(\beta):F\,]
+\;=\;
+d\,n
+\;<\;
+m\,n.
+\tag{\*}
+\]
+
+\smallskip
+\noindent
+\textbf{4.} \emph{Estimamos el mismo grado por el otro lado.}
+De nuevo por la torre,
+\[
+[\,F(\alpha,\beta):F\,]
+=
+[\,F(\alpha,\beta):F(\alpha)\,]
+\,[\,F(\alpha):F\,]
+=
+[\,F(\beta,\alpha):F(\alpha)\,]\;m.
+\]
+Sea ahora $e:=\deg(m_{\beta,F(\alpha)})$.
+Entonces
+\(
+[\,F(\beta,\alpha):F(\alpha)\,]=e
+\)
+y obtenemos
+\[
+[\,F(\alpha,\beta):F\,]=e\,m.
+\tag{\*\*}
+\]
+
+\smallskip
+\noindent
+\textbf{5.} \emph{Comparación de \eqref{*} y \eqref{**}.}
+De \(\,d\,n=e\,m\) con \(d<m\) se infiere
+\[
+e
+=
+\frac{d\,n}{m}
+<n,
+\]
+por lo que $e<n$.
+Pero \(e=\deg(m_{\beta,F(\alpha)})\) es, precisamente,
+el grado del polinomio mínimo de $\beta$ sobre $F(\alpha)$,
+menor que \(n=\deg g\).
+Por definición, esto significa que
+\[
+g(x)\text{ se descompone en }F(\alpha)[x],
+\]
+es decir, $g$ \emph{no} es irreducible sobre $F(\alpha)$.
+Queda demostrada la implicación buscada.
+
+\smallskip
+\noindent
+\textbf{6.} \emph{Equivalencia.}
+El razonamiento es reversible intercambiando
+$\alpha\leftrightarrow\beta$,
+concluyendo la equivalencia:
+\[
+f\text{ irreducible sobre }F(\beta)
+\;\Longleftrightarrow\;
+g\text{ irreducible sobre }F(\alpha).
+\]
+\end{solution}

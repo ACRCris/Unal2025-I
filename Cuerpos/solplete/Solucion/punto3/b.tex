@@ -1,0 +1,32 @@
+\begin{solution}
+    Nuevamete simple inspección, proponemos la siguiente posibles raíces $r=\pm 1$. Y evaluando cada una de estas en polinomio obtenemos:
+    \begin{align*}
+    f(1) &= 1^5 + 1^4 + 1^3 + 1^2 + 1 + 1 = 6 \\
+    f(-1) &= (-1)^5 + (-1)^4 + (-1)^3 + (-1)^2 + (-1) = -1 + 1 - 1 + 1 - 1 + 1 = -0 \\
+    \end{align*}
+    Asi por el teorema de factorización única tenemos que:
+
+    \begin{align*}
+        t^3 - 7t^2 + 3t + 3 &= (t+1)f(t) \\
+    \end{align*}
+
+    Donde $f(t)$ es un polinomio de grado 2. Para encontrarlo, realizamos la división sintética:
+
+    \begin{align*}
+        \begin{array}{r|rrrrr}
+            -1 & 1 & 1 & 1 & 1 & 1 \\
+              &   & -1 & 0 & -1 & 0 \\
+            \hline
+              & 1 & 0 & 1 & 0 & 1
+        \end{array}
+    \end{align*}
+    Por lo tanto, el polinomio $f(t)$ es:
+    \begin{align*}
+        f(t) &= t^4 + t^2 + 1
+    \end{align*}
+    Luego el polinomio por la definición de irreducibilidad el polinomio $t^5 + t^4 + t^3 + t^2 + t + 1$ es irreducible, puesto que:
+    \begin{align*}
+        t^5 + t^4 + t^3 + t^2 + t + 1 &= (t+1)(t^4 + t^2 + 1) \\
+    \end{align*}
+    Es decir, el polinomio $t^5 + t^4 + t^3 + t^2 + t + 1$ es producto de dos polinomios de grado menor. Lo cual es valido pues $\mathbb Q$ es un cuerpo.
+\end{solution}

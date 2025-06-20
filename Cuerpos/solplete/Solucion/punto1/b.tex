@@ -1,0 +1,236 @@
+\begin{solution}
+
+  Sea el polinomio
+  \[
+  f(y)=y^{4}+p\,y^{2}+q\,y+r
+        =(y-\alpha_{1})(y-\alpha_{2})(y-\alpha_{3})(y-\alpha_{4}),
+        \qquad \alpha_i\neq\alpha_j .
+  \]
+
+  Si buscamos las funciones resolventes de Lagrange, de la forma de $R$, podemos contar la forma de ubicar $4$ raíces en $2$ pares:
+
+  \begin{align*}
+    (\_ + \_)(\_ + \_)
+  \end{align*}
+
+  
+  Dado la suma entre paréntesis es simétrica, entonces el numero de seleccionar 2 raíces de 4 es $\binom{4}{2} = 6$, pues una vez que se selecciona las raizes de un parentisis, el otro paréntesis queda determinado. Y dado que el producto es tambien simetricona, entonces el número de productos es $\frac 12\binom{4}{2} = 3$.
+
+  Dado que ya tenemos $R = (\alpha_{1}+\alpha_{2})(\alpha_{3}+\alpha_{4})$, podemos realizar la siguientes permutaciones para obtener $S$:
+
+  \begin{align*}
+    (1,3)(R) 
+    &= (1,3)((\alpha_1 + \alpha_2)(\alpha_3 + \alpha_4))\\
+    &= (\alpha_3 + \alpha_2)(\alpha_1+\alpha_4)\\
+    &=(\alpha_1 + \alpha_4)(\alpha_3 + \alpha_2)\\
+    &=(2,4)(R) = T
+  \end{align*}
+
+  Y podemos realizar las siguientes permutaciones sobre $R$ para obtener $T$:
+
+  \begin{align*}
+    (1,4)(R) 
+    &= (1,4)((\alpha_1 + \alpha_2)(\alpha_3 + \alpha_4))\\
+    &= (\alpha_4 + \alpha_2)(\alpha_1+\alpha_3)\\
+    &=(\alpha_1 + \alpha_3)(\alpha_4 + \alpha_2)\\
+    &=(2,3)(R) = S
+  \end{align*}
+  
+
+
+  % Denotemos por $e_1,e_2,e_3,e_4$ los polinomios simétricos elementales:
+  % \[
+  % e_1=\sum_{i}\alpha_i=0,\qquad
+  % e_2=\!\!\sum_{i<j}\!\!\alpha_i\alpha_j=p,\qquad
+  % e_3=\!\!\sum_{i<j<k}\!\!\alpha_i\alpha_j\alpha_k=-q,\qquad
+  % e_4=\alpha_1\alpha_2\alpha_3\alpha_4=r.
+  % \]
+  
+  Asi tenemos los siguientes resolventes:
+  \[
+  \boxed{
+  \begin{aligned}
+  R&=(\alpha_{1}+\alpha_{2})(\alpha_{3}+\alpha_{4}),\\
+  S&=(\alpha_{1}+\alpha_{3})(\alpha_{2}+\alpha_{4}),\\
+  T&=(\alpha_{1}+\alpha_{4})(\alpha_{2}+\alpha_{3}).
+  \end{aligned}}
+  \]
+  % \[
+  % \renewcommand{\arraystretch}{1.2}
+  % \begin{array}{c|c}
+  % \toprule
+  % \textbf{Permutación $\pi\in S_4$} & \pi(R) \\
+  % \midrule
+  % e & R \\
+  % (1\,2),\,(3\,4),\,(1\,2)(3\,4) & R \\
+  % (1\,3),\,(2\,4),\,(1\,3)(2\,4) & S \\
+  % (1\,4),\,(2\,3),\,(1\,4)(2\,3) & T \\
+  % \vdots & \vdots \\
+  % \bottomrule
+  % \end{array}
+  % \]
+  
+  % (Todas las demás permutaciones envían $R$ a $R$, $S$ o $T$ según
+  % el emparejamiento que inducen).
+
+  Realizando ahora la expansion de los términos correspondientes a las raíces del polinomio:
+
+  
+  \begin{align*}
+  %
+  & (y-\alpha_{1})(y-\alpha_{2})(y-\alpha_{3})(y-\alpha_{4}) \\[4pt]
+  %
+  &= \bigl(y-\alpha_{1}\bigr)\bigl(y-\alpha_{2}\bigr)\,\underbrace{(y-\alpha_{3})(y-\alpha_{4})}_{%
+        =\,y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}} \\[6pt]
+  %
+  &= \bigl(y-\alpha_{1}\bigr)\bigl(y-\alpha_{2}\bigr)
+    \Bigl(y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}\Bigr) \\[6pt]
+  %
+  &= \Bigl(y^{2}-\!(\alpha_{1}+\alpha_{2})\,y+\alpha_{1}\alpha_{2}\Bigr)
+    \Bigl(y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}\Bigr) \\[6pt]
+  %
+  &= y^{2}\!\Bigl(y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}\Bigr)
+    -(\alpha_{1}+\alpha_{2})\,y\Bigl(y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}\Bigr)\\
+  &\qquad +\;\alpha_{1}\alpha_{2}
+            \Bigl(y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}\Bigr) \\[6pt]
+  &= y^{2}\!\Bigl(y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}\Bigr)
+    -(\alpha_{1}+\alpha_{2})\,y\Bigl(y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}\Bigr)\\
+  &+\alpha_{1}\alpha_{2}\Bigl(y^{2}-\!(\alpha_{3}+\alpha_{4})\,y+\alpha_{3}\alpha_{4}\Bigr) \\[6pt]
+  &=\; y^{4} \\[2pt]
+  &\quad
+    \textcolor{orange}{-\bigl(\alpha_{3}+\alpha_{4}\bigr)\,y^{3}}
+    \;\textcolor{orange}{-\bigl(\alpha_{1}+\alpha_{2}\bigr)\,y^{3}} \\[4pt]
+  &\quad
+    +\textcolor{blue}{\alpha_{3}\alpha_{4}\,y^{2}}
+    +\textcolor{blue}{\bigl(\alpha_{1}+\alpha_{2}\bigr)\bigl(\alpha_{3}+\alpha_{4}\bigr)\,y^{2}}
+    +\textcolor{blue}{\alpha_{1}\alpha_{2}\,y^{2}} \\[4pt]
+  &\quad
+    -\textcolor{green}{\bigl(\alpha_{1}+\alpha_{2}\bigr)\alpha_{3}\alpha_{4}\,y}
+    -\textcolor{green}{\alpha_{1}\alpha_{2}\bigl(\alpha_{3}+\alpha_{4}\bigr)\,y} \\[4pt]
+  &\quad
+    +\alpha_{1}\alpha_{2}\alpha_{3}\alpha_{4}.\\
+  &= y^{4}
+    \;\textcolor{orange}{-\bigl(\alpha_{1}+\alpha_{2}+\alpha_{3}+\alpha_{4}\bigr)\,y^{3}} \\[2pt]
+  &\quad
+    +\textcolor{blue}{\Bigl[\alpha_{1}\alpha_{2}+\alpha_{1}\alpha_{3}+\alpha_{1}\alpha_{4}
+                        +\alpha_{2}\alpha_{3}+\alpha_{2}\alpha_{4}+\alpha_{3}\alpha_{4}\Bigr]\,y^{2}} \\[2pt]
+  &\quad
+    -\textcolor{green}{\Bigl[\alpha_{1}\alpha_{2}\alpha_{3}
+                              +\alpha_{1}\alpha_{2}\alpha_{4}
+                              +\alpha_{1}\alpha_{3}\alpha_{4}
+                              +\alpha_{2}\alpha_{3}\alpha_{4}\Bigr]\,y} \\[2pt]
+  &\quad
+    +\alpha_{1}\alpha_{2}\alpha_{3}\alpha_{4}.
+  \end{align*}
+
+  Y como todo polinomio de grado 4 se puede escribir como: $y^4 + p y^2 + q y + r$ entonces,
+  
+  \begin{align*}
+  \alpha_{1}+\alpha_{2}+\alpha_{3}+\alpha_{4} &= e_{1}=0, \qquad \text{}\\
+  p= \sum_{i<j}\alpha_{i}\alpha_{j} &= e_{2}\\
+  q= \sum_{i<j<k}\alpha_{i}\alpha_{j}\alpha_{k} &= e_{3}\\
+  r= \alpha_{1}\alpha_{2}\alpha_{3}\alpha_{4} &= e_{4}.
+  \end{align*}
+
+  
+  Considerando ahora el polinomio cubico:
+
+  \begin{align*}
+    (X-R)(X-S)(X-T) &= (X^2 - RX - SX + RS)(X-T)\\
+    &= (X^2 - (R+S)X + RS)(X-T)\\
+    &= X^3 - TX^2 - (R+S)X^2 + (R+S)TX + RSX - RST\\
+    &= X^3 - (R+S+T)X^2 + (RS+RT+ST)X - RST\\
+  \end{align*}
+
+  Podemos observar que los coeficientes de este polinomio son:
+
+  \begin{align*}
+    (R+S+T) &= e_{1}(R,S,T)\\
+    (RS+RT+ST) &= e_{2}(R,S,T)\\
+    (RST) &= e_{3}(R,S,T)\\
+  \end{align*}
+
+  Es decir son los polinomios simétricos elementales de $R,S,T$. Y como ademas:
+
+  % \begin{align*}
+  %   2p = R+S+T
+  \begin{align*}
+  R+S+T
+    &= (\alpha_{1}+\alpha_{2})(\alpha_{3}+\alpha_{4})
+     +(\alpha_{1}+\alpha_{3})(\alpha_{2}+\alpha_{4})
+     +(\alpha_{1}+\alpha_{4})(\alpha_{2}+\alpha_{3})\\
+    &= \alpha_{1}\alpha_{3}+\alpha_{1}\alpha_{4} + \alpha_{2}\alpha_{3}+\alpha_{2}\alpha_{4}
+      +\alpha_{1}\alpha_{2}+\alpha_{1}\alpha_{4} + \alpha_{2}\alpha_{3}+\alpha_{3}\alpha_{4} \\&+ \alpha_{1}\alpha_{2}+\alpha_{1}\alpha_{3} + \alpha_{4}\alpha_{3}+\alpha_{2}\alpha_{4}\\
+    &= 
+\alpha_{1}\alpha_{3}
++ \textcolor{red}{\alpha_{1}\alpha_{4}}
++ \textcolor{blue}{\alpha_{2}\alpha_{3}}
++ \textcolor{green}{\alpha_{2}\alpha_{4}}
++ \textcolor{orange}{\alpha_{1}\alpha_{2}}
++ \textcolor{red}{\alpha_{1}\alpha_{4}}
++ \textcolor{blue}{\alpha_{2}\alpha_{3}}
++ \textcolor{purple}{\alpha_{3}\alpha_{4}}\\
+&+ \textcolor{orange}{\alpha_{1}\alpha_{2}}
++ {\alpha_{1}\alpha_{3}}
++ \textcolor{
+  purple}{\alpha_{4}\alpha_{3}}
++ \textcolor{green}{\alpha_{2}\alpha_{4}}\\
+    &= \textcolor{orange}{2 \alpha_1 \alpha_2}+2 \alpha_1 \alpha_3+\textcolor{red}{2\alpha_1 \alpha_4}+\textcolor{blue}{2 \alpha_2 \alpha_3}+\textcolor{green}{2\alpha_2 \alpha_4}+\textcolor{purple}{2 \alpha_3 \alpha_4}\\
+    &= 2\!\!\sum_{i<j}\!\!\alpha_i\alpha_j
+     = 2\,e_{2}=2p.
+  \end{align*}  
+  % \paragraph{4.2 Producto parcial $RS+RT+ST$}
+  % \[
+  % RS+RT+ST 
+  %        = e_{2}^{\,2}-4e_{4}=p^{2}-4r.
+  % \]
+  
+  % \paragraph{4.3 Producto total $RST$}
+  % \[
+  % RST = e_{3}^{\,2}=q^{2}.
+  % \]
+  
+  % \subsection*{5.\, Forma final}
+  
+  % \[
+  % \boxed{\;
+  % \Phi(X)=(X-R)(X-S)(X-T)
+  %        =X^{3}-2p\,X^{2}+(p^{2}-4r)\,X-q^{2}\;}.
+  % \]
+  
+  % $\Phi(X)$ es el resolvente cúbico de Ferrari--Lagrange para la
+  % cuártica deprimida $y^{4}+py^{2}+qy+r$.
+
+  \textbf{Repetición de raíces}
+  Cuando existe repetición de raíces, la expresiones para los resolventes se simplifica y por lo tanto la expresión del cúbico resolvente también se simplifica. Para un polinomio de grado 4, la multiplicidad de las raíces puede ser de 4, 3, 2 o 1. De modo que sin perdida de generalidad podemos considerar los siguientes casos:
+  \begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{@{} p{3.2cm} | p{3.1cm} | p{3cm} | p{4.2cm} @{}}
+    \toprule
+    \textbf{Multiplicidad en $f(y)$} 
+    & \textbf{Consecuencia inmediata} 
+    & \textbf{Valores de $R,S,T$} 
+    & \textbf{Forma del resolvente cúbico $\Phi(X)$} \\ \midrule\midrule
+    \(\alpha_{1}=\alpha_{2}\neq\alpha_{3}\neq\alpha_{4}\) 
+    & $\alpha_{1}$ es raíz de $f$ y de $f'$. 
+    & $S=T$ (sólo 2 valores distintos). 
+    & $(X-R)^{2}(X-S)$ \\ \midrule
+    \(\alpha_{1}=\alpha_{2},\; \alpha_{3}=\alpha_{4}\) 
+    & $f(y)=(y-\alpha_{1})^{2}(y-\alpha_{3})^{2}$. 
+    & $R=S=T=(\alpha_{1}+\alpha_{3})^{2}$. 
+    & $(X-R)^{3}$ \\ \midrule
+    \(\alpha_{1}=\alpha_{2}=\alpha_{3}\neq\alpha_{4}\) 
+    & raíz triple de $f$ y $f'$. 
+    & $T=S=R=2(\alpha_{1}+\alpha_{4})\alpha_{1}$. 
+    & $X^{2}(X-T)$ \\ \midrule
+    \(\alpha_{1}=\alpha_{2}=\alpha_{3}=\alpha_{4}\) 
+    & $f(y)=(y-\alpha)^{4}$. 
+    & $R=S=T=4\alpha^{2}$.
+    & $(X-4\alpha^2)^3$
+    \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Efecto de raíces repetidas en los resolventes $R,S,T$ y en el cúbico resolvente $\Phi(X)$.}
+    \end{table}
+  \end{solution}

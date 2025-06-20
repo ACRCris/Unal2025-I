@@ -1,0 +1,90 @@
+\begin{solucion}
+\subsection*{Lado izquierdo}
+Sea
+\[
+  F[n_,k_] := \bigl(\binom{n}{k}\bigr)^{3}.
+\]
+
+El siguiente bloque crea la función y comprueba que la suma es \emph{hipergeométrica} en $k$.
+
+\begin{lstlisting}[caption={Definición de \texttt{F} y aplicación de Gosper}]
+In[12]:= F[n_, k_] := (Binomial[n, k])^3
+In[13]:= Gosper[F[n, k], k]
+Out[13]= {}
+\end{lstlisting}
+
+Una salida vacía de \textsc{Gosper} indica que no existe una antiderivada hipergeométrica—exactamente el escenario
+que permite a \textsc{Zeilberger} generar una recurrencia para la suma.
+
+\begin{lstlisting}[caption={Recurrencia obtenida vía \textsc{Zeilberger}}]
+In[14]:= Zb[F[n, k], k, n]
+Out[14]= {-8 (1 + n)^2 f[n] + (-16 - 21 n - 7 n^2) f[1 + n] + (2 + n)^2 f[2 + n] == 0}
+\end{lstlisting}
+
+Guardamos la ecuación como \texttt{recurrenciaF} y pedimos a \texttt{Hyper} verificar que la sucesión
+$S_F(n)=\sum_{k=0}^{n} F[n,k]$ la satisface.
+
+\begin{lstlisting}[caption={Verificación automática de la recurrencia}]
+In[15]:= recurrenciaF = -8 (1 + n)^2 f[n] + (-16 - 21 n - 7 n^2) f[1 + n] + (2 + n)^2 f[2 + n] == 0;
+In[16]:= Hyper[recurrenciaF, f[n]]
+Out[16]= {}
+\end{lstlisting}
+
+\subsection*{Lado derecho}
+Definimos ahora
+\[
+  H[n_,k_] := \binom{n}{k}^{2}\,\binom{2k}{n}.
+\]
+
+\begin{lstlisting}[caption={Definición de \texttt{H} y aplicación de Gosper}]
+In[17]:= H[n_, k_] := (Binomial[n, k])^2*Binomial[2 k, n]
+In[18]:= Gosper[H[n, k], k]
+Out[18]= {}
+\end{lstlisting}
+
+Aplicando \textsc{Zeilberger}:
+
+\begin{lstlisting}[caption={Recurrencia para el lado derecho}]
+In[19]:= Zb[H[n, k], k, n]
+Out[19]= {-8 (1 + n)^2 f[n] + (-16 - 21 n - 7 n^2) f[1 + n] + (2 + n)^2 f[2 + n] == 0}
+\end{lstlisting}
+
+Observamos que la \emph{misma} recurrencia aparece para $S_H(n)=\sum_{k=0}^{n} H[n,k]$.  Al igual que antes:
+
+\begin{lstlisting}
+In[20]:= Hyper[recurrenciaF, f[n]]
+Out[20]= {}
+\end{lstlisting}
+
+% -----------------------------------------------------------------------------
+\section{Coincidencia de valores iniciales}
+
+Para concluir que $S_F(n)=S_H(n)$ para todo $n\ge 0$ necesitamos comprobar que ambas sucesiones coinciden en
+los dos primeros valores, pues la recurrencia es de orden $2$.
+
+\begin{center}
+\begin{tabular}{c|c|c}
+$n$ & $S_F(n)$ & $S_H(n)$ \\ \hline
+0 & 1 & 1 \\
+1 & 2 & 2 \\
+\end{tabular}
+\end{center}
+
+Los cómputos son directos y se muestran a continuación.
+
+\begin{lstlisting}
+In[21]:= Table[{n, Sum[F[n, k], {k, 0, n}], Sum[H[n, k], {k, 0, n}]}, {n, 0, 1}]
+Out[21]= {{0, 1, 1}, {1, 2, 2}}
+\end{lstlisting}
+
+% -----------------------------------------------------------------------------
+\section{Conclusión}
+
+Puesto que $S_F$ y $S_H$ satisfacen la misma ecuación lineal homogénea de segundo orden y concuerdan en sus
+valores iniciales, se sigue por el principio de inducción que $S_F(n)=S_H(n)$ para todo $n\ge 0$.  Por
+\eqref{eq:main}, la identidad queda demostrada.
+
+\bigskip
+\noindent\textbf{Archivo de respaldo.} El cuaderno \texttt{Taller7\_8.nb} con todo el código ejecutado se incluye
+como material complementario.
+\end{solucion}

@@ -1,0 +1,123 @@
+\begin{solucion}
+Definamos primeramente los números triangulares
+\[
+  T_n=\frac{n(n+1)}{2},\qquad n\in\mathbb{N},
+\]
+y la función
+\[
+  C(n,k)\;:=\;(n-2k)\,\binom{n}{k},\qquad 0\le k\le n.
+\]
+Nuestro objetivo es probar que, para todo $n\ge 1$, se cumple la identidad
+\begin{equation}\label{eq:id}
+  \sum_{k=0}^{n-1}
+        C\bigl(T_n,k\bigr)\,C\bigl(T_{n+1},k\bigr)
+  \;=\;
+  \frac{n^{3}-2n^{2}+4n}{n+2}\,
+  \binom{T_n}{n}\,\binom{T_{n+1}}{n}.
+\end{equation}
+A continuación se reproduce la demostración \emph{computacional} utilizando los algoritmos de
+\textsc{Gosper} y \textsc{Zeilberger} en \textit{Mathematica}. El cuaderno ejecutado se adjunta como
+\href{run:Taller7_8.nb}{\texttt{Taller7\_8.nb}}.
+
+% =====================================================================
+\textbf{\textit{Mathematica}}
+
+\begin{lstlisting}[caption={Definición de los objetos básicos}]
+(* Números triangulares *)
+T[n_] := n (n + 1)/2;
+
+(* Función C(n,k) = (n - 2 k) Binomial[n, k] *)
+c[n_, k_] := (n - 2 k) Binomial[n, k];
+
+(* Sumando de interés *)
+F[n_, k_] := c[T[n], k] * c[T[n + 1], k];
+\end{lstlisting}
+
+% ---------------------------------------------------------------------
+\textbf{Aplicación del algoritmo de \textsc{Gosper}}
+
+Usamos el algoritmo de \textsc{Gosper} para verificar que $F(n,k)$ es hipergeométrico en $k$.
+
+\begin{lstlisting}[caption={Algoritmo de Gosper}]
+Gosper[F[n, k], k]
+{1/4 (-2+4 k-3 n-n^2) (4 k-n-n^2) Binomial[1/2 n (1+n),k] Binomial[1/2 (1+n) (2+n),k]==Subscript[\[CapitalDelta], k][-((k^2 (4-4 k+2 n+n^2) Binomial[1/2 n (1+n),k] Binomial[1/2 (1+n) (2+n),k])/(-2 n-n^2))]}
+(* ==> {Gk, Δk}  (certificado telescopico) *)
+\end{lstlisting}
+
+Lo cual da como resultado la relación:
+\begin{align*}
+    \frac{1}{4} \left(4 k-n^2-3 n-2\right) \left(4 k-n^2-n\right) \binom{\frac{1}{2} n (n+1)}{k} \binom{\frac{1}{2} (n+1) (n+2)}{k} \\=\Delta _k\left(-\frac{k^2 \left(-4 k+n^2+2 n+4\right) \binom{\frac{1}{2} n (n+1)}{k} \binom{\frac{1}{2} (n+1) (n+2)}{k}}{-n^2-2 n}\right)
+\end{align*}
+
+Por lo tanto, concluimos que $F(n,k)$ se puede expresar como una anti-diferencia:
+\[
+  F(n,k)\;=\;\Delta_k G(n,k),
+\]
+donde
+\[
+  G(n,k)\;:=\;
+  -\frac{k^{2}\bigl(4-4k+2n+n^{2}\bigr)}
+         {-2n-n^{2}}\,
+   \binom{\tfrac12 n(1+n)}{k}\,
+   \binom{\tfrac12 (1+n)(2+n)}{k}.
+\]
+
+% ---------------------------------------------------------------------
+\textbf{Certificado telescópico $G(n,k)$}
+
+La llamada \verb|show[R] // FullSimplify| devuelve la función racional
+
+\begin{lstlisting}[caption={Certificado }]
+show[R] // FullSimplify
+(4 k^2 (-4+4 k-n (2+n)))/((-4 k+n+n^2) (-4 k+(1+n) (2+n)))
+\end{lstlisting}
+Dando como resultado el certificado:
+\[
+  R(n,k)=\frac{4k^{2}\bigl(-4+4k-n(2+n)\bigr)}
+               {(-4k+n+n^{2})(-4k+(1+n)(2+n))}.
+\]
+A partir de $R$ definimos el certificado
+\[
+  G(n,k)\;:=\;
+  -\frac{k^{2}\bigl(4-4k+2n+n^{2}\bigr)}
+         {-2n-n^{2}}\,
+   \binom{\tfrac12 n(1+n)}{k}\,
+   \binom{\tfrac12 (1+n)(2+n)}{k}.
+\]
+
+% ---------------------------------------------------------------------
+\textbf{Verificación de la telescopica}
+
+Comprobamos que
+\[
+  F(n,k)\;=\;G(n,k+1)-G(n,k),
+\]
+lo cual implica que la suma deseada se colapsa a los valores de $G$ en los extremos:
+\[
+  S(n)=G(n,n)-G(n,0).
+\]
+En \textit{Mathematica}:
+
+\begin{lstlisting}[caption={Chequeo de telescopía}]
+FullSimplify[F[n, k] - (G[n, k + 1] - G[n, k])]
+(* ==> 0 *)
+\end{lstlisting}
+
+% ---------------------------------------------------------------------
+\textbf{Evaluación de los bordes}
+
+\begin{align*}
+  G(n,n) &= \frac{n\,(4-2n+n^{2})}{n+2}\,
+            \binom{\tfrac12 n(1+n)}{n}\,
+            \binom{\tfrac12 (1+n)(2+n)}{n}, \\[6pt]
+  G(n,0) &= 0.
+\end{align*}
+Por tanto
+\[
+  S(n)=G(n,n)-G(n,0)=
+  \frac{n^{3}-2n^{2}+4n}{n+2}\,
+  \binom{T_n}{n}\,\binom{T_{n+1}}{n},
+\]
+obteniendo exactamente el lado derecho de \eqref{eq:id}. La igualdad queda demostrada.
+
+\end{solucion}

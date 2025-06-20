@@ -1,0 +1,42 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\begin{center}
+{\LARGE Propiedades que preserva una función continua}\\[1em]
+\end{center}
+
+\setlength{\extrarowheight}{2pt}
+\begin{longtable}{p{3cm}p{2.8cm}p{5cm}p{4cm}}
+\toprule
+\textbf{Propiedad de $X$} & \textbf{¿Se conserva en $f(X)$?} & \textbf{Idea de la demostración} & \textbf{Observaciones / contra\-ejemplos} \\
+\midrule
+Compacidad & Sí & Si $\{V_i\}$ cubre $f(X)$, entonces $\{f^{-1}(V_i)\}$ cubre $X$; extrae una subcobertura finita y aplica $f$. & Muy usada para demostrar continuidad sobre espacios compactos.\\
+\addlinespace
+Conexidad & Sí & Si $f(X)=A\cup B$ con $A,B$ abiertos, no vacíos y disjuntos, entonces $f^{-1}(A),f^{-1}(B)$ desconectan $X$. & Conserva también arco/path-conexidad.\\
+\addlinespace
+Arco-/Path- conexidad & Sí & La imagen de cualquier camino $\gamma:[0,1]\to X$ es un camino en $f(X)$. & Fundamental para grupos fundamentales.\\
+\addlinespace
+Lindelöf & Sí & Mismo argumento que en la compacidad, sustituyendo “finita” por “numerable”. & Útil en análisis y teoría de medida.\\
+\addlinespace
+$\sigma$-compacto & Sí & La imagen de cada compacto es compacto; la unión numerable es $\sigma$-compacta. & ---\\
+\addlinespace
+Segundocontabilidad & No (en general) & La identidad $\mathrm{id}:(\mathbb R,\text{usual})\to(\mathbb R,\text{co-contable})$ es continua y sobreyectiva, pero la topología co-contable no es 2ª-contable. & Se preserva si $f$ es además abierta o cerrada.\\
+\addlinespace
+Separabilidad & No & Una función constante colapsa cualquier espacio a un punto no denso. & ---\\
+\addlinespace
+Local compactitud & No & $\mathbb R$ es localmente compacto; $\arctan(\mathbb R)=(-\pi/2,\pi/2)$ no lo es (no hay vecindarios cuyo cierre sea compacto en la imagen). & ---\\
+\addlinespace
+Propiedades de separación (Hausdorff, normal, etc.) & No & El repliegue $f:S^1\to [0,1]$ identifica puntos y puede perder Hausdorff; ejemplos inversos similares. & Requieren hipótesis extra (abierta, cerrada, cociente regular…).\\
+\addlinespace
+Densidad & No & Un subconjunto denso $D\subset X$ puede colapsarse a un punto mediante una función constante. & ---\\
+\bottomrule
+\end{longtable}
+
+\end{document}

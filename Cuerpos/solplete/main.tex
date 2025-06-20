@@ -1,0 +1,54 @@
+\documentclass[12pt, letter]{article}
+\usepackage{tikz}
+\pgfkeys{/skipfound/.initial=0}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{xstring} % en el preámbulo
+\usepackage{polynom}
+
+
+\input{encabezado}
+
+
+\begin{document}
+
+\input{portada}
+\thispagestyle{fancy}
+\begin{enumerate}
+% \item 
+% \begin{enumerate}
+%   \item \input{Puntos/punto1/1a.tex}
+%    \input{Solucion/punto1/a2.tex}
+  
+% \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+%   \item \input{Puntos/punto1/1b.tex}
+%   \input{Solucion/punto1/b.tex}
+  
+% \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+%   \item \input{Puntos/punto1/1c.tex}
+%   % \input{Solucion/punto2/c.tex}
+
+% \end{enumerate}
+
+\item\input{Puntos/punto2/2.tex}
+\input{Solucion/punto2/punto2.tex}
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+
+\item\input{Puntos/punto3/3.tex}
+\item \input{Solucion/punto3/3.tex}
+
+\begin{enumerate}
+    \item\input{Puntos/punto3/3a}
+    \input{Solucion/punto3/a}
+    \item \input{Puntos/punto3/3b}
+    \input{Solucion/punto3/b}
+
+    \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\end{enumerate}
+
+\end{enumerate}
+\end{document}

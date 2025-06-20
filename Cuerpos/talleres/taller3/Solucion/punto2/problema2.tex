@@ -1,16 +1,167 @@
 \begin{solucion}
-  Primero notemos que el polinomio en termino de polinomios elementales es de la forma:
-  \begin{align*}
-    y^3 + 2y^2 - 3y + 5 &= (y-\alpha)(y-\beta)(y-\gamma)\\
-    &= (y-\alpha)(y^2 - (\beta+\gamma)y + \beta\gamma)\\
-    &= y^3 + (-\beta-\gamma-\alpha)\,y^2 + (\beta\gamma+\alpha(\beta+\gamma))\,y - \alpha\beta\gamma\\
-    &= y^3 - (\alpha+\beta+\gamma)\,y^2 + (\alpha\beta+\alpha\gamma+\beta\gamma)\,y - \alpha\beta\gamma,
-  \end{align*}
-  Por lo tanto tenemos que:
-  \begin{align*}
-    \alpha + \beta + \gamma &= e_1= -2,\\
-    \alpha\beta + \alpha\gamma + \beta\gamma &= e_2 = -3,\\
-    \alpha\beta\gamma &= e_3 =-5.
-  \end{align*}
-  Y dado que queremos encontrar un polinomio que satisfaga
+Dado que el grado de $x^p-2$ es $p$, el polinomio $f$ tiene $p$ raíces en su cuerpo de descomposición. Asi sean $\alpha_1, \alpha_2, \ldots, \alpha_p \in L$ las raíces de $f$, entonces, por definición de cuerpo de descomposición:
+\begin{align*}
+L &= K(\alpha_1, \alpha_2, \ldots, \alpha_p) \\
+x^p - 2 &= c(\alpha_1 - x)(\alpha_2 - x) \cdots (\alpha_p - x) \in L[x],
+\end{align*}
+Aplicando el criterio de Eisenstein con $p=2$:
+\[
+a_{p}=1\not\equiv0\pmod2,\qquad
+a_{p-1}=\dots=a_{1}=0\equiv0\pmod2,\qquad
+a_{0}=-2\not\equiv0\pmod{2^{2}}.
+\]
+Concluimos que $f$ es irreducible sobre $\Q$. Ahora sea $\alpha \in L$ es una raíz de $f$, entonces:
+\begin{align*}
+\alpha^p - 2 =0 \quad &\implies \quad \alpha^p = 2 = 2 e^{2\pi i}\\
+&\implies \quad \alpha_k = \sqrt[p]{2} e^{2\pi i k/p} = \sqrt[p]{2} \omega_k, \quad k=0,1,\ldots,p-1,\\
+\end{align*}
+Como $\omega_0 = 1$, entonces $\alpha_0 = \sqrt[p]{2}$ es una raíz real de $f$ luego $\left(x-\sqrt[p]{2}\right)\mid f(x)$ es decir:
+\begin{align*}
+f(x) &= \left(x-\sqrt[p]{2}\right)\left(x^{p-1} + \sqrt[p]{2} x^{p-2} + \left(\sqrt[p]{2}\right)^2 x^{p-3} + \ldots + \left(\sqrt[p]{2}\right)^{p-1}\right)\in \mathbb Q(\sqrt[p]{2})[x].
+\end{align*}
+Pues tiene coeficiente racionales que están en $\mathbb Q(\sqrt[p]{2})$ y claramente $\sqrt[p]{2} \in \mathbb Q(\sqrt[p]{2})$. Notemos que:
+\begin{align*}
+  Q(\sqrt[p]{2})= \mathbb Q[\sqrt[p]{2}] &= \{a_0 + a_1 \sqrt[p]{2} + a_2 \left(\sqrt[p]{2}\right)^2 + \ldots + a_{p-1} \left(\sqrt[p]{2}\right)^{p-1} : a_i \in \mathbb Q\}\\
+\end{align*}
+Por lo tanto:
+\begin{align*}
+  [\mathbb Q(\sqrt[p]{2}):\Q] &= p \quad \text{( definición de grado de una extensión)}\\
+\end{align*}
+Por otro lado dado que:
+\begin{align*}
+  \omega_k &= e^{2\pi i k/p} \\
+  &= \left(e^{2\pi i/p}\right)^k \\
+  &= (\omega_1)^k,
+\end{align*}
+Entonces $\mathbb Q(\omega_1, \ldots, \omega_{p-1}) = \mathbb Q(\omega_1)$, pues claramente $\mathbb Q(\omega_1) \subseteq \mathbb Q(\omega_1, \ldots, \omega_{p-1})$ y si $\omega \in \mathbb Q(\omega_1, \ldots, \omega_{p-1})$, entonces $\omega_k = (\omega_1)^k \in \mathbb Q(\omega_1)$. Asi que:
+\begin{align*}
+  [\mathbb Q(\omega_1):\Q] &= p-1
+\end{align*}
+Pues $x^{p-1} + x^{p-2} + \dots + x + 1 \in \mathbb Q[x]$  es un polinomio irreducible de grado $p-1$ o también:
+\begin{align*}
+  \mathbb Q(\omega_1) &= \{
+a_0 + a_1 \omega_1 + a_2 \left(\omega_1\right)^2 + \ldots + a_{p-2} \left(\omega_1\right)^{p-2} : a_i \in \mathbb Q\}\\
+\end{align*}
+tiene dimensión $p-1$ sobre $\mathbb Q$. 
+Como ademas $\mathbb Q \subset \mathbb Q(\sqrt[p]{2}) \subseteq L$ y $\mathbb Q \subset \mathbb Q(\omega_1) \subseteq L$, entonces:
+\begin{align*}
+  p\mid [L:\mathbb Q(\sqrt[p]{2})] \quad \text{y} \quad p-1\mid [L:\mathbb Q(\omega_1)].
+\end{align*}
+por lo que si $[L:\mathbb Q] = n$, entonces $n \geq p(p-1)$.
+Ademas notemos que $\mathbb Q(\sqrt[p]{2}) \not \subseteq \mathbb Q(\omega_1)$, y $\mathbb Q(\omega_1) \not \subseteq \mathbb Q(\sqrt[p]{2})$. Por lo tanto, consideramos $L = \mathbb Q(\sqrt[p]{2}, \omega_1)$, verificamos que en efecto $L$ es el cuerpo de descomposición de $f(x)$, pues:
+\begin{itemize}
+  \item [$\subseteq$] $\mathbb Q(\sqrt[p]{2}, \omega_1) \subseteq L$, pues $\sqrt[p]{2} \in L$ y $\omega_1 \in L$.
+  \item [$\supseteq$] Sea $\alpha \in L$ una raíz de $f(x)$, entonces $\alpha = \sqrt[p]{2} \omega_k$ para algún $k = 0,1,\ldots,p-1$. Por lo tanto $\alpha = \sqrt[p]{2} \omega_k = \sqrt[p]{2} (\omega_1)^k \in \mathbb Q(\sqrt[p]{2}, \omega_1)$, ya que $\mathbb Q(\sqrt[p]{2}, \omega_1)$ contiene a $\sqrt[p]{2}$ y a $\omega_1$.
+\end{itemize}
+Asi por el teorema de la torre:
+\begin{align*}
+  [L:\mathbb Q] &= [\mathbb Q(\sqrt[p]{2}, \omega_1):\mathbb Q(\sqrt[p]{2})][\mathbb Q(\sqrt[p]{2}):\mathbb Q]\\
+\end{align*}
+pero como $\Phi_p(x) = x^{p-1} + x^{p-2} + \ldots + x + 1 \in \mathbb Q(\sqrt[p]{2})[x]$  y $\Phi_p(\omega_1) = 0$, 
+entonces $[\mathbb Q(\sqrt[p]{2}, \omega_1):\mathbb Q(\sqrt[p]{2})] \geq p-1$ y $[\mathbb Q(\sqrt[p]{2}):\mathbb Q] = p$, por lo que:
+\begin{align*}
+  [L:\mathbb Q] = n \leq p(p-1) \quad &\text{y} \quad n\geq p(p-1) \quad \Rightarrow \quad
+  n = p(p-1).
+\end{align*}
+Por lo tanto, el grado de la extensión $L$ sobre $\mathbb Q$ es:
+\[
+   \boxed{[L:\Q]=p(p-1)}.
+\]
+
+% % \[
+% % x^5 - 2
+% % \;=\;
+% % \bigl(x - \sqrt[5]{2}\bigr)\,
+% % \Bigl(x^4 + \sqrt[5]{2}\,x^3 + \bigl(\sqrt[5]{2}\bigr)^2 x^2
+% %        + \bigl(\sqrt[5]{2}\bigr)^3 x + \bigl(\sqrt[5]{2}\bigr)^4\Bigr)
+% % \]
+
+% % \[
+% % =\;
+% % \prod_{k=0}^{4}\Bigl(x - 2^{1/5}\,e^{2\pi i k/5}\Bigr),
+% % \quad
+% % e^{2\pi i k/5}\,(k=0,1,2,3,4)\;\text{raíces $5$-ésimas de la unidad.}
+% % \]
+
+% % Consecuencia: el \emph{polinomio mínimo} de $\alpha:=\sqrt[p]{2}$ es $f$
+% % y
+% % \[
+% %   [\mathbb Q(\alpha):\Q]=\deg f=p
+% %   \quad\text{(def.\ de pol.\ mínimo y
+% %         resultado de grado: \textbf{Clase 6.pdf}, p.~2).}
+% % \]
+
+% \vspace{0.4em}
+% \textbf{2. Raíces de $f$ y descripción del cuerpo de descomposición.}
+
+% Sea $\zeta_{p}=e^{2\pi i/p}$ una raíz $p$-ésima primitiva de la unidad.  
+% Las $p$ raíces de $f$ son
+% \[
+%    \alpha,\;
+%    \alpha\zeta_{p},\;
+%    \alpha\zeta_{p}^{2},\;
+%    \dots,\;
+%    \alpha\zeta_{p}^{p-1}.
+% \]
+% Por tanto
+% \[
+%    L=\Q\bigl(\alpha,\zeta_{p}\bigr).
+% \]
+
+% \vspace{0.4em}
+% \textbf{3. Grado de $\mathbb Q(\zeta_{p})/\Q$.}
+
+% El polinomio ciclotómico de orden $p$ es
+% \(
+%    \Phi_{p}(x)=x^{p-1}+x^{p-2}+\dots+x+1.
+% \)
+% Usando el truco $x=(y+1)$ y el criterio de Eisenstein
+% (ver ejemplo en \textbf{Clase 4.pdf}, p.~3),
+% se prueba que $\Phi_{p}(x)$ es irreducible sobre $\Q$
+% y $\deg\Phi_{p}=p-1$.  
+% Por lo tanto
+% \[
+%    [\,\mathbb Q(\zeta_{p}):\Q\,]=p-1.
+% \]
+
+% \vspace{0.4em}
+% \textbf{4. Intersección de los subcampos.}
+
+% Los subcampos intermedios
+% \[
+%    \mathbb Q(\alpha)\subseteq L, \qquad
+%    \mathbb Q(\zeta_{p})\subseteq L
+% \]
+% tienen grados $p$ y $p-1$, respectivamente.
+% Esos números son coprimos, así que
+% \[
+%     \mathbb Q(\alpha)\cap\mathbb Q(\zeta_{p})=\Q.
+% \]
+% (Una extensión de grado divisor común $d=\gcd(p,p-1)=1$
+%  debe ser la base \emph{per se};
+% véase la observación sobre intersecciones coprimas en
+% \textbf{Clase 8.pdf}, p.~3).
+
+% \vspace{0.4em}
+% \textbf{5. Ley de la torre.}
+
+% Por la \textit{ley de la torre}
+% (\textbf{Clase 6.pdf}, p.~2):
+% \[
+%   [\,L:\Q\,]
+%   \;=\;
+%   [\,L:\mathbb Q(\zeta_{p})\,]\,[\,\mathbb Q(\zeta_{p}):\Q\,].
+% \]
+% Pero $L=\mathbb Q(\alpha,\zeta_{p})$ y $\mathbb Q(\alpha)\cap\mathbb Q(\zeta_{p})=\Q$, de modo que
+% \[
+%    [\,L:\mathbb Q(\zeta_{p})\,]=[\mathbb Q(\alpha):\Q]=p.
+% \]
+% Por tanto
+% \[
+%    [L:\Q]=p\,(p-1).
+% \]
+
+% \[
+%    \boxed{[L:\Q]=p(p-1)}.
+% \]
 \end{solucion}

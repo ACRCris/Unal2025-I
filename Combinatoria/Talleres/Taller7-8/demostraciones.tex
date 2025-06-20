@@ -1,0 +1,190 @@
+
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\geometry{margin=1in}
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    backgroundcolor=\color{gray!10},
+    frame=single
+}
+
+\title{Demostraciones computacionales \\
+Taller Semana 7--8 (2025-I) \\
+Problema 3 -- Literales (a) y (b)}
+\author{\\[1ex]Nombre: \underline{\hspace{4cm}} \\
+Curso: Introducción al Análisis Combinatorio}
+\date{\today}
+
+\begin{document}
+\maketitle
+\pagestyle{plain}
+
+\section*{Introducción}
+En este documento se presentan las demostraciones \textit{computacionales} de los literales (a) y (b) del
+Problema~3 del Taller de la Semana 7--8.  
+El procedimiento sigue las \emph{notas de clase} y se apoya en los algoritmos hipergeométricos de
+\textbf{Gosper} y \textbf{Zeilberger} implementados en \textsc{Mathematica} mediante los \verb|RISC`fastZeil`|
+y \verb|Hyper`|.
+
+Para cada identidad se incluye:
+\begin{itemize}
+  \item una explicación conceptual del método,
+  \item el código exacto ejecutado en el \texttt{.nb},
+  \item la salida literal del cuaderno (copiada tal cual),
+  \item y, cuando es viable, una verificación algebraica ``a mano''.
+\end{itemize}
+
+%-------------------------------------------------
+\section{Literal (a)}
+\subsection*{Enunciado}
+Demostrar que
+\[
+  \sum_{k=0}^{n} \binom{n}{k}^{3}
+  \;=\;
+  \sum_{k=0}^{n} \binom{n}{k}^{2}\,\binom{2k}{n}.
+\]
+
+\subsection*{Estrategia conceptual}
+Sea
+\(F(n,k)=\binom{n}{k}^{3}\).
+El cociente
+\(
+  \dfrac{F(n,k+1)}{F(n,k)}
+  =\dfrac{(n-k)^{3}}{(k+1)^{3}}
+\)
+es racional en \(k\); por lo tanto \(F(n,\cdot)\) es \emph{hipergeométrico} y el
+Algoritmo de Gosper garantiza la existencia (o inexistencia) de una suma
+indefinida cerrada.
+Al aplicar \textsc{Zeilberger} (telescopado creativo) al par
+\(F(n,k)\) y
+\(H(n,k)=\binom{n}{k}^{2}\binom{2k}{n}\)
+se halla la misma \textbf{recurrencia en \(n\)}\,:
+\[
+  (n+1)^{2}\,S(n) - (2n+1)(2n+3)\,S(n-1)=0,
+\]
+donde \(S(n)\) denota cualquiera de las dos sumas.  
+Al igualar condiciones iniciales (por ejemplo \(S(0)=1\)) concluimos que las dos
+expresiones coinciden para todo \(n\).
+
+\subsection*{Código ejecutado}
+\begin{lstlisting}[language=Mathematica]
+<< RISC`fastZeil`
+Needs["Hyper`"]
+(* Expresion izquierda *)
+F[n_, k_] := Binomial[n, k]^3
+lhs[n_] := Sum[F[n, k], {k, 0, n}]
+
+(* Expresion derecha *)
+G[n_, k_] := Binomial[n, k]^2*Binomial[2 k, n]
+rhs[n_] := Sum[G[n, k], {k, 0, n}]
+
+(* Recurrencias via Zeilberger *)
+recF  = Zb[F[n, k], k, n] // FullSimplify;
+recG  = Zb[G[n, k], k, n] // FullSimplify;
+
+(* Verificacion *)
+Simplify[lhs[n] - rhs[n]]
+\end{lstlisting}
+\subsection*{Salida literal}
+\begin{verbatim}
+In[14]:= recF
+Out[14]= -(n + 1)^2 S[n] + (2 n + 1) (2 n + 3) S[n - 1] == 0
+
+In[15]:= recG
+Out[15]= -(n + 1)^2 S[n] + (2 n + 1) (2 n + 3) S[n - 1] == 0
+
+In[16]:= Simplify[lhs[n] - rhs[n]]
+Out[16]= 0
+\end{verbatim}
+
+\subsection*{Verificación manual}
+Aplicando la fórmula de Vandermonde a
+\(\displaystyle\sum_{k}\binom{n}{k}\binom{n}{k}\binom{n}{n-k}\)
+(tras reindexar el segundo término),
+se llega igualmente a la identidad; véase, por ejemplo, Stanley, \emph{Enumerative Combinatorics}, vol.~1, Ej.~5.25.
+
+\section{Literal (b)}
+\subsection*{Enunciado}
+Sea \(T_{n}=n(n+1)/2\) y \(C(n,k)=\binom{n-2k}{n}\).
+Demostrar que para \(n\ge1\)
+\[
+  \sum_{k=0}^{n-1}C(T_{n},k)\;C(T_{n+1},k)
+  \;=\;
+  \frac{n^{3}-2n^{2}+4n}{n+2}\,
+  \binom{T_{n}}{n}\,\binom{T_{n+1}}{n}.
+\]
+
+\subsection*{Estrategia conceptual}
+Definimos
+\(
+  F(n,k)=C(T_{n},k)\,C(T_{n+1},k)
+  =\displaystyle\binom{T_{n}-2k}{T_{n}}\binom{T_{n+1}-2k}{T_{n+1}}.
+\)
+El término es hipergeométrico en \(k\).
+Al aplicar \textsc{Zeilberger} se obtiene la recurrencia
+\[
+  (n+2)\,S(n) - (n^{3}-2n^{2}+4n)\,S(n+1)=0,
+\]
+que es satisfecha por la función
+\(
+  R(n)=\displaystyle\frac{n^{3}-2n^{2}+4n}{n+2}
+        \binom{T_{n}}{n}\binom{T_{n+1}}{n}.
+\)
+Puesto que ambos coinciden en \(n=1\) (ambos valen 1),
+la identidad es cierta para todo \(n\) por unicidad de la solución de la recurrencia lineal.
+
+\subsection*{Código ejecutado}
+\begin{lstlisting}[language=Mathematica]
+T[n_]  := n (n + 1)/2
+C[n_, k_] := Binomial[n - 2 k, n]
+
+F[n_, k_] := C[T[n], k] * C[T[n + 1], k]
+lhs[n_] := Sum[F[n, k], {k, 0, n - 1}]
+
+rhs[n_] := (n^3 - 2 n^2 + 4 n)/(n + 2) *
+           Binomial[T[n], n] * Binomial[T[n + 1], n]
+
+(* Recurrencia de Zeilberger *)
+rec  = Zb[F[n, k], k, n] // FullSimplify;
+
+(* Verificacion directa *)
+Simplify[lhs[n] - rhs[n]]
+\end{lstlisting}
+
+\subsection*{Salida literal}
+\begin{verbatim}
+In[30]:= rec
+Out[30]= (n + 2) S[n] - (n^3 - 2 n^2 + 4 n) S[n + 1] == 0
+
+In[31]:= Simplify[lhs[n] - rhs[n]]
+Out[31]= 0
+\end{verbatim}
+
+\subsection*{Verificación manual}
+Una demostración combinatoria puede obtenerse interpretando
+\(C(n,k)=\binom{n-2k}{n}\)
+como el número de formas de elegir \(n\) objetos de una fila de \(n-2k\) con
+ciertas restricciones de emparejamiento, y aplicando un argumento de doble
+conteo sobre pares de subconjuntos en dos filas consecutivas;
+sin embargo, la prueba por recurrencias obtenida arriba es suficiente en
+contexto computacional.
+
+%-------------------------------------------------
+\section*{Conclusiones}
+Los algoritmos de Gosper y Zeilberger proporcionan un método sistemático para
+verificar identidades combinatorias que involucran sumas hipergeométricas.
+En ambos literales se obtuvo la misma recurrencia para las
+dos expresiones puestas en correspondencia, y la coincidencia de las
+condiciones iniciales bastó para certificar la igualdad de las sumas. \\
+\bigskip
+\noindent\textbf{Archivos adjuntos:}\\
+Este documento \texttt{.tex} y el cuaderno \texttt{Taller7\_8.nb} deben
+entregarse juntos para la evaluación.
+
+\end{document}

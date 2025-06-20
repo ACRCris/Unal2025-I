@@ -1,0 +1,46 @@
+\begin{solucion}
+Observemos primero que
+\[
+\alpha \;=\;\frac{1 + i}{\sqrt{2}}
+\quad\Longrightarrow\quad
+\sqrt{2}\,\alpha \;=\; 1 + i
+\quad\Longrightarrow\quad
+i \;=\;\sqrt{2}\,\alpha \;-\; 1.
+\]
+Dado que \(i\) satisface \(i^2 + 1 = 0\), reemplazamos \(i\) por \(\sqrt{2}\,\alpha - 1\) en esta relación:
+\[
+\bigl(\sqrt{2}\,\alpha - 1\bigr)^2 \;+\; 1 \;=\; 0.
+\]
+Expandimos:
+\[
+(\sqrt{2}\,\alpha)^2 \;-\; 2\,\sqrt{2}\,\alpha \;+\; 1 \;+\; 1 \;=\; 0,
+\]
+\[
+2\,\alpha^2 \;-\; 2\,\sqrt{2}\,\alpha \;+\; 2 \;=\; 0.
+\]
+Dividiendo todo por \(2\), obtenemos
+\[
+\alpha^2 \;-\; \sqrt{2}\,\alpha \;+\; 1 \;=\; 0.
+\]
+Por tanto, \(\alpha\) es raíz del polinomio
+\[
+f(x)
+\;=\;
+x^2 \;-\; \sqrt{2}\,x \;+\; 1 \;\in\;K[x]=\Q(\sqrt{2})[x].
+\]
+Queda verificar que $f(x)$ es irreducible en \(K[x]\). Su discriminante es
+\[
+\Delta \;=\; (\sqrt{2})^2 \;-\; 4\cdot1\cdot1
+\;=\; 2 \;-\; 4
+\;=\; -\,2.
+\]
+Como \(-2\) no es cuadrado en \(\Q(\sqrt{2})\) (ningún elemento de \(\Q(\sqrt{2})\) al cuadrado da \(-2\)), concluimos que 
+\[
+x^2 \;-\; \sqrt{2}\,x \;+\; 1
+\]
+no se factoriza en \(K[x]\). Por lo tanto es el polinomio mínimo de \(\alpha\) sobre \(K\).
+
+\[
+\boxed{m_{\alpha,K}(x)=x^2 \;-\; \sqrt{2}\,x \;+\; 1.}
+\]
+\end{solucion}

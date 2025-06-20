@@ -1,0 +1,7 @@
+\section*{Problema 1}
+Una palabra $w = w_1 w_2 \cdots w_n$ sobre los enteros positivos es de Catalan si $w_1 = 1$ y $1 \le w_i \le w_{i-1} + 1$ para $i = 2,\dots,n$. Por ejemplo, las de longitud 3 son $111,112,121,122,123$.
+\begin{enumerate}[a)]
+  \item (1.0) Encuentre una biyección entre las palabras de Catalan de longitud $n$ y los caminos de Dyck que finalizan en $(2n,0)$.
+  \item (0.5) (�) Escriba una función \texttt{PalabrasCatalan[n]} en Mathematica cuya salida sean todas las palabras de Catalan de longitud $n$.
+  \item (1.0) Decimos que $w$ contiene el patrón 123 si existen $1 \le i_1 < i_2 < i_3 \le n$ tales que $w_{i_1} w_{i_2} w_{i_3}$ es estrictamente creciente. Sea $a(n)$ el número de palabras de Catalan de longitud $n$ sin el patrón 123; $a(0)=1$. Determine una recurrencia para $a(n)$ y calcule su función generadora.
+\end{enumerate}

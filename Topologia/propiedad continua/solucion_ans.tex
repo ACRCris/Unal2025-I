@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,enumitem}
+\begin{document}
+
+\section*{Soluciones de los ejercicios provistos}
+
+\subsection*{13. Demuestra que el producto de dos grupos topológicos es un grupo topológico.}
+
+\begin{proof}[Demostración]
+Sean $(G_1,m_1,i_1)$ y $(G_2,m_2,i_2)$ dos grupos topológicos, con $m_j$ la multiplicación y $i_j$ la inversión en $G_j$ ($j=1,2$). Consideremos el producto $G=G_1\times G_2$ con la topología producto y definimos la multiplicación $m: G\times G\to G$ por 
+\[
+m((g_1,g_2),(h_1,h_2))=(m_1(g_1,h_1),\,m_2(g_2,h_2))
+\] 
+y la inversión $i:G\to G$ por $i(g_1,g_2)=(i_1(g_1),\,i_2(g_2))$. Dado que cada $m_j$ y $i_j$ son continuas, la definición del producto topológico garantiza que $m$ e $i$ son continuas (por ejemplo, aplicando que una función en producto es continua si sus componentes lo son). De modo que $(G,m,i)$ cumple las propiedades de grupo y es topológico. Por tanto $G_1\times G_2$ es un grupo topológico.
+\end{proof}
+
+\subsection*{14. Sea $G$ un grupo topológico. Si $H$ es un subgrupo de $G$, muestra que su clausura $\overline{H}$ es también un subgrupo, y que si $H$ es normal entonces $\overline{H}$ es normal.}
+
+\begin{proof}[Demostración]
+Como $G$ es grupo topológico, las aplicaciones multiplicación $m(x,y)=xy^{-1}$ y conjugación $c_a(x)=axa^{-1}$ son continuas. Para ver que $\overline{H}$ es subgrupo, considere la función $f:G\times G\to G$ dada por $f(x,y)=xy^{-1}$, la cual es continua. Como $\{e\}$ es cerrado ($G$ es Hausdorff), $f^{-1}(\overline{H})$ es cerrado. Pero $H\times H\subset f^{-1}(\overline{H})$, luego al tomar clausuras 
+\[
+\overline{H}\times\overline{H}
+=\overline{H\times H}
+\subset f^{-1}(\overline{H})\,,
+\] 
+lo que implica $f(\overline{H}\times \overline{H})\subset \overline{H}$. Así $\overline{H}$ es cerrado bajo el producto e inversión, es decir, subgrupo. 
+
+Si además $H$ es normal, observe la aplicación $g:G\times G\to G$, $g(x,y)=xyx^{-1}$ que es continua. Entonces $g^{-1}(\overline{H})$ es cerrado, y como $G\times H\subset g^{-1}(\overline{H})$, al tomar clausuras se tiene $G\times\overline{H}\subset g^{-1}(\overline{H})$, de donde $g(G\times\overline{H})\subset \overline{H}$. Esto significa $x\,\overline{H}\,x^{-1}\subset\overline{H}$ para todo $x\in G$, i.e., $\overline{H}$ es normal. Notamos que en este argumento hemos usado que la inversión en un grupo topológico es un homeomorfismo [oai_citation:0‡file-bnu3r3wjbkmgsb53u4ucyv](file://file-BnU3r3wJbkmGsb53u4ucYv#:~:text=27,a%20is%20a%20homeomorphism). 
+\end{proof}
+
+\subsection*{15. Sea $G$ un espacio compacto Hausdorff que tiene estructura de grupo. Muestra que $G$ es un grupo topológico si la función multiplicación $m:G\times G\to G$ es continua.}
+
+\begin{proof}[Demostración]
+Basta probar que la aplicación de inversión $i:G\to G$, $i(x)=x^{-1}$, es continua. Sea $C\subset G$ cerrado; mostraremos que $i^{-1}(C)$ es cerrado. Sea $e\in G$ la identidad. Como $m$ es continua y $\{e\}$ es cerrado en $G$ (punto cerrado en espacio Hausdorff [oai_citation:1‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Proposition,space%2C%20points%20are%20closed%20subsets)), el conjunto 
+\[
+X=m^{-1}(\{e\})=\{(x,y)\in G\times G:xy=e\}
+\]
+es cerrado en $G\times G$. Ahora considere el conjunto 
+\[
+A=(G\times C)\cap X,
+\]
+que es cerrado en $G\times G$ porque $G\times C$ es cerrado y $X$ es cerrado. Pero $G\times G$ es compacto (producto de compactos [oai_citation:2‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Theorem,product%20X%20%C3%97%20Y)), luego $A$ es compacto [oai_citation:3‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Proposition,compact%2C%20in%20the%20subspace%20topology). La proyección $\pi_1:G\times G\to G$ es continua, por lo que $\pi_1(A)=\{x\in G:\exists\,y\in C,\;(x,y)\in X\}$ es compacto. Nótese que $\pi_1(A)=i^{-1}(C)$ (ya que $(x,y)\in X$ implica $y=x^{-1}$ y $(x,x^{-1})\in G\times C$ iff $x^{-1}\in C$). Como $G$ es Hausdorff, todo subconjunto compacto es cerrado [oai_citation:4‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Proposition,a%20Hausdorff%20space%20is%20closed). Por lo tanto $i^{-1}(C)$ es cerrado y así $i$ es continua. Concluimos que $G$ es un grupo topológico. 
+\end{proof}
+
+\subsection*{16. Prueba que $O(n)$ es homeomorfo a $SO(n)\times \mathbb{Z}_2$. ¿Son estos dos isomorfos como grupos topológicos?}
+
+\begin{proof}[Demostración]
+Consideremos el homomorfismo $\det:O(n)\to\{\pm1\}\cong \mathbb{Z}_2$, que es continuo (determinante es continua) y su imagen es $1$ o $-1$. Entonces $SO(n)=\det^{-1}(1)$ es un subconjunto abierto y cerrado de $O(n)$. Definimos 
+\[
+f:O(n)\to SO(n)\times\mathbb{Z}_2,\qquad f(M)=(\det(M)\,M,\;\det(M)).
+\] 
+Es fácil verificar que $f$ es biyectiva y preserva la estructura de grupo (en efecto, $f$ es homomorfismo con inversa dada por $(A,\epsilon)\mapsto \epsilon A$). 
+
+Para ver que es homeomorfismo, bastará mostrar que $f$ es continua y su inversa es continua. Dado un abierto básico $U\times\{\pm1\}$ en $SO(n)\times\mathbb{Z}_2$, se comprueba que $f^{-1}(U\times\{+1\})=U$ y $f^{-1}(U\times\{-1\})=-U$, ambos abiertos en $O(n)$. Así $f$ es continua. Además, $O(n)$ es compacto y $SO(n)\times\mathbb{Z}_2$ es Hausdorff, $f$ es bijectiva y continua, luego por el corolario de Hatcher [oai_citation:5‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Corollary,Hausdorff%20space%20Y%20is%20a) $f$ es homeomorfismo. 
+
+Finalmente, como $f$ es además homomorfismo, concluimos que $O(n)\cong SO(n)\times\mathbb{Z}_2$ como grupo topológico. En particular, son isomorfos como grupos (de hecho $f$ da el isomorfismo). 
+\end{proof}
+
+\subsection*{17. Sean $A,B$ subconjuntos compactos de un grupo topológico. Muestra que el conjunto producto $AB=\{ab\mid a\in A,b\in B\}$ es compacto.}
+
+\begin{proof}[Demostración]
+La multiplicación $m:G\times G\to G$ es continua por hipótesis de grupo topológico. Como $A$ y $B$ son compactos, su producto $A\times B$ es compacto (por compacidad de producto [oai_citation:6‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Theorem,product%20X%20%C3%97%20Y)). Ahora $m(A\times B)=AB$ es la imagen continua de un espacio compacto, luego es compacto [oai_citation:7‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Here%20is%20another%20way%20to,that%20a%20space%20is%20compact). 
+\end{proof}
+
+\subsection*{18. Si $U$ es una vecindad de $e$ en un grupo topológico, muestra que existe una vecindad $V$ de $e$ tal que $VV^{-1}\subseteq U$.}
+
+\begin{proof}[Demostración]
+Consideremos la aplicación continua $f:G\times G\to G$ dada por $f(x,y)=xy^{-1}$. Dado que $f$ es continua, $f^{-1}(U)$ es un abierto que contiene el punto $(e,e)$. Por la definición de la topología producto, existe un abierto básico $V\times V$ que contiene $(e,e)$ y está contenido en $f^{-1}(U)$. Entonces para todo $(x,y)\in V\times V$ se tiene $xy^{-1}\in U$, i.e. $VV^{-1}\subseteq U$, como se quería.
+\end{proof}
+
+\subsection*{19. Sea $H$ un subgrupo discreto de un grupo topológico $G$ (es decir, $H$ es subgrupo y discreto en la topología de $G$). Encuentra una vecindad $N$ de $e$ en $G$ tal que las traslaciones $hN=L_h(N)$ para $h\in H$ sean disjuntas.}
+
+\begin{proof}[Demostración]
+Como $H$ es discreto, existe un entorno abierto $U$ de $e$ en $G$ tal que $U\cap H=\{e\}$. Por el problema anterior (o por continuidad de $f(x,y)=xy^{-1}$) existe un entorno $V$ de $e$ con $VV^{-1}\subseteq U$. Tomemos $N=V$. Entonces si $h_1N\cap h_2N\neq\emptyset$ con $h_1,h_2\in H$, existe $v_1,v_2\in V$ tal que $h_1v_1=h_2v_2$. De aquí $v_1v_2^{-1}=h_1^{-1}h_2\in U\cap H=\{e\}$, luego $h_1^{-1}h_2=e$ y $h_1=h_2$. Así las traslaciones $hN$ son mutuamente disjuntas. 
+\end{proof}
+
+\subsection*{20. Si $C$ es un subconjunto compacto de un grupo topológico $G$ y $H$ es un subgrupo discreto, muestra que $H\cap C$ es finito.}
+
+\begin{proof}[Demostración]
+Primero notemos que un subgrupo discreto $H$ es necesariamente cerrado en $G$ (cada punto de $H$ está aislado, o bien por argumento análogo al Lema en el problema 19). Así $H$ cerrado y $C$ compacto implican que $H\cap C$ es compacto [oai_citation:8‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Proposition,compact%2C%20in%20the%20subspace%20topology), y por tanto cerrado en $C$. Si $H\cap C$ fuera infinito, entonces en $H$ cada punto es abierto (topología discreta), por lo que $\{\,\{h\}\mid h\in H\cap C\}$ sería una cubierta abierta de $H\cap C$ sin subcubierta finita, contradictorio con la compacidad. De aquí que $H\cap C$ debe ser finito. 
+\end{proof}
+
+\subsection*{21. Prueba que todo subgrupo discreto no trivial de $\mathbb{R}$ (aditivo) es cíclico infinito.}
+
+\begin{proof}[Demostración]
+Sea $H\subset\mathbb{R}$ un subgrupo discreto no trivial. Como $H$ es subgrupo aditivo, si $x\in H$ entonces $-x\in H$. Como $H$ es no trivial, existe $x\neq0$ en $H$; sin pérdida de generalidad tomamos $x>0$. Consideremos el conjunto $A=\{h\in H: h>0\}$, que no está vacío. Luego $m=\inf A$ existe y es $\ge0$. Como $H$ es discreto, hay un entorno de $0$ que contiene solo a $0$, de modo que $m>0$. Además, $H$ es cerrado (cualquier subgrupo discreto de un espacio de Hausdorff es cerrado) [oai_citation:9‡file-wfo5l6tcqatbsqaf3tkqfo](file://file-Wfo5L6TCqatBSqAF3tkqFo#:~:text=Proposition,a%20Hausdorff%20space%20is%20closed), por lo que $m\in H$. Así $m$ es el mínimo positivo de $H$. 
+
+Ahora, todo elemento $h\in H$ puede escribirse como $h=qm+r$ con $0\le r<m$ por división euclídea en $\mathbb{R}$. Pero si $0<r<m$, esto contradice la definición de $m$ como mínimo. Luego $r=0$ y $h=qm\in \langle m\rangle$. Por tanto $H=\langle m\rangle\cong\mathbb{Z}$, mostrando que $H$ es cíclico infinito. 
+\end{proof}
+
+\subsection*{22. Prueba que todo subgrupo discreto no trivial del círculo $S^1$ es finito y cíclico.}
+
+\begin{proof}[Demostración]
+Recordemos que $S^1$ es compacto. Sea $H$ un subgrupo discreto no trivial de $S^1$. Como en el caso real, $H$ es cerrado en $S^1$ porque es discreto. Pero $S^1$ es compacto, de modo que $H$ es un subespacio compacto y discreto simultáneamente. Un espacio compacto que es discreto solo puede ser finito, pues en caso contrario se tendría una cubierta infinita sin subcubierta finita. De aquí que $H$ es finito. 
+
+Finalmente, cualquier subgrupo finito de $S^1$ (grupo multiplicativo de números complejos unidad) es cíclico (está formado por las raíces de la unidad de un cierto orden). Por tanto $H$ es cíclico finito, como se quería demostrar. 
+\end{proof}
+
+\subsection*{23. Sean $A,B\in O(2)$ con $\det A=+1$, $\det B=-1$. Demuestra que $B^2=I$ y $BAB^{-1}=A^{-1}$. Deduce que todo subgrupo discreto de $O(2)$ es cíclico o diedral.}
+
+\begin{proof}[Demostración]
+Un elemento $B\in O(2)$ con $\det B=-1$ es una reflexión respecto a alguna línea. Toda reflexión en el plano tiene orden $2$, es decir $B^2=I$. Ahora si $A\in SO(2)$ (determinante $+1$), $A$ es una rotación. Una reflexión conjuga una rotación en su inversa: geométricamente $BAB^{-1}=A^{-1}$. Formalmente, como $B$ es simétrico y ortogonal, $B^{-1}=B$, se tiene $BAB=A^{-1}$.
+
+Luego cualquier subgrupo discreto $H\subset O(2)$ queda dentro de $\langle A,B\rangle$ con $A$ rotación y $B$ reflexión. Si $H$ no contiene reflexiones, entonces es un subgrupo de $SO(2)\cong S^1$ discreto, por lo que es finito cíclico (por el problema 22); esto es cíclico. Si $H$ contiene algún $B$ con $\det(B)=-1$, entonces $H$ contiene a la reflexión $B$ y a las rotaciones $A^k$, cerradas bajo la relación $BAB=A^{-1}$; esto define un grupo diedral. Concluimos que $H$ es o bien cíclico o diedral. 
+\end{proof}
+
+\subsection*{24. Si $T$ es un automorfismo del grupo topológico $\mathbb{R}$ (i.e., $T$ es homeomorfismo que es además homomorfismo de grupos), muestra que $T(r)=r\,T(1)$ para cualquier racional $r$. Deduce que $T(x)=x\,T(1)$ para todo real $x$, y por tanto que el grupo de automorfismos de $\mathbb{R}$ es isomorfo a $\mathbb{R}\times\mathbb{Z}_2$.}
+
+\begin{proof}[Demostración]
+Como $T:\mathbb{R}\to\mathbb{R}$ es homomorfismo aditivo, para un entero $n$ se tiene $T(n)=nT(1)$ y $T(-n)=-nT(1)$. Por compatibilidad con sumas fraccionarias, $T\bigl(\tfrac{p}{q}\bigr)=pT(1)/q$ para $p,q\in\mathbb{Z}$, de modo que $T(r)=r\,T(1)$ para todo $r\in\mathbb{Q}$. Ahora como $T$ es continua (homeomorfismo), esta fórmula se extiende a todo $x\in\mathbb{R}$ por densidad de $\mathbb{Q}$: $T(x)=x\,T(1)$ para todo real. 
+
+Esto significa que cada automorfismo de $\mathbb{R}$ corresponde a un número real $c=T(1)$ y se define por $T_c(x)=cx$. Para ser homeomorfismo se necesita $c\neq 0$. Además, $c$ puede ser positivo o negativo (invirtiendo orientación). En efecto, $\mathrm{Aut}(\mathbb{R})\cong\mathbb{R}^*\cong \mathbb{R}_{>0}\times\{\pm1\}\cong\mathbb{R}\times\mathbb{Z}_2$, utilizando la función logarítmica para $\mathbb{R}_{>0}\cong\mathbb{R}$. 
+\end{proof}
+
+\subsection*{25. Muestra que el grupo de automorfismos del círculo es isomorfo a $\mathbb{Z}_2$.}
+
+\begin{proof}[Demostración]
+Recordando que $S^1\cong \mathbb{R}/\mathbb{Z}$, un automorfismo de $S^1$ como grupo (rotaciones aditivas) se levanta a un automorfismo continuo $T:\mathbb{R}\to \mathbb{R}$ que satisface $T(x+1)=T(x)+k$ para alguna constante entera $k$. Como en el caso anterior $T(x)=cx$ con $c=T(1)$. Pero la condición $T(x+1)=T(x)+k$ obliga a $c=\pm1$ (ya que $c\cdot 1=k$ entero). Luego sólo hay dos casos: $c=+1$ da la automorfismo identidad en el círculo, y $c=-1$ da la inversión $z\mapsto \overline{z}$ (conjugación en coordenadas complejas). Estos son los únicos automorfismos. Se obtienen exactamente dos elementos, isomorfo a $\mathbb{Z}_2$. 
+\end{proof}
+
+
+\begin{theorem}
+Sea \(G\) un grupo que, como espacio topológico, es compacto y Hausdorff.
+Si la multiplicación \(m:G\times G\to G,\ (x,y)\mapsto xy\) es continua, entonces
+la aplicación inverso \(i:G\to G,\ i(x)=x^{-1}\) es continua.  
+En consecuencia \(G\) es un \emph{grupo topológico}.
+\end{theorem}
+
+\begin{proof}
+\textbf{1. Definición de un homeomorfismo auxiliar.}
+
+Consideremos la función
+\[
+\Psi : G\times G \longrightarrow G\times G,
+\qquad
+\Psi(x,y)\;=\;(x,xy).
+\]
+
+\begin{itemize}
+\item \emph{Continuidad.}  
+      $\Psi$ es continua porque se obtiene componiendo la identidad en la
+      primera coordenada con la multiplicación continua \(m\) en la segunda.
+
+\item \emph{Biyectividad.}  
+      Sea \((a,b)\in G\times G\).
+      Puesto que \(G\) es grupo,
+      existe \((x,y)=(a,a^{-1}b)\) tal que
+      \(\Psi(x,y)=(a,b)\); por tanto $\Psi$ es sobreyectiva.
+      La inyectividad es inmediata: si \(\Psi(x_1,y_1)=\Psi(x_2,y_2)\), entonces
+      \(x_1=x_2\) y \(x_1y_1=x_1y_2\Rightarrow y_1=y_2\).
+
+\item \emph{Homeomorfismo.}  
+      \(G\) es compacto y Hausdorff, luego
+      \(G\times G\) también lo es.
+      Una aplicación continua y biyectiva desde un compacto a un Hausdorff
+      es necesariamente un homeomorfismo\footnote{%
+      El inverso es continuo porque la imagen de un compacto
+      mediante función continua es compacto y, en un espacio Hausdorff,
+      los compactos son cerrados.}.
+      Por tanto \(\Psi\) es homeomorfismo y su inversa
+      \(\Psi^{-1}\) es continua.
+\end{itemize}
+
+\textbf{2. Expresión del inverso mediante \(\Psi^{-1}\).}
+
+Sea \(e\) el neutro de \(G\) y denotemos
+por \(p_2:G\times G\to G,\;p_2(x,y)=y\)
+la proyección sobre la segunda coordenada
+(que es continua).
+
+Observa que
+\[
+\Psi^{-1}(x,e)\;=\;(x,x^{-1}),
+\qquad\text{para todo }x\in G.
+\]
+En efecto,
+\(\Psi\bigl(x,x^{-1}\bigr)=(x,xx^{-1})=(x,e)\), de modo que
+\(\Psi^{-1}(x,e)=(x,x^{-1})\).
+
+Por lo tanto
+\[
+i(x)=x^{-1}
+      \;=\;
+      p_2\!\bigl(\Psi^{-1}(x,e)\bigr)
+      \;=\;
+      \bigl(p_2\circ\Psi^{-1}\bigr)(x,e).
+\]
+
+\textbf{3. Continuidad del inverso.}
+
+- \(\Psi^{-1}\) es continua (paso 1),
+- \(p_2\) es continua por definición,
+- la aplicación constante \(x\mapsto(e)\) de \(G\) a \(G\times G\)
+  es continua.
+
+Por ser composición de funciones continuas,
+\[
+i=p_2\circ\Psi^{-1}\circ\bigl(x\mapsto(x,e)\bigr):G\longrightarrow G
+\]
+es continua.
+
+\textbf{4. Conclusión.}
+Como tanto la multiplicación \(m\) como el inverso \(i\)
+son continuos, \(G\) cumple la definición de grupo topológico.
+\end{proof}
+
+
+\end{document}

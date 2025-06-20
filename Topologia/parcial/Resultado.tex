@@ -1,0 +1,345 @@
+%--------------------------------------------------
+% Documento: ejemplo.tex
+% Descripción: Estructura básica de un documento LaTeX
+%--------------------------------------------------
+
+\documentclass[a4paper,11pt]{article}  % Clase de documento y opciones
+
+%==================== Preambulo ====================
+% Codificación de caracteres y fuentes
+\usepackage[utf8]{inputenc}    % Para poder escribir tildes directamente
+\usepackage[T1]{fontenc}       % Codificación de salida de fuentes
+\usepackage[spanish]{babel}    % Soporte para idioma español
+
+% Otros paquetes útiles
+\usepackage{amsmath,amssymb}   % Símbolos y entornos matemáticos
+\usepackage{graphicx}          % Inclusión de gráficos
+\usepackage{hyperref}          % Hipervínculos
+\usepackage{geometry}          % Margenes y dimensiones
+\geometry{margin=2.5cm}        % Ajuste de márgenes
+
+% Metadatos del documento
+\title{Título del Documento}
+\author{Tu Nombre}
+\date{\today}                  % Fecha automática
+
+%==================== Documento ====================
+\begin{document}
+
+\section{Examen 1 -- Topolog'ia General 2022-II}
+\begin{enumerate}
+\item Ejercicio: Demuestre que si $X$ es un espacio topol'ogico Hausdorff, entonces el conjunto diagonal $\Delta = {(x,x): x\in X}$ es cerrado en $X\times X$. Rec'iprocamente, si $\Delta$ es cerrado en $X\times X$, entonces $X$ es Hausdorff. Conceptos y teoremas necesarios:
+\begin{itemize}
+\item \textbf{Espacio Hausdorff (T$_2$):} Axioma de separaci'on que establece que dados dos puntos distintos $x,y$ en $X$, existen entornos abiertos disjuntos $U_x, U_y$ tales que $x\in U_x$ y $y\in U_y$ (es decir, podemos “separar” cualquier par de puntos) \emph{(Viro et al., p'ag. 110)}. Equivalentemente, en un espacio Hausdorff todos los puntos unitarios ${x}$ son conjuntos cerrados \emph{(Steen, p'ag. 2)}.
+\item \textbf{Topolog'ia producto:} En $X\times X$, la topolog'ia producto tiene como base conjuntos del tipo $U\times V$ con $U,V$ abiertos en $X$. Un subconjunto $A\subset X\times X$ es cerrado si contiene todos sus puntos l'imite; en particular, $\Delta$ es cerrado si su complementario $(X\times X)\setminus \Delta = {(x,y): x\neq y}$ es abierto en $X\times X$ \emph{(Viro et al., p'ag. 139)}.
+\item \textbf{Caracterizaci'on diagonal-clausura:} $X$ es Hausdorff si y s'olo si $\Delta$ es un conjunto cerrado en $X\times X$. Este resultado puede demostrarse aplicando directamente la definici'on de $T_2$: si $x\neq y$, existen $U_x, U_y$ disjuntos con $x\in U_x, y\in U_y$. Entonces $(x,y)\notin U_x\times U_y$, mostrando que cada punto fuera de $\Delta$ tiene un entorno que no interseca $\Delta$, as'i $(X\times X)\setminus\Delta$ es abierto. Rec'iprocamente, si $\Delta$ es cerrado y $x\neq y$, entonces $(x,y)$ est'a en el abierto complementario, lo que produce entornos separados para $x,y$. \emph{(Viro et al., p'ag. 139)}
+\end{itemize} \item Ejercicio: Sean $f,g: X\to \mathbb{R}$ funciones continuas.
+(a) Probar que el conjunto $A={,x\in X: f(x)\le g(x),}$ es cerrado en $X$.
+(b) Defina $h: X\to\mathbb{R}$ por $h(x)=\min{f(x),g(x)}$. Demuestre que $h$ es continua. Conceptos y teoremas necesarios:
+\begin{itemize}
+\item \textbf{Funci'on continua (definici'on topol'ogica):} $f: X\to Y$ es continua si para todo conjunto abierto $V\subseteq Y$, la preimagen $f^{-1}(V)$ es abierta en $X$. Equivalentemente, $f$ es continua si para todo cerrado $C\subseteq Y$, entonces $f^{-1}(C)$ es cerrado en $X$ \emph{(Viro et al., p'ag. 57)}.
+\item \textbf{Preimagen de $(-\infty,0]$:} El conjunto $A={x: f(x)\le g(x)}$ puede reescribirse como $A = (f-g)^{-1}\big((-\infty,0] \big)$. Aqu'i $f-g: X\to \mathbb{R}$ es continua (por ser combinaci'on lineal de continuas), y $(-\infty,0]$ es cerrado en $\mathbb{R}$. Por la caracterizaci'on de continuidad, $A$ debe ser cerrado en $X$ al ser preimagen de un cerrado \emph{(Viro et al., p'ag. 57)}.
+\item \textbf{Operaciones con funciones continuas:} La suma, resta y otras operaciones algebraicas usuales de funciones reales preservan continuidad. En particular, $f-g$ es continua si $f$ y $g$ lo son, y la funci'on valor absoluto $x\mapsto |x|$ es continua en $\mathbb{R}$. Por tanto, otra forma de ver (b) es notar que $\min{f(x),g(x)} = \frac{f(x)+g(x)-|f(x)-g(x)|}{2}$, combinaci'on de operaciones continuas; de este modo, $h$ es continua como composici'on de funciones continuas \emph{(Patty, p'ag. 65)}.
+\item \textbf{Preimagen de cerrados y continuidades sucesivas:} La propiedad anterior se fundamenta en que si $f, g$ son continuas, entonces el par $(f,g): X\to \mathbb{R}^2$ es continuo, y como la funci'on $\mathrm{min}: \mathbb{R}^2\to \mathbb{R}$ es continua (es una funci'on continua por ser definida por expresiones algebraicas continuas), la composici'on $h = \mathrm{min}\circ (f,g)$ es continua \emph{(Croom, p'ag. 48)}.
+\end{itemize} \item Ejercicio: Sea $X$ un espacio topol'ogico Hausdorff (T$_2$). Decimos que $A\subset X$ es un \emph{retr-acto} de $X$ si existe una funci'on continua $r: X\to A$ (llamada retracci'on) tal que la restricci'on de $r$ a $A$ es la identidad en $A$. Probar que si $A$ es un retracto de $X$, entonces $A$ es un subconjunto cerrado de $X$. (Sugerencia: puede suponerse $X$ es $T_1$). Conceptos y teoremas necesarios:
+\begin{itemize}
+\item \textbf{Retracci'on y retracto (definici'on):} Un conjunto $A\subset X$ es un retracto si existe $r: X\to A$ continua tal que $r(a)=a$ para todo $a\in A$ (es decir, $r\circ \iota_A = \mathrm{id}_A$, donde $\iota_A: A\hookrightarrow X$ es la inclusi'on). En particular, $r$ satisface $r(x)\in A$ y $r(a)=a$. Los retractos son subespacios que “se pueden contraer” dentro del espacio original mediante una aplicaci'on continua \emph{(Armstrong, p'ag. 36)}.
+\item \textbf{Propiedad $T_1$ (Hausdorff implica $T_1$):} En cualquier espacio $T_2$, los puntos individuales son cerrados (lo que es la definici'on de $T_1$) \emph{(Steen, p'ag. 1)}. Se usa este hecho para demostrar cerradura de $A$: dado $x\in X\setminus A$, como $A$ es retracto existe $r(x)\in A$ con $r(x)\neq x$ (porque $x\notin A$ pero $r(x)\in A$). Si $X$ es Hausdorff, existen entornos abiertos disjuntos $U$ de $x$ y $V$ de $r(x)$. Entonces $U$ queda libre de puntos de $A$ (ya que $V$ cubre a $r(x)$ y no interseca $U$), de donde $U\subset X\setminus A$. As'i, cada $x\notin A$ tiene un entorno que no toca $A$, implicando que $X\setminus A$ es abierto y $A$ es cerrado.
+\item \textbf{Unicidad del l'imite en espacios Hausdorff:} Una formulaci'on alternativa en t'erminos de secuencias (o redes) es 'util: en un espacio Hausdorff, cualquier sucesi'on converge a lo sumo a un 'unico l'imite \emph{(Croom, p'ag. 93)}. Si $A$ no fuese cerrado, existir'ia un punto $x\in \overline{A}\setminus A$ (un l'imite de puntos de $A$ que no pertenece a $A$). Tomando una sucesi'on $(a_n)\subset A$ con $a_n\to x$, por continuidad $r(a_n)=a_n\to r(x)$ (ya que $r$ es continua y $a_n\in A$ implica $r(a_n)=a_n$). Tendr'iamos $a_n\to x$ y $a_n\to r(x)$ con $x\neq r(x)$, contradiciendo la unicidad del l'imite en un espacio $T_2$. Esto confirma que $A$ debe ser cerrado en $X$.
+\end{itemize} \item Ejercicio: (a) Sea $X$ un espacio m'etrico, y ${C_n}{n\in\mathbb{N}}$ una familia de subconjuntos \emph{compactos} de $X$ con $C{n+1}\subseteq C_n$ para todo $n$. Sea $U\subset X$ un abierto tal que $U\cap \big(\bigcap_{n} C_n\big)=\varnothing$. Demuestre que existe $n_0\in\mathbb{N}$ con $U\cap C_n=\varnothing$ para todo $n\ge n_0$.
+(b) Sea $X$ un espacio m'etrico \emph{compacto}, y ${C_n}{n\in\mathbb{N}}$ una familia de subconjuntos \emph{conexos y cerrados} de $X$ con $C{n+1}\subseteq C_n$ $\forall n$. Pruebe que $\bigcap_{n\in\mathbb{N}} C_n$ es conexo.
+(c) Encuentre una familia de subconjuntos conexos cerrados ${C_n}{n\in\mathbb{N}}$ de $\mathbb{R}^2$, con $C{n+1}\subseteq C_n$ $\forall n$, pero cuyo intersecci'on $\bigcap_n C_n$ \emph{no} es conexo. Conceptos y teoremos necesarios:
+\begin{itemize}
+\item \textbf{Espacio m'etrico y compacidad:} Un subconjunto $K$ de un espacio m'etrico es \emph{compacto} si toda familia de abiertos que cubre a $K$ admite un subrecubrimiento finito. En espacios m'etricos (primera numerabilidad), la compacidad es equivalente a la compacidad secuencial: toda sucesi'on en $K$ tiene una subsucesi'on convergente a un punto de $K$ \emph{(Viro et al., p'ag. 132)}. En particular, si $K$ es compacto y $(x_n)$ es una sucesi'on en $K$, existe una subsucesi'on $x_{n_k}\to x\in K$ \emph{(Munkres, p'ag. 95)}.
+\item \textbf{Propiedad de intersecci'on finita:} Otra formulaci'on de compacidad establece que una familia ${K_i}$ de cerrados tiene intersecci'on no vac'ia si y s'olo si toda intersecci'on finita es no vac'ia (esta es la \emph{propiedad de intersecci'on finita}). Aplicando esta idea en (a): si $\bigcap_{n}C_n=\varnothing$, entonces los cerrados $X\setminus U, C_1, C_2,\dots$ tienen la propiedad de que toda subfamilia finita interseca (pues $U$ no corta completamente a ning'un $C_n$ fijo), pero la intersecci'on de todos es vac'ia, contradiciendo compacidad de $C_1$. Por lo tanto, alg'un $C_n$ debe estar totalmente contenido en $X\setminus U$, implicando $U\cap C_n=\emptyset$ desde cierto $n_0$ en adelante.
+\item \textbf{Subespacios cerrados de compactos:} N'otese que en (a), cada $C_n$ es compacto (y cerrado) pero $X$ no necesariamente lo es; no obstante, $C_1$ act'ua como un espacio compacto ambientando a todos los $C_n$.
+\item \textbf{Espacio conexo (definici'on):} Un subespacio $Y$ es \emph{conexo} si no existe una separaci'on no trivial; es decir, no puede expresarse como $Y=U\cup V$ con $U, V$ abiertos (en la topolog'ia subespacio) disjuntos, con $U\cap Y$ y $V\cap Y$ no vac'ios \emph{(Patty, p'ag. 101)}. Equivalentemente, cualquier funci'on continua $f: Y\to {0,1}$ es constante.
+\item \textbf{Intersecci'on de conexos compactos:} En (b), la demostraci'on utiliza que $X$ es compacto adem'as de $T_2$. Un hecho importante es que la intersecci'on decreciente de una familia numerable de conjuntos compactos y conexos \emph{no vac'ios} es conexa (y no vac'ia) \emph{(Patty, p'ag. 112)}. Intuitivamente, si $\bigcap_n C_n = P\cup Q$ con $P,Q$ separados no vac'ios, entonces por continuidad de inclusi'on cada $C_n$ se podr'ia separar en $P_n$ y $Q_n$ (tomando $P_n=P\cap C_n$, etc.), contradiciendo que cada $C_n$ es conexo. En esencia, un espacio compacto no puede tener “infinitas componentes diminutas” sin perder conexi'on en el l'imite.
+\item \textbf{Contraejemplo en $\mathbb{R}^2$:} Para (c), se requiere una construcci'on donde la hip'otesis de compacidad global falle. Un ejemplo cl'asico es tomar $C_n$ como un “d'umbbell” o mancuerna cada vez m'as fino: por ejemplo, dos discos cerrados disjuntos en $\mathbb{R}^2$ conectados por un cilindro o barra de grosor $1/n$. Cada $C_n$ es conexo y cerrado, con $C_{n+1}\subset C_n$, pero $\bigcap_n C_n$ resulta ser la uni'on de los dos discos extremos (sin ninguna conexi'on entre ellos), que es un conjunto desconexo. As'i se muestra la necesidad de la compacidad de $X$ en (b).
+\end{itemize} \item Ejercicio (Verdadero/Falso con justificaci'on):
+\begin{itemize}
+\item[(a)] Si $(X,\tau)$ es tal que \emph{toda} funci'on $f: X\to X$ es continua, entonces $\tau$ es la topolog'ia discreta o la topolog'ia trivial (indiscreta).
+\item[(b)] Si $f: X\to Y$ es una funci'on continua y abierta, entonces forzosamente es una funci'on cerrada.
+\item[(c)] Todo espacio compacto y localmente conexo tiene un n'umero finito de componentes conexas.
+\item[(d)] Todo espacio m'etrico es separable.
+\end{itemize} Conceptos y teoremas necesarios:
+\begin{itemize}
+\item \textbf{Topolog'ia discreta e indiscreta:} La \emph{topolog'ia discreta} en un conjunto $X$ es la m'as fina posible: \emph{todos} los subconjuntos de $X$ son abiertos. En la topolog'ia discreta, cualquier funci'on $f: X\to Z$ (para cualquier espacio $Z$) es continua, pues $f^{-1}(V)\subseteq X$ es abierto para cualquier $V\subseteq Z$ (al ser $f^{-1}(V)$ simplemente un subconjunto cualquiera de $X$) \emph{(Viro et al., p'ag. 24)}. La \emph{topolog'ia trivial} o indiscreta es la m'as gruesa: s'olo $\emptyset$ y $X$ son abiertas; en este caso, cualquier funci'on $f: X\to X$ es tambi'en continua (los preimagenes de abiertos no trivialmente vac'ios s'olo pueden ser $X$ o $\emptyset$). Si una topolog'ia no es ni totalmente discreta ni totalmente trivial, se puede construir al menos una funci'on que no sea continua (por ejemplo, en un espacio $X$ no trivial se puede definir $f: X\to {0,1}$ que separa un abierto propio no vac'io de su complemento, lo que no ser'a continua). Por tanto, la afirmaci'on (a) es \textbf{Verdadera}: las 'unicas topolog'ias con “todas las funciones continuas” son la discreta y la indiscreta \emph{(Steen, p'ag. 1)}.
+\item \textbf{Aplicaciones abiertas y cerradas:} $f: X\to Y$ es \emph{abierta} si env'ia abiertos en $X$ a conjuntos abiertos en $Y$. Es \emph{cerrada} si para cada subconjunto cerrado $F\subseteq X$, la imagen $f(F)$ es cerrada en $Y$. En general, $f$ puede ser continua y abierta sin ser cerrada. Un contraejemplo cl'asico es la proyecci'on $p: \mathbb{R}\times (0,\infty)\to \mathbb{R}$ dada por $p(x,y)=x$. Esta $p$ es continua y abierta (las proyecciones can'onicas en productos topol'ogicos son abiertas), pero no es cerrada: por ejemplo, el conjunto $F={(1/n,,1/n) : n\in\mathbb{N}}$ es cerrado en $\mathbb{R}\times(0,\infty)$, mas su imagen $p(F)={1/n: n\in\mathbb{N}}$ no es cerrada en $\mathbb{R}$ (su cerradura contiene $0$, que no pertenece a $p(F)$). As'i, la afirmaci'on (b) es \textbf{Falsa}. En t'erminos generales, una aplicaci'on cociente (continua, sobreyectiva) no tiene por qu'e ser abierta ni cerrada, y ser abierta no implica ser cerrada \emph{(Munkres, sec.22, p'ag. 168)}.
+\item \textbf{Localmente conexo y componentes:} Un espacio $X$ es \emph{localmente conexo} si cada punto $x\in X$ tiene una base de entornos $U$ que son conjuntos conexos. En espacios localmente conexos, cada \emph{componente conexa} (la componente maximal que contiene a un punto) es de hecho un conjunto \emph{abierto} en $X$ \emph{(Munkres, p'ag. 159)}. Adem'as, las componentes conexas son por definici'on disjuntas y suman el espacio. Si $X$ tiene infinitas componentes conexas abiertas, entonces ${C_i}_{i\in I}$ (cada componente $C_i$ es no vac'ia, abierta y cerrada en $X$) es un recubrimiento abierto de $X$ que no admite subrecubrimiento finito si $I$ es infinito. Por lo tanto, un espacio compacto s'olo puede tener un n'umero finito de componentes conexas. La afirmaci'on (c) es \textbf{Verdadera} \emph{(Croom, p'ag. 168)}.
+\item \textbf{Espacio separable:} Un espacio topol'ogico es \emph{separable} si contiene un subconjunto denso contable. Si bien muchos espacios m'etricos comunes son separables (por ejemplo, $\mathbb{R}^n$ lo es, con $\mathbb{Q}^n$ denso), la afirmaci'on (d) es \textbf{Falsa}: existe espacio m'etrico no separable. Un ejemplo es cualquier conjunto no numerable con la m'etrica discreta $d(x,y)=1$ si $x\neq y$. Por ejemplo, $X$ igual a los reales $\mathbb{R}$ con m'etrica $d$ tal que $d(x,y)=1$ para $x\neq y$. Este $(X,d)$ es un espacio m'etrico donde todo subconjunto es abierto; si $X$ es no numerable, no puede tener un subconjunto denso contable (ninguna cuenta alcanzaría a estar a distancia cero de todos los puntos aislados que quedan fuera). As'i, $X$ no es separable \emph{(Steen, Ejemplo 3, p'ag. 8)}. Cabe recordar que en un espacio discreto no numerable, cualquier subconjunto contable deja fuera infinitos puntos aislados, por lo que su cerradura no es todo $X$.
+\end{itemize}
+\end{enumerate} \section{Examen 2 -- Topolog'ia General 2022-II}
+\begin{enumerate}
+\item Ejercicio: Sea $\sim$ la relaci'on de equivalencia en $\mathbb{R}$ definida as'i: $x\sim y$ si y s'olo si se cumple alguna de las siguientes tres condiciones: o bien $x,y\in {,1/n: n\in\mathbb{N}}\cup{0}$, o bien $x,y\in [2,3]$, o bien $x=y$ y $x$ no pertenece a ninguno de esos conjuntos especiales. Sea $p: \mathbb{R}\to X=\mathbb{R}/\sim$ la proyecci'on al espacio cociente $X$.
+\begin{itemize}
+\item[(a)] Decida si $p$ es una aplicaci'on abierta, cerrada, ambas o ninguna, justificando.
+\item[(b)] Determine si $X$ es compacto y si es Hausdorff.
+\end{itemize} Conceptos y teoremas necesarios:
+\begin{itemize}
+\item \textbf{Espacio cociente y proyecci'on:} Dada una relaci'on de equivalencia $\sim$ en $X$, se define el espacio cociente $X/!\sim$ como el conjunto de clases de equivalencia dotado de la topolog'ia \emph{cociente}: $U\subseteq X/!\sim$ es abierto si y s'olo si $p^{-1}(U)$ es abierto en $X$, donde $p: X\to X/!\sim$ es la proyecci'on can'onica $p(x)=[x]$. Por construcci'on, $p$ es continua y sobreyectiva, es decir, un \emph{mapa cociente} \emph{(Munkres, p'ag. 168)}. Ahora bien, $p$ no necesariamente es abierta ni cerrada en general; para que $p$ sea abierta, cada abierto saturado de $X$ (un abierto que es uni'on de clases de equivalencia completas) debe proyectarse a abierto en $X/!\sim$. Si alg'un abierto de $X$ no es saturado respecto a $\sim$, su imagen puede no ser abierta en el cociente. En nuestro caso, note que ${0}$ no es abierto en $\mathbb{R}$ pero s'i es saturado (por $\sim$ une $0$ con la secuencia $1/n$). Este tipo de sutilezas influye en (a). En general, \emph{un mapa cociente continuo no garantiza ser abierto ni cerrado, y ser abierto no implica ser cerrado} \emph{(Munkres, sec.22)}.
+\item \textbf{Compacidad en cocientes:} Un espacio cociente $X/!\sim$ ser'a compacto si $X$ lo es \emph{y} las clases de equivalencia son cerradas en $X$ (esto 'ultimo garantiza que $p$ es cerrado, preservando compacidad) \emph{(Croom, p'ag. 203)}. En este ejercicio particular, $[2,3]$ es compacto en $\mathbb{R}$, pero $\mathbb{R}$ no lo es; sin embargo, $X/!\sim$ podr'ia resultar compacto si la imagen de $\mathbb{R}$ es esencialmente una “contracci'on” de la parte no acotada. Se debe analizar si toda cubierta abierta de $X$ tiene subrecubrimiento finito, usando que $p$ es continua y sobreyectiva.
+\item \textbf{Hausdorff en cocientes:} Un criterio cl'asico: si $X$ es Hausdorff \emph{y} cada clase de equivalencia $[x]$ es cerrada en $X$, entonces el cociente $X/!\sim$ es Hausdorff. Sin embargo, aqu'i la clase ${0,1/1,1/2,\dots}$ no es cerrada en $\mathbb{R}$ (su clausura contiene $0$, que est'a en la clase misma, pero no introduce m'as puntos fuera). El punto clave es que $0$ est'a adherido a todos $1/n$ en $\mathbb{R}$, lo que en el cociente implica que la imagen de esta clase ser'a un punto l'imite de s'i mismo, haciendo que $X$ no sea $T_1$ (y por ende no $T_2$). En efecto, $X$ no es Hausdorff porque la identificaci'on de la secuencia $1/n$ con su l'imite $0$ produce un punto en $X$ que no puede separarse de s'i mismo por abiertos distintos (formalmente, la imagen de la clase ${0,1/n}$ no est'a aislada de “copia extra” alguna, generando no-Hausdorff) \emph{(Munkres, p'ag. 170)}.
+\item Nota: En las soluciones, se espera concluir que $p$ es abierta pero no cerrada (o viceversa, seg'un un an'alisis cuidadoso de saturaci'on de abiertos en $\mathbb{R}$). Tambi'en que $X$ \emph{no} es Hausdorff (por la identificaci'on de $0$ con $1/n$) y que $X$ \emph{no} es compacto (ya que $\mathbb{R}$ no lo es y $p$ no es cerrado). Cada conclusi'on debe justificarse con una construcci'on de conjuntos abiertos/cerrados adecuados y usando las propiedades topol'ogicas mencionadas.
+\end{itemize} \item Ejercicio: Sea $G$ un grupo topol'ogico Hausdorff y $H<G$ un subgrupo discreto (es decir, con la topolog'ia inducida, $H$ es un espacio discreto). Probar que existe un abierto $U$ de $G$ que contiene al elemento neutro $e$ tal que los traslados izquierdos $hU = {,h\cdot u: u\in U}$ para $h\in H$ son conjuntos disjuntos entre s'i (distintos $h\neq h'$ dan $hU \cap h'U = \emptyset$). Conceptos y teoremas necesarios:
+\begin{itemize}
+\item \textbf{Grupo topol'ogico (definici'on):} Un \emph{grupo topol'ogico} es un grupo $G$ que es tambi'en un espacio topol'ogico tal que las operaciones de grupo (multiplicaci'on $(x,y)\mapsto x\cdot y$ y inversi'on $x\mapsto x^{-1}$) son aplicaciones continuas \emph{(Viro et al., p'ag. 192)}. Por ejemplo, $(\mathbb{R},+)$ con la topolog'ia usual es un grupo topol'ogico.
+\item \textbf{Subgrupo discreto:} $H$ es discreto en la topolog'ia subespacio, lo que implica que cada elemento $h\in H$ tiene un entorno abierto en $G$ que no contiene a ning'un otro elemento de $H$ m'as que $h$ mismo. En particular, el neutro $e\in H$ tiene un abierto $V$ en $G$ con $V\cap H={e}$.
+\item \textbf{Traslaciones como homeomorfismos:} En un grupo topol'ogico, la funci'on $L_h: G\to G$ dada por $L_h(x)=h\cdot x$ (multiplicaci'on por $h$ a izquierda) es un homeomorfismo de $G$ (su inversa es la traslaci'on por $h^{-1}$). Consecuentemente, $L_h(U)$ es abierto si $U$ es abierto, y $L_h$ preserva disyunci'on: si $L_{h}(u_1)=L_{h'}(u_2)$, entonces $h u_1 = h' u_2$ implica $h^{-1}h' = u_1 u_2^{-1}\in U U^{-1}$.
+\item \textbf{Construcci'on de $U$:} Sea $V$ un abierto de $G$ con $V\cap H={e}$. Podemos elegir $U$ como un abierto sim'etrico alrededor de $e$ contenido en $V$, por ejemplo $U=V\cap V^{-1}$ (de modo que $U^{-1}=U$ y $U\cap H={e}$ tambi'en). Ahora, para $h\neq h'$ en $H$, suponga que $x\in hU \cap h'U$. Entonces $x = h u_1 = h' u_2$ con $u_1,u_2\in U$. De $h^{-1}(h'u_2) = u_1 \in U$ se deduce $h^{-1}h' \in U U^{-1} \subseteq V V^{-1}$. Pero $h^{-1}h' \in H$ (por ser subgrupo). As'i $h^{-1}h'\in H\cap (V V^{-1})$. Si $V$ est'a elegido suficientemente peque~no, $VV^{-1}\cap H={e}$, entonces $h^{-1}h'=e$, contradiciendo $h\neq h'$. Por lo tanto, $hU \cap h'U = \emptyset$ cuando $h\neq h'$. Esta elecci'on de $U$ satisface la condici'on pedida.
+\item \textbf{Observaciones finales:} La separaci'on Hausdorff de $G$ garantiza adicionalmente que tales entornos $U$ pueden elegirse de forma que incluso las clausuras $\overline{hU}$ sigan disjuntas, si fuera necesario (se trata de la propiedad de que subgrupos discretos en grupos Hausdorff son cerrados). Aunque esto trasciende lo solicitado, es un hecho \emph{(Croom, p'ag. 206)} interesante: en grupos topol'ogicos Hausdorff, todo subgrupo discreto es de hecho cerrado, y podemos encontrar vecindades disjuntas como enunciado en el problema.
+\end{itemize}
+\end{enumerate} \bigskip\hrule\bigskip \section*{Resumen de conceptos clave}
+En este documento se han recopilado numerosos conceptos y resultados fundamentales de Topolog'ia General que permiten abordar los ejercicios de ex'amen:
+Axiomas de separaci'on ($T_1$, Hausdorff $T_2$): Un espacio es $T_1$ si todos los puntos individuales ${x}$ son cerrados. Es $T_2$ (Hausdorff) si cualquiera dos puntos distintos pueden separarse mediante entornos abiertos disjuntos. En espacios Hausdorff, los l'imites de secuencias (y redes) son 'unicos, y el conjunto diagonal $\Delta={(x,x)}$ es un cerrado en $X\times X$
+maths.ed.ac.uk
+maths.ed.ac.uk
+. Esto 'ultimo proporciona una caracterizaci'on 'util: $X$ es Hausdorff $\Leftrightarrow \Delta$ es cerrado
+maths.ed.ac.uk
+. Adem'as, $T_2$ implica $T_1$.
+Topolog'ias extremas (discreta e indiscreta): La topolog'ia discreta hace abierto a \emph{cualquier} subconjunto (es la m'as fina); en ella, toda funci'on es continua ya que $f^{-1}(V)\subseteq X$ siempre ser'a abierto. La topolog'ia indiscreta s'olo tiene $\emptyset$ y $X$ como abiertos (la m'as gruesa); en ella, tambi'en cualquier aplicaci'on $f: X\to Y$ es continua porque los únicos requisitos para la continuidad (preimagen de abierto) son triviales. Estas dos topolog'ias son casos l'imite cuyos comportamientos sirven para validar (o contradecir) enunciados generales; por ejemplo, son las 'unicas topolog'ias en las que \emph{toda} funci'on $X\to X$ resulta continua.
+Continuidad y propiedades de funciones: Por definici'on, $f: X\to Y$ es continua si $f^{-1}(U)$ es abierto en $X$ para cada abierto $U\subseteq Y$. Equivalente a eso, $f^{-1}(F)$ es cerrado en $X$ para cada cerrado $F\subseteq Y$
+maths.ed.ac.uk
+. Esta propiedad de preimagen preserva tanto abiertos como cerrados. Consecuencias: la composici'on de continuas es continua, y operaciones algebraicas usuales sobre funciones continuas (suma, producto, valor absoluto, $\min{f,g}$, etc.) producen funciones continuas
+espanol.libretexts.org
+. Por ejemplo, en $\mathbb{R}$ con topolog'ia usual, $\min{f,g}$ es continua por poder expresarse en t'erminos de sumas, restas y valor absoluto de $f$ y $g$, que son operaciones continuas.
+Conjuntos abiertos y cerrados en productos: En el producto $X\times Y$, la base de la topolog'ia son productos $U\times V$ con $U$ abierto en $X$, $V$ abierto en $Y$. Un subconjunto $A\subseteq X\times Y$ es cerrado si contiene todos sus puntos l'imite; as'i, para mostrar que $\Delta$ es cerrado se suele mostrar que $(X\times X)\setminus\Delta$ es abierto construyendo entornos separados para puntos $x\neq y$. La estructura de producto aparece tambi'en en propiedades como: si $X,Y$ son Hausdorff, entonces $X\times Y$ es Hausdorff, etc. (muchos axiomas y propiedades se preservan en productos).
+Compacidad: Un espacio $X$ es compacto si toda familia de abiertos que lo cubre admite un subrecubrimiento finito. Equivalente en metrizable (y m'as generalmente, en primeros numerables) es la \emph{secuencia de Bolzano-Weierstrass}: toda sucesi'on infinita tiene al menos un punto l'imite en $X$, es decir, una subsucesi'on convergente en $X$
+maths.ed.ac.uk
+maths.ed.ac.uk
+. Utilidades: en un espacio m'etrico compacto, familias descendentes de cerrados no vac'ios tienen intersecci'on no vac'ia (propiedad de intersecci'on finita). Un resultado relevante usado es que la intersecci'on de una secuencia decreciente $C_1 \supset C_2 \supset \cdots$ de cerrados compactos no vac'ios sigue siendo no vac'ia (Teorema de Cantor); adem'as, si cada $C_n$ es conexo, la intersecci'on $\bigcap_n C_n$ sigue siendo \emph{conexa}. Estos hechos muestran, por ejemplo, que bajo compactitud global, no podemos “separar” componentes en el l'imite sin romper conexidad.
+Conexi'on y localmente conexo: Un espacio $X$ es conexo si no existe una partici'on no trivial en dos abiertos disjuntos. Equivalentemente, cualquier funci'on continua desde $X$ a ${0,1}$ (espacio discreto de dos puntos) es constante. Las componentes conexas de $X$ son las clases de equivalencia m'aximas bajo la relaci'on “estar en la misma regi'on conexa”. Cada componente es siempre un conjunto cerrado en $X$. Si adem'as $X$ es \emph{localmente conexo} (tiene una base de entornos conexos en cada punto), entonces las componentes conexas son tambi'en abiertas
+maths.ed.ac.uk
+. En consecuencia, en un espacio compacto y localmente conexo s'olo puede haber finit'isimas componentes: si hubiera infinitas, tendr'iamos un recubrimiento abierto por componentes imposibles de reducir finitamente, contradiciendo la compacidad. En particular, las componentes de un compacto localmente conexo son en n'umero finito (y el espacio puede verse como la uni'on de un n'umero finito de piezas conectadas, cada una de ellas adem'as compacta y abierta en el espacio).
+Espacios separables: Un espacio es separable si tiene un subconjunto denso numerable. Aunque muchos espacios conocidos lo son (por ejemplo $\mathbb{R}$ tiene $\mathbb{Q}$ denso), existen contraejemplos importantes: la topolog'ia discreta sobre un conjunto no numerable no es separable
+en.wikipedia.org
+, porque cada punto es un abierto aislado; ninguna colecci'on numerable puede ser densa pues siempre quedar'an “huecos” (puntos aislados que no fueron incluidos). As'i, \emph{no} todo espacio m'etrico es separable; el contraejemplo concreto de un m'etrico no separable es $(X,d)$ con $X$ no numerable y $d$ la m'etrica discreta (distancia $1$ entre puntos distintos). Esto sirve para refutar la afirmaci'on general sobre separabilidad de m'etricos.
+Aplicaciones cociente y proyecciones: Dada una relaci'on de equivalencia en $X$, el espacio cociente $X/!\sim$ viene con la topolog'ia cociente que hace continua a la proyecci'on $p: X\to X/!\sim$. Sin embargo, $p$ no necesariamente hereda ser abierta ni cerrada
+dbfin.com
+. Un mapa cociente $p$ es abierto si toda preimagen $p^{-1}(U)$ de un abierto del cociente es abierto en $X$ (lo que exige que los abiertos en $X/!\sim$ provengan de abiertos saturados en $X$). En la pr'actica, hay espacios cociente no $T_1$ o no Hausdorff, si se identifican puntos l'imite con sus l'imites: por ejemplo, la “cola del topo'logo” (colapsar ${1/n: n\in\mathbb{N}}$ a un solo punto junto con $0$) produce un cociente no Hausdorff, ya que no se pueden separar el punto im'agen de ${0,1/n}$ consigo mismo (no es $T_1$)
+dbfin.com
+. En general, un criterio: si cada clase de equivalencia es cerrada en $X$ y $X$ es Hausdorff, entonces el cociente s'i ser'a Hausdorff. Si alg'un bloque de equivalencia no es cerrado, suele aparecer identificaciones no-Hausdorff.
+Grupos topol'ogicos y subgrupos discretos: Un grupo topol'ogico es un grupo con una topolog'ia que hace continuas la multiplicaci'on y la inversi'on. En estos grupos, las traslaciones por elementos $g$ ($x\mapsto gx$) y las conjugaciones ($x\mapsto hxh^{-1}$) son homeomorfismos (acciones continuas del grupo sobre s'i mismo por izquierda, derecha o conjugaci'on). Un subgrupo $H$ es \emph{discreto} si en la topolog'ia subespacio cada punto de $H$ est'a aislado (tiene un entorno que no contiene a otros puntos de $H$). Si $H$ es discreto y $e$ es el neutro, existe un entorno abierto $U$ de $e$ que no contiene a ning'un otro elemento de $H$. Entonces las traslaciones $hU$ (para $h\in H$) son disjuntas: efectivamente, si $hU\cap h'U\neq\emptyset$, entonces $h^{-1}(h'U)\cap U\neq\emptyset$, de donde $h^{-1}h'\in U U^{-1}$. Si $U$ fue tomado suficientemente peque~no, $U U^{-1}$ sigue sin contener elementos de $H$ aparte de $e$, implicando $h^{-1}h'=e$ y $h=h'$. Este resultado garantiza la existencia de entornos “peque~nos” alrededor del neutro que evitan solapamiento entre distintas copias trasladas de $H$. Adicionalmente, en grupos topol'ogicos Hausdorff, todo subgrupo discreto es cerrado, y se puede lograr incluso que las clausuras $\overline{hU}$ sigan disjuntas (refinando $U$ si es necesario). Esto asegura propiedades de “espaciado” importante en teor'ia de grupos: por ejemplo, en $\mathbb{R}$, $\mathbb{Z}$ es un subgrupo discreto, y podemos tomar $U=(-\frac{1}{2},\frac{1}{2})$, cuyos traslados $n+(-\frac{1}{2},\frac{1}{2})$ son disjuntos y cubren $\mathbb{R}$. En general, la discreci'on de $H$ refleja que $H$ no acumula en $e$, permitiendo separar copias trasladadas del neutro.
+En conclusi'on, los ejercicios propuestos requieren manejar con soltura las definiciones de continuidades, compacidad y conexi'on, as'i como resultados cl'asicos: caracterizaciones de Hausdorff, teoremas de producci'on de funciones continuas (p. ej. $\min{f,g}$ continua), el teorema de intersecci'on de Cantor para compactos, la apertura de componentes en espacios localmente conexos, y ejemplos de contraejemplos famosos (espacios discretos no separables, cocientes no Hausdorff). Estos conceptos y teoremas fundamentales, respaldados con referencias a la bibliograf'ia proporcionada, permiten abordar con 'exito la resoluci'on de cada ejercicio.
+
+\bigskip
+
+\section*{Ejercicio 1.} 
+Sea \((X,\mathcal{T})\) un conjunto con una familia \(\mathcal{T}\) de subconjuntos que satisface los axiomas:
+\begin{enumerate}
+  \item \(\varnothing, X \in \mathcal{T}\).
+  \item La unión de cualquier subcolección de \(\mathcal{T}\) pertenece a \(\mathcal{T}\).
+  \item La intersección de cualquier subcolección finita de \(\mathcal{T}\) pertenece a \(\mathcal{T}\).
+\end{enumerate}
+Demuestre que \(\mathcal{T}\) es una topología en \(X\) (es decir, \((X,\mathcal{T})\) es un espacio topológico).
+
+\medskip
+\textbf{Conceptos y definiciones necesarios:}
+\begin{itemize}
+  \item \emph{Espacio topológico.} Un espacio topológico es un par \((X,\mathcal{T})\) donde \(X\) es un conjunto y \(\mathcal{T}\) es una colección de subconjuntos de \(X\) que satisface exactamente los tres axiomas dados. Los elementos de \(\mathcal{T}\) se llaman abiertos, y sus complementos en \(X\) son los cerrados.  
+  (PrinciplesTopologyCroom.pdf, pág.\ 99; ElementaryTopology.pdf, pág.\ 11).
+  \item \emph{Ejemplos básicos de topologías.}  
+    \begin{itemize}
+      \item \emph{Topología discreta:} \(\mathcal{T}= \mathcal{P}(X)\).  
+      \item \emph{Topología indiscreta:} \(\mathcal{T}=\{\varnothing, X\}\).  
+    \end{itemize}
+    Ambos cumplen trivialmente los axiomas (ElementaryTopology.pdf, pág.\ 12).
+  \item \emph{Axiomas de operaciones con conjuntos.}  
+    Propiedades de asociatividad y conmutatividad de uniones e intersecciones finitas, usadas para verificar los axiomas (PrinciplesTopologyCroom.pdf, pág.\ 99).
+\end{itemize}
+
+\bigskip
+
+\section*{Ejercicio 2.} 
+Sea \(f\colon (X,\mathcal{T}_X)\to (Y,\mathcal{T}_Y)\) una función entre espacios topológicos. Muestre que \(f\) es continua si y solo si para todo abierto \(V\subseteq Y\), la preimagen
+\[
+f^{-1}(V)=\{\,x\in X : f(x)\in V\}
+\]
+es un abierto de \(X\).
+
+\medskip
+\textbf{Conceptos y definiciones necesarios:}
+\begin{itemize}
+  \item \emph{Continuidad (definición topológica).}  
+    \(f\) es continua si
+    \[
+      \forall U\in\mathcal{T}_Y,\quad f^{-1}(U)\in\mathcal{T}_X.
+    \]
+    Equivale a la definición \(\varepsilon\)-\(\delta\) en espacios métricos (ElementaryTopology.pdf, pág.\ 49; PrinciplesTopologyCroom.pdf, pág.\ 115).
+  \item \emph{Preimagen de conjuntos.}  
+    Para \(B\subseteq Y\), \(f^{-1}(B)=\{x\in X:f(x)\in B\}\). La continuidad también se puede caracterizar por preimágenes de cerrados (FoundationsTopologyPatty.pdf, pág.\ 85).
+  \item \emph{Ejemplos.}  
+    \begin{itemize}
+      \item Si \(X\) tiene la topología discreta, toda \(f\colon X\to Y\) es continua.
+      \item Si \(Y\) es indiscreto, \(f\) sólo es continua si \(\mathrm{Im}(f)\subseteq\{\varnothing,X\}\).
+    \end{itemize}
+    (TopologyNow.pdf, pág.\ 35).
+\end{itemize}
+
+\bigskip
+
+\section*{Ejercicio 3.} 
+Sea \(X\) un espacio conexo. Pruebe que para toda función continua \(f\colon X\to Y\), la imagen \(f(X)\) es conexa en \(Y\).
+
+\medskip
+\textbf{Conceptos y definiciones necesarios:}
+\begin{itemize}
+  \item \emph{Espacio conexo.}  
+    \(X\) es conexo si no existe separación
+    \(\;X=U\cup V\)\; con \(U,V\) abiertos disjuntos y no vacíos (PrinciplesTopologyCroom.pdf, pág.\ 131).
+  \item \emph{Prueba del teorema.}  
+    Si \(f(X)=A\cup B\) con \(A,B\) abiertos disjuntos en \(Y\), entonces 
+    \[
+      X = f^{-1}(A)\cup f^{-1}(B)
+    \]
+    es una separación de \(X\), contradicción (Connectedness-Notes-UTK.pdf, pág.\ 1; TopologyNow.pdf, pág.\ 73).
+  \item \emph{Corolario (valor intermedio).}  
+    Para \(f\colon X\to\mathbb{R}\) continua y \(X\) conexo, \(f(X)\) es un intervalo (FoundationsTopologyPatty.pdf, pág.\ 152).
+\end{itemize}
+
+\bigskip
+
+\section*{Ejercicio 4.} 
+Sea \(X\) compacto y \(Y\) Hausdorff. Sea \(f\colon X\to Y\) continua y biyectiva. Pruebe que \(f\) es un homeomorfismo.
+
+\medskip
+\textbf{Conceptos y definiciones necesarios:}
+\begin{itemize}
+  \item \emph{Espacio compacto.}  
+    Toda cubierta abierta admite subcubierta finita (PrinciplesTopologyCroom.pdf, pág.\ 161–172).
+  \item \emph{Espacio Hausdorff.}  
+    \(Y\) es \(T_2\) si puntos distintos se separan por abiertos disjuntos (ElementaryTopology.pdf, pág.\ 124–125).
+  \item \emph{Homeomorfismo.}  
+    Biyectiva, continua y con inversa continua (PrinciplesTopologyCroom.pdf, pág.\ 119).
+  \item \emph{Imagen de compacto y cerradura en Hausdorff.}  
+    \begin{enumerate}
+      \item \(f(X)\) es compacto en \(Y\) (imagen de espacio compacto) (PrinciplesTopologyCroom.pdf, pág.\ 167).
+      \item En \(Y\) Hausdorff, todo compacto es cerrado (TopologySachin.pdf, pág.\ 102).
+    \end{enumerate}
+    De ello se sigue que \(f^{-1}\) es continua, y por tanto \(f\) es un homeomorfismo (armstrong-basic-topology.pdf, pág.\ 153; PrinciplesTopologyCroom.pdf, pág.\ 168).
+\end{itemize}
+
+\bigskip
+
+\section*{Ejercicio 5.} 
+Sea \(A\subset X\) denso (\(\overline A = X\)) y conexo. Demuestre que \(X\) es conexo.
+
+\medskip
+\textbf{Conceptos y definiciones necesarios:}
+\begin{itemize}
+  \item \emph{Densidad.}  
+    \(A\) es denso si \(\overline A = X\), equivalente a que todo abierto no vacío de \(X\) intersecta \(A\) (TopologyNow.pdf, pág.\ 57).
+  \item \emph{Conexión heredada.}  
+    La clausura de un conjunto conexo sigue siendo conexa, pues cualquier separación induciría separación en \(A\) (PrinciplesTopologyCroom.pdf, pág.\ 134).
+  \item \emph{Ejemplo ilustrativo.}  
+    \(\mathbb{Q}\) es denso en \(\mathbb{R}\), pero no conexo; en cambio, si un \(A\) denso y conexo, entonces \(X=\overline A\) es conexo (TopologyNow.pdf, pág.\ 75).
+\end{itemize}
+
+
+\bigskip
+
+\section*{Ejercicio 6.}
+Sea \(f\colon [a,b]\to \mathbb{R}\) una función continua en un intervalo cerrado y acotado \([a,b]\). Demuestre que \(f\) es uniformemente continua en \([a,b]\) (pista: usar la compacidad de \([a,b]\)). Luego, usando este resultado, deduzca que si \(f\) es además diferenciable en \((a,b)\) y \(f'\) es acotada, entonces \(f\) es Lipschitz en \([a,b]\).
+
+\medskip
+\textbf{Conceptos, definiciones y teoremas necesarios:}
+
+\textbf{Compacidad en \(\mathbb{R}\) (Heine--Borel).}  
+Un subconjunto de \(\mathbb{R}^n\) es compacto si y solo si es cerrado y acotado. En particular, cualquier intervalo cerrado \([a,b]\) es compacto en \(\mathbb{R}\) (PrinciplesTopologyCroom.pdf, pág.\ 172). Esta propiedad, combinada con la continuidad de \(f\), permite aplicar resultados de compacidad a funciones continuas.
+
+\textbf{Uniforme continuidad.}  
+\(f\) es uniformemente continua en \([a,b]\) si
+\[
+\forall \varepsilon>0\;\exists \delta>0\;\text{tales que para todo }x,y\in[a,b],\quad |x-y|<\delta\implies|f(x)-f(y)|<\varepsilon.
+\]
+A diferencia de la continuidad puntal, la uniforme continuidad exige un mismo \(\delta\) para todo el dominio. Todo continuo en un compacto es uniformemente continuo (AnalysisOnManifolds-Munkres.pdf, pág.\ 41). La demostración usa la finitud de una subcubierta abierta de \(\{\,f^{-1}(B_\varepsilon(f(x)))\}_{x\in[a,b]}\); la negación de la uniformidad conduce a una secuencia que contradice la compacidad (AnalysisOnManifolds-Munkres.pdf, pág.\ 43).
+
+\textbf{Función Lipschitz.}  
+\(f\) es Lipschitz en \([a,b]\) si existe \(L>0\) tal que
+\[
+|f(x)-f(y)|\le L\,|x-y|\quad\forall x,y\in[a,b].
+\]
+Esta condición implica inmediata uniforme continuidad (\(\delta=\varepsilon/L\)). Si además \(f'\) existe y \(\lvert f'(x)\rvert\le M\) en \((a,b)\), entonces por el Teorema del Valor Medio:
+\[
+f(x)-f(y)=f'(\xi)\,(x-y)
+\quad\Longrightarrow\quad
+|f(x)-f(y)|=|f'(\xi)|\,|x-y|\le M\,|x-y|,
+\]
+de modo que \(L=M\) es constante de Lipschitz (AnalysisOnManifolds-Munkres.pdf, pág.\ 50).
+
+\textbf{Teorema de Weierstrass (extremos).}  
+Toda función continua \(f\colon[a,b]\to\mathbb{R}\) alcanza su máximo y su mínimo en \([a,b]\) (FoundationsTopologyPatty.pdf, pág.\ 156). Este resultado se demuestra también usando compacidad y refuerza la idea de que una derivada acotada impone un comportamiento controlado a \(f\).
+
+\bigskip
+
+\section*{Ejercicio 7.}
+En \(\mathbb{R}^2\) con la topología usual, considere el arco
+\[
+C
+=\bigl\{(x,y)\colon y=\sin(1/x),\;0<x\le1\bigr\}
+\;\cup\;
+\bigl\{(0,y)\colon -1\le y\le1\bigr\},
+\]
+el llamado “sube y baja topológico”. Demuestre que \(C\) es conexo pero no path-conexo.
+
+\medskip
+\textbf{Conceptos, definiciones y teoremas necesarios:}
+
+\textbf{Path-conexión.}  
+Un espacio \(X\) es path-conexo si para todo par \(p,q\in X\) existe un camino continuo \(\gamma\colon[0,1]\to X\) con \(\gamma(0)=p\) y \(\gamma(1)=q\). Todo path-conexo es conexo, pero no siempre al revés (ElementaryTopology.pdf, pág.\ 80; PrinciplesTopologyCroom.pdf, pág.\ 147).
+
+\textbf{Conexidad de \(C\).}  
+La unión de la curva \(y=\sin(1/x)\) para \(0<x\le1\) y el segmento vertical en \(x=0\) es conexa, porque cualquier abierto que intente separar la parte oscilante del eje \(x=0\) debe intersectarse cerca de los puntos de acumulación (CounterexamplesTopologySteen.pdf, pág.\ 21).
+
+\textbf{Falta de path-conexión.}  
+No existe camino continuo en \(C\) que una, por ejemplo, \((0,0)\) con \((1/\pi,0)\). Cualquier trayectoria debe “atravesar” infinitas oscilaciones, lo cual es imposible sin salirse de \(C\) (TopologyNow.pdf, pág.\ 105).
+
+\textbf{Componentes path-conexas.}  
+Los componentes path-conexas de \(C\) son los arcos de la curva para cada intervalo de oscilación junto con su punto límite en \(x=0\). Ninguno engloba todo el eje vertical, de modo que \(C\) no es un único componente path-conexo (ElementaryTopology.pdf, pág.\ 81).
+
+\bigskip
+
+\section*{Ejercicio 8.}
+Sea \(f\colon \mathbb{R}^2 \to \mathbb{R}\) dada por
+\[
+f(x,y)=
+\begin{cases}
+\dfrac{x^3}{x^2+y^2}, & (x,y)\neq(0,0),\\
+0, & (x,y)=(0,0).
+\end{cases}
+\]
+Estudie la continuidad de \(f\) en \((0,0)\) y decida si \(f\) es acotada en algún entorno del origen.
+
+\medskip
+\textbf{Conceptos, definiciones y teoremas necesarios:}
+
+\textbf{Continuidad en \((0,0)\).}  
+Hay que verificar
+\(\lim_{(x,y)\to(0,0)}f(x,y)=0\). Una técnica es restringir a trayectorias:
+\[
+y=mx\implies f(x,mx)=\frac{x}{1+m^2}\to0,\quad
+y=x^2\implies f(x,x^2)=\frac{x}{1+x^2}\to0.
+\]
+
+\textbf{Sistema polar.}  
+Poniendo \(x=r\cos\theta\), \(y=r\sin\theta\),
+\[
+f(r,\theta)
+=\frac{(r\cos\theta)^3}{r^2}
+=r\cos^3\theta,
+\]
+y como \(\lvert\cos^3\theta\rvert\le1\), al \(r\to0\) resulta \(f(r,\theta)\to0\) uniformemente en \(\theta\) (PrinciplesTopologyCroom.pdf, pág.\ 213). Por tanto \(f\) es continua en \((0,0)\).
+
+\textbf{Acotación en entorno.}  
+Dado \(\delta>0\), para \(r<\delta\) se tiene
+\[
+|f(r,\theta)|=|r\cos^3\theta|\le r<\delta,
+\]
+de modo que \(f\) es acotada en el disco de radio \(\delta\).
+
+\bigskip
+
+\section*{Resumen general}
+En este documento se han recopilado ejercicios de topología junto con los conceptos fundamentales: espacios topológicos, abiertos, cerrados, bases, continuidad \(\varepsilon\)-\(\delta\), compacidad (Heine--Borel), conexidad y path-conexión, así como resultados clave (Heine--Borel, teorema del valor intermedio, Weierstrass, valor medio, etc.). Asimismo se ilustró cómo la diferenciabilidad acotada conduce a la propiedad de Lipschitz y cómo emplear coordenadas polares para estudiar límites en \(\mathbb{R}^2\).
+
+\end{document}

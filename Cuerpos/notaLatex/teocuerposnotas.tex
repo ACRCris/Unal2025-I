@@ -1,0 +1,137 @@
+\documentclass[landscape,10pt]{article}
+\usepackage[margin=1.5cm]{geometry}    % adjust margins as needed
+\usepackage{multicol,amsmath,amssymb}
+\setlength\columnsep{1cm}             % space between columns
+\begin{document}
+\small                                % use small font to fit more text
+\begin{multicols}{4}
+
+\section*{Clase 3}
+
+% Página 1 de Clase 3
+\noindent \textbf{Experimento de Michelson-Morley:} Un rayo de luz procedente de una fuente monocromática es dividido en dos en el divisor de haz $M_0$ de un \emph{interferómetro de Michelson}. Cada rayo recorre caminos perpendiculares (hacia espejos $M_1$ y $M_2$) y luego se recombinan para producir una figura de interferencia. La condición de interferencia está determinada por la diferencia en las distancias recorridas por los dos rayos. \textbf{Resultado:} al rotar el interferómetro no se observaron cambios en las franjas de interferencia, lo que indica que la velocidad de la luz es la misma en todas direcciones (no se detectó el “viento de éter”). Este resultado experimental antecede la teoría de la relatividad especial.
+
+\medskip \noindent \textbf{Postulados de Einstein:}
+\begin{itemize}\setlength\itemsep{0pt}
+  \item \textbf{Postulado I (Principio de relatividad):} Las leyes físicas son las mismas en todos los sistemas de referencia inerciales.
+  \item \textbf{Postulado II (Invariancia de $c$):} La velocidad de la luz en el vacío tiene el mismo valor ($c = 3\times 10^8~\text{m/s}$) en todos los sistemas inerciales, independientemente del movimiento de la fuente o del observador.
+\end{itemize}
+
+Del segundo postulado se deduce inmediatamente que es imposible que una partícula con masa (o un observador inercial) alcance la velocidad $c$ de la luz. En otras palabras, $c$ es un límite de velocidad insuperable para cualquier objeto material.
+
+\medskip \noindent \textbf{Dilatación del tiempo:} Observadores en marcos inerciales distintos miden intervalos de tiempo distintos entre un mismo par de sucesos. Considere un reloj de luz en el marco $O'$ (un espejo y una linterna que emite un pulso hacia el espejo y vuelve). El intervalo de tiempo propio medido en $O'$ para ir y venir de la luz es $t_0 = \frac{2d}{c}$ (donde $d$ es la distancia espejo-linterna en reposo). Ahora, visto desde otro marco $O$ donde $O'$ se mueve con rapidez $u$, el pulso de luz sigue un camino diagonal más largo. El intervalo de tiempo medido en $O$ resulta $t > t_0$. Realizando el análisis geométrico se obtiene la relación:
+\begin{align*}
+t &= \frac{t_0}{\sqrt{\,1 - \frac{u^2}{c^2}\,}} = \gamma\, t_0~,
+\end{align*}
+donde $\displaystyle \gamma \equiv \frac{1}{\sqrt{\,1 - \frac{u^2}{c^2}\,}}$ es el factor de Lorentz (mayor que 1 si $u$ es no nula). Este efecto se denomina \emph{dilatación del tiempo}: un reloj en movimiento transcurre más lento visto desde otro marco. 
+
+\textbf{Diagrama:} esquema de un \emph{reloj de luz} moviéndose con velocidad $u$: en $O'$ la luz va verticalmente entre la linterna y el espejo (distancia $d$), mientras que en $O$ la luz sigue una trayectoria diagonal debido al movimiento horizontal del aparato.
+
+\medskip \noindent \textbf{Ejemplo (dilatación temporal):} Un avión que vuela $\sim\!5000$ km a $900$ km/h (unos $2.5\times10^{-4}c$) experimenta una dilatación temporal de apenas $\sim10^{-8}$ s (nanosegundos) respecto a un observador en la Tierra. En la vida diaria, la dilatación del tiempo es despreciable a velocidades ordinarias (porque $u \ll c$, entonces $\gamma \approx 1$).
+
+\columnbreak
+% Página 2 de Clase 3
+\noindent \textbf{Contracción de la longitud:} La longitud de un objeto medida en un marco donde el objeto se mueve es menor que su longitud propia $L_0$ medida en su marco de reposo. Supongamos una nave espacial de longitud $L_0$ en reposo. Si la nave vuela con rapidez $v$ respecto a la Tierra, un observador en Tierra mide la longitud $L$ de la nave contraída en la dirección del movimiento:
+\begin{align*}
+L &= L_0\,\sqrt{\,1 - \frac{v^2}{c^2}\,} = \frac{L_0}{\gamma}~,
+\end{align*}
+mientras que perpendicular al movimiento no hay contracción. Este fenómeno se llama \emph{contracción de longitud} y ocurre solo en la dirección del movimiento.
+
+\textbf{Diagrama:} una \emph{nave espacial} de longitud propia $L_0$ en reposo, vs. la misma nave vista en movimiento rápido: la distancia entre su nariz y cola se observa reducida $L < L_0$ en el marco donde se mueve.
+
+Un corolario importante es que ningún objeto con masa puede alcanzar la rapidez de la luz $c$ (ya mencionado anteriormente). A velocidades cercanas a $c$, el factor $\gamma$ crece rápidamente, haciendo inviables velocidades mayores (se requeriría energía infinita, ver pág.~1, col.~3).
+
+\columnbreak
+% Página 3 de Clase 3
+\noindent \textbf{Límite de rapidez:} Las transformaciones relativistas implican que $c$ es una velocidad límite universal. Por ejemplo, si un observador $O$ ve un objeto moverse a $0.8c$ hacia la derecha y otro objeto moverse a $0.8c$ hacia la izquierda, cada uno respecto a $O$, la velocidad relativa entre los dos objetos no es $1.6c$ sino menor que $c$ (se calcularía usando la composición relativista de velocidades, que veremos luego). Ninguna señal u objeto material puede superar $c$.
+
+\bigskip
+\section*{Clase 4}
+
+% Página 3 de Clase 4 (continúa en la misma página 3, columna 3)
+\noindent \textbf{Transformaciones de Lorentz:} Para conciliar ambos postulados, las coordenadas de espacio y tiempo deben transformarse al pasar de un sistema inercial $S$ a otro $S'$ en movimiento relativo a velocidad constante. Consideremos $S'$ moviéndose con rapidez constante $u$ en la dirección $x$ de $S$. Las \emph{transformaciones de Lorentz} 1D (más generales que las de Galileo) entre coordenadas $(t,x)$ en $S$ y $(t',x')$ en $S'$ son:
+\begin{align*}
+t' &= \gamma\Big(t - \frac{u\,x}{c^2}\Big)~,\\
+x' &= \gamma\big(x - u\,t\big)~,\\
+y' &= y~, \qquad z' = z~,
+\end{align*}
+donde $\gamma = \frac{1}{\sqrt{1 - u^2/c^2}}$. La forma es simétrica: la transformación de $S'$ a $S$ se obtiene invirtiendo $u \to -u$ en las ecuaciones. Las transformaciones de Lorentz sustituyen a las clásicas transformaciones de Galileo cuando $u$ es comparable con $c$.
+
+Un resultado importante de las transformaciones es que eventos simultáneos en un marco pueden no serlo en otro (la simultaneidad depende del observador). Además, la composición de velocidades debe modificarse según la relatividad.
+
+\medskip \noindent \textbf{Composición relativista de velocidades:} Consideremos dos marcos $S$ y $S'$ como antes. Si en $S$ una partícula se mueve en la dirección $x$ con velocidad $v_x = dx/dt$, ¿cuál es su velocidad $v'_{x}$ medida en $S'$? Usando las derivadas de las ecuaciones de Lorentz:
+\[
+v'_x \;=\; \frac{dx'}{dt'} \;=\; \frac{dx - u\,dt}{dt - \frac{u}{c^2}dx} \;=\; \frac{v_x - u}{\,1 - \frac{u\,v_x}{c^2}\,}~,
+\] 
+que es la \emph{transformación de velocidades de Lorentz} (asumiendo movimiento colineal). Esta es la fórmula de adición relativista de velocidades en una dimensión.
+
+Nótese que si $v_x = c$ (la partícula se mueve a la velocidad de la luz en $S$), entonces $v'_x = \frac{c - u}{\,1 - \frac{u c}{c^2}\,} = c$. Es decir, la fórmula predice que $c$ sigue siendo $c$ en cualquier marco, consistente con el Postulado II y con la imposibilidad de superar $c$ (ver pág.~1, col.~3).
+
+\medskip \noindent \textbf{Ejemplo:} 
+(a) Una nave espacial se aleja de la Tierra a $0.900\,c$. Desde la nave se lanza una sonda en la misma dirección con rapidez $0.700\,c$ respecto a la nave. ¿Qué rapidez observa la Tierra para la sonda? \\
+(b) Otra nave exploradora parte de la Tierra detrás de la primera nave, con rapidez $0.950\,c$ respecto a la Tierra. ¿Cuál es la rapidez de la nave exploradora respecto a la primera nave?
+
+\textbf{Solución:} 
+(a) Sea $u=0.900c$ la rapidez de la nave (marco $S'$) respecto a Tierra ($S$), y $v_x = 0.700c$ la rapidez de la sonda en $S'$. Aplicando la fórmula de composición:
+\[ v_{sonda,Tierra} = \frac{0.700c - 0.900c}{\,1 - (0.900)(0.700)\,}c = \frac{-0.200}{\,1 - 0.630\,}c \approx 0.976c~,\] 
+es decir, la sonda se aleja de la Tierra a $\approx 0.98c$. (Signo negativo indica que se aleja en la misma dirección que la nave). \\
+(b) Ahora $v_x = 0.950c$ (exploradora respecto Tierra) y $u = 0.900c$ (nave respecto Tierra, misma dirección). La velocidad de la exploradora respecto a la nave es: 
+\[ v_{exploradora,nave} = \frac{0.950c - 0.900c}{\,1 - (0.950)(0.900)\,}c = \frac{0.050}{\,1 - 0.855\,}c \approx 0.345c~.\] 
+La exploradora se aproxima a la nave a $\approx 0.345c$ desde atrás (menos de la mitad de $c$, a pesar de que ambas casi viajan a $c$ respecto a la Tierra).
+
+\columnbreak
+% Página 4 de Clase 4
+\noindent \textbf{Efecto Doppler relativista:} Si una fuente luminosa $S$ y un observador $O$ se acercan con rapidez relativa $u$, la frecuencia $f$ medida por $O$ es mayor que la frecuencia propia $f_0$ de la fuente (luz azulada). En relatividad, la fórmula del efecto Doppler para luz es:
+\[
+f_{\text{obs}} = f_0\,\sqrt{\frac{\,1 + \frac{u}{c}\,}{\,1 - \frac{u}{c}\,}}~,
+\] 
+cuando fuente y observador se aproximan. Si en cambio $S$ y $O$ se alejan uno del otro con rapidez $u$, la frecuencia observada se reduce (\emph{corrimiento al rojo}): $f' = f_0\,\sqrt{\frac{\,1 - \frac{u}{c}\,}{\,1 + \frac{u}{c}\,}}$.
+
+\medskip \noindent \textbf{Leyes de Newton en relatividad especial:} El principio de relatividad exige que las leyes físicas mantengan su forma en cualquier marco inercial, pero al reemplazar las transformaciones de Galileo por las de Lorentz, debemos generalizar las definiciones de cantidad de movimiento (\emph{momento lineal}) y energía. 
+
+La \textbf{segunda ley de Newton} se puede expresar de forma general como $F_\text{neto} = \frac{d\mathbf{p}}{dt}$, donde $\mathbf{p}$ es el momento lineal. Para que esta ley siga siendo válida en relatividad, se redefine el momento de una partícula de masa $m$ moviéndose con velocidad $\mathbf{v}$ como:
+\[
+\mathbf{p} = \gamma m \mathbf{v}~,
+\] 
+donde $\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$ (tomando $\mathbf{v}$ mucho menor que $c$, $\gamma \to 1$ y se recupera $\mathbf{p} \approx m\mathbf{v}$). Con esta definición, sigue cumpliéndose el \textbf{principio de conservación del momento lineal}: si la suma de fuerzas externas sobre un sistema es cero, el momento lineal total del sistema permanece constante en el tiempo (vale en cualquier marco inercial).
+
+\columnbreak
+% Página 5 de Clase 4
+\noindent \textbf{Límite clásico:} Para $v \ll c$, las fórmulas relativistas recuperan las leyes clásicas de Newton. Por ejemplo, la composición de velocidades relativista $\frac{v_x - u}{1 - uv_x/c^2}$ se aproxima a $v_x - u$ cuando $uv_x/c^2$ es despreciable. Del mismo modo, la dilatación temporal y contracción de longitudes son insignificantes a bajas velocidades (factor $\gamma \approx 1$).
+
+En esta clase hemos cubierto las transformaciones de Lorentz y sus consecuencias cinemáticas (adición de velocidades, efecto Doppler). Estas sientan las bases para entender la dinámica relativista, que abordaremos en la siguiente clase.
+
+\bigskip
+\section*{Clase 5}
+
+% Página 6 de Clase 5
+\noindent \textbf{Dinámica relativista (energía y masa):} En relatividad especial, la energía y el momento están estrechamente relacionados. La energía total $E$ de una partícula de masa en reposo $m$ y velocidad $v$ viene dada por:
+\begin{align*}
+E &= \gamma\, m c^2~,
+\end{align*}
+donde nuevamente $\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$. Expandida para $v \ll c$, esta expresión se puede escribir como $E = m c^2 + \frac{1}{2}m v^2 + \dots$, es decir, una energía en reposo más la energía cinética clásica a primer orden. La \textbf{energía en reposo} $E_0$ es la energía que tiene el objeto solo por su masa:
+\[
+E_0 = m c^2~,
+\] 
+famosamente establecida por Einstein. (\textit{Einstein?}) Esta ecuación significa que la masa es una forma de energía: una cantidad $m$ de masa equivale a $E_0$ de energía incluso estando en reposo. 
+
+Al moverse, la energía aumenta según el factor $\gamma$. Por ejemplo, a $v = 0.99c$, $\gamma \approx 7.1$, lo que implica que la energía total $E \approx 7.1\, m c^2$ (de la cual $6.1\, mc^2$ es energía cinética). A medida que $v$ se aproxima a $c$, $\gamma \to \infty$ y $E \to \infty$, lo que confirma que haría falta energía infinita para acelerar una partícula con masa hasta $c$.
+
+Definimos la \textbf{energía cinética} relativista $K$ como el incremento de energía por encima del reposo: $K = E - E_0 = (\gamma - 1) m c^2$. Para $v \ll c$, $\gamma - 1 \approx \frac{1}{2} \frac{v^2}{c^2}$, entonces $K \approx \frac{1}{2} m v^2$, recuperando la fórmula clásica.
+
+\medskip \noindent \textbf{Equivalencia masa-energía:} Los principios de conservación de la masa (de la física clásica) y de la energía se unifican en relatividad: solo la \emph{energía total} (incluyendo la asociada a la masa) se conserva. En procesos donde parece que “desaparece” masa, en realidad se libera esa cantidad de energía $E = m c^2$ (por ejemplo, en reacciones nucleares o de aniquilación materia-antimateria). La masa puede verse entonces como \emph{energía condensada}.
+
+\columnbreak
+% Página 7 de Clase 5
+\noindent \textbf{Ejemplo (vida media de muones):} El muón positivo ($\mu^+$) es una partícula inestable con vida media propia $\tau_0 = 2.20\times 10^{-6}$~s (medida en su marco de referencia en reposo). Consideremos un $\mu^+$ que viaja a $0.99\,c$ respecto de la Tierra. ¿Cuál es su vida media observada desde la Tierra? Aplicando la fórmula de dilatación temporal (ver pág.~1, col.~4):
+\[
+\tau = \gamma\, \tau_0 = \frac{\tau_0}{\sqrt{\,1-0.99^2\,}} \approx 7.09 \times \tau_0 \approx 1.56\times 10^{-5}~\text{s}~.
+\] 
+Es decir, debido a su alta velocidad, el muón viviría unos $15.6~\mu$s visto desde la Tierra, mucho más que los $2.2~\mu$s propios. Este resultado concuerda con las observaciones: se detectan más muones en la superficie terrestre de los que se esperarían sin relatividad, gracias a que su vida se “extiende” por la dilatación temporal.
+
+\medskip \noindent \textbf{Conservación del momento y la energía:} En un sistema aislado, la energía total (incluyendo masa) y el momento total se conservan. Por ejemplo, en una colisión relativista de dos partículas, la suma vectorial de sus momentos antes y después permanece constante, y lo mismo ocurre con la suma de sus energías (sumando las energías en reposo y cinéticas de todas las partículas). Esta es la base de muchos análisis de física de partículas.
+
+\medskip \noindent \textbf{Conclusión:} La relatividad especial, desarrollada por Einstein en 1905, revolucionó nuestra noción de espacio, tiempo, masa y energía. Hemos visto que el tiempo y el espacio dependen del estado de movimiento del observador, que ninguna información puede viajar más rápido que la luz, y que la masa es equivalente a energía. Estos principios han sido confirmados experimentalmente (por ejemplo, con los muones atmosféricos y en aceleradores de partículas) y son fundamentales en la física moderna.
+
+\end{multicols}
+\end{document}

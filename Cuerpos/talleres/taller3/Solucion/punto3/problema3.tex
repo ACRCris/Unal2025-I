@@ -1,28 +1,67 @@
 \begin{solucion}
-Sea $L/K$ una extensión de grado $2$. En primer lugar, como $[L:K]$ es finito, $L/K$ es una \emph{extensión algebraica} de $K$ (es decir, cada elemento de $L$ es raíz de algún polinomio no nulo con coeficientes en $K$). En particular, existe al menos un elemento $\alpha \in L$ que no pertenece a $K$ (pues $L \neq K$) y $\alpha$ es algebraico sobre $K$. Denotemos por $m_{\alpha,K}(x)$ el \emph{polinomio minimal} de $\alpha$ sobre $K$, definido como el único polinomio monico de menor grado en $K[x]$ que tiene a $\alpha$ como raíz. 
+Queremos ver que $L$ es el cuerpo de descomposición de algún polinomio $f(x) \in K[x]$, es decir:
+\begin{itemize}
+    \item $f(x) = c(x-\alpha_1)\dots(x-\alpha_n) \in L[x]$ 
+    \item $L = K(\alpha_1,\dots,\alpha_n)$
+\end{itemize}
+Sea $L:K$ una extensión de grado $2$ finita entonces $L = K(\alpha_1, \dots, \alpha_n)$ para algunos $\alpha_1, \dots, \alpha_n \in L$ algebraicos sobre $K$. Como $K\subseteq K(\alpha_i)\subseteq K(\alpha_1,\dots,\alpha_n) = L$ para todo $i =1,\dots,n$, por el teorema de la torre:
+\begin{align*}
+[L:K]= [K(\alpha_1,\dots,\alpha_n):K] &= [K(\alpha_1,\dots,\alpha_n):K(\alpha_1)][K(\alpha_i):K]=2
+\end{align*}
+Ahora debe existir un $\alpha \in \{\alpha_1, \dots, \alpha_n\}$ tal que $\alpha \notin K$, pues en caso contrario, si todos los $\alpha_i \in K$, entonces si $\mathcal F = \{F \text{ cuerpo }: K \subseteq F \subseteq L\quad \text{   y   } \quad \{\alpha_i\}_{i=1}^n \subseteq F\}$
+\begin{align*}
+    L:K &= K(\alpha_1, \dots, \alpha_n):K \\
+    &=\bigcap_{F\in \mathcal F} F\\
+    &= \left(\bigcap_{F\neq K \atop F\in \mathcal F } F \right) \cap K\\
+    &= K
+\end{align*}
+Por lo que sea $\alpha \in \{\alpha_1, \dots,\alpha_n\}$ tal que $\alpha \notin K$ entonces:
+\begin{align*}
+[L:K]= [K(\alpha_1,\dots,\alpha_n):K] &= [K(\alpha_1,\dots,\alpha_n):K(\alpha_1)][K(\alpha):K]=2
+\end{align*}
+Luego $[K(\alpha):K]=2$ pues si $[K(\alpha):K] =1$, si $m_{\alpha, K}(t)$ es el polinomio mínimo de $\alpha$ sobre $K$ entonces $\partial m = 1$ por lo tanto $m_{\alpha, K} = x - \alpha \in K[x]$ y por lo tanto $\alpha \in K$ lo cual nos lleva a una contradicción pues se asume que $\alpha \notin K$ por lo que $[K(\alpha):K] = 2$. Luego:
+\begin{align*}
+    [L:K(\alpha)][K(\alpha):K]=2 \quad \implies \quad [L:K(\alpha)] =  \frac{2}{[K(\alpha):K]} = \frac{2}{2} = 1
+\end{align*}
 
-Ahora, consideremos la cadena de extensiones $K \subseteq K(\alpha) \subseteq L$. Por el \emph{teorema de la torre} (multiplicación de grados), se cumple 
-\[ [L:K] = [L:K(\alpha)] \,[K(\alpha):K] . \] 
-Sabemos además que $[L:K] = 2$. Dado que $\alpha \notin K$, el grado $[K(\alpha):K]$ es mayor que $1$, por lo que forzosamente $[K(\alpha):K] = 2$. Esto implica que $[L:K(\alpha)] = 1$, es decir, $L = K(\alpha)$. En otras palabras, $L$ es una \emph{extensión simple} generada por el elemento $\alpha$. Además, por teoría de extensiones simples, el grado de $K(\alpha)$ sobre $K$ coincide con el grado de $m_{\alpha,K}(x)$. Por lo tanto $\deg(m_{\alpha,K}) = [K(\alpha):K] = 2$. Denotemos $f(x) := m_{\alpha,K}(x)$; entonces $f(x) \in K[x]$ es un polinomio irreducible de grado $2$. 
+% entonces $K \neq L$, pues $L=K$ entonces $[K:K]= 1$ pues por definición de grado de una extensión, $[K:K]$ es la dimensión de $K$ como espacio vectorial sobre sí mismo el cual tiene como base $\{1\}$, por lo que $[K:K]=1$ y $L=K$ contradiciendo la hipótesis de que $L$ es una extensión de grado $2$. Luego existe un elemento $\alpha \in L$ 
 
-Sea $f(x) = x^2 + bx + c$, con $b,c \in K$. Como $f$ es irreducible sobre $K$, sus raíces $\alpha$ y $\beta$ no están en $K$ (al menos una de ellas, $\alpha$, está en $L$ por construcción). Observemos que la suma de las raíces vale $\alpha + \beta = -b$, que pertenece a $K$. En consecuencia, 
+% entonces $K \neq L$, pues $L=K$ entonces $[K:K]= 1$ pues por definición de grado de una extensión, $[K:K]$ es la dimensión de $K$ como espacio vectorial sobre sí mismo el cual tiene como base $\{1\}$, por lo que $[K:K]=1$ y $L=K$ contradiciendo la hipótesis de que $L$ es una extensión de grado $2$. Luego existe un elemento $\alpha \in L$ 
+
+
+% como $[L:K]$ es finito, por lo tanto $L= K(\alpha)$ para algún $\alpha \in L$ algebraico en $K$, pues si asumimos que existe $K(\alpha) \subsetneq L$, entonces por el teorema de la torre, $[L:K] = [L:K(\alpha)][K(\alpha):K] = 2$, luego $[L:K(\alpha)] = 1$ y $[K(\alpha):K] = 2$ o $[K(\alpha):K] = 1$ y $[L:K(\alpha)] = 2$. 
+% \begin{itemize}
+%     \item Si $[K(\alpha):K] = 1$, entonces existe un polinomio minimal $m_{\alpha,K}(x) \in K[x]$ tal que $m_{\alpha,K}(\alpha) = 0$ y $\partial m =1$, por lo que $m_{\alpha,K}(x) = x - \alpha$,
+% \end{itemize}
+Por lo tanto, $L = K(\alpha)$, pues como $L=K(\alpha,\dots,\alpha_n)$ es un espacio vectorial de dimensión $1$ sobre $K(\alpha)$, es decir, $L = \{1 \cdot x: x \in K(\alpha)\}$. De este modo $L$ es una \emph{extensión simple} generada por el elemento $\alpha$. Además, por teoría de extensiones simples, el grado de $K(\alpha)$ sobre $K$ coincide con el grado de $m_{\alpha,K}(x)$. Por lo tanto $\deg(m_{\alpha,K}) = [K(\alpha):K] = 2$. Denotemos $f(x) := m_{\alpha,K}(x)$; entonces $f(x) \in K[x]$ es un polinomio irreducible de grado $2$. 
+
+Sea $f(x) = x^2 + bx + c$, con $b,c \in K$. Como $f$ es irreducible sobre $K$, sus raíces $\alpha$ y $\beta$ no están en $K$ (al menos una de ellas, $\alpha$, está en $L$ por construcción). Dado que:
+
+\begin{align*}
+f(x) &= x^2 + bx + c \\
+&= (x - \alpha)(x - \beta)\\
+&= x^2 - (\alpha + \beta)x + \alpha\beta,
+\end{align*}
+Entonces la raíces satisfacen que $\alpha + \beta = -b$, que pertenece a $K$. En consecuencia, 
 \[ \beta = -\,b - \alpha. \] 
 Puesto que $-b \in K$ y $\alpha \in L$, se deduce que $\beta \in K(\alpha) = L$. Es decir, \emph{ambas} raíces $\alpha$ y $\beta$ de $f(x)$ pertenecen a $L$. (En el caso degenerado de que $f(x)$ tuviera una única raíz doble $\alpha$ --lo cual sólo ocurre si la característica de $K$ es $2$ y $f(x)=(x-\alpha)^2$--, esa raíz $\alpha$ también pertenece a $L$ por su definición. En cualquier caso, $L$ contiene todas las raíces de $f$.) Por lo tanto, $f(x)$ se factoriza completamente como producto de polinomios lineales en $L[x]$: 
 \[ f(x) \;=\; (x-\alpha)\,(x-\beta) , \] 
 con $\alpha,\beta \in L$. 
 
-Hemos demostrado entonces que $L$ contiene a todas las raíces de $f(x)$ y, de hecho, $L = K(\alpha,\beta)$. Más aún, $L$ es la menor extensión de $K$ que contiene dichas raíces, ya que cualquier otro subcuerpo de $L$ que contenga a $\alpha$ (o a $\beta$) debe contener también a $\beta$ (o a $\alpha$) porque $\beta = -b-\alpha$, y por ende contendría a $K(\alpha)=L$. En conclusión, $L$ es el \emph{cuerpo de descomposición} de $f(x)$ sobre $K$, como queríamos demostrar.
+Por lo tanto si $L:K$ es una extensión de grado $2$, entonces existe un polinomio irreducible $f(x) \in K[x]$ de grado $2$ tal que $L$ es el cuerpo de descomposición de $f(x)$ sobre $K$.
 
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline 
-\textbf{Concepto clave} & \textbf{Referencia (Archivo PDF, página)} \\ \hline 
-Extensión simple & Clase 5.pdf, pág. 1 \\ \hline
-Polinomio minimal & Clase 5.pdf, pág. 2 \\ \hline
-Grado de extensión finita & Clase 6.pdf, pág. 1 \\ \hline
-Teorema de la torre & Clase 6.pdf, pág. 2 \\ \hline 
-Extensión finita $\implies$ algebraica & Clase 7.pdf, pág. 1 \\ \hline 
-Cuerpo de descomposición & Clase 11.pdf, pág. 1 \\ \hline 
-\end{tabular}
-\end{center}
+% Más aún, $L$ es la menor extensión de $K$ que contiene dichas raíces, ya que cualquier otro subcuerpo de $L$ que contenga a $\alpha$ (o a $\beta$) debe contener también a $\beta$ (o a $\alpha$) porque $\beta = -b-\alpha$, y por ende contendría a $K(\alpha)=L$. En conclusión, $L$ es el \emph{cuerpo de descomposición} de $f(x)$ sobre $K$, como queríamos demostrar.
+
+% \begin{center}
+% \begin{tabular}{|l|l|}
+% \hline 
+% \textbf{Concepto clave} & \textbf{Referencia (Archivo PDF, página)} \\ \hline 
+% Extensión simple & Clase 5.pdf, pág. 1 \\ \hline
+% Polinomio minimal & Clase 5.pdf, pág. 2 \\ \hline
+% Grado de extensión finita & Clase 6.pdf, pág. 1 \\ \hline
+% Teorema de la torre & Clase 6.pdf, pág. 2 \\ \hline 
+% Extensión finita $\implies$ algebraica & Clase 7.pdf, pág. 1 \\ \hline 
+% Cuerpo de descomposición & Clase 11.pdf, pág. 1 \\ \hline 
+% \end{tabular}
+% \end{center}
 \end{solucion}

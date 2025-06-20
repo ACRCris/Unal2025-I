@@ -1,0 +1,224 @@
+\documentclass[11pt]{article}
+\usepackage[landscape,margin=1.5cm]{geometry}
+\usepackage{multicol,amsmath,amsthm,graphicx,xcolor}
+\usepackage{tcolorbox}
+
+\setlength\columnsep{1cm}
+\pagestyle{plain}
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newtheorem{corollary}{Corolario}
+\theoremstyle{definition}
+\newtheorem{definition}{Definici\'on}
+\theoremstyle{definition}
+\newtheorem{example}{Ejemplo}
+\begin{document}
+\begin{multicols}{4}
+Polinomios – Divisibilidad e Irreducibilidad
+
+Clase 3
+
+Ya estamos en condiciones de definir uno de los conceptos más importantes asociados a los polinomios: el de cero o raíz de un polinomio. El cálculo de los ceros de un polinomio será de suma utilidad para resolver ecuaciones, inecuaciones y cualquier tipo de problema que requiera la factorización de polinomios.
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Definición (Cero o raíz de un polinomio)}]
+Decimos que un número real $\alpha$ es un cero o raíz del polinomio $p(x)$ si $p(\alpha) = 0$.
+\end{tcolorbox}
+
+\noindent\textbf{Ejemplo 1.10.} Calcule el valor numérico del polinomio $p(x) = -x^3 + 4x - 5$ para $x = 3$.
+
+\noindent\textbf{Solución:}
+$p(3) = -(3)^3 + 4(3) - 5 = -27 + 12 - 5 = -20$
+
+\noindent\textbf{Ejemplo 1.11.} Verifique que $-2$ es una raíz del polinomio $p(x) = x^3 + x^2 - 5x - 6$.
+
+\noindent\textbf{Solución:}
+$p(-2) = (-2)^3 + (-2)^2 - 5(-2) - 6 = -8 + 4 + 10 - 6 = 0$, por lo que $p(-2)=0$ confirma que $x=-2$ es una raíz.
+
+\noindent\textbf{Ejemplo 1.12.} Determine el valor de $\alpha$ para que $4$ sea raíz del polinomio $p(x) = -x^3 + \alpha x^2 + 2x + 6$.
+
+\noindent\textbf{Solución:} Para que $4$ sea una raíz de $p(x)$, debe ocurrir $p(4) = 0$. Luego:
+
+\begin{align*}
+0 &= -(4)^3 + \alpha (4)^2 + 2(4) + 6~,\\
+0 &= -64 + 16\alpha + 8 + 6~,\\
+0 &= -50 + 16\alpha~\\
+16\alpha &= 50~,\\
+\alpha &= \frac{50}{16} = \frac{25}{8}~.
+\end{align*}
+
+Recordemos que un polinomio $p(x)$ es divisible por otro polinomio $q(x)$ si el resto de dividir $p$ por $q$ es igual a cero. El siguiente teorema muestra que cuando el divisor es de la forma $q(x) = x - k$, podemos determinar si $p(x)$ es divisible por $q(x)$ sin necesidad de realizar la división: basta con calcular $p(k)$.
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Teorema del resto}]
+El resto de dividir $p(x)$ por un polinomio de la forma $x - k$ (con $k$ un número real cualquiera) es igual a $p(k)$.
+
+\medskip\noindent\textbf{Demostración:} Si $p(x)$ es un polinomio de grado mayor o igual que 1, por el Algoritmo de la División sabemos que existen polinomios $c(x)$ y $r(x)$ tales que:
+p(x) = (x - k)\,c(x) + r(x),
+donde $r(x)$ es el resto y cumple $\gr(r) < \gr(x - k) = 1$. En particular, $r(x)$ es un polinomio constante (o $r(x)=0$ si la división es exacta). Evaluando en $x = k$ se tiene:
+p(k) = (k - k)\,c(k) + r(k) = 0 + r = r,
+de donde $p(k) = r$. Es decir, el resto $r$ coincide con $p(k)$, lo que prueba el teorema.
+\end{tcolorbox}
+
+\noindent\textbf{Ejemplo 1.13.} Calcule el resto de dividir $p(x) = -x^4 - 2x^3 + 3x^2 + x + 1$ por $q(x) = x + 1$.
+
+\noindent\textbf{Solución:} En virtud del teorema del resto, sólo debemos evaluar $p(x)$ en $x = -1$:
+p(-1) = -(-1)^4 - 2(-1)^3 + 3(-1)^2 + (-1) + 1 = -1 + 2 + 3 - 1 + 1 = 4~.
+Por lo tanto, el resto de la división es $r(x) = 4$.
+
+\noindent\textbf{Ejemplo 1.14.} Halle el valor de $a \in \mathbb{R}$ para que, al dividir $p(x) = x^4 + 3x^3 + ax^2 - 13$ por $x + 3$, el resto sea igual a $5$.
+
+\noindent\textbf{Solución:} Usando el teorema del resto, se tiene $p(-3) = 5$. Entonces:
+
+(-3)^4 + 3(-3)^3 + a(-3)^2 - 13 = 5~,
+
+lo que se desarrolla como:
+
+81 - 81 + 9a - 13 = 5~,
+
+de donde $9a = 18$ y por lo tanto $a = 2$.
+
+Del Teorema del Resto se deduce el siguiente resultado, sumamente importante:
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Teorema}]
+Si $\alpha \in \mathbb{R}$ es una raíz del polinomio $p(x)$, entonces $p(x)$ es divisible por $x - \alpha$.
+
+\medskip\noindent\textbf{Demostración:} Recordemos que $x - \alpha$ divide a $p(x)$ si el resto de su división es el polinomio nulo. Por el Teorema del Resto, el resto de dividir $p(x)$ por $x - \alpha$ es igual a $p(\alpha)$. Pero como por hipótesis $\alpha$ es una raíz de $p(x)$, entonces $p(\alpha) = 0$. En consecuencia, el resto es 0 y se concluye que $x - \alpha$ divide a $p(x)$.
+\end{tcolorbox}
+
+\noindent\textbf{Ejercicio 1.11.} Determine cuáles de los siguientes polinomios son divisibles por $x + 2$:
+
+\begin{enumerate}
+\item $p(x) = -x^3 - 5x + 2$,
+\item $p(x) = -x^3 + 5x + 2$,
+\item $p(x) = 2x^4 + x^3 - 3$,
+\item $p(x) = x^4 + x^2 + 12x + 4$~.
+\end{enumerate}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Definición (Polinomio irreducible)}]
+Un polinomio $p(x)$ de grado mayor o igual que 1 se dice irreducible si cualquier factorización de $p(x)$ en la forma $p(x) = m(x)\cdot n(x)$ implica que $\gr(m) = 0$ ó $\gr(n) = 0$. (Es decir, salvo factores triviales constantes).
+\end{tcolorbox}
+
+Un resultado fundamental es que un polinomio con coeficientes reales es irreducible (o irreducible en $\mathbb{R}$) si y sólo si es de grado 1, o bien es un polinomio de grado 2 sin raíces reales.
+
+\begin{observacion}[\textbf{1.6}] De aquí en adelante, siempre que digamos que un polinomio es \emph{irreducible}, significará que es irreducible en $\mathbb{R}$.
+\end{observacion}
+
+\noindent\textbf{Ejemplo 1.15.} Los polinomios $p(x) = 3x - 5$ y $q(x) = x^2 + 1$ son irreducibles. En el caso de $p(x)$, por ser de grado 1. Por su parte $q(x)$ es un polinomio de grado 2 y no tiene raíces reales, ya que para cualquier $k \in \mathbb{R}$ se tiene $k^2 \ge 0$ y entonces $q(k) = k^2 + 1 \ge 1 > 0$.
+
+\noindent\textbf{Ejemplo 1.16.} El polinomio $p(x) = x^3 + x$ \textbf{no} es irreducible por ser de grado 3. Además puede verse que $p(x) = x(x^2 + 1)$, de donde admite escribirse como el producto de dos polinomios $x$ y $(x^2+1)$, y ninguno de ellos es de grado 0 (ninguno es constante distinta de cero).
+
+\noindent\textbf{Ejemplo 1.17.} El polinomio $p(x) = x^2 - 3x - 4$ tampoco es irreducible. Puede escribirse como el producto de dos polinomios de grado 1: $p(x) = (x - 4),(x + 1)$.
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Definición (Factorización de un polinomio)}]
+Factorizar un polinomio $p(x)$ es escribirlo como el producto de polinomios irreducibles.
+
+En particular, siempre es posible expresarlo como el producto de su coeficiente principal y una cierta cantidad de factores irreducibles \emph{mónicos} (es decir, de coeficiente líder 1).
+\end{tcolorbox}
+
+\noindent\textbf{Ejemplo 1.18.} El polinomio $p(x) = 2x^3 + 3x^2 - 2x - 3$ puede factorizarse como:
+p(x) = 2(x - 1)(x + 1)\Big(x + \frac{3}{2}\Big)~.
+
+Es decir, puede escribirse como el producto de su coeficiente principal, $2$, y tres factores irreducibles y mónicos: $(x - 1)$, $(x + 1)$ y $\Big(x + \frac{3}{2}\Big)$.
+
+\begin{observacion}[\textbf{1.7}] Notemos que cuando factorizamos un polinomio, automáticamente conocemos las raíces del mismo. En efecto, las raíces de $p(x)$ son las soluciones de la ecuación:
+2(x - 1)(x + 1)\Big(x + \frac{3}{2}\Big) = 0~,
+que es equivalente a $p(x) = 0$. De esta factorización es inmediato que las raíces son $x = 1$, $x = -1$ y $x = -\frac{3}{2}$.
+\end{observacion}
+
+Clase 4
+
+Comenzaremos desarrollando una teoría de la divisibilidad de polinomios válida en cualquier cuerpo, de forma análoga a la teoría de divisibilidad en los números enteros. En adelante, trabajaremos con polinomios con coeficientes en un cuerpo $\mathbb{F}$. (En este caso $\mathbb{F}[x]$ es un dominio de integridad, es decir, un anillo conmutativo con unidad y sin divisores de cero).
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Teorema 2.2.1 (Algoritmo de la división)}]
+Sea $\mathbb{F}$ un cuerpo, y sean $p(x), q(x) \in \mathbb{F}[x]$ con $q(x) \neq 0$. Entonces existen \textbf{únicos} polinomios $c(x), r(x) \in \mathbb{F}[x]$ tales que:
+p(x) = q(x)\,c(x) + r(x)~,
+y además $r(x) = 0$ \textbf{o} $\gr(r(x)) < \gr(q(x))$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Definición (Máximo común divisor)}]
+Sean $p(x), q(x) \in \mathbb{F}[x]$. Un polinomio $d(x) \in \mathbb{F}[x]$ \emph{no nulo} se denomina máximo común divisor de $p(x)$ y $q(x)$, y se denota $\operatorname{mcd}(p(x),q(x))$, si se cumplen:
+	1.	$d(x)$ divide a $p(x)$ y $d(x)$ divide a $q(x)$,
+	2.	cualquier otro polinomio $d’(x)$ que divida a $p(x)$ y a $q(x)$ satisface $\gr\big(d’(x)\big) \le \gr\big(d(x)\big)$.
+
+Además, para garantizar la unicidad, consideraremos que el máximo común divisor es \emph{mónico} (es decir, tiene coeficiente líder igual a 1). En un cuerpo esto equivale a fijar $d(x)$ \textbf{positivo} multiplicado por un inverso multiplicativo apropiado si fuera necesario.
+\end{tcolorbox}
+
+Nota: En un anillo euclídeo (como $\mathbb{F}[x]$ para $\mathbb{F}$ cuerpo, o $\mathbb{Z}$ en enteros) el máximo común divisor siempre existe y puede calcularse (por ejemplo, mediante el Algoritmo de Euclides). Además, es único salvo unidades (constantes no nulas en el caso de polinomios sobre un cuerpo), y por convenio tomamos el representante monico para la unicidad.
+
+Los siguientes resultados son análogos a los dados para los números enteros y fundamentan el algoritmo de Euclides para polinomios:
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Lema 2.2.1}]
+Sean $p(x), q(x) \in \mathbb{F}[x]$. Entonces, para cualquier $c(x) \in \mathbb{F}[x]$ se tiene:
+\operatorname{mcd}\big(p(x),\,q(x)\big) = \operatorname{mcd}\!\Big(q(x),\;p(x) - c(x)\,q(x)\Big)~.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Corolario 2.2.2}]
+Sean $p(x), q(x) \in \mathbb{F}[x]$, con $q(x) \neq 0$. Entonces
+\operatorname{mcd}\big(p(x),\,q(x)\big) = \operatorname{mcd}\!\Big(q(x),\;p(x) \bmod q(x)\Big)~,
+donde $p(x) \bmod q(x)$ denota el resto de dividir $p(x)$ por $q(x)$.
+\end{tcolorbox}
+
+Para calcular el máximo común divisor de dos polinomios, procedemos de la misma forma que al calcular el mcd de dos números enteros: vamos realizando divisiones sucesivas hasta obtener un resto nulo. El último resto no nulo (tomado en forma mónica) será el máximo común divisor buscado. Por ejemplo, si realizamos divisiones sucesivas obtenemos:
+
+\begin{align*}
+p(x) &= q(x),c_1(x) + r_1(x),\
+q(x) &= r_1(x),c_2(x) + r_2(x),\
+&\vdotswithin{=}\
+r_{k-2}(x) &= r_{k-1}(x),c_k(x) + r_k(x),\
+r_{k-1}(x) &= r_k(x),c_{k+1}(x) + 0~,
+\end{align*}
+
+donde el polinomio $r_k(x)$ (último resto no nulo) es el mcd de $p(x)$ y $q(x)$, una vez normalizado a monico.
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Teorema 2.2.3 (Identidad de Bézout)}]
+Sean $p(x), q(x) \in \mathbb{F}[x]$, y sea $d(x) = \operatorname{mcd}\big(p(x),,q(x)\big)$. Entonces existen $u(x), v(x) \in \mathbb{F}[x]$ tales que:
+d(x) = p(x)\,u(x) + q(x)\,v(x)~.
+\end{tcolorbox}
+
+Este resultado extiende a polinomios la identidad de Bézout que ya se conocía para los enteros. En particular, cuando $\operatorname{mcd}(p(x),q(x)) = 1$, existen polinomios $u(x), v(x) \in \mathbb{F}[x]$ tales que $1 = p(x),u(x) + q(x),v(x)$. (Decimos entonces que $p(x)$ y $q(x)$ son coprimos o primos entre sí.)
+
+Clase 5
+
+Un polinomio no constante que no pueda expresarse como producto de polinomios de grado menor (en el sentido de la definición de irreducible) juega un papel análogo a los números primos en aritmética. De hecho, en $\mathbb{F}[x]$ (polinomios sobre un cuerpo) se cumple la versión correspondiente del Lemma de Euclides:
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Proposición}]
+Sea $p(x) \in \mathbb{F}[x]$ un polinomio \emph{irreducible} (no constante). Entonces, siempre que $p(x)$ divide al producto $a(x),b(x)$ de dos polinomios $a(x), b(x) \in \mathbb{F}[x]$, se cumple que $p(x)$ divide a $a(x)$ \textbf{o} $p(x)$ divide a $b(x)$. (Recíprocamente, si $p(x)$ verifica esta propiedad, es irreducible).
+\end{tcolorbox}
+
+{\small (En otras palabras, en $\mathbb{F}[x]$ todo polinomio irreducible es un polinomio primo en el sentido de teoría de anillos.)}
+
+Con esta proposición estamos ya en condiciones de enunciar el resultado análogo al Teorema Fundamental de la Aritmética para el anillo $\mathbb{F}[x]$. Recordando la definición de polinomio irreducible (véase Definición en la página 3, columna 2), obtenemos el siguiente teorema de factorización:
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Teorema (Factorización única en $\mathbb{F}[x]$)}]
+Sea $\mathbb{F}$ un cuerpo. Entonces todo polinomio $p(x) \in \mathbb{F}[x]$ no constante puede escribirse como producto de polinomios irreducibles. Esta factorización, además, es única salvo por el orden de los factores (y multiplicación por constantes unitarias).
+\end{tcolorbox}
+
+\noindent\textbf{Ejemplo.} En $\mathbb{Z}_8[x]$ (polinomios con coeficientes en $\mathbb{Z}_8$, que \textbf{no} es un cuerpo) no se cumple la unicidad de factorización. Por ejemplo:
+x^2 + 7 = (x + 1)(x + 7) = (x + 3)(x + 5)~,
+dos factorizaciones distintas en $\mathbb{Z}_8[x]$. Puesto que $\mathbb{Z}_8$ no es un cuerpo, este ejemplo no contradice el teorema anterior (que exige coeficientes en un cuerpo).
+
+Finalmente, consideremos polinomios con coeficientes enteros. Sabemos que $\mathbb{Z}[x]$ \emph{no} es un cuerpo (aunque sí es un dominio de integridad). Sin embargo, existe una relación muy estrecha entre la factorización de polinomios con coeficientes enteros y la factorización de polinomios con coeficientes racionales (donde sí disponemos de un cuerpo, $\mathbb{Q}$). Para establecer esta relación, introducimos primero el siguiente concepto:
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Definición (Polinomio primitivo)}]
+Un polinomio $p(x) \in \mathbb{Z}[x]$ se dice primitivo si el máximo común divisor de todos sus coeficientes es 1. (Equivalente a decir que no hay un entero $>1$ que divida a \emph{todos} los coeficientes de $p(x)$.)
+\end{tcolorbox}
+
+Dado cualquier polinomio $p(x) \in \mathbb{Z}[x]$, siempre podemos expresar $p(x)$ como $p(x) = c \cdot p_1(x)$, donde $c \in \mathbb{Z}$ es un factor entero (por ejemplo, el contenido o máximo común divisor de los coeficientes) y $p_1(x) \in \mathbb{Z}[x]$ es un polinomio primitivo. Nótese que $p_1(x)$ es único salvo unidades (podemos hacer que $p_1(x)$ sea primitivo y además monico multiplicando por $-1$ si fuera necesario).
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Lema 2.3.1 (Lema de Gauss)}]
+Sean $q_1(x), q_2(x) \in \mathbb{Z}[x]$ dos polinomios \emph{primitivos}. Entonces el producto $q_1(x)\cdot q_2(x)$ es también un polinomio primitivo.
+\end{tcolorbox}
+
+(El Lema de Gauss garantiza que la multiplicación no introduce factores enteros comunes en todos los coeficientes. Se puede demostrar examinando un posible primo $p$ que dividiera a todos los coeficientes de $q_1(x)q_2(x)$ y llegando a una contradicción, dado que $p$ no divide a algún coeficiente de $q_1(x)$ ni a algún coeficiente de $q_2(x)$ por ser éstos primitivos.)
+
+Utilizando el Lema de Gauss, podemos establecer el vínculo entre irreducibilidad en $\mathbb{Z}[x]$ e irreducibilidad en $\mathbb{Q}[x]$:
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Teorema 2.3.2}]
+Sea $p(x) \in \mathbb{Z}[x]$ un polinomio no constante. Entonces $p(x)$ es irreducible en $\mathbb{Z}[x]$ si y sólo si $p(x)$ es primitivo \textbf{e} irreducible en $\mathbb{Q}[x]$.
+\end{tcolorbox}
+
+\noindent\textbf{Ejemplo.} Sea $p(x) = 6x - 4 \in \mathbb{Z}[x]$. Visto como polinomio con coeficientes racionales, $p(x)$ es irreducible en $\mathbb{Q}[x]$ (ya que es de grado 1). Sin embargo, $p(x)$ \textbf{no} es irreducible en $\mathbb{Z}[x]$, pues es divisible por $2$ (un divisor constante no unitario en $\mathbb{Z}[x]$) y también por $(3x - 2)$. En efecto, $6x - 4$ puede factorizarse como $2(3x - 2)$ dentro de $\mathbb{Z}[x]$. Este ejemplo ilustra la necesidad de exigir que el polinomio sea primitivo e irreducible en $\mathbb{Q}[x]$ para concluir que es irreducible en $\mathbb{Z}[x]$ (tal como establece el teorema).
+
+En resumen, hemos establecido que en $\mathbb{F}[x]$ (con $\mathbb{F}$ un cuerpo) rige una teoría de la factorización única muy similar a la de los enteros: cualquier polinomio puede descomponerse de forma única (salvo reordenamientos y unidades) como producto de polinomios irreducibles. En el caso de coeficientes enteros, es posible reducir la determinación de la irreducibilidad a considerar coeficientes racionales (mediante la primitividad y el Teorema 2.3.2). Así, disponemos de las herramientas teóricas para analizar la divisibilidad e irreducibilidad de polinomios en diversos contextos algebraicos.
+\end{multicols}
+\end{document}

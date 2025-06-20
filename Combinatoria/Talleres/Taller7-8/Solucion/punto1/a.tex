@@ -1,0 +1,144 @@
+\begin{solucion}
+% Para demostrar la identidad, se uti
+ consideramos cada lado de la igualdad por separado. Asi:
+
+\textbf{Lado izquierdo}
+
+Tenemos las siguiente serie de términos hipergeométricos, verificaremos que la suma es hipergeométrica posterioremente:
+
+\begin{align*}
+  s(n) &= \sum_{k=0}^{n} \binom{n}{k}^{3} = \sum_{k=0}^{n} S(n,k)
+\end{align*}
+
+donde hemos definido los términos hipergeométricos como:
+\[
+  S(n,k) = \binom{n}{k}^{3}.
+\]
+
+\textbf{Gosper:} Para verificar que la suma es hipergeométrica, aplicamos el algoritmo de Gosper para encontrar una antiderivada
+% El siguiente bloque crea la función y comprueba que la suma es \emph{hipergeométrica} en $k$.
+Primeramente, intentamos usar el algoritmo de Gosper para encontrar una anti-diferencia $G(n,k)$ de $S(n,k)$ con respecto a $k$, tal que
+\[
+  S(n,k) = \Delta_k G(n,k) = G(n,k+1) - G(n,k).
+\]
+\begin{lstlisting}[caption={Definición de \texttt{F} y aplicación de Gosper}]
+In[12]:= S[n_, k_] := (Binomial[n, k])^3
+In[13]:= Gosper[S[n, k], k]
+Out[13]= {}
+\end{lstlisting}
+La salida vacía de \textsc{Gosper} indica que no existe una anti-diferencia, por lo que ahora procedemos a aplicar el algoritmo de \textsc{Zeilberger}, para determinar un polinomio $p(n,N)$ y una función $G(n,k)$ tal que
+\begin{align}
+    p(n,N)S(n,k) &= (K-1)G(n,k)
+\end{align}
+
+\begin{lstlisting}[caption={Recurrencia obtenida vía \textsc{Zeilberger}}]
+In[14]:= Zb[S[n, k], k, n]
+Out[14]= {-8 (1+n)^2 S[k,n]+(-16-21n-7n^2) S[k,1+n]+(2+n)^2 S[k,2+n]==Subscript[\[CapitalDelta], k][S[k,n] R[k,n]]}
+\end{lstlisting}
+
+Es decir obtenemos la siguiente ecuación de recurrencia:
+\begin{align*}
+  -8 (1+n)^2 S(n,k)+ (-16-21n-7n^2) S(1+n,k) + (2+n)^2 S(2+n,k)\\ = \Delta_k S(n,k) R(n,k).
+\end{align*}
+
+Definiendo $G(n,k) = S(n,k) R(n,k)$, obtenemos el \textbf{certificado} de que la suma es hipergeométrica que esta dado por el termino $R(n,k)$.
+\begin{lstlisting}[caption={Verificación de la hipergeometría}]
+In[15]:= show[R] // Simplify
+Out[15]= (k^3(1+n)^2(4k^3-6k^2(5+3n) - 2(2+n)^2 (9+7n)+3k(26+31n+9n^2)))/((-2+k-n)^3(-1+k-n)^3)
+\end{lstlisting}
+
+El certificado obtenido es:
+
+\begin{align*}
+  R(n,k) &= \frac{k^3(1+n)^2(4k^3-6k^2(5+3n) - 2(2+n)^2 (9+7n)+3k(26+31n+9n^2))}{(-2+k-n)^3(-1+k-n)^3}.
+\end{align*}
+
+Ahora sumando a ambos lados de la ecuación para $k=0$ hasta $k=n$, obtenemos la siguiente ecuación de recurrencia para la sucesión
+\begin{align*}
+    -8 (1+n)^2 s(n)+ (-16-21n-7n^2) s(1+n) + (2+n)^2 s(2+n) = 0
+\end{align*}
+
+Guardamos la ecuación como \texttt{recurrenciaF} y pedimos a \texttt{Hyper} verificar que la sucesión
+$S_F(n)=\sum_{k=0}^{n} F[n,k]$ la satisface.
+
+\begin{lstlisting}[caption={Verificación automática de la recurrencia}]
+In[15]:= recurrenciaF = -8 (1 + n)^2 f[n] + (-16 - 21 n - 7 n^2) f[1 + n] + (2 + n)^2 f[2 + n] == 0;
+In[16]:= Hyper[recurrenciaF, f[n]]
+Out[16]= {}
+\end{lstlisting}
+
+Esto indica que la serie hipergeométrica $s(n)=\sum_{k=0}^{n} S(n,k)$ no tiene una forma cerrada.
+
+\textbf{Lado derecho:}
+
+Ahora consideramos el lado derecho de la identidad, que es
+\begin{align*}
+  h(n) &= \sum_{k=0}^{n} \binom{n}{k}^2 \,\binom{2k}{n} = \sum_{k=0}^{n} H(n,k).
+\end{align*}
+donde hemos definido los términos hipergeométricos como:
+\[
+  H(n,k) := \binom{n}{k}^{2}\,\binom{2k}{n}.
+\]
+
+\textbf{Gosper:} Al igual que antes, intentamos usar el algoritmo de Gosper:
+\begin{lstlisting}[caption={Definición de \texttt{H} y aplicación de Gosper}]
+In[17]:= H[n_,k_] := (Binomial[n,k])^2*Binomial[2k, n]
+In[18]:= Gosper[H[n, k], k]
+Out[18]= {}
+\end{lstlisting}
+
+La salida vacía de \textsc{Gosper} indica que no existe una anti-diferencia, por lo que usamos el algoritmo de \textsc{Zeilberger}:
+
+\begin{lstlisting}[caption={Recurrencia para el lado derecho}]
+In[19]:= Zb[H[n, k], k, n]
+Out[19]= {-8(1+n)^2F[k,n] + (-16-21n-7n^2)F[k,1+n] + (2+n)^2F[k,2+n]==Subscript[\[CapitalDelta],k][F[k,n]R[k,n]]}
+\end{lstlisting}
+
+Observamos que la \emph{misma} recurrencia aparece para $h(n)$. Al igual que antes definimos $G(n,k) = F(n,k) R(n,k)$, obteniendo el certificado de que la suma es hipergeométrica.
+
+\begin{lstlisting}[caption={Verificación de la hipergeometría}]
+In[20]:= show[R] // Simplify
+Out[20]= (k^3(1+n)^2(4k^3-6k^2(5+3n) - 2(2+n)^2 (9+7n)+3k(26+31n+9n^2)))/((-2+k-n)^3(-1+k-n)^3)
+\end{lstlisting}
+El certificado obtenido es el mismo que el del lado izquierdo:
+\begin{align*}
+  R(n,k) &= \frac{k^3(1+n)^2(4k^3-6k^2(5+3n) - 2(2+n)^2 (9+7n)+3k(26+31n+9n^2))}{(-2+k-n)^3(-1+k-n)^3}.
+\end{align*}
+Ahora sumamos a ambos lados de la ecuación para $k=0$ hasta $k=n$, obteniendo la misma ecuación de recurrencia que antes:
+\begin{align*}
+    -8 (1+n)^2 h(n)+ (-16-21n-7n^2) h(1+n) + (2+n)^2 h(2+n) = 0
+\end{align*}
+Guardamos la ecuación como \texttt{recurrenciaH} y pedimos a \texttt{Hyper} verificar que la sucesión
+
+\begin{lstlisting}
+In[19]:= recurrenciaH = -8 (1 + n)^2 f[n] + (-16 - 21 n - 7 n^2) f[1 + n] + (2 + n)^2 f[2 + n] == 0;
+In[20]:= Hyper[recurrenciaF, f[n]]
+Out[20]= {}
+\end{lstlisting}
+Nuevamente, esto indica que la serie hipergeométrica $h(n)$ no tiene una forma cerrada.
+
+\textbf{Demostración igualdad de series hipergeométricas:}
+Encontramos que ambas series hipergeométricas $s(n)$ y $h(n)$ satisfacen la misma ecuación de recurrencia:
+
+\begin{align*}
+    -8 (1+n)^2 s(n)+ (-16-21n-7n^2) s(1+n) + (2+n)^2 s(2+n) &= 0 \\
+    -8 (1+n)^2 h(n)+ (-16-21n-7n^2) h(1+n) + (2+n)^2 h(2+n) &= 0.
+\end{align*}
+
+Así verificando que las condiciones iniciales $s(0),s(1),s(2)$ y $h(0),h(1),h(2)$ son iguales:
+\begin{align*}
+    s(0) &= \sum_{k=0}^{0} \binom{0}{k}^{3} = 1, \\
+    s(1) &= \sum_{k=0}^{1} \binom{1}{k}^{3} =  \binom{1}{0}^{3} + \binom{1}{1}^{3} = 1 + 1 = 2, \\
+    s(2) &= \sum_{k=0}^{2} \binom{2}{k}^{3} = \binom{2}{0}^{3} + \binom{2}{1}^{3} + \binom{2}{2}^{3} = 1 + 8 + 1 = 10.
+\end{align*}
+\begin{align*}
+    h(0) &= \sum_{k=0}^{0} \binom{0}{k}^{2} \,\binom{2k}{0} = 1, \\
+    h(1) &= \sum_{k=0}^{1} \binom{1}{k}^{2} \,\binom{2k}{1} =  \binom{1}{0}^{2} \,\binom{0}{1} + \binom{1}{1}^{2} \,\binom{2}{1} = 0 + 2 = 2, \\
+    h(2) &= \sum_{k=0}^{2} \binom{2}{k}^{2} \,\binom{2k}{2} = \binom{2}{0}^{2} \,\binom{0}{2} + \binom{2}{1}^{2} \,\binom{2}{2} + \binom{2}{2}^{2} \,\binom{4}{2} = 0 + 4 + 9 = 10.
+\end{align*}
+
+Observamos que $s(0)=h(0)$, $s(1)=h(1)$ y $s(2)=h(2)$, por lo tanto, ambas series hipergeométricas son iguales, es decir:
+\begin{align*}
+  \sum_{k=0}^{n} \binom{n}{k}^{3} &= \sum_{k=0}^{n} \binom{n}{k}^{2} \,\binom{2k}{n}.
+\end{align*}
+\end{solucion}

@@ -1,47 +1,24 @@
 \begin{solucion}
-    Repitiendo nuevamente el procedimiento del literal anterior:
-\begin{itemize}
-    \item \textbf{Polinomio mínimo de $\sqrt{3}$}: Para $\gamma = \sqrt{3}$, el polinomio $m_\gamma(x) = x^2 - 3$ es irreducible sobre $\mathbb{Q}$, ya que $3$ no es un cuadrado perfecto en $\mathbb{Q}$, o dicho de otro modo $x^2 - 3 = 0$ no tiene solución racional. Por tanto, $[\mathbb{Q}(\sqrt{3}) : \mathbb{Q}] = 2$.
-
-    \item \textbf{Polinomio mínimo de $\sqrt[3]{2}$}: Sea $\delta = \sqrt[3]{2}$ (la raíz cúbica real de $2$). Su polinomio mínimo es $m_\delta(x) = x^3 - 2$, el cual es irreducible en $\mathbb{Q}[x]$ por el criterio de Eisenstein con $p=2$, pues $2\not|=a_n=1$ y $a|a_0=2, a|a_1=0, a|a_2=0$ y $2^2=4\not|=a_0=2$. Por lo tanto, $[\mathbb{Q}(\sqrt[3]{2}) : \mathbb{Q}] = 3$.
-\end{itemize}
-
-Dada entonces ahora la extensión $\mathbb{Q}(\sqrt{3}, \sqrt[3]{2})$. Observemos que ninguno de los dos elementos de la extension de uno está contenido en el campo generado por la extension del otro, esto es: $\sqrt{3} \notin \mathbb{Q}(\sqrt[3]{2})$ y $\sqrt[3]{2} \notin \mathbb{Q}(\sqrt{3})$. Esto es debido a que $\mathbb{Q}(\sqrt{3})$ tiene grado $2$ y $\mathbb{Q}(\sqrt[3]{2})$ tiene grado $3$ sobre $\mathbb{Q}$. No puede existir una inclusión estricta entre ellas porque, pues en caso contrario de existir $\mathbb Q \subset \mathbb{Q}(\sqrt{3}) \subset \mathbb{Q}(\sqrt[3]{2})$, entonces por el \textbf{teorema de la torre} tendríamos que 
-\begin{align*}
-    [\mathbb{Q}(\sqrt[3]{2}) : \mathbb{Q}] &=3= [\mathbb{Q}(\sqrt[3]{2}) : \mathbb{Q}(\sqrt{3})] \cdot [\mathbb{Q}(\sqrt{3}) : \mathbb{Q}]\\
-    &= [\mathbb{Q}(\sqrt[3]{2}) : \mathbb{Q}(\sqrt{3})] \cdot 2\\
-\end{align*}
-
-Por lo que el grado $2$ tendría que dividir al grado $3$,contradicción. En consecuencia,  
- $\mathbb{Q}(\sqrt{3})\cap \mathbb{Q}(\sqrt[3]{2}) = \mathbb{Q}$, Es decir, el polinomio $x^3 - 2$ no adquiere raíces en $\mathbb{Q}(\sqrt{3})$ (y $x^2 - 3$ no adquiere raíces en $\mathbb{Q}(\sqrt[3]{2})$).
-
-Aplicamos el \textbf{Teorema de la Torre} con la cadena:
+(b) Para \(x^{4}-2\).  
+De manera análoga, \(x^{4}-2\) es irreducible sobre \(\mathbb{Q}\) (por el criterio de Eisenstein con \(p=2\), es irreducible en \(\mathbb{Q}[x]\)).  
+Si tomamos \(\beta=\sqrt[4]{2}\) (raíz real de \(x^{4}-2=0\)), obtenemos primero la extensión \(\mathbb{Q}(\beta)\) de grado \(4\).  
+En \(\mathbb{Q}(\beta)\) el polinomio se factoriza como \((x-\beta)(x+\beta)\), faltando incorporar las raíces complejas \(\pm i\beta\).  
+Al igual que en el inciso anterior, \(i\notin\mathbb{Q}(\beta)\), así que debemos adjuntarlo.  
+El cuerpo de descomposición buscado es
 \[
-\mathbb{Q} \subset \mathbb{Q}(\sqrt{3}) \subset \mathbb{Q}(\sqrt{3},\, \sqrt[3]{2})~.
+M=\mathbb{Q}(\beta,i)=\mathbb{Q}\!\bigl(\sqrt[4]{2},\,i\bigr),
 \]
-Tenemos $[\mathbb{Q}(\sqrt{3}) : \mathbb{Q}] = 2$. Y como ademas:
+Además,
 \[
-[\mathbb{Q}(\sqrt{3}, \sqrt[3]{2}) : \mathbb{Q}(\sqrt{3})]
+[\mathbb{Q}(\beta,i):\mathbb{Q}]
+  =[\mathbb{Q}(\beta,i):\mathbb{Q}(\beta)]
+  \cdot[\mathbb{Q}(\beta):\mathbb{Q}]
+  =2\cdot4=8.
 \]
-es igual al grado del polinomio mínimo de $\sqrt[3]{2}$ sobre $\mathbb{Q}(\sqrt{3})$.Pues 
- como mencionamos anteriormente, $x^3 - 2$ sigue siendo irreducible sobre $\mathbb{Q}(\sqrt{3})$, por lo que este grado es $3$. Por lo tanto:
 
- \begin{respuesta}
-    \[
-[\mathbb{Q}(\sqrt{3}, \sqrt[3]{2}) : \mathbb{Q}] = 2 \cdot 3 = 6.
+Por lo tanto,
+\[
+\text{el cuerpo de descomposición de }x^{4}-2\text{ es }\mathbb{Q}\bigl(\sqrt[4]{2},\,i\bigr)
+\text{ y su grado sobre }\mathbb{Q}\text{ es }8.
 \]
- \end{respuesta}
-
-
-% En conclusión, el grado de la extensión $\mathbb{Q}(\sqrt{3}, \sqrt[3]{2})$ sobre $\mathbb{Q}$ es $6$.
-
-% Una base de $\mathbb{Q}(\sqrt{3}, \sqrt[3]{2})$ sobre $\mathbb{Q}$ la podemos tomar como el producto cartesiano:
-% \[
-% \left\{1,\ \sqrt{3}\right\} \times \left\{1,\ \sqrt[3]{2},\ (\sqrt[3]{2})^2\right\},
-% \]
-% es decir:
-% \[
-% \left\{1,\ \sqrt{3},\ \sqrt[3]{2},\ \sqrt{3}\sqrt[3]{2},\ (\sqrt[3]{2})^2,\ \sqrt{3}(\sqrt[3]{2})^2\right\}.
-% \]
-% La independencia lineal de estos elementos se justifica porque provienen de combinar bases independientes de cada subextensión. Esto confirma que el grado es $6$.
 \end{solucion}

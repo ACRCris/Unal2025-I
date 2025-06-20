@@ -1,49 +1,38 @@
 \begin{solucion}
-    Consideremos primero las extensiones simples por separado, haciendo uso del siguiente lema visto en clase:
-
-\begin{lema}
-    Sea $K(\alpha)$ una extensión simple algebraica, y sea $m(t)$ el polinomio mínimal de $\alpha$ sobre $K$, $\partial(m) =n$. Entonces $\{1,\alpha,\ldots,\alpha^{n-1}\}$ es una base de $K(\alpha)$ sobre $K$.
-\end{lema}
-
+Por definición el cuerpo de descomposición de un polinomio \(f(x) \in \mathbb{Q}[x]\) es el cuerpo \(L\) tal que:
 \begin{itemize}
-    \item \textbf{Polinomio mínimo de $i$}: Es $m_i(x) = x^2 + 1$. Este polinomio es irreducible sobre $\mathbb{Q}$, ya que no tiene raíces racionales (de hecho, $x^2+1=0$ no tiene solución en $\mathbb{Q}$). Por lo tanto por el \textbf{Lema 1}, $[\mathbb{Q}(i) : \mathbb{Q}] = 2$.
-    
-    \item \textbf{Polinomio mínimo de $\sqrt[4]{2}$}: Sea $\beta = \sqrt[4]{2}$. El polinomio $m_\beta(x) = x^4 - 2$ es el polinomio mínimo de $\beta$ sobre $\mathbb{Q}$. Es irreducible en $\mathbb{Q}[x]$ por el criterio de Eisenstein con $p=2$: todos los coeficientes (excepto el líder $1$) son divisibles por $2$ (el polinomio es $x^4 + 0x^3 + 0x^2 + 0x - 2$) y $2^2=4$ no divide al término independiente $-2$. Así, $m_\beta(x)$ es irreducible y por el \textbf{lema 1} $[\mathbb{Q}(\beta) : \mathbb{Q}] = 4$.
+    \item \(L = \mathbb{Q}(\alpha_1, \ldots, \alpha_4)\).
+    \item $f(x) = c(x - \alpha_1)(x - \alpha_2)(x - \alpha_3)(x - \alpha_4) \in L$
 \end{itemize}
-
-Para el grado de la extensión $\mathbb{Q}(i, \sqrt[4]{2})$. Observemos que $\mathbb{Q}(\sqrt[4]{2})$ es un cuerpo contenido en $\mathbb{R}$, pues $\sqrt[4]{2}$ es real, mientras que $\mathbb{Q}(i)$ es un campo que esta contenido en los complejos. En particular, $i \notin \mathbb{Q}(\sqrt[4]{2})$ (ningún número de $\mathbb{Q}(\sqrt[4]{2})$ al cuadrado puede dar $-1$). 
-
-Pues si suponemos que existieran $a,b,c,d\in \mathbb{Q}$ tales que:
-\[
-i = a + b\sqrt[4]{2} + c(\sqrt[4]{2})^2 + d(\sqrt[4]{2})^3,
-\]
-Es decir $i$ se puede expresar como una combinación lineal de la base $\{1,\sqrt[4]{2},(\sqrt[4]{2})^2,(\sqrt[4]{2})^3\}$ de $\mathbb{Q}(\sqrt[4]{2})$ sobre $\mathbb{Q}$. Al tomar partes reales e imaginarias llegaríamos a una contradicción, pues el lado izquierdo es puramente imaginario mientras que el derecho es real. Por tanto, $i$ no pertenece al campo $\mathbb{Q}(\sqrt[4]{2})$. Esto implica que el polinomio $x^2+1$ no tiene raíces en $\mathbb{Q}(\sqrt[4]{2})$ y permanece irreducible sobre este campo.
-
-Usando el \textbf{Teorema de la Torre}, sobre la extensión $\mathbb{Q}(\sqrt[4]{2})$ y $\mathbb{Q}(i)$, que satisfacen la relación:
-\[
-\mathbb{Q} \;\subset\; \mathbb{Q}(\sqrt[4]{2}) \;\subset\; \mathbb{Q}(\sqrt[4]{2},\, i).
-\]
-entonces:
-\[
-[\mathbb{Q}(i, \sqrt[4]{2}) : \mathbb{Q}] = [\mathbb{Q}(i, \sqrt[4]{2}) : \mathbb{Q}(\sqrt[4]{2})] \cdot [\mathbb{Q}(\sqrt[4]{2}) : \mathbb{Q}].
-\]
-Dado que sabemos que $[\mathbb{Q}(\sqrt[4]{2}) : \mathbb{Q}] = 4$. Y ademas,
-\[
-[\mathbb{Q}(i, \sqrt[4]{2}) : \mathbb{Q}(\sqrt[4]{2})] = 2,
-\]
-puesto que $x^2 + 1$ sigue siendo irreducible sobre $\mathbb{Q}(\sqrt[4]{2})$. Por tanto,
-
-
-\begin{respuesta}
-\[
-[\mathbb{Q}(i, \sqrt[4]{2}) : \mathbb{Q}] = 2 \cdot 4 = 8.
-\]
-\end{respuesta}
-
-
-% Una base de esta extensión (como espacio vectorial sobre $\mathbb{Q}$) está dada por los $8$ elementos:
-% \[
-% \left\{\,1,\; \sqrt[4]{2},\; (\sqrt[4]{2})^2,\; (\sqrt[4]{2})^3,\; i,\; i\sqrt[4]{2},\; i(\sqrt[4]{2})^2,\; i(\sqrt[4]{2})^3 \,\right\}.
-% \]
-% Estos elementos son linealmente independientes sobre $\mathbb{Q}$; en particular, cualquier combinación lineal igualada a cero se separa en parte real (combinación de $1,\sqrt[4]{2},(\sqrt[4]{2})^2,(\sqrt[4]{2})^3$) y parte imaginaria (con factor común $i$), forzando que todos los coeficientes sean cero, dado que los elementos reales ya eran linealmente independientes. Esto confirma que el grado es $8$.
+Para \(x^4 + 2\). Este polinomio es irreducible en \(\mathbb{Q}[x]\), pues por el criterio de Eisenstein con \(p=2\), $p \mid 2$ y \(p^2 \nmid 2\), se concluye que \(x^4 + 2\) no tiene raíces racionales. Por lo que como $x^4 + 2$ es irreducible sobre \(\mathbb{Q}\) y es el polinomio mínimo de alguna raíz \(\alpha\) en el cuerpo de descomposición $L$, entonces la extensión \(\mathbb{Q}(\alpha)\) tiene grado 4 sobre \(\mathbb{Q}\).
+Ahora sea $\alpha \in L$ una raíz de $x^4 + 2$, entonces:
+\begin{align*}
+    \alpha^4 + 2 &= 0 \\
+    \alpha^4 &= -2 \\
+    \alpha^4 &= 2e^{\pi i + 2\pi i k} \quad (k \in \mathbb{Z}) \\
+    \alpha &= \sqrt[4]{2}e^{\pi i/4 + \pi i k/2} \quad (k = 0, 1, 2, 3).
+\end{align*}
+Por lo tanto, las raíces de \(x^4 + 2\) son:
+\begin{align*}
+    \alpha_1 &= \sqrt[4]{2}e^{\pi i/4}, \\
+    \alpha_2 &= \sqrt[4]{2}e^{3\pi i/4}, \\
+    \alpha_3 &= \sqrt[4]{2}e^{5\pi i/4}, \\
+    \alpha_4 &= \sqrt[4]{2}e^{7\pi i/4}.
+\end{align*}
+donde:
+\begin{align*}
+    \omega_1 &= e^{\pi i/4}= e^{2\pi i/8}, \\
+    \omega_2 &= e^{3\pi i/4}= e^{2\pi i(3)/8}, \\
+    \omega_3 &= e^{5\pi i/4}= e^{2\pi i(5)/8}, \\
+    \omega_4 &= e^{7\pi i/4}= e^{2\pi i(7)/8}.
+\end{align*}
+Por lo que observamos que las raíces son $\{(\omega_1, \omega_2, \omega_3, \omega_4) \} \subset \{e^{2\pi i k/8}\}_{k=0}^{7}$, estan contenidas en las raíces octavas de la unidad. De esta forma las raíces de \(x^4 + 1\) pueden ser generadas por $i$, de este modo, tomamos $L=\mathbb{Q}(\sqrt[4]{2}, i)$ el cual es el cuerpo de descomposición, dado que $\sqrt{2}/2 \in \mathbb{Q}(\sqrt[4]{2}, i)$ entonces $\sqrt[4]{2} (\sqrt{2}/2 + i \sqrt{2}/2) = \alpha_1 \in L$, luego tambien esta $\alpha_2 = \sqrt[4]{2} (\sqrt{2}/2 - i \sqrt{2}/2) \in L$, $\alpha_3 = \sqrt[4]{2} (-\sqrt{2}/2 + i \sqrt{2}/2) \in L$ y $\alpha_4 = \sqrt[4]{2} (-\sqrt{2}/2 - i \sqrt{2}/2) \in L$. Por lo que $L$ es el cuerpo de descomposición de \(x^4 + 2\).Po r lo que usando el teorema de la torre:
+\begin{align*}
+    [L:\mathbb{Q}] &= [\mathbb{Q}(\sqrt[4]{2}, i):\mathbb{Q(\sqrt[4]{2})}][\mathbb{Q}(\sqrt[4]{2}):\mathbb{Q}] \\
+\end{align*}
+donde sabemos que \([Q(\sqrt[4]{2}):\mathbb{Q}]=4\). Asi analicemos el grado de la extensión [\(\mathbb{Q}(\sqrt[4]{2}, i):\mathbb{Q(\sqrt[4]{2})}\)] como $\mathbb Q(\sqrt[4]{2})$  no contiene raíces complejas y $x^2 + 1$ es irreducible sobre \(\mathbb{Q}(\sqrt[4]{2})\) cuya raíz es \(i\), entonces \([Q(\sqrt[4]{2}, i):\mathbb{Q}(\sqrt[4]{2})]=2\). Por lo que:
+\begin{align*}
+    [L:\mathbb{Q}] &= [\mathbb{Q}(\sqrt[4]{2}, i):\mathbb{Q(\sqrt[4]{2})}][\mathbb{Q}(\sqrt[4]{2}):\mathbb{Q}] \\
+    &= 2 \cdot 4 = 8.
+\end{align*}
 \end{solucion}

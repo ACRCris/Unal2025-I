@@ -1,0 +1,284 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Cálculo de la Identidad de Bézout para Polinomios}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Ejemplo}
+
+Sea el cuerpo \( \mathbb{Q} \) y consideremos los siguientes polinomios:
+
+\begin{align*}
+  f(x) &= x^3 - 2x + 1, \\
+  g(x) &= x^2 - 1
+\end{align*}
+
+Queremos encontrar el máximo común divisor \( d(x) = \gcd(f(x), g(x)) \) y polinomios \( s(x), t(x) \in \mathbb{Q}[x] \) tales que:
+
+\[
+  d(x) = s(x) f(x) + t(x) g(x)
+\]
+
+\section*{Paso 1: Algoritmo de Euclides}
+
+\begin{enumerate}
+  \item Dividimos \( f(x) \) entre \( g(x) \):
+  \begin{align*}
+    \frac{f(x)}{g(x)} &= \frac{x^3 - 2x + 1}{x^2 - 1} = x \quad \text{(cociente)} \\
+    x(x^2 - 1) &= x^3 - x \\
+    \text{Resto: } r_1(x) &= f(x) - xg(x) = (x^3 - 2x + 1) - (x^3 - x) = -x + 1
+  \end{align*}
+
+  \item Dividimos \( g(x) \) entre \( r_1(x) \):
+  \begin{align*}
+    \frac{g(x)}{r_1(x)} &= \frac{x^2 - 1}{-x + 1} = -x \\
+    (-x)(-x + 1) &= x^2 - x \\
+    \text{Resto: } r_2(x) &= g(x) - (-x)(-x + 1) = (x^2 - 1) - (x^2 - x) = x - 1
+  \end{align*}
+
+  \item Dividimos \( r_1(x) \) entre \( r_2(x) \):
+  \begin{align*}
+    \frac{-x + 1}{x - 1} &= -1 \Rightarrow \text{Resto final: } 0
+  \end{align*}
+
+\end{enumerate}
+
+Por lo tanto, el \textbf{máximo común divisor} es:
+\[
+  d(x) = \gcd(f(x), g(x)) = x - 1
+\]
+
+\section*{Paso 2: Algoritmo Extendido de Euclides}
+
+Queremos encontrar polinomios \( s(x), t(x) \) tales que:
+\[
+  d(x) = s(x)f(x) + t(x)g(x)
+\]
+
+Partimos de las igualdades obtenidas en el algoritmo de Euclides:
+
+\begin{enumerate}
+  \item De la primera división:
+  \[
+    r_1(x) = -x + 1 = f(x) - x g(x)
+  \]
+
+  \item De la segunda división:
+  \[
+    r_2(x) = x - 1 = g(x) - (-x)(r_1(x)) = g(x) + x(f(x) - xg(x))
+  \]
+
+  \item Sustituimos:
+  \begin{align*}
+    x - 1 &= g(x) + x(f(x) - xg(x)) \\
+          &= x f(x) + (1 - x^2) g(x)
+  \end{align*}
+
+\end{enumerate}
+
+\section*{Conclusión}
+
+La identidad de Bézout es:
+\[
+  \gcd(f(x), g(x)) = x - 1 = s(x) f(x) + t(x) g(x)
+\]
+
+Donde:
+\begin{align*}
+  s(x) &= x, \\
+  t(x) &= 1 - x^2
+\end{align*}
+
+% Ejemplo detallado de identidad de Bézout para polinomios de grado mayor
+
+\section*{Ejemplo: Polinomios de Grado 5 y 4}
+
+Sea el cuerpo \(\mathbb{Q}\) y consideremos los siguientes polinomios:
+
+\begin{align*}
+  f(x) &= x^5 + x^2 - x + 1, \\
+  g(x) &= x^4 - 2x^3 + 3x^2 - 2x + 2.
+\end{align*}
+
+Nuestro objetivo es encontrar el máximo común divisor
+\(d(x) = \gcd\bigl(f(x), g(x)\bigr)\) y polinomios
+\(s(x), t(x) \in \mathbb{Q}[x]\) tales que:
+
+\[
+  d(x) \,=\, s(x)\,f(x) \;+\; t(x)\,g(x).
+\]
+
+\subsection*{Paso 1: Algoritmo de Euclides}
+
+Realizamos sucesivas divisiones hasta obtener resto cero:
+
+\noindent\textbf{1. División 1:} \(f(x) \div g(x)\)
+\begin{align*}
+  q_1(x) &= x, \\[6pt]
+  x\,g(x) &= x\bigl(x^4 - 2x^3 + 3x^2 - 2x + 2\bigr)
+            = x^5 - 2x^4 + 3x^3 - 2x^2 + 2x, \\[6pt]
+  r_1(x) &= f(x) - x\,g(x) \\[3pt]
+          &= \bigl(x^5 + 0x^4 + 0x^3 + x^2 - x + 1\bigr)
+             - \bigl(x^5 - 2x^4 + 3x^3 - 2x^2 + 2x\bigr) \\[3pt]
+          &= 2x^4 \;-\; 3x^3 \;+\; 3x^2 \;-\; 3x \;+\; 1.
+\end{align*}
+
+\noindent\textbf{2. División 2:} \(g(x) \div r_1(x)\)
+\begin{align*}
+  r_1(x) &= 2x^4 - 3x^3 + 3x^2 - 3x + 1, \\[6pt]
+  \text{Término líder: }&\dfrac{x^4}{2x^4} = \tfrac12, \\[6pt]
+  q_2(x) &= \tfrac12, \\[6pt]
+  \tfrac12\,r_1(x) &= x^4 - \tfrac32 x^3 + \tfrac32 x^2 - \tfrac32 x + \tfrac12, \\[6pt]
+  r_2(x) &= g(x) - \tfrac12\,r_1(x) \\[3pt]
+         &= \bigl(x^4 - 2x^3 + 3x^2 - 2x + 2\bigr)
+            - \bigl(x^4 - \tfrac32 x^3 + \tfrac32 x^2 - \tfrac32 x + \tfrac12\bigr) \\[3pt]
+         &= -\tfrac12 x^3 \;+\; \tfrac32 x^2 \;-\; \tfrac12 x \;+\; \tfrac32.
+\end{align*}
+
+\noindent\textbf{3. División 3:} \(r_1(x) \div r_2(x)\)
+\begin{align*}
+  r_1(x) &= 2x^4 - 3x^3 + 3x^2 - 3x + 1, \\
+  r_2(x) &= -\tfrac12 x^3 + \tfrac32 x^2 - \tfrac12 x + \tfrac32, \\[6pt]
+  \text{Término líder: }&\dfrac{2x^4}{-\tfrac12 x^3} = -4x, \\[6pt]
+  q_3(x) &= -4x, \\[6pt]
+  -4x\,r_2(x) &= -4x\bigl(-\tfrac12 x^3 + \tfrac32 x^2 - \tfrac12 x + \tfrac32\bigr)
+              = 2x^4 - 6x^3 + 2x^2 - 6x, \\[6pt]
+  r_3(x) &= r_1(x) - (-4x)\,r_2(x) \\[3pt]
+         &= \bigl(2x^4 - 3x^3 + 3x^2 - 3x + 1\bigr)
+            - \bigl(2x^4 - 6x^3 + 2x^2 - 6x\bigr) \\[3pt]
+         &= 3x^3 \;+\; x^2 \;+\; 3x \;+\; 1.
+\end{align*}
+
+\noindent\textbf{4. División 4:} \(r_2(x) \div r_3(x)\)
+\begin{align*}
+  r_2(x) &= -\tfrac12 x^3 + \tfrac32 x^2 - \tfrac12 x + \tfrac32, \\
+  r_3(x) &= 3x^3 + x^2 + 3x + 1, \\[6pt]
+  \text{Término líder: }&\dfrac{-\tfrac12 x^3}{3x^3} = -\tfrac{1}{6}, \\[6pt]
+  q_4(x) &= -\tfrac{1}{6}, \\[6pt]
+  -\tfrac{1}{6}\,r_3(x) &= -\tfrac{1}{6}\bigl(3x^3 + x^2 + 3x + 1\bigr)
+                    = -\tfrac12 x^3 - \tfrac{1}{6} x^2 - \tfrac12 x - \tfrac{1}{6}, \\[6pt]
+  r_4(x) &= r_2(x) - \Bigl(-\tfrac{1}{6}\,r_3(x)\Bigr) \\[3pt]
+         &= \Bigl(-\tfrac12 x^3 + \tfrac32 x^2 - \tfrac12 x + \tfrac32\Bigr)
+            - \Bigl(-\tfrac12 x^3 - \tfrac{1}{6} x^2 - \tfrac12 x - \tfrac{1}{6}\Bigr) \\[3pt]
+         &= \tfrac53 x^2 + 0\,x + \tfrac53 \\[-2pt]
+         &= \tfrac{5}{3}\bigl(x^2 + 1\bigr).
+\end{align*}
+
+\noindent\textbf{5. División 5:} \(r_3(x) \div r_4(x)\)
+\begin{align*}
+  r_3(x) &= 3x^3 + x^2 + 3x + 1, \\
+  r_4(x) &= \tfrac{5}{3}\bigl(x^2 + 1\bigr), \\[6pt]
+  \text{Término líder: }&\dfrac{3x^3}{\tfrac{5}{3}x^2} = \dfrac{3}{1} \cdot \dfrac{3}{5} \,x = \tfrac{9}{5} \,x, \\[6pt]
+  q_5(x) &= \tfrac{9}{5} \,x, \\[6pt]
+  \tfrac{9}{5}x\,r_4(x) &= \tfrac{9}{5}x\cdot \tfrac{5}{3}\bigl(x^2 + 1\bigr)
+                   = 3x^3 + 3x, \\[6pt]
+  r_5(x) &= r_3(x) - \Bigl(\tfrac{9}{5}x\,r_4(x)\Bigr) \\[3pt]
+         &= \bigl(3x^3 + x^2 + 3x + 1\bigr)
+            - \bigl(3x^3 + 0\,x^2 + 3x + 0\bigr) \\[3pt]
+         &= x^2 + 1.
+\end{align*}
+
+Por último, notamos que
+\(r_4(x) = \tfrac{5}{3}\bigl(x^2 + 1\bigr) = \tfrac{5}{3}\,r_5(x)\),
+por lo que la siguiente división produce resto cero. Así,
+\[
+  d(x) \;=\; r_5(x) \;=\; x^2 + 1.
+\]
+
+\subsection*{Paso 2: Algoritmo Extendido de Euclides}
+
+Ahora expresamos el último resto no nulo
+\(r_5(x) = x^2 + 1\) como combinación lineal de
+\(f(x)\) y \(g(x)\). Recorremos hacia atrás:
+
+\begin{enumerate}
+  \item De la División 5: 
+  \[
+    r_5(x) = r_3(x) - \tfrac{9}{5}x\,r_4(x).
+  \]
+  \item De la División 4:
+  \[
+    r_4(x) = r_2(x) - \Bigl(-\tfrac{1}{6}\Bigr)\,r_3(x)
+            = r_2(x) + \tfrac{1}{6}\,r_3(x).
+  \]
+  \item De la División 3:
+  \[
+    r_3(x) = r_1(x) - (-4x)\,r_2(x)
+            = r_1(x) + 4x\,r_2(x).
+  \]
+  \item De la División 2:
+  \[
+    r_2(x) = g(x) - \tfrac12\,r_1(x).
+  \]
+  \item De la División 1:
+  \[
+    r_1(x) = f(x) - x\,g(x).
+  \]
+\end{enumerate}
+
+Sustituyendo en cascada:
+
+\begin{align*}
+  r_4(x) &= \Bigl(g(x) - \tfrac12\,r_1(x)\Bigr) + \tfrac{1}{6}\Bigl(r_1(x) + 4x\,r_2(x)\Bigr)
+           = g(x) - \tfrac{1}{2}r_1(x) + \tfrac{1}{6}r_1(x) + \tfrac{4x}{6}r_2(x) \\[6pt]
+          &= g(x) - \tfrac{1}{3}r_1(x) + \tfrac{2x}{3}r_2(x), \\[6pt]
+  r_5(x) &= r_3(x) - \tfrac{9}{5}x\,r_4(x) \\[3pt]
+          &= \bigl(r_1(x) + 4x\,r_2(x)\bigr)
+             - \tfrac{9}{5}x\Bigl(g(x) - \tfrac{1}{3}r_1(x) + \tfrac{2x}{3}r_2(x)\Bigr) \\[6pt]
+          &= r_1(x) + 4x\,r_2(x)
+             - \tfrac{9}{5}x\,g(x)
+             + \tfrac{9}{15}x\,r_1(x)
+             - \tfrac{18}{15}x^2\,r_2(x) \\[6pt]
+          &= \Bigl(1 + \tfrac{9}{15}x\Bigr)r_1(x)
+             + \Bigl(4x - \tfrac{18}{15}x^2\Bigr)r_2(x)
+             - \tfrac{9}{5}x\,g(x). \\[6pt]
+  \text{Luego: }r_1(x) &= f(x) - x\,g(x), \\
+                   r_2(x) &= g(x) - \tfrac12\,r_1(x).
+\end{align*}
+
+Finalmente, agrupando términos de \(f(x)\) y \(g(x)\) en la expresión de \(r_5(x)\),
+obtenemos:
+
+\[
+  x^2 + 1 \;=\; s(x)\,f(x) \;+\; t(x)\,g(x),
+\]
+
+donde los polinomios \(s(x)\) y \(t(x)\) resultan ser:
+
+\[
+  s(x) = -\frac{x + 1}{5},\qquad
+  t(x) = \frac{x^2 + 3x + 3}{5}.
+\]
+
+Verificación rápida:
+\[
+  -\frac{x + 1}{5}\,\bigl(x^5 + x^2 - x + 1\bigr)
+  + \frac{x^2 + 3x + 3}{5}\,\bigl(x^4 - 2x^3 + 3x^2 - 2x + 2\bigr)
+  \,=\, x^2 + 1.
+\]
+
+\subsection*{Conclusión}
+
+La identidad de Bézout para los polinomios dados es:
+
+\[
+  \gcd\bigl(f(x),\,g(x)\bigr) \;=\; x^2 + 1 \;=\; s(x)\,f(x) \;+\; t(x)\,g(x),
+\]
+
+con:
+\[
+  f(x) = x^5 + x^2 - x + 1,\quad
+  g(x) = x^4 - 2x^3 + 3x^2 - 2x + 2,\quad
+  s(x) = -\frac{x + 1}{5},\quad
+  t(x) = \frac{x^2 + 3x + 3}{5}.
+\]
+
+\end{document}

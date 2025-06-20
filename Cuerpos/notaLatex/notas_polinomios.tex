@@ -1,0 +1,82 @@
+
+\documentclass[landscape]{article}
+\usepackage[a4paper,margin=1cm]{geometry}
+\usepackage{multicol}
+\usepackage{pdflscape}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\setlength{\columnsep}{0.8cm}
+
+\begin{document}
+\begin{landscape}
+\begin{multicols}{4}
+
+% -------------------- CLASE 3 --------------------
+Clase 3
+
+Ya estamos en condiciones de definir uno de los conceptos más importantes asociados a los polinomios: el de cero o raíz de un polinomio. El cálculo de los ceros de un polinomio será de suma utilidad para resolver ecuaciones, inecuaciones y cualquier tipo de problema que requiera la factorización de polinomios.
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=\textbf{Definición (Cero o raíz de un polinomio)}]
+Decimos que un número real $\alpha$ es un cero o raíz del polinomio $p(x)$ si $p(\alpha) = 0$.
+\end{tcolorbox}
+\noindent\textbf{Ejemplo 1.10.} Calcule el valor numérico del polinomio $p(x) = -x^3 + 4x - 5$ para $x = 3$.
+\noindent\textbf{Solución:}
+$p(3) = -(3)^3 + 4(3) - 5 = -27 + 12 - 5 = -20$.
+\noindent\textbf{Ejemplo 1.11.} Verifique que $-2$ es una raíz del polinomio $p(x) = x^3 + x^2 - 5x - 6$.
+\noindent\textbf{Solución:}
+$p(-2) = (-2)^3 + (-2)^2 - 5(-2) - 6 = -8 + 4 + 10 - 6 = 0$,
+por lo que $p(-2)=0$ confirma que $x=-2$ es una raíz.
+\noindent\textbf{Ejemplo 1.12.} Determine el valor de $\alpha$ para que $4$ sea raíz del polinomio $p(x) = -x^3 + \alpha x^2 + 2x + 6$.
+\noindent\textbf{Solución:} Para que $4$ sea una raíz de $p(x)$, debe ocurrir $p(4) = 0$. Luego:
+\begin{align*}
+0 &= -(4)^3 + \alpha (4)^2 + 2(4) + 6,\\
+0 &= -64 + 16\alpha + 8 + 6,\\
+0 &= -50 + 16\alpha,\\
+16\alpha &= 50,\\
+\alpha &= \frac{50}{16} = \frac{25}{8}.
+\end{align*}
+Recordemos que un polinomio $p(x)$ es divisible por otro polinomio $q(x)$ si el resto de dividir $p$ por $q$ es igual a cero. El siguiente teorema muestra que cuando el divisor es de la forma $q(x) = x - k$, podemos determinar si $p(x)$ es divisible por $q(x)$ sin necesidad de realizar la división: basta con calcular $p(k)$.
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Teorema del resto}]
+El resto de dividir $p(x)$ por un polinomio de la forma $x - k$ (con $k$ un número real cualquiera) es igual a $p(k)$.
+
+\medskip\noindent\textbf{Demostración:}
+Si $p(x)$ es un polinomio de grado mayor o igual que 1, por el Algoritmo de la División sabemos que existen polinomios $c(x)$ y $r(x)$ tales que:
+\[p(x) = (x - k)c(x) + r(x),\]
+donde $r(x)$ es el resto y cumple $\deg r < \deg(x - k) = 1$. En particular, $r(x)$ es un polinomio constante (o $r(x)=0$ si la división es exacta). Evaluando en $x = k$ se tiene:
+\[p(k) = (k - k)c(k) + r(k) = r,\]
+de donde $p(k) = r$. Es decir, el resto $r$ coincide con $p(k)$, lo que prueba el teorema.
+\end{tcolorbox}
+
+\noindent\textbf{Ejemplo 1.13.} Calcule el resto de dividir $p(x) = -x^4 - 2x^3 + 3x^2 + x + 1$ por $q(x) = x + 1$.
+
+\noindent\textbf{Solución:}
+$p(-1) = -(-1)^4 - 2(-1)^3 + 3(-1)^2 + (-1) + 1 = -1 + 2 + 3 - 1 + 1 = 4$.
+Por lo tanto, el resto de la división es $r(x) = 4$.
+
+\noindent\textbf{Ejemplo 1.14.} Halle el valor de $a \in \mathbb{R}$ para que, al dividir $p(x) = x^4 + 3x^3 + ax^2 - 13$ por $x + 3$, el resto sea igual a $5$.
+
+\noindent\textbf{Solución:}
+Usando el teorema del resto, se tiene $p(-3) = 5$. Entonces:
+\[
+(-3)^4 + 3(-3)^3 + a(-3)^2 - 13 = 5,
+\]
+de donde $9a = 18$ y por lo tanto $a = 2$.
+
+Del Teorema del Resto se deduce el siguiente resultado:
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{Teorema}]
+Si $\alpha \in \mathbb{R}$ es una raíz del polinomio $p(x)$, entonces $p(x)$ es divisible por $x - \alpha$.
+
+\medskip\noindent\textbf{Demostración:}
+Por el Teorema del Resto, el resto de dividir $p(x)$ por $x - \alpha$ es $p(\alpha)$. Pero $p(\alpha) = 0$, luego el resto es 0 y se concluye que $x - \alpha$ divide a $p(x)$.
+\end{tcolorbox}
+
+% -------------------- more content would follow --------------------
+
+\columnbreak
+
+% Placeholder for Clase 4 y 5 (incluir resto del contenido aquí si se desea)
+
+\end{multicols}
+\end{landscape}
+\end{document}
