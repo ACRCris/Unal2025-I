@@ -1,0 +1,57 @@
+\begin{solucion}
+    % Añada este bloque justo después del resultado anterior.
+% No introduce subsecciones ni numeración nueva: solo texto y ecuaciones.
+
+\bigskip
+Señalemos ahora un segundo hecho clásico:
+
+\[
+\sum_{\ell=0}^{n}\frac{D_\ell}{\ell!\,(n-\ell)!}=1,
+\]
+
+donde $D_\ell$ denota, como antes, el número de desarreglos de $\ell$ elementos.  
+Proporcionamos una demostración puramente combinatoria contando de dos maneras el
+conjunto $S_n$ de todas las permutaciones de $[n]$.
+
+\textbf{(1) Conteo directo.}  
+Sabemos que $\vert S_n\vert=n!$.
+
+\textbf{(2) Clasificación según el número de puntos fijos.}  
+Sea $\sigma\in S_n$ y denote‐\!$se$ por $\ell$ la cantidad de índices que
+$\sigma$ deja fijos.  
+Para reconstruir $\sigma$ procedemos en dos etapas independientes:
+
+\begin{itemize}
+  \item Elegimos los $\ell$ puntos fijos: existen $\binom{n}{\ell}$ maneras.
+  \item Derangamos los $n-\ell$ elementos restantes, esto es, los
+        permutamos sin puntos fijos; hay $D_{\,n-\ell}$ posibilidades.
+\end{itemize}
+
+En consecuencia, dado un $\ell$ determinado, el número de permutaciones con
+exactamente $\ell$ puntos fijos es  
+$\binom{n}{\ell}\,D_{\,n-\ell}$.
+
+\medskip
+Como toda permutación tiene algún número $\ell$ de puntos fijos comprendido entre
+$0$ y $n$, sumando sobre todas las clases obtenemos
+
+\[
+n!\;=\;\sum_{\ell=0}^{n}\binom{n}{\ell}\,D_{\,n-\ell}.
+\]
+
+Basta ahora reindexar la suma (sustituyendo $\ell\mapsto n-\ell$) para
+obtener la identidad equivalente
+
+\[
+n!\;=\;\sum_{\ell=0}^{n}\binom{n}{\ell}\,D_\ell.
+\]
+
+Finalmente dividimos ambos miembros por $n!$ y utilizamos la igualdad
+$\displaystyle\binom{n}{\ell}=\frac{n!}{\ell!\,(n-\ell)!}$ para concluir
+
+\[
+\sum_{\ell=0}^{n}\frac{D_\ell}{\ell!\,(n-\ell)!}=1,
+\]
+
+tal como se quería demostrar.
+\end{solucion}

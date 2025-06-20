@@ -1,0 +1,43 @@
+\begin{solucion}
+    Queremos contar las permutaciones de $[n]=\{1,2,\dots,n\}$ en las que
+\emph{ningún número par queda fijo}.  
+Sea $E=\{\,2,4,\dots,2\lfloor n/2\rfloor\}$ el conjunto de los $m=\lfloor n/2\rfloor$
+índices pares.
+
+\textbf{Paso clave (Principio de Inclusión–Exclusión).}  
+Para cada $e\in E$ defina 
+\[
+A_e=\{\sigma\in S_n:\,\sigma(e)=e\},
+\]
+el evento “$e$ es punto fijo”.
+Nuestro objetivo es 
+\(\bigl|\bigcap_{e\in E}\overline{A_e}\bigr|\).
+
+Si $J\subseteq E$ contiene $j$ índices pares, fijar \emph{todos} los puntos de $J$
+obliga a dejar invariables precisamente esos $j$ elementos y
+permite permutar libremente los $n-j$ restantes, de modo que  
+\[
+|A_J|=\bigl|\,\bigcap_{e\in J}A_e\bigr|=(n-j)! .
+\]
+Además hay $\binom{m}{j}$ posibles subconjuntos $J$ de tamaño $j$.
+
+Aplicando inclusión–exclusión obtenemos
+\[
+\#\{\sigma\in S_n:\, \text{ningún par fijo}\}
+=\sum_{j=0}^{m}(-1)^{\,j}\binom{m}{j}\,(n-j)!.
+\]
+
+\textbf{Resultado final.}\quad
+Si $m=\lfloor n/2\rfloor$, el número buscado es
+\[
+\boxed{\displaystyle
+\sum_{j=0}^{m}(-1)^{\,j}\binom{m}{j}\,(n-j)!
+}.
+\]
+
+Para $n\le 8$ los primeros valores son  
+\(
+1,\;1,\;4,\;14,\;78,\;426,\;3216,\;24024
+\),
+coincidiendo con la fórmula.
+\end{solucion}\bigskip

@@ -1,0 +1,52 @@
+\begin{solucion}
+Sea $S_n$ el conjunto de todas las permutaciones de $[n]=\{1,2,\dots,n\}$ y, para cada
+$1\le i\le n$, denotemos  
+\[
+A_i \;=\;\bigl\{\sigma\in S_n \mid \sigma(i)=i\bigr\},
+\]
+es decir, el subconjunto de permutaciones que fijan al elemento $i$.  
+El número de desarreglos buscado es el cardinal de la intersección de los
+complementos $\overline{A_i}=S_n\setminus A_i$:
+\[
+D_n \;=\;\Bigl|\bigcap_{i=1}^{n}\overline{A_i}\Bigr|.
+\]
+
+Aplicamos ahora el \emph{Principio de Inclusión–Exclusión}: para cualquier colección
+finita de subconjuntos $A_1,\dots,A_n$ de un conjunto $S_n$ se tiene cumple que:
+\begin{align*}
+    \Bigl|\bigcap_{i=1}^{n}\overline{A_i}\Bigr|
+\;&=\;
+|S_n|\;-\!\!\sum_{j=1}^{n}(-1)^{\,j-1}
+\!\!\!\sum_{\{i_1,\dots,i_j\}}\!\!\!
+\bigl|A_{i_1}\cap\dots\cap A_{i_j}\bigr|\\
+D_n \;&=\; n!
+-\sum_{j=1}^{n}(-1)^{\,j-1}
+\!\!\!\sum_{\{i_1,\dots,i_j\}}\!\!\!
+\bigl|A_{i_1}\cap\dots\cap A_{i_j}\bigr|.
+\end{align*}
+
+
+Fijado un $j\in\{1,\dots,n\}$ y un subconjunto $\{i_1,\dots,i_j\}\subset[n]$, con la restricción de que
+las $j$ posiciones $i_1,\dots,i_j$ sean puntos fijos, lo cual nos deja 
+libremente sobre los $n-j$ elementos restantes que se pueden permutar. Por lo tanto  
+\[
+\bigl|A_{i_1}\cap\dots\cap A_{i_j}\bigr|\;=\;(n-j)!,
+\]
+independientemente del subconjunto elegido. Como hay $\binom{n}{j}$ maneras de
+seleccionar $j$ índices entonces:
+\begin{align*}
+    \sum_{\{i_1,\dots,i_j\}}\bigl|A_{i_1}\cap\dots\cap A_{i_j}\bigr| = \binom{n}{j}(n-j)!
+\end{align*}
+sustituimos en la expresión anterior y obtenemos
+\begin{align*}
+D_n\;&=\; n!-\sum_{j=1}^{n}(-1)^{\,j-1}\binom{n}{j}(n-j)!.
+\end{align*}
+
+
+Reagrupamos el término $j=0$ (igual a $n!$) en la suma:
+\[
+D_n \;=\;\sum_{j=0}^{n}(-1)^{\,j}\binom{n}{j}(n-j)!
+\;=\;\sum_{j=0}^{n}(-1)^{\,j}\frac{n!}{j!}
+\;=\; n!\sum_{j=0}^{n}\frac{(-1)^{\,j}}{j!}.
+\]
+\end{solucion}
