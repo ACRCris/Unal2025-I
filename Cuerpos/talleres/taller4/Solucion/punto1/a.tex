@@ -1,0 +1,56 @@
+% --- LaTeX corregido (mismo contenido) ---------------------------------------
+
+\section*{Solución}
+
+\begin{enumerate}[label=\textbf{\alph*)}]
+  \item Para mostrar que $f(x)=x^{p}-x-1$ es irreducible en $\F_p[x]$, observamos primero que no tiene raíz en $\F_p$.  
+        Por el Pequeño Teorema de Fermat, para todo $a\in\F_p$ vale $a^{p}=a$, luego
+        \begin{align}
+          f(a) &= a^{p} - a - 1 
+                = a - a - 1 
+                = -1 \neq 0
+                \quad (\text{en } \F_p).
+        \end{align}
+        Así, $f(x)$ no se anula en $\F_p$, por lo que no tiene factor lineal.  
+        Dado que $\deg f = p$ es un número primo, la única forma de factorizar $f$ no
+        trivialmente sería como producto de un factor de grado $1$ y otro de grado $p-1$.  
+        Al no existir factor lineal en $\F_p[x]$, concluimos que no hay factorización propia,  
+        de modo que $f(x)$ es irreducible en $\F_p[x]$.
+
+  \item Sea $\alpha$ una raíz de $f(x)$. Entonces $\alpha$ satisface $\alpha^{p}=\alpha+1$.  
+        Por inducción se deduce fácilmente
+        \begin{align}
+          \alpha^{p^{n}} &= \alpha + n
+          \quad (\text{en alguna extensión de } \F_p).
+        \end{align}
+        En particular, existe $d=[\F_p(\alpha):\F_p]$ tal que $\alpha^{p^{d}}=\alpha$.  
+        De la igualdad $\alpha^{p^{d}}=\alpha+d$ (obtenida aplicando la iteración) se sigue
+        $d\equiv 0 \pmod{p}$. Pero $d$ divide $\deg f = p$, así que $d=p$.  
+        Esto implica que el polinomio minimal de $\alpha$ sobre $\F_p$ tiene grado $p$, y,
+        como ya no tiene factores de grado menor, coincide con $f$.  
+        Por lo tanto $[\F_p(\alpha):\F_p]=p$, esto es, $\F_p(\alpha)\cong\F_{p^{p}}$.
+
+        Ahora, \textbf{la extensión es separable}: en un cuerpo de característica $p$, un
+        polinomio irreducible es separable si su derivada no se anula. Aquí
+        \begin{align}
+          f'(x) &= p x^{p-1}-1 \equiv -1 \neq 0 \pmod{p},
+        \end{align}
+        por lo que $f$ no tiene raíces múltiples y $\alpha$ es separable.  
+        En particular, la extensión $\F_p(\alpha)/\F_p$ es separable (ver ejemplo de
+        polinomio inseparable en Clase 12).
+
+        Además, \textbf{la extensión es normal}: el campo $\F_p(\alpha)=\F_{p^{p}}$ es
+        precisamente el cuerpo de descomposición del polinomio irreducible minimal de
+        $\alpha$. Por definición (Clase 12) esto significa que cada raíz de $f(x)$ está en
+        $\F_p(\alpha)$ (todas las raíces son $\alpha^{p^{i}}=\alpha+i$, $0\le i<p$).
+        Según la definición de extensión normal, esto implica que
+        $\F_p(\alpha)/\F_p$ es normal.  
+        En efecto, toda extensión finita de cuerpo finito es Galois (normal y separable).
+
+        Por tanto, $\F_p(\alpha)$ es una extensión normal y separable de $\F_p$.
+\end{enumerate}
+
+\bigskip
+\noindent\textbf{Referencias:} Definiciones de extensiones normales y separables
+(Clase 12, pág.\ correspondiente).  
+También se usó el hecho de que una extensión finita de cuerpo finito es Galois.
