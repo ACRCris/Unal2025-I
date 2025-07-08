@@ -1,0 +1,14 @@
+\begin{solucion}
+\newcommand{\Gal}{\mathrm{Gal}}
+\noindent (a) Primero, el polinomio $f(x)=x^n - 1 \in \mathbb Q[x]$  es el polinomio asociado a las raíces $n$-ésimas de la unidad, es decir, las soluciones de la ecuación $x^n=1$. Veamos entonces que $f$ es separable. Sea $L$ el cuerpo de descomposición de $f$, entonces $f$ no posee raíces múltiples, pues $\gcd(f, f') = \gcd(x^n-1,\; nx^{\,n-1}) = 1$, pues $x^n-1= (x-1)(x^{n-1}+x^{n-2}+\cdots+x+1)$, claramente $\gcd(x-1, nx^{\,n-1})=1$, y $\gcd(x^{n-1}+x^{n-2}+\cdots+x+1, nx^{\,n-1})=1$, pues $x^{n-1}+x^{n-2}+\cdots+x+1$ es irreducible sobre $\mathbb Q$, y $\gcd(x-1, x^{n-1}+x^{n-2}+\cdots+x+1)=1$.
+
+Ahora, veamos que $L = \mathbb Q(\zeta_n)$. En efecto, cualquier raíz $n$-ésima de la unidad es de la forma $\zeta_n^k$ (para algún $0\le k < n$), y claramente $\zeta_n^k \in \mathbb Q(\zeta_n)$, pues 
+\begin{align*}
+    \zeta_n^k &= e^{2\pi i k/n} \\
+    &= \left(
+        e^{2\pi i/n}
+     \right)^k\\
+    &=\left(\zeta_n\right)^k
+\end{align*}
+Se expresa en términos de la base $\mathbb Q(\zeta_n)$, la cuales $\{1, \zeta_n, \zeta_n^2, \ldots, \zeta_n^{n-1}\}$, donde $n = [\mathbb Q(\zeta_n):\mathbb Q]$ es el grado de la extensión. Por lo tanto $L = \mathbb Q(\zeta_n)$ es el cuerpo de descomposición de $f(x)$, ya que contiene todas las raíces de $f(x)$. Como además que $x^n-1$ es separable, entonces $\mathbb Q(\zeta_n)$ resulta ser una extensión normal y separable (ver teorema del literal 1.b) de $\mathbb Q$.
+\end{solucion}

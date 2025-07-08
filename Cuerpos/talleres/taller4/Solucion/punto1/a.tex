@@ -1,56 +1,158 @@
-% --- LaTeX corregido (mismo contenido) ---------------------------------------
+\begin{solucion}
+% \textit{Paso 1: $f$ no tiene raíces en $\mathbb{F}_{p}$.}  
+% Para cualquier $a\in\mathbb{F}_{p}$ se cumple $a^{p}=a$ (propiedad del
+% automorfismo de Frobenius; véase clase 21 pg 1 :contentReference[oaicite:0]{index=0}).  Por
+% tanto
+% \[
+% f(a)=a^{p}-a-1=a-a-1=-1\neq 0,
+% \]
+% de modo que $f$ no posee factores lineales
+Sea $L$ el cuerpo de descomposición de $f \in \mathbb{F}_p[x]$. Para demostrar que $f(x)=x^p - x - 1$ es irreducible en $\mathbb{F}_p[x]$, veamos:
 
-\section*{Solución}
+\begin{align*}
+    \phi: L &\longrightarrow L\\
+    x &\mapsto x^p
+\end{align*}
 
-\begin{enumerate}[label=\textbf{\alph*)}]
-  \item Para mostrar que $f(x)=x^{p}-x-1$ es irreducible en $\F_p[x]$, observamos primero que no tiene raíz en $\F_p$.  
-        Por el Pequeño Teorema de Fermat, para todo $a\in\F_p$ vale $a^{p}=a$, luego
-        \begin{align}
-          f(a) &= a^{p} - a - 1 
-                = a - a - 1 
-                = -1 \neq 0
-                \quad (\text{en } \F_p).
-        \end{align}
-        Así, $f(x)$ no se anula en $\F_p$, por lo que no tiene factor lineal.  
-        Dado que $\deg f = p$ es un número primo, la única forma de factorizar $f$ no
-        trivialmente sería como producto de un factor de grado $1$ y otro de grado $p-1$.  
-        Al no existir factor lineal en $\F_p[x]$, concluimos que no hay factorización propia,  
-        de modo que $f(x)$ es irreducible en $\F_p[x]$.
+es un automorfismo de $L$, pues:
+\begin{itemize}
+    \item $\phi$ es un homomorfismo de anillos. Como $\mathbb F_p$ es un cuerpo con característica $p$, se cumple la identidad de Frobenius:
+    \begin{align*}
+        \phi(x+y) &= (x+y)^p \\
+        &= x^p + y^p \\
+        &= \phi(x) + \phi(y) \\
+    \end{align*}
+    ademas:
+    \begin{align*}
+        \phi(xy) &= (xy)^p \\
+        &= x^p y^p \\
+        &= \phi(x) \phi(y).
+    \end{align*}
+    \item $\phi$ es inyectiva. Sea $x,y \in L$ tal que $\phi(x) = \phi(y)$, es decir $x^p = y^p$, luego:
+    \begin{align*}
+        x^p - y^p &= 0 \\
+        (x-y)^p &= 0.
+    \end{align*}
+    Como $L$ es un cuerpo, esto implica que $x-y=0$, es decir $x=y$. Por lo tanto, $\phi$ es inyectiva.
+    \item $\phi$ es sobreyectiva. Si $\alpha \in L$, es una raíz de $f(x)$, entonces:
+    \begin{align*}
+        f(\alpha) = \alpha^p - \alpha - 1 
+        = 0 \quad 
+        \Rightarrow \quad \alpha^p &= \alpha + 1.
+    \end{align*}
+    donde $\alpha + 1 \in L$ y:
+    \begin{align*}
+        f(\alpha + 1) &= (\alpha + 1)^p - (\alpha + 1) - 1 \\
+        &= \alpha^p + 1 - \alpha - 1 - 1 \\
+        &= \alpha^p - \alpha - 1 \\
+        &= 0.
+    \end{align*}
+    ademas para todo $i \in \{0, 1, \ldots, p-1\}$, se cumple $(\alpha + i)^p = \alpha^p + i^p = \alpha^p + i = \alpha + 1 + i$, donde:
+    \begin{align*}
+        f(\alpha + i) &= (\alpha + i)^p - (\alpha + i) - 1 \\
+        &= \alpha^p + i^p - \alpha - i - 1 \\
+        &= \alpha^p - \alpha + i^p - i - 1 \\
+        &= 0.
+    \end{align*}
+    Esto implica que el conjunto de raíces de $f(x)$ es $\{\alpha, \alpha + 1, \ldots, \alpha + (p-1)\}$, todas pertenecientes a $L$. Y como cada $\alpha + i$ puede ser obtenida de forma inductiva como una expresión polinomial en $\alpha + i - 1$. Por lo tanto si $\alpha \in L$, entonces $\alpha + i \in L$ para todo $i \in \{0, 1, \ldots, p-1\}$. Esto implica que el cuerpo de descomposición de $f(x)$ es $L = \mathbb{F}_p(\alpha)$, luego $\{1, \alpha, \alpha + 1, \ldots, \alpha + (p-1)\}$ es una base de $L$ sobre $\mathbb{F}_p$.  
+    Sea $\beta \in L$, entonces 
+    \begin{align*}
+        \beta &= a_0 + a_1 \alpha + a_2 \alpha^2 + \ldots + a_{p-1} \alpha^{p-1}\\
+        &= a_0 + a_1 \alpha + a_2 (\alpha + 1) + a_3 (\alpha + 2) + \ldots + a_{p-1} (\alpha + (p-1))\\
+    \end{align*} por lo que existe $\gamma = a_0 + a_1 (\alpha -1) + a_2 (\alpha) + a_3 (\alpha + 1) + \ldots + a_{p-1} (\alpha + (p-2)) \in L$ tal que $\phi(\gamma) = \beta$.
+    tal que $\phi(\gamma) = \beta$.
+\end{itemize}
+Por lo tanto, $\phi$ es un $\mathbb F_p$-automorfismo de $L$ sobre sí mismo. Y por lo tanto $\phi \in Gal(L/\mathbb{F}_p)$, el grupo de Galois de $L$ sobre $\mathbb{F}_p$. Del mismo modo $ id, \phi^2, \phi^3, \ldots, \phi^{p-1} \in Gal(L/\mathbb{F}_p)$. Por lo tanto, $Gal(L/\mathbb{F}_p)$ es transitivo pues sean $\alpha_i = \alpha + i$ y $\alpha_j = \alpha + j$ dos raíces de $f(x)$, entonces existe un automorfismo $\phi^k \in Gal(L/\mathbb{F}_p)$ tal que $\phi^k(\alpha_i) = \alpha_j$, donde $k = j - i$. Por lo tanto, $f$ es un polinomio irreducible en $\mathbb{F}_p[x]$.
 
-  \item Sea $\alpha$ una raíz de $f(x)$. Entonces $\alpha$ satisface $\alpha^{p}=\alpha+1$.  
-        Por inducción se deduce fácilmente
-        \begin{align}
-          \alpha^{p^{n}} &= \alpha + n
-          \quad (\text{en alguna extensión de } \F_p).
-        \end{align}
-        En particular, existe $d=[\F_p(\alpha):\F_p]$ tal que $\alpha^{p^{d}}=\alpha$.  
-        De la igualdad $\alpha^{p^{d}}=\alpha+d$ (obtenida aplicando la iteración) se sigue
-        $d\equiv 0 \pmod{p}$. Pero $d$ divide $\deg f = p$, así que $d=p$.  
-        Esto implica que el polinomio minimal de $\alpha$ sobre $\F_p$ tiene grado $p$, y,
-        como ya no tiene factores de grado menor, coincide con $f$.  
-        Por lo tanto $[\F_p(\alpha):\F_p]=p$, esto es, $\F_p(\alpha)\cong\F_{p^{p}}$.
 
-        Ahora, \textbf{la extensión es separable}: en un cuerpo de característica $p$, un
-        polinomio irreducible es separable si su derivada no se anula. Aquí
-        \begin{align}
-          f'(x) &= p x^{p-1}-1 \equiv -1 \neq 0 \pmod{p},
-        \end{align}
-        por lo que $f$ no tiene raíces múltiples y $\alpha$ es separable.  
-        En particular, la extensión $\F_p(\alpha)/\F_p$ es separable (ver ejemplo de
-        polinomio inseparable en Clase 12).
+% Sea $p$ un número primo y $\mathbb{F}_p$ el cuerpo con $p$ elementos. 
+% Para demostrar que $f(x)=x^p - x - 1$ es irreducible en $\mathbb{F}_p[x]$, primero veamos que $f(x)$ no tiene raíces en $\mathbb{F}_p$, pues como $\mathbb F_p$ es un cuerpo finito, es tiene característica $p$, es decir que $a^p = a$ para todo $a\in\mathbb{F}_p$ (Teorema de Fermat). Por lo tanto $f\in \mathbb F_p[x]$ no tiene raíces en $\mathbb{F}_p$ y por lo tanto no tiene factores lineales en $\mathbb{F}_p[x]$.
+ 
+% %  procedemos por contradicción. Primero, notemos que $f(x)$ no tiene raíces en $\mathbb{F}_p$. En efecto, si $a\in \mathbb{F}_p$, por el Teorema de Fermat sabemos que $a^p = a$ en $\mathbb{F}_p$ (es decir, $a^p - a = 0$ para todo $a\in\mathbb{F}_p$; véase clase 1 pg. 3). Sustituyendo $x=a$ en $f(x)$ se obtiene $f(a) = a^p - a - 1 = a - a - 1 = -1 \neq 0$. Por lo tanto, $f(x)$ no tiene raíces en $\mathbb{F}_p$, lo que descarta la existencia de factores lineales en $\mathbb{F}_p[x]$. 
 
-        Además, \textbf{la extensión es normal}: el campo $\F_p(\alpha)=\F_{p^{p}}$ es
-        precisamente el cuerpo de descomposición del polinomio irreducible minimal de
-        $\alpha$. Por definición (Clase 12) esto significa que cada raíz de $f(x)$ está en
-        $\F_p(\alpha)$ (todas las raíces son $\alpha^{p^{i}}=\alpha+i$, $0\le i<p$).
-        Según la definición de extensión normal, esto implica que
-        $\F_p(\alpha)/\F_p$ es normal.  
-        En efecto, toda extensión finita de cuerpo finito es Galois (normal y separable).
+% Ahora si por contradicción suponemos que existen $g, h \in \mathbb{F}_p[x]$ tales que $f(x) = g(x) h(x)$ con $1 \le \deg(g),\deg(h) < p$, por lo que sea $1 \in \mathbb F_p$ entonces, para todo $x \in L$, se cumple la identidad binomial:
+% \begin{align*}
+%     f(x+1) &= (x+1)^p - (x+1) - 1\\
+%     &= x^p + 1 - x - 1 - 1 \quad \text{(Identidad de Frobenius)}\\
+%     &= x^p - x - 1 = f(x).
+% \end{align*}
 
-        Por tanto, $\F_p(\alpha)$ es una extensión normal y separable de $\F_p$.
-\end{enumerate}
+% Reemplazando en $f(x)=g(x)h(x)$ $x$ por $x+1$, entonces:
 
-\bigskip
-\noindent\textbf{Referencias:} Definiciones de extensiones normales y separables
-(Clase 12, pág.\ correspondiente).  
-También se usó el hecho de que una extensión finita de cuerpo finito es Galois.
+% $$g(x+1)\,h(x+1) \;=\; f(x+1) \;=\; f(x) \;=\; g(x)\,h(x).$$ 
+
+% Debido a la unicidad de la factorización en irreducibles, los polinomios $g(x)$ y $h(x)$ (asumidos monicos sin pérdida de generalidad) deben permutar entre sí bajo la traslación $x\mapsto x+1$ (clase 4 pg. 3). En particular, $g(x+1)$ debe ser igual (como polinomio) a $g(x)$ o a $h(x)$, ya que $\{g,h\}$ es el conjunto de factores irreducibles únicos de $f$. Si $g(x+1)=g(x)$, entonces $g(x)$ sería un polinomio no constante fijo por la traslación unitaria. Sin embargo, **el único polinomio de grado $\ge 1$ que permanece invariante por una traslación no trivial es el polinomio cero**, lo cual no es nuestro caso (si $g(x+1)\equiv g(x)$ entonces $g(x+1)-g(x)$ sería el polinomio cero pero de grado $\deg(g)-1$, absurdo). Por lo tanto debe ocurrir $g(x+1)=h(x)$ (y simultáneamente $h(x+1)=g(x)$). Esto implica que $g$ y $h$ tienen el **mismo grado**. Sea $\deg(g)=r$ y $\deg(h)=s$; entonces $r+s=p$ y de la condición anterior obtenemos $r=s$. Pero $p$ es primo, por lo que la única posibilidad de $r=s$ con $r+s=p$ es $r=s= \frac{p}{2}$. Esto es imposible en $\mathbb{F}_p$ cuando $p$ es primo (exceptuando el caso trivial $p=2$, en el cual $f(x)=x^2-x-1$ sigue siendo irreducible porque carece de raíces lineales). Se llega así a una contradicción, lo que establece que $f(x)$ **no puede factorizarse** en $\mathbb{F}_p[x]$. Concluimos entonces que $f(x)$ es **irreducible** sobre $\mathbb{F}_p$.
+
+% \subsection*{Aclaración del paso $g(x+1)=g(x)$ \textit{o} $g(x+1)=h(x)$}
+
+% Sea $f(x)=g(x)h(x)\in\mathbb{F}_p[x]$ una descomposición con $g,h$ no constantes.  
+% La traslación unitaria
+% \[
+% \tau:\mathbb{F}_p[x]\longrightarrow\mathbb{F}_p[x],\qquad \tau(P)=P(x+1)
+% \]
+% es un automorfismo del anillo de polinomios (\emph{dominio de factorización única} según clase 3 pg 1).  
+% Puesto que $f(x+1)=f(x)$, aplicando $\tau$ a la factorización obtenemos
+% \[
+% \tau(g)\,\tau(h)\;=\;g\,h.
+% \]
+% Escribamos $g$ y $h$ como producto de irreducibles (único salvo unidades):
+% \[
+% g=\pi_1^{e_1}\cdots\pi_r^{e_r},\qquad 
+% h=\rho_1^{f_1}\cdots\rho_s^{f_s}.
+% \]
+% El automorfismo $\tau$ permuta el conjunto de irreducibles de $f$ porque envía raíces en raíces (clase 16 pg 1).  
+% Como $\tau(g)\tau(h)=gh$ y la factorización es única, cada irreducible $\pi_i$ debe aparecer en el mismo número de veces en ambos lados; por tanto $\tau$ \emph{permuta} los factores irreducibles de $f$.
+
+% Si $\tau$ deja estable el multiconjunto de factores irreducibles de $g$, obtenemos $\tau(g)=g$ (hasta unidad).  El único polinomio no constante fijo por $\tau$ es imposible porque $\deg\bigl(g(x+1)-g(x)\bigr)=\deg(g)-1\ge 0$ implicaría que $g(x+1)-g(x)$ no puede ser cero polinomialmente (clase 4 pg 3).  
+% Consecuentemente, $\tau$ debe intercambiar los conjuntos de irreducibles de $g$ y $h$, lo que se traduce (agrupando potencias iguales) en
+% \[
+% \tau(g)=h,\qquad \tau(h)=g.
+% \]
+% Como $\deg(\tau(g))=\deg(g)$, se deduce $\deg(g)=\deg(h)=\tfrac{p}{2}$, contradiciendo la primalidad de $p$.  
+% Así $f$ es irreducible.
+
+% \subsection*{Reformulación con el grupo de Galois}
+
+% Sea $L$ el cuerpo de descomposición de $f$ sobre $K=\mathbb{F}_p$.  
+% Para cada $c\in\mathbb{F}_p$ definimos
+% \[
+% \sigma_c:L\;\longrightarrow\;L,
+% \qquad 
+% \sigma_c(\alpha)=\alpha+c,\;\;
+% \sigma_c\restriction_{K}=\operatorname{id}_{K},
+% \]
+% donde $\alpha$ es una raíz fija de $f$.  
+% Las identidades
+% \[
+% (\alpha+c)^p=(\alpha^p)+c=\alpha+1+c
+% \quad\Longrightarrow\quad
+% (\alpha+c)^p-(\alpha+c)-1=0
+% \]
+% muestran que $\alpha+c$ es nuevamente raíz de $f$, por lo que $\sigma_c$ envía raíces en raíces y se extiende (clase 17 pg 2) a un automorfismo de $L$ sobre $K$.  
+% El conjunto
+% \[
+% G:=\{\sigma_c\mid c\in\mathbb{F}_p\}
+% \]
+% es un subgrupo de $\operatorname{Gal}(L/K)$ isomorfo al grupo aditivo $\mathbb{F}_p$; en particular $|G|=p$.
+
+% \paragraph{Contradicción si $f$ fuera reducible.}
+% Supongamos que $f$ se factoriza como $f_1\cdots f_t$ con $\deg(f_1)=d<p$.  
+% Sea $\beta$ una raíz de $f_1$ y $E=K(\beta)$.  Entonces
+% \[
+% [E:K]=\deg(f_1)=d<p.
+% \]
+% Como $L$ es el cuerpo de descomposición de $f$, se tiene $E\subseteq L$ y, por la correspondencia de Galois (clase 18 pg 1),
+% \[
+% [L:K]=|\operatorname{Gal}(L/K)|\;\ge\;|G|=p.
+% \]
+% Pero también $[L:K]=[L:E]\,[E:K]\le p-1$ porque $[E:K]=d<p$ y $[L:E]\le p$ (todas las raíces están en $E(\alpha)$).  Esto contradice $[L:K]\ge p$.  Por lo tanto $d$ no puede ser $<p$ y $f$ es \emph{irreducible}.
+
+% \bigskip
+% \emph{Referencias usadas}:  
+% clase 3 pg 1 (DFU en $\mathbb{F}_p[x]$),  
+% clase 4 pg 3 (polinomio fijo por traslación),  
+% clase 16 pg 1 (extensión de automorfismos que permutan raíces),  
+% clase 17 pg 2 (automorfismos que envían raíces en raíces),  
+% clase 18 pg 1 (correspondencia de Galois y cardinalidad $|\operatorname{Gal}(L/K)|=[L:K]$).
+
+\end{solucion}

@@ -1,0 +1,36 @@
+\begin{solucion}
+\newcommand{\Gal}{\mathrm{Gal}}
+Para probar que $L_H$ es un subcuerpo de $L$, es suficiente probar que:
+\begin{enumerate}
+    \item $L_H$ contiene a $0$ y $1$.
+    \item $L_H$ es cerrado bajo la suma y el producto.
+    \item $L_H$ es cerrado bajo inversos aditivos.
+    \item $L_H$ es cerrado bajo los inversos multiplicativos.
+\end{enumerate}
+
+De este modo sea $L:K$ una extensión finita y $H\subseteq \Gal(L/K)$ un subgrupo. Por definición, el campo fijo de $H$ es el conjunto 
+
+\[L_H \;=\; \{\alpha\in L \mid \sigma(\alpha)=\alpha \text{ para todo }\sigma\in H\},\] 
+
+es decir, $L_H$ contiene aquellos elementos de $L$ que son fijos bajo cada automorfismo $\sigma\in H$. En particular, dado que cada automorfismo de $\Gal(L/K)$ deja fijos a los elementos de $K$, por lo tanto $K\subseteq L_H$. Además, 
+\begin{enumerate}
+    \item $1\in L_H$ y $0\in L_H$, pues $\sigma(1)=1$ y $\sigma(0)=0$ para todo $\sigma$.
+    \item Dados $\alpha,\beta\in L_H$. Por una parte, para cada $\sigma\in H$ se cumple $\sigma(\alpha)=\alpha$ y $\sigma(\beta)=\beta$. Entonces, usando que $\sigma$ es un homomorfismo de cuerpos, obtenemos: 
+    \begin{align*}
+        \sigma(\alpha + \beta) &= \sigma(\alpha) + \sigma(\beta) &&\text{(por homomorfismo de suma)}\\ 
+        &= \alpha + \beta, &&\text{ya que $\sigma(\alpha)=\alpha$ y $\sigma(\beta)=\beta$,}
+    \end{align*}
+    y del mismo modo: 
+    \begin{align*}
+        \sigma(\alpha\,\beta) &= \sigma(\alpha)\,\sigma(\beta) &&\text{(por homomorfismo de multiplicación)}\\ 
+        &= \alpha\,\beta. &&\text{(de nuevo porque $\sigma$ fija $\alpha$ y $\beta$).}
+    \end{align*}
+    De las igualdades anteriores se deduce que $\sigma(\alpha+\beta)=\alpha+\beta$ y $\sigma(\alpha\beta)=\alpha\beta$ para todo $\sigma\in H$. Es decir, $\alpha+\beta\in L_H$ y $\alpha\beta\in L_H$ (el conjunto $L_H$ es cerrado bajo la suma y el producto).
+    \item Ahora sea $\alpha\in L_H$, entonces $-\alpha \in L$ pues $L$ es cuerpo. Además, para todo $\sigma\in H$ se cumple que $\sigma(-\alpha) = -\sigma(\alpha) = -\alpha$, ya que $\sigma$ es un automorfismo de cuerpos. Por lo tanto $-\alpha\in L_H$ (el conjunto $L_H$ es cerrado bajo los inversos aditivos).
+    \item Por otra parte, si $\alpha\in L_H$ y $\alpha\neq 0$, entonces $\alpha^{-1} \in L$ por lo que   $\sigma(\alpha^{-1}) = \sigma(\alpha)^{-1} = \alpha^{-1}$, pues $\sigma$ es un automorfismo de cuerpos
+    , donde $\alpha^{-1}\in L$ es el inverso multiplicativo de $\alpha$ en $L$. Por lo tanto $\alpha^{-1}\in L_H$ siempre que $\alpha\in L_{H^\times}$ (cerradura bajo los inversos multiplicativos). 
+\end{enumerate}
+
+Finalmente, como $L_H$ contiene a $K$, y es cerrado bajo la suma, el producto, los inversos aditivos y los inversos multiplicativos, entonces $L_H$ es un subcuerpo de $L$ que contiene a $K$.
+
+\end{solucion}

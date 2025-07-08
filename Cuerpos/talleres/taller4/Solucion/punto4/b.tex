@@ -1,0 +1,8 @@
+\newcommand{\Gal}{\mathrm{Gal}}
+\begin{solucion}
+    \noindent (b) Sea $\sigma \in \Gal(\mathbb Q(\zeta_n)/\mathbb Q)$. Dado que $\sigma$ es un automorfismo $\mathbb Q$-lineal, preserva cualquier ecuación polinomial con coeficientes racionales. Aplicando $\sigma$ a la relación $\zeta_n^n = 1$, obtenemos 
+    \[ \sigma(\zeta_n)^n \;=\; \sigma(\zeta_n^n) \;=\; \sigma(1) \;=\; 1\,.\] 
+    Es decir, $\sigma(\zeta_n)$ también es una raíz $n$-ésima de la unidad. Por lo tanto existe algún entero $i$, $0\le i < n$, tal que $\sigma(\zeta_n) = \zeta_n^i$ (clase 19 pg 4). 
+
+    Ademas $\gcd(i,n)=1$. En caso contrario, si $d=\gcd(i,n)>1$, entonces $i = kd$ y $n = md$ para algunos enteros $k$ y $m$. Entonces $\zeta_n^i = e^{2\pi i kd/md} = e^{2\pi i k/m} = \zeta_n^{k/m}$,lo cual implica que $\zeta_n^i$ es una raíz $m$-ésima de la unidad, con $m<n$. lo cual contradice el hecho de que $\zeta_n$ es una raíz primitiva $n$-ésima de la unidad. Por lo tanto, $\gcd(i,n)=1$.
+\end{solucion}

@@ -1,0 +1,32 @@
+\begin{solucion}
+    Veamos que $f(x)=x^{p}-x-1$ es separable es su cuerpo de descomposición $\mathbb F_p(\alpha)$, donde $\alpha$ es una raíz de $f(x)$. Para esto veamos que $f$ no tiene raíces multiples en $\mathbb F_p(\alpha)$, pues tomando la derivada formal de $f$:
+    \begin{align*}
+        f'(x) &= p x^{p-1} - 1 = -1 \neq 0 \quad \text{en } \mathbb F_p[x],
+    \end{align*}
+    Luego $\operatorname{gcd}(f,f')=1$, lo cual implica que $f$ no tiene raíces multiplies en $\mathbb F_p(\alpha)$, y por lo tanto es separable.
+    Ademas $[\mathbb F_p(\alpha):\mathbb F_p]=p$, pues $\{1, \alpha, \alpha^2, \ldots, \alpha^{p-1}\}$ es una base de $\mathbb F_p(\alpha)$ sobre $\mathbb F_p$ la cual tiene $p$ elementos. Por lo tanto, $|\operatorname{Gal}(\mathbb F_p(\alpha)/\mathbb F_p)|=p$, asi $\{\operatorname{id}, \phi, \phi^2, \ldots, \phi^{p-1}\} = \operatorname{Gal}(\mathbb F_p(\alpha)/\mathbb F_p)$. Veamos que el cuerpo fijo de $\operatorname{Gal}(\mathbb F_p(\alpha)/\mathbb F_p)$ es $\mathbb F_p$:
+    \begin{align*}
+       L_{\operatorname{Gal}(\mathbb F_p(\alpha)/\mathbb F_p)} &= \{\alpha \in \mathbb F_p(\alpha) \mid \sigma(\alpha) = \alpha \text{ para todo } \sigma \in \operatorname{Gal}(\mathbb F_p(\alpha)/\mathbb F_p)\}\\
+         &= \mathbb F_p
+    \end{align*}
+    Pues para todo $0\leq k \leq p-1$, y para todo $a \in \mathbb F_p$ tenemos que:
+    \begin{align*}
+        \phi^k(a) &= \phi^{k-1}(\phi(a))\\
+        &= \phi^{k-1}(a^p)\\
+        &= \phi^{k-1}(a)\\
+        &\quad \vdots\\
+        &= \phi(a)\\
+        &= a^p\\
+        &= a
+    \end{align*}
+    Por ultimo, dado el siguiente teorema:
+    \begin{tcolorbox}[colback=white,colframe=black,title=Teorema]
+Sea \(L:K\) una extensión finita. Entonces son equivalentes:
+\begin{enumerate}
+  \item \(L\) es el \emph{cuerpo de descomposición} de algún polinomio separable de \(K[x]\).
+  \item \(K\) es el \emph{cuerpo fijo} de \(\mathrm{Gal}(L/K)\).
+  \item La extensión \(L:K\) es \emph{normal} y \emph{separable}.
+\end{enumerate}
+\end{tcolorbox}
+Como $\mathbb F_p$ es el cuerpo fijo de $\operatorname{Gal}(\mathbb F_p(\alpha)/\mathbb F_p)$, entonces $\mathbb F_p(\alpha):\mathbb F_p$ es normal y separable.
+\end{solucion}

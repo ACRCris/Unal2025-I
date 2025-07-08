@@ -1,0 +1,21 @@
+\begin{solucion}
+    
+\noindent (c) Si consideremos ahora que $n=p$ es un número primo. Sea $(\Z/p\Z)^{\times} = \{1,2,\dots,p-1\}$, que son coprimos con $p$. Del inciso (b) sabemos que cada automorfismo $\sigma \in \Gal(\mathbb Q(\zeta_p)/\mathbb Q)$ viene se puede asociar por un exponente $i$ coprimo con $p$, mediante la regla $\sigma(\zeta_p) = \zeta_p^i$. De esta forma definimos un homomorfismo de grupos 
+\begin{align*}
+\Psi: \Gal(\mathbb Q(\zeta_p)/\mathbb Q)\;&\mapsto\;(\Z/p\Z)^{\times}, \mathbb \qquad \\
+\Psi(\sigma) &\mapsto i \pmod{p}, \
+\end{align*}
+donde $i$ satisface $\sigma(\zeta_p)=\zeta_p^i$. Para ver que $\Psi$ es bien definido y homomorfo, tomemos $\sigma,\tau \in \Gal(\mathbb Q(\zeta_p)/\mathbb Q)$ con $\sigma(\zeta_p)=\zeta_p^i$ y $\tau(\zeta_p)=\zeta_p^j$. Entonces:
+\begin{align*}
+(\sigma\circ\tau)(\zeta_p) \;&=\; \sigma\big(\tau(\zeta_p)\big)\\ \;&=\; \sigma\!\big(\zeta_p^j\big) \\
+\;&=\;\big(\sigma(\zeta_p)\big)^j\\ \;&=\; (\zeta_p^i)^j \;=\; \zeta_p^{\,ij}\,. 
+\end{align*}
+Por lo tanto $\Psi(\sigma\circ\tau) = ij \pmod{p} = (i \pmod{p})\cdot(j \pmod{p}) = \Psi(\sigma)\,\Psi(\tau)$, comprobándose que $\Psi$ es efectivamente un morfismo de grupos. 
+
+Además, $\Psi$ es inyectivo. Pues, si $\Psi(\sigma)=1$ (el neutro de $(\Z/p\Z)^{\times}$), entonces $i\equiv 1\pmod{p}$; esto significa que $\sigma(\zeta_p) = \zeta_p^i = \zeta_p^1 = \zeta_p$. Es decir, $\sigma$ fija a $\zeta_p$ y por ende fija todo $\mathbb Q(\zeta_p)$, lo cual implica $\sigma = \mathrm{id}$. Así, $\ker(\Psi)=\{\mathrm{id}\}$ es inyectiva. 
+
+Dado que $\mathbb Q(\zeta_p)$ es una extensión Galois de $\mathbb Q$, se tiene $|\Gal(\mathbb Q(\zeta_p)/\mathbb Q)| = [\,\mathbb Q(\zeta_p):\mathbb Q\,]$. Sabemos también que el polinomio $x^p-1 = (x-1)\Phi_p(x)$ tiene grado $p$ y que $\Phi_p(x)$ es irreducible de grado $p-1$, por lo tanto $[\mathbb Q(\zeta_p):\mathbb Q] = p-1$. Luego $\Gal(\mathbb Q(\zeta_p)/\mathbb Q)$ tiene $p-1$ automorfismos, pero como $\Psi$ inyecta, y $|((\Z/p\Z)^{\times})| = p-1$ elementos. Entonces $\Psi$ es sobreyectiva.
+
+Por lo tanto, $\Gal(\mathbb Q(\zeta_p)/\mathbb Q) \cong (\Z/p\Z)^{\times}$, pues existe un isomorfismo de grupos entre ambos. 
+
+\end{solucion}

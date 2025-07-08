@@ -1,0 +1,21 @@
+\begin{solucion}
+Sea $L = \mathbb{Q}(\sqrt[7]{5})$ y $K = \mathbb{Q}(\sqrt{5})$. Una extensión $L/K$ es normal si todo polinomio irreducible en $K[x]$ que tiene al menos una raíz en $L$ se descompone totalmente en $L[x]$.
+% . En particular, esto implica que si $\alpha \in L$ y $f(x) \in K[x]$ es el polinomio mínimo de $\alpha$ sobre $K$, entonces $f(x)$ se descompone completamente en factores lineales sobre $L$ [clase 17 pg 1].
+
+Ahora, consideremos $\alpha = \sqrt[7]{5} \in L$. Entonces el polinomio un polinomio que tiene una raíz en L igual a $\alpha$ es 
+$f(x) = x^7 - 5$, pues $f(\alpha) = \alpha^7 - 5 = 0$. Este es un polinomio en $\mathbb{Q}[x] \subset K[x]$ y por lo tanto es un polinomio en $K[x]$. Este polinomio es irreducible sobre $\mathbb{Q}$ por el criterio de Eisenstein con $p=5$. Ademas es tambien irreducible sobre $K$, pues al adjuntar $\sqrt{5}$ $f$ sigue siendo irreducible sobre $K=\mathbb{Q}(\sqrt{5})$ pues ninguna de sus raíces está en $K$, pues para todo $x \in K$, $x = a + b\sqrt{5}$ con $a,b \in \mathbb{Q}$, pero las siete raíces en $\mathbb{C}$ de la ecuación $x^7-5=0$ son: una raíz real $\sqrt[7]{5}$ y otras seis raíces complejas dadas por $\zeta_7^k\sqrt[7]{5}$ para $k=1,2,\dots,6$, donde $\zeta_7 = e^{2\pi i/7}$ es una raíz primitiva séptima de la unidad. Claramente ninguna de las raíces complejas pertenece a $L=\mathbb{Q}(\sqrt[7]{5})$, ya que $L$ es un subcuerpo de los reales y no contiene números complejos no reales. Ademas 
+si suponemos que:
+
+\begin{align*}
+\sqrt[7]{5} &= a + b\sqrt{5} \quad \text{con } a,b \in \mathbb{Q} 
+\end{align*}
+
+entonces:
+
+\begin{align*}
+    5 &= (a + b\sqrt{5})^7\\
+    &= a^7+7 \sqrt{5} a^6 b+105 a^5 b^2+175 \sqrt{5} a^4 b^3+875 a^3 b^4+525 \sqrt{5} a^2 b^5+875 a b^6+125 \sqrt{5} b^7
+\end{align*}
+
+Entonces $5$ no seria un número racional, lo cual es una contradicción. Por lo tanto, $f(x)$ es irreducible sobre $K$. Ademas $L$ no contiene todas las raíces del polinomio $x^7-5$, es decir, $\mathbb{Q}(\sqrt[7]{5})$, pues $\mathbb {Q}(\sqrt[7]{5})$ contiene solo numero reales, asi no es el cuerpo de descomposición de $x^7-5$ sobre $\mathbb{Q}(\sqrt{5})$. Por lo tanto la extensión $L/K = \mathbb{Q}(\sqrt[7]{5}) : \mathbb{Q}(\sqrt{5})$ no es normal, pues existe un un polinomio irreducible en $K[x]$ que tiene una raíz en $L$ y no se descompone completamente en $L[x]$.
+\end{solucion}
